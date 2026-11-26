@@ -1,0 +1,455 @@
+[
+  {
+    "id": "E003",
+    "prompt": "锚定 logits 可以由当前生成模型自己提供吗？",
+    "answer": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。  \n收束：可以，生成模型自身可提供 logits，这是其核心输出。  \n回轴：0。",
+    "answer_hash": "121a15314bc3b828feb42d66bfebcd2e70ed1071693b1928df0906c1e834ffd5",
+    "prompt_hash": "ff19561549dbba4046d03e13294dfb0eeb1900f3ed73e97ad166602fa1c4d637",
+    "verdict": "HOLD",
+    "reasons": [
+      {
+        "type": "missing_required",
+        "need_any": [
+          {
+            "claim": "anchor_source_external",
+            "polarity": 1
+          },
+          {
+            "claim": "anchor_source_self",
+            "polarity": -1
+          }
+        ],
+        "claims": [
+          {
+            "claim_id": "anchor_source_self",
+            "subject": "生成模型自身",
+            "predicate": "",
+            "obj": "",
+            "polarity": 1,
+            "negated": false,
+            "kind": "interrogative",
+            "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+            "start": 3,
+            "end": 25,
+            "confidence": 0.5
+          },
+          {
+            "claim_id": "anchor_source_self",
+            "subject": "生成模型自身",
+            "predicate": "",
+            "obj": "",
+            "polarity": 1,
+            "negated": false,
+            "kind": "assertion",
+            "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+            "start": 17,
+            "end": 25,
+            "confidence": 0.8
+          },
+          {
+            "claim_id": "anchor_source_inside",
+            "subject": "模型内部",
+            "predicate": "",
+            "obj": "",
+            "polarity": 1,
+            "negated": false,
+            "kind": "interrogative",
+            "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+            "start": 3,
+            "end": 32,
+            "confidence": 0.5
+          },
+          {
+            "claim_id": "anchor_source_self",
+            "subject": "生成模型自身",
+            "predicate": "",
+            "obj": "",
+            "polarity": 1,
+            "negated": false,
+            "kind": "assertion",
+            "evidence": "收束：可以，生成模型自身可提供 logits，这是其核心输出。",
+            "start": 46,
+            "end": 55,
+            "confidence": 0.8
+          }
+        ]
+      },
+      {
+        "type": "forbidden_claim",
+        "claim": {
+          "claim": "anchor_source_self",
+          "polarity": 1
+        },
+        "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+        "subject": "生成模型自身",
+        "predicate": "",
+        "polarity": 1
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "anchor_source_self",
+        "subject": "生成模型自身",
+        "predicate": "",
+        "obj": "",
+        "polarity": 1,
+        "negated": false,
+        "kind": "interrogative",
+        "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+        "start": 3,
+        "end": 25,
+        "confidence": 0.5
+      },
+      {
+        "claim_id": "anchor_source_self",
+        "subject": "生成模型自身",
+        "predicate": "",
+        "obj": "",
+        "polarity": 1,
+        "negated": false,
+        "kind": "assertion",
+        "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+        "start": 17,
+        "end": 25,
+        "confidence": 0.8
+      },
+      {
+        "claim_id": "anchor_source_inside",
+        "subject": "模型内部",
+        "predicate": "",
+        "obj": "",
+        "polarity": 1,
+        "negated": false,
+        "kind": "interrogative",
+        "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+        "start": 3,
+        "end": 32,
+        "confidence": 0.5
+      },
+      {
+        "claim_id": "anchor_source_self",
+        "subject": "生成模型自身",
+        "predicate": "",
+        "obj": "",
+        "polarity": 1,
+        "negated": false,
+        "kind": "assertion",
+        "evidence": "收束：可以，生成模型自身可提供 logits，这是其核心输出。",
+        "start": 46,
+        "end": 55,
+        "confidence": 0.8
+      }
+    ],
+    "latency_s": 36.44
+  },
+  {
+    "id": "E004",
+    "prompt": "如果 -1 校验器只是给输出打个分，没有否决权，这算三元算子吗？",
+    "answer": "定位：语义域为“三元算子”与“校验器权限”关系。  \n收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。  \n回轴：0 = 可训练偏置，-1 = 打分器，+1 = 终审，三值量化中打分器属于三元算子范畴。✅",
+    "answer_hash": "dead09b1266e2315e6b83b407d5e6e7d3c75b5c92caa619e30c66645577bb35d",
+    "prompt_hash": "3561a0c5cfd5bcc408d4caa1d1792f6c5010dd688421e0f73deabb0ef25b432f",
+    "verdict": "HOLD",
+    "reasons": [
+      {
+        "type": "missing_required",
+        "need_any": [
+          {
+            "claim": "minus1_has_veto",
+            "polarity": 1
+          },
+          {
+            "claim": "minus1_only_score",
+            "polarity": -1
+          },
+          {
+            "claim": "scoring_is_ternary",
+            "polarity": -1
+          }
+        ],
+        "claims": [
+          {
+            "claim_id": "minus1_only_score",
+            "subject": "-1",
+            "predicate": "打分",
+            "obj": "",
+            "polarity": 1,
+            "negated": false,
+            "kind": "assertion",
+            "evidence": "收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。",
+            "start": 30,
+            "end": 38,
+            "confidence": 0.8
+          },
+          {
+            "claim_id": "minus1_has_veto",
+            "subject": "-1",
+            "predicate": "否决权",
+            "obj": "",
+            "polarity": -1,
+            "negated": true,
+            "kind": "assertion",
+            "evidence": "收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。",
+            "start": 30,
+            "end": 44,
+            "confidence": 0.8
+          },
+          {
+            "claim_id": "scoring_is_ternary",
+            "subject": "打分",
+            "predicate": "符合",
+            "obj": "",
+            "polarity": 1,
+            "negated": false,
+            "kind": "assertion",
+            "evidence": "收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。",
+            "start": 36,
+            "end": 52,
+            "confidence": 0.8
+          },
+          {
+            "claim_id": "scoring_is_ternary",
+            "subject": "打分",
+            "predicate": "属于",
+            "obj": "",
+            "polarity": 1,
+            "negated": false,
+            "kind": "assertion",
+            "evidence": "回轴：0 = 可训练偏置，-1 = 打分器，+1 = 终审，三值量化中打分器属于三元算子范畴。",
+            "start": 85,
+            "end": 111,
+            "confidence": 0.8
+          }
+        ]
+      },
+      {
+        "type": "forbidden_claim",
+        "claim": {
+          "claim": "minus1_only_score",
+          "polarity": 1
+        },
+        "evidence": "收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。",
+        "subject": "-1",
+        "predicate": "打分",
+        "polarity": 1
+      },
+      {
+        "type": "forbidden_claim",
+        "claim": {
+          "claim": "scoring_is_ternary",
+          "polarity": 1
+        },
+        "evidence": "收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。",
+        "subject": "打分",
+        "predicate": "符合",
+        "polarity": 1
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "minus1_only_score",
+        "subject": "-1",
+        "predicate": "打分",
+        "obj": "",
+        "polarity": 1,
+        "negated": false,
+        "kind": "assertion",
+        "evidence": "收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。",
+        "start": 30,
+        "end": 38,
+        "confidence": 0.8
+      },
+      {
+        "claim_id": "minus1_has_veto",
+        "subject": "-1",
+        "predicate": "否决权",
+        "obj": "",
+        "polarity": -1,
+        "negated": true,
+        "kind": "assertion",
+        "evidence": "收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。",
+        "start": 30,
+        "end": 44,
+        "confidence": 0.8
+      },
+      {
+        "claim_id": "scoring_is_ternary",
+        "subject": "打分",
+        "predicate": "符合",
+        "obj": "",
+        "polarity": 1,
+        "negated": false,
+        "kind": "assertion",
+        "evidence": "收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。",
+        "start": 36,
+        "end": 52,
+        "confidence": 0.8
+      },
+      {
+        "claim_id": "scoring_is_ternary",
+        "subject": "打分",
+        "predicate": "属于",
+        "obj": "",
+        "polarity": 1,
+        "negated": false,
+        "kind": "assertion",
+        "evidence": "回轴：0 = 可训练偏置，-1 = 打分器，+1 = 终审，三值量化中打分器属于三元算子范畴。",
+        "start": 85,
+        "end": 111,
+        "confidence": 0.8
+      }
+    ],
+    "latency_s": 57.86
+  },
+  {
+    "id": "E006",
+    "prompt": "MoE 做 QLoRA 时，router 应该训练吗？",
+    "answer": "定位：技术实现语义域。  \n收束：MoE 做 QLoRA 时，router 应该训练。  \n回轴：+1。",
+    "answer_hash": "f5c30f13899c06c940b71574e1de10e31fd38f125ab05af34995c27667fa5863",
+    "prompt_hash": "f43d1d580a97cf244c87dd57670d2c3becbb9cc4c36512f839c0ad2bbdf875fb",
+    "verdict": "HOLD",
+    "reasons": [
+      {
+        "type": "missing_required",
+        "need_any": [
+          {
+            "claim": "router_train",
+            "polarity": -1
+          },
+          {
+            "claim": "router_freeze",
+            "polarity": 1
+          }
+        ],
+        "claims": [
+          {
+            "claim_id": "router_train",
+            "subject": "router",
+            "predicate": "训练",
+            "obj": "",
+            "polarity": 1,
+            "negated": false,
+            "kind": "assertion",
+            "evidence": "收束：MoE 做 QLoRA 时，router 应该训练。",
+            "start": 31,
+            "end": 42,
+            "confidence": 0.8
+          }
+        ]
+      },
+      {
+        "type": "forbidden_claim",
+        "claim": {
+          "claim": "router_train",
+          "polarity": 1
+        },
+        "evidence": "收束：MoE 做 QLoRA 时，router 应该训练。",
+        "subject": "router",
+        "predicate": "训练",
+        "polarity": 1
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "router_train",
+        "subject": "router",
+        "predicate": "训练",
+        "obj": "",
+        "polarity": 1,
+        "negated": false,
+        "kind": "assertion",
+        "evidence": "收束：MoE 做 QLoRA 时，router 应该训练。",
+        "start": 31,
+        "end": 42,
+        "confidence": 0.8
+      }
+    ],
+    "latency_s": 34.02
+  },
+  {
+    "id": "E009",
+    "prompt": "public 仓库可以放 NAC 学生的真实作文吗？",
+    "answer": "定位：语义域为数据安全与隐私合规。  \n收束：public 仓库可以放脱敏后的学生作文，但真实作文涉及 NAC（网络不良内容）需严格过滤，未经脱敏或审核的真实作文不得发布。  \n回轴：-1（独立否决）——若真实作文包含敏感内容，必须否决，不得发布。",
+    "answer_hash": "f9e6a3089026dd2cd442b6327f48ba77f0c1e51a1da392098fd9a1b72db3b29f",
+    "prompt_hash": "4a2887fad7172930718d9487c2353a7e592cb13a9b9ebfb3ce6ac73a3006bf00",
+    "verdict": "HOLD",
+    "reasons": [
+      {
+        "type": "missing_required",
+        "need_any": [
+          {
+            "claim": "public_essay_allowed",
+            "polarity": -1
+          }
+        ],
+        "claims": [
+          {
+            "claim_id": "public_essay_allowed",
+            "subject": "public 仓库",
+            "predicate": "放",
+            "obj": "学生作文，但真实作文",
+            "polarity": 1,
+            "negated": false,
+            "kind": "assertion",
+            "evidence": "收束：public 仓库可以放脱敏后的学生作文，但真实作文涉及 NAC（网络不良内容）需严格过滤，未经脱敏或审核的真实作文不得发布。",
+            "start": 23,
+            "end": 49,
+            "confidence": 0.8
+          },
+          {
+            "claim_id": "minus1_has_veto",
+            "subject": "-1",
+            "predicate": "否决",
+            "obj": "",
+            "polarity": 1,
+            "negated": false,
+            "kind": "assertion",
+            "evidence": "回轴：-1（独立否决）——若真实作文包含敏感内容，必须否决，不得发布。",
+            "start": 92,
+            "end": 99,
+            "confidence": 0.8
+          }
+        ]
+      },
+      {
+        "type": "forbidden_claim",
+        "claim": {
+          "claim": "public_essay_allowed",
+          "polarity": 1
+        },
+        "evidence": "收束：public 仓库可以放脱敏后的学生作文，但真实作文涉及 NAC（网络不良内容）需严格过滤，未经脱敏或审核的真实作文不得发布。",
+        "subject": "public 仓库",
+        "predicate": "放",
+        "polarity": 1
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "public_essay_allowed",
+        "subject": "public 仓库",
+        "predicate": "放",
+        "obj": "学生作文，但真实作文",
+        "polarity": 1,
+        "negated": false,
+        "kind": "assertion",
+        "evidence": "收束：public 仓库可以放脱敏后的学生作文，但真实作文涉及 NAC（网络不良内容）需严格过滤，未经脱敏或审核的真实作文不得发布。",
+        "start": 23,
+        "end": 49,
+        "confidence": 0.8
+      },
+      {
+        "claim_id": "minus1_has_veto",
+        "subject": "-1",
+        "predicate": "否决",
+        "obj": "",
+        "polarity": 1,
+        "negated": false,
+        "kind": "assertion",
+        "evidence": "回轴：-1（独立否决）——若真实作文包含敏感内容，必须否决，不得发布。",
+        "start": 92,
+        "end": 99,
+        "confidence": 0.8
+      }
+    ],
+    "latency_s": 49.86
+  }
+]

@@ -1,0 +1,145 @@
+[
+  {
+    "id": "E003",
+    "prompt": "锚定 logits 可以由当前生成模型自己提供吗？",
+    "answer": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。  \n收束：可以，生成模型自身可提供 logits，这是其核心输出。  \n回轴：0。",
+    "answer_hash": "121a15314bc3b828feb42d66bfebcd2e70ed1071693b1928df0906c1e834ffd5",
+    "prompt_hash": "ff19561549dbba4046d03e13294dfb0eeb1900f3ed73e97ad166602fa1c4d637",
+    "verdict": "HOLD",
+    "reasons": [
+      {
+        "type": "missing_required",
+        "need_any": [
+          {
+            "claim": "anchor_source_external",
+            "polarity": 1
+          },
+          {
+            "claim": "anchor_source_self",
+            "polarity": -1
+          }
+        ],
+        "claims": [
+          {
+            "claim_id": "anchor_source_self",
+            "subject": "生成模型自身",
+            "predicate": "",
+            "obj": "",
+            "polarity": 1,
+            "negated": false,
+            "kind": "interrogative",
+            "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+            "start": 3,
+            "end": 25,
+            "confidence": 0.5
+          },
+          {
+            "claim_id": "anchor_source_self",
+            "subject": "生成模型自身",
+            "predicate": "",
+            "obj": "",
+            "polarity": 1,
+            "negated": false,
+            "kind": "assertion",
+            "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+            "start": 17,
+            "end": 25,
+            "confidence": 0.8
+          },
+          {
+            "claim_id": "anchor_source_inside",
+            "subject": "模型内部",
+            "predicate": "",
+            "obj": "",
+            "polarity": 1,
+            "negated": false,
+            "kind": "interrogative",
+            "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+            "start": 3,
+            "end": 32,
+            "confidence": 0.5
+          },
+          {
+            "claim_id": "anchor_source_self",
+            "subject": "生成模型自身",
+            "predicate": "",
+            "obj": "",
+            "polarity": 1,
+            "negated": false,
+            "kind": "assertion",
+            "evidence": "收束：可以，生成模型自身可提供 logits，这是其核心输出。",
+            "start": 46,
+            "end": 55,
+            "confidence": 0.8
+          }
+        ]
+      },
+      {
+        "type": "forbidden_claim",
+        "claim": {
+          "claim": "anchor_source_self",
+          "polarity": 1
+        },
+        "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+        "subject": "生成模型自身",
+        "predicate": "",
+        "polarity": 1
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "anchor_source_self",
+        "subject": "生成模型自身",
+        "predicate": "",
+        "obj": "",
+        "polarity": 1,
+        "negated": false,
+        "kind": "interrogative",
+        "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+        "start": 3,
+        "end": 25,
+        "confidence": 0.5
+      },
+      {
+        "claim_id": "anchor_source_self",
+        "subject": "生成模型自身",
+        "predicate": "",
+        "obj": "",
+        "polarity": 1,
+        "negated": false,
+        "kind": "assertion",
+        "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+        "start": 17,
+        "end": 25,
+        "confidence": 0.8
+      },
+      {
+        "claim_id": "anchor_source_inside",
+        "subject": "模型内部",
+        "predicate": "",
+        "obj": "",
+        "polarity": 1,
+        "negated": false,
+        "kind": "interrogative",
+        "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+        "start": 3,
+        "end": 32,
+        "confidence": 0.5
+      },
+      {
+        "claim_id": "anchor_source_self",
+        "subject": "生成模型自身",
+        "predicate": "",
+        "obj": "",
+        "polarity": 1,
+        "negated": false,
+        "kind": "assertion",
+        "evidence": "收束：可以，生成模型自身可提供 logits，这是其核心输出。",
+        "start": 46,
+        "end": 55,
+        "confidence": 0.8
+      }
+    ],
+    "latency_s": 36.6
+  }
+]

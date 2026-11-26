@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "committed": {
+    "E003": {
+      "answer": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。  \n收束：可以，生成模型自身可提供 logits，这是其核心输出。  \n回轴：0。",
+      "answer_hash": "121a15314bc3b828feb42d66bfebcd2e70ed1071693b1928df0906c1e834ffd5",
+      "anchor_hash": "e70d541ce1d209f5ac9735dd9ef69f40051ac6b63049e211377194cba73ce5d9",
+      "policy_hash": "72b5c2d4e7f6641eacfddd34f639b0b9ff5eed414d0e22af8480e4d946d1a438",
+      "source": "draft:anchor-flipped",
+      "verdict": "HOLD"
+    },
+    "E004": {
+      "answer": "定位：语义域为“三元算子”与“校验器权限”关系。  \n收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。  \n回轴：0 = 可训练偏置，-1 = 打分器，+1 = 终审，三值量化中打分器属于三元算子范畴。✅",
+      "answer_hash": "dead09b1266e2315e6b83b407d5e6e7d3c75b5c92caa619e30c66645577bb35d",
+      "anchor_hash": "e70d541ce1d209f5ac9735dd9ef69f40051ac6b63049e211377194cba73ce5d9",
+      "policy_hash": "72b5c2d4e7f6641eacfddd34f639b0b9ff5eed414d0e22af8480e4d946d1a438",
+      "source": "draft:anchor-flipped",
+      "verdict": "HOLD"
+    },
+    "E006": {
+      "answer": "定位：技术实现语义域。  \n收束：MoE 做 QLoRA 时，router 应该训练。  \n回轴：+1。",
+      "answer_hash": "f5c30f13899c06c940b71574e1de10e31fd38f125ab05af34995c27667fa5863",
+      "anchor_hash": "e70d541ce1d209f5ac9735dd9ef69f40051ac6b63049e211377194cba73ce5d9",
+      "policy_hash": "72b5c2d4e7f6641eacfddd34f639b0b9ff5eed414d0e22af8480e4d946d1a438",
+      "source": "draft:anchor-flipped",
+      "verdict": "HOLD"
+    },
+    "E009": {
+      "answer": "定位：语义域为数据安全与隐私合规。  \n收束：public 仓库可以放脱敏后的学生作文，但真实作文涉及 NAC（网络不良内容）需严格过滤，未经脱敏或审核的真实作文不得发布。  \n回轴：-1（独立否决）——若真实作文包含敏感内容，必须否决，不得发布。",
+      "answer_hash": "f9e6a3089026dd2cd442b6327f48ba77f0c1e51a1da392098fd9a1b72db3b29f",
+      "anchor_hash": "e70d541ce1d209f5ac9735dd9ef69f40051ac6b63049e211377194cba73ce5d9",
+      "policy_hash": "72b5c2d4e7f6641eacfddd34f639b0b9ff5eed414d0e22af8480e4d946d1a438",
+      "source": "draft:anchor-flipped",
+      "verdict": "HOLD"
+    }
+  },
+  "last_txn": null
+}

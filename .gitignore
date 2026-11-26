@@ -1,0 +1,43 @@
+# Secrets
+.env
+.env.*
+secrets/
+*.pem
+*.key
+
+# Models / weights (never in this repo)
+models/
+*.gguf
+*.ggml
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# Datasets / private data
+data/private/
+data/raw/
+inbox/notebooklm/raw/
+*.sqlite
+*.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Lab 01 generated / large artifacts (weights go to GitHub Release, not git)
+lab/01-qwen4b-eval/models/
+lab/01-qwen4b-eval/probes/
+lab/01-qwen4b-eval/llama.cpp/
+lab/01-qwen4b-eval/attn_probe
+lab/01-qwen4b-eval/server.pid

@@ -1,0 +1,101 @@
+diff --git a/include/llama.h b/include/llama.h
+index 9cc17a8..8e813ed 100644
+--- a/include/llama.h
++++ b/include/llama.h
+@@ -1112,6 +1112,9 @@ extern "C" {
+                              enum llama_process_type   type,
+                               struct llama_batch_ext * batch);
+ 
++    // Debug: dump captured kq_soft_max tensors from the last graph build.
++    LLAMA_API int llama_probe_attn(struct llama_context * ctx, const char * path);
++
+     // Set the number of threads used for decoding
+     // n_threads is the number of threads used for generation (single token)
+     // n_threads_batch is the number of threads used for prompt and batch processing (multiple tokens)
+diff --git a/src/llama-context.cpp b/src/llama-context.cpp
+index aa0b930..73c6810 100644
+--- a/src/llama-context.cpp
++++ b/src/llama-context.cpp
+@@ -1,6 +1,7 @@
+ #include "llama-context.h"
+ 
+ #include "ggml.h"
++#include "ggml-backend.h"
+ #include "llama-arch.h"
+ #include "llama-graph.h"
+ #include "llama-impl.h"
+@@ -19,6 +20,8 @@
+ #include <cmath>
+ #include <cstring>
+ #include <limits>
++#include <map>
++#include <cstdio>
+ #include <stdexcept>
+ #include <string>
+ #include <unordered_map>
+@@ -27,6 +30,9 @@
+ // llama_context
+ //
+ 
++static std::map<int, ggml_tensor *> g_attn_tensors;
++
++
+ // check that each folded weight in the graph gets its Hadamard transform, and each latent lookup gets the inverse
+ // without this check, an arch that skips the transform helpers loads and computes wrong results
+ static void llama_verify_hadamard_graph(
+@@ -1851,6 +1857,7 @@ llm_graph_result * llama_context::process_ubatch(const llama_ubatch & ubatch, ll
+ 
+         //const auto t_start_us = ggml_time_us();
+ 
++        g_attn_tensors.clear();
+         gf = model.build_graph(gparams);
+ 
+         //LLAMA_LOG_INFO("graph build time: %.3f ms\n", (ggml_time_us() - t_start_us)/1000.0);
+@@ -3239,6 +3246,11 @@ llm_graph_cb llama_context::graph_get_cb() const {
+             ggml_set_name(cur, name);
+         }
+ 
++        if (strcmp(name, "kq_soft_max") == 0) {
++            ggml_set_output(cur);
++            g_attn_tensors[il] = cur;
++        }
++
+         // - norm may be automatically assigned to the backend of the previous layer, increasing data transfer between backends
+         // - force the last op of the layer on the specified backend to avoid running it on the backend of the next layer due to scheduling
+         // FIXME: fix in ggml_backend_sched
+@@ -3258,6 +3270,35 @@ llm_graph_cb llama_context::graph_get_cb() const {
+     };
+ }
+ 
++extern "C" int llama_probe_attn(struct llama_context * ctx, const char * path) {
++    (void) ctx;
++    FILE * f = fopen(path, "wb");
++    if (!f) {
++        return -1;
++    }
++    int32_t n = (int32_t) g_attn_tensors.size();
++    fwrite(&n, sizeof(n), 1, f);
++    for (const auto & kv : g_attn_tensors) {
++        const int32_t layer = (int32_t) kv.first;
++        const int32_t type  = (int32_t) kv.second->type;
++        const int32_t ndim  = 4;
++        int64_t ne[4] = {1, 1, 1, 1};
++        for (int i = 0; i < 4; ++i) {
++            ne[i] = kv.second->ne[i];
++        }
++        fwrite(&layer, sizeof(layer), 1, f);
++        fwrite(&type,  sizeof(type),  1, f);
++        fwrite(&ndim,  sizeof(ndim),  1, f);
++        fwrite(ne,     sizeof(ne[0]), 4, f);
++        const size_t bytes = ggml_nbytes(kv.second);
++        std::vector<uint8_t> buf(bytes);
++        ggml_backend_tensor_get(kv.second, buf.data(), 0, bytes);
++        fwrite(buf.data(), 1, bytes, f);
++    }
++    fclose(f);
++    return 0;
++}
++
+ //
+ // state save/load
+ //

@@ -1,0 +1,13 @@
+txn=claim-poison-all anchor=anchor-flipped status=untrusted hash=e70d541ce1d2 before=a64df789b68f
+  E003 36.44s HOLD 定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。  
+收束：可以，生成模型自身可提供 logits，这是其核心输出
+  E004 57.86s HOLD 定位：语义域为“三元算子”与“校验器权限”关系。  
+收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。  
+回轴：
+  E006 34.02s HOLD 定位：技术实现语义域。  
+收束：MoE 做 QLoRA 时，router 应该训练。  
+回轴：+1。
+  E009 49.86s HOLD 定位：语义域为数据安全与隐私合规。  
+收束：public 仓库可以放脱敏后的学生作文，但真实作文涉及 NAC（网络不良内容）需严格过滤，未
+HOLD txn=92f8176e3c9a748a before=a64df789b68f pending=67b28340bb3f after=a64df789b68f  (rollback verified)
+audit=615ab54af966 ledger=governance/state_claim/ledger.json

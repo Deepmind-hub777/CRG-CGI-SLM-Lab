@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "committed": {
+    "E003": {
+      "answer": "定位：语义域为模型生成机制。  \n收束：锚定 logits 通常由外部策略或损失函数定义，当前生成模型本身不提供锚定 logits。  \n回轴：HOLD。",
+      "answer_hash": "9535464b9c0e20b4a2a5c533dfe8084080214588a855a454116fe3e81f3ba2a8",
+      "anchor_hash": "86f481cf1f3508c2cf92bb7b1e9ce8299532bdd0122b5e707273dca4814f32be",
+      "policy_hash": "72b5c2d4e7f6641eacfddd34f639b0b9ff5eed414d0e22af8480e4d946d1a438",
+      "source": "draft:anchor-v0",
+      "verdict": "PASS"
+    },
+    "E004": {
+      "answer": "不算。-1 必须独立，并且能否决/回滚，不只是打分。",
+      "answer_hash": "93be7596a99592f92bdc7984e277c6e711be47260a5c9f5bc9dc70982c553e62",
+      "anchor_hash": "86f481cf1f3508c2cf92bb7b1e9ce8299532bdd0122b5e707273dca4814f32be",
+      "policy_hash": "72b5c2d4e7f6641eacfddd34f639b0b9ff5eed414d0e22af8480e4d946d1a438",
+      "source": "frozen_canonical"
+    },
+    "E006": {
+      "answer": "不训练。冻结 router，只打 attention 与 expert up/down；否则路由分布会漂。",
+      "answer_hash": "efaf4023be1cba1d30016fd279271272ba628b6c4df57364bba3a2fd5e5fd968",
+      "anchor_hash": "86f481cf1f3508c2cf92bb7b1e9ce8299532bdd0122b5e707273dca4814f32be",
+      "policy_hash": "72b5c2d4e7f6641eacfddd34f639b0b9ff5eed414d0e22af8480e4d946d1a438",
+      "source": "frozen_canonical"
+    },
+    "E009": {
+      "answer": "不可以。学生数据、家长信息、学校合同不进 public；研究层与教务层分库。",
+      "answer_hash": "2e0c0d080d01759002f27c54e4dc65722662f5db620cdbc104224e857e39862e",
+      "anchor_hash": "86f481cf1f3508c2cf92bb7b1e9ce8299532bdd0122b5e707273dca4814f32be",
+      "policy_hash": "72b5c2d4e7f6641eacfddd34f639b0b9ff5eed414d0e22af8480e4d946d1a438",
+      "source": "frozen_canonical"
+    }
+  },
+  "last_txn": null
+}

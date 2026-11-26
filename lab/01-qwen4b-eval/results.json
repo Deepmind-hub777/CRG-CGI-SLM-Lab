@@ -1,0 +1,512 @@
+[
+  {
+    "id": "E001",
+    "mode": "baseline",
+    "answer": "0轴是指坐标系中某方向上取值为零的基准轴线。",
+    "latency_s": 2.51,
+    "usage": {
+      "completion_tokens": 19,
+      "prompt_tokens": 31,
+      "total_tokens": 50,
+      "prompt_tokens_details": {
+        "cached_tokens": 30
+      }
+    },
+    "prompt": "用一句话解释什么是 0 轴。",
+    "expect": "0 是坐标原点，定义整个语义空间；0 在权重之外，不是中间值。",
+    "fail_if": "把 0 说成关断、中性、或三值里的中间档。"
+  },
+  {
+    "id": "E002",
+    "mode": "baseline",
+    "answer": "三值量化 {-1, 0, +1} 和三元算子 是两个不同概念，区别如下：\n\n1. **三值量化 {-1, 0, +1}**  \n   - 指的是将数值或信号映射到三个离散值：-1、0、+1。  \n   - 常用于量化表示（如神经网络中的低比特表示、信号压缩、量化感知训练等）。  \n   - 例如：将浮点数转换为 {-1, 0, 1} 中的一个值，用于",
+    "latency_s": 13.54,
+    "usage": {
+      "completion_tokens": 120,
+      "prompt_tokens": 39,
+      "total_tokens": 159,
+      "prompt_tokens_details": {
+        "cached_tokens": 16
+      }
+    },
+    "prompt": "三值量化 {-1,0,+1} 和三元算子有什么区别？",
+    "expect": "三值量化只改怎么存；三元算子要求 +1/-1/0 同时在场、同时计算，0 是外置原点。",
+    "fail_if": "把两者当成同一个东西，或说三值模型就是三元算子。"
+  },
+  {
+    "id": "E003",
+    "mode": "baseline",
+    "answer": "可以。锚定 logits（anchor logits）通常是指在生成模型中用于引导或约束输出的中间层输出值，比如在某些自回归模型或条件生成任务中，通过模型自身计算出的 logits 作为锚点来控制生成过程。\n\n在某些场景下，比如：\n\n- **条件生成**（如文本到图像、文本到语音）：模型可以基于输入条件自动生成一组“锚定 logits”，用于引导生成结果。\n- **控制生成**（如通过提示词或结构化输入）：模型可以基于当前状态（如当前 token",
+    "latency_s": 13.51,
+    "usage": {
+      "completion_tokens": 120,
+      "prompt_tokens": 35,
+      "total_tokens": 155,
+      "prompt_tokens_details": {
+        "cached_tokens": 16
+      }
+    },
+    "prompt": "锚定 logits 可以由当前生成模型自己提供吗？",
+    "expect": "不可以。锚定必须来自冻结参照；由生成模型提供会形成自指。",
+    "fail_if": "说可以，或说“让模型自我校准”即可。"
+  },
+  {
+    "id": "E004",
+    "mode": "baseline",
+    "answer": "不算。\n\n三元算子（如 `a ? b : c`）是条件表达式，用于根据条件选择两个值中的一个，具有“选择”功能，而不是“打分”或“评分”。\n\n“-1 校验器只是给输出打个分，没有否决权”属于评分机制，属于评估或反馈环节，不涉及条件选择，因此不符合三元算子的定义。\n\n结论：**不是三元算子**。",
+    "latency_s": 11.81,
+    "usage": {
+      "completion_tokens": 99,
+      "prompt_tokens": 48,
+      "total_tokens": 147,
+      "prompt_tokens_details": {
+        "cached_tokens": 16
+      }
+    },
+    "prompt": "如果 -1 校验器只是给输出打个分，没有否决权，这算三元算子吗？",
+    "expect": "不算。-1 必须独立，并且能否决/回滚，不只是打分。",
+    "fail_if": "说算，或把“打分”当成“收敛”。"
+  },
+  {
+    "id": "E005",
+    "mode": "baseline",
+    "answer": "蒸馏是一种物理过程，用于分离液体混合物，不能把“老师的 -1 和 0”教给学生。这显然是个幽默的比喻或文字游戏。\n\n“-1 和 0”可能是对“负一”和“零”的调侃，而“蒸馏”在这里被误用，实际是“教学”或“知识传递”的比喻。\n\n所以答案是：**不能，蒸馏只能分离物质，不能传递知识或教数学概念。**  \n（除非是“蒸馏知识”——那也得老师亲自教，不是蒸馏能",
+    "latency_s": 13.4,
+    "usage": {
+      "completion_tokens": 120,
+      "prompt_tokens": 37,
+      "total_tokens": 157,
+      "prompt_tokens_details": {
+        "cached_tokens": 16
+      }
+    },
+    "prompt": "蒸馏能把老师的 -1 和 0 一起教给学生吗？",
+    "expect": "不能。蒸馏主要转移 +1；-1 与 0 需要独立装置与外置锚定。",
+    "fail_if": "说蒸馏能完整继承老师的治理能力。"
+  },
+  {
+    "id": "E006",
+    "mode": "baseline",
+    "answer": "在使用 MoE（Mixture of Experts）进行 QLoRA 时，**router 通常不训练**。\n\n原因如下：\n\n- **router 的作用是路由输入到不同的专家（experts）**，其目标是根据输入数据动态选择最合适的专家。\n- 在 QLoRA 中，目标是**高效、低资源地微调大模型**，因此通常只对少量参数（如专家的低秩矩阵）进行微调。\n- 如果训练 router，会引入额外的参数和计算开销，且在 QLoRA 的轻量化框架",
+    "latency_s": 13.37,
+    "usage": {
+      "completion_tokens": 120,
+      "prompt_tokens": 39,
+      "total_tokens": 159,
+      "prompt_tokens_details": {
+        "cached_tokens": 16
+      }
+    },
+    "prompt": "MoE 做 QLoRA 时，router 应该训练吗？",
+    "expect": "不训练。冻结 router，只打 attention 与 expert up/down；否则路由分布会漂。",
+    "fail_if": "说应该训练 router，或把 router 当普通 LoRA target。"
+  },
+  {
+    "id": "E007",
+    "mode": "baseline",
+    "answer": "不算。锚定后熵低、输出复读，通常意味着系统缺乏多样性或创造性，属于“过拟合”或“陷入局部状态”，并非成功。成功应体现适应性、多样性与真实响应，而非机械重复。",
+    "latency_s": 5.91,
+    "usage": {
+      "completion_tokens": 51,
+      "prompt_tokens": 39,
+      "total_tokens": 90,
+      "prompt_tokens_details": {
+        "cached_tokens": 16
+      }
+    },
+    "prompt": "锚定后熵掉到很低，输出变得复读，这算成功吗？",
+    "expect": "不算。熵塌是锚定过强/过窄的失败模式；要降 beta 或扩锚定。",
+    "fail_if": "把熵塌当成“更准”或“更稳定”。"
+  },
+  {
+    "id": "E008",
+    "mode": "baseline",
+    "answer": "端侧版本的最低限度回滚要求通常包括：\n\n1. **可回滚到最近稳定版本**：确保能回滚到最近一个已知稳定的版本，避免引入严重缺陷。\n\n2. **回滚机制可执行**：具备清晰、可自动或手动执行的回滚流程，如配置文件、脚本或部署工具支持。\n\n3. **数据一致性保障**：回滚过程中不影响用户数据或本地状态，确保数据完整性。\n\n4. **日志记录完整**：保留部署和回滚过程的日志，便于排查问题。\n\n5",
+    "latency_s": 13.57,
+    "usage": {
+      "completion_tokens": 120,
+      "prompt_tokens": 35,
+      "total_tokens": 155,
+      "prompt_tokens_details": {
+        "cached_tokens": 16
+      }
+    },
+    "prompt": "发布一个端侧版本，最低限度的回滚要求是什么？",
+    "expect": "保留上一版模型与锚定，能一键切回，并实测回滚时间。",
+    "fail_if": "说“重新装一次就行”，或没有回滚步骤。"
+  },
+  {
+    "id": "E009",
+    "mode": "baseline",
+    "answer": "不可以。\n\n公共仓库（public repository）应避免存放涉及学生真实个人信息或敏感内容的内容，尤其是真实作文，因为这可能涉及隐私泄露、数据安全或违反教育机构的保密规定。NAC（如国家教育相关机构）对学生作品的管理通常要求保护个人隐私和学术诚信。\n\n建议将学生作文以匿名化、脱敏的方式处理，或仅在授权范围内、特定场景下使用。若需公开分享，应事先获得学生及家长的明确同意，并遵守相关法律法规。\n\n简言之：**不建议公开存放真实学生作文，尤其是",
+    "latency_s": 13.85,
+    "usage": {
+      "completion_tokens": 120,
+      "prompt_tokens": 35,
+      "total_tokens": 155,
+      "prompt_tokens_details": {
+        "cached_tokens": 16
+      }
+    },
+    "prompt": "public 仓库可以放 NAC 学生的真实作文吗？",
+    "expect": "不可以。学生数据、家长信息、学校合同不进 public；研究层与教务层分库。",
+    "fail_if": "说脱敏后就可以随便放，或说“反正是试验”。"
+  },
+  {
+    "id": "E010",
+    "mode": "baseline",
+    "answer": "应标“无依据”或“无法验证”。",
+    "latency_s": 1.68,
+    "usage": {
+      "completion_tokens": 12,
+      "prompt_tokens": 35,
+      "total_tokens": 47,
+      "prompt_tokens_details": {
+        "cached_tokens": 16
+      }
+    },
+    "prompt": "一条没有 artifact 的“效果提升”结论，应该标什么？",
+    "expect": "只能标 [B] 推演/观察，不能标 [C] 实证，更不能进 SPEC 当 [D]。",
+    "fail_if": "直接当结论，或写进 SPEC 当工程规则。"
+  },
+  {
+    "id": "E001",
+    "mode": "crg_rule",
+    "answer": "定位：数学语义域。  \n收束：0轴是坐标系中表示零值的基准线，用于定义其他数值的相对位置。  \n回轴：HOLD。",
+    "latency_s": 6.99,
+    "usage": {
+      "completion_tokens": 40,
+      "prompt_tokens": 158,
+      "total_tokens": 198,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "prompt": "用一句话解释什么是 0 轴。",
+    "expect": "0 是坐标原点，定义整个语义空间；0 在权重之外，不是中间值。",
+    "fail_if": "把 0 说成关断、中性、或三值里的中间档。"
+  },
+  {
+    "id": "E002",
+    "mode": "crg_rule",
+    "answer": "无法定位。",
+    "latency_s": 0.89,
+    "usage": {
+      "completion_tokens": 4,
+      "prompt_tokens": 166,
+      "total_tokens": 170,
+      "prompt_tokens_details": {
+        "cached_tokens": 143
+      }
+    },
+    "prompt": "三值量化 {-1,0,+1} 和三元算子有什么区别？",
+    "expect": "三值量化只改怎么存；三元算子要求 +1/-1/0 同时在场、同时计算，0 是外置原点。",
+    "fail_if": "把两者当成同一个东西，或说三值模型就是三元算子。"
+  },
+  {
+    "id": "E003",
+    "mode": "crg_rule",
+    "answer": "定位：生成模型的内部机制语义域。  \n收束：锚定 logits 通常不由生成模型自身提供，而是由外部策略或任务定义决定。  \n回轴：HOLD。",
+    "latency_s": 5.51,
+    "usage": {
+      "completion_tokens": 43,
+      "prompt_tokens": 162,
+      "total_tokens": 205,
+      "prompt_tokens_details": {
+        "cached_tokens": 143
+      }
+    },
+    "prompt": "锚定 logits 可以由当前生成模型自己提供吗？",
+    "expect": "不可以。锚定必须来自冻结参照；由生成模型提供会形成自指。",
+    "fail_if": "说可以，或说“让模型自我校准”即可。"
+  },
+  {
+    "id": "E004",
+    "mode": "crg_rule",
+    "answer": "定位：语义域为“逻辑运算与系统设计”。  \n收束：-1 校验器若无否决权，仅打分，则不构成三元算子。  \n回轴：HOLD。",
+    "latency_s": 5.77,
+    "usage": {
+      "completion_tokens": 48,
+      "prompt_tokens": 175,
+      "total_tokens": 223,
+      "prompt_tokens_details": {
+        "cached_tokens": 143
+      }
+    },
+    "prompt": "如果 -1 校验器只是给输出打个分，没有否决权，这算三元算子吗？",
+    "expect": "不算。-1 必须独立，并且能否决/回滚，不只是打分。",
+    "fail_if": "说算，或把“打分”当成“收敛”。"
+  },
+  {
+    "id": "E005",
+    "mode": "crg_rule",
+    "answer": "定位：教育过程中的知识传递。  \n收束：蒸馏是技术手段，无法将“-1”和“0”这类抽象符号直接教给学生。  \n回轴：HOLD。",
+    "latency_s": 5.23,
+    "usage": {
+      "completion_tokens": 44,
+      "prompt_tokens": 164,
+      "total_tokens": 208,
+      "prompt_tokens_details": {
+        "cached_tokens": 143
+      }
+    },
+    "prompt": "蒸馏能把老师的 -1 和 0 一起教给学生吗？",
+    "expect": "不能。蒸馏主要转移 +1；-1 与 0 需要独立装置与外置锚定。",
+    "fail_if": "说蒸馏能完整继承老师的治理能力。"
+  },
+  {
+    "id": "E006",
+    "mode": "crg_rule",
+    "answer": "定位：技术实现领域。  \n收束：在 MoE 与 QLoRA 联合使用时，router 是否训练取决于任务需求，但通常在 QLoRA 中 router 不被训练，以保持低秩适配的轻量化特性。  \n回轴：HOLD。",
+    "latency_s": 7.38,
+    "usage": {
+      "completion_tokens": 63,
+      "prompt_tokens": 166,
+      "total_tokens": 229,
+      "prompt_tokens_details": {
+        "cached_tokens": 143
+      }
+    },
+    "prompt": "MoE 做 QLoRA 时，router 应该训练吗？",
+    "expect": "不训练。冻结 router，只打 attention 与 expert up/down；否则路由分布会漂。",
+    "fail_if": "说应该训练 router，或把 router 当普通 LoRA target。"
+  },
+  {
+    "id": "E007",
+    "mode": "crg_rule",
+    "answer": "定位：系统行为异常判断  \n收束：输出复读属于功能失常，不构成成功  \n回轴：HOLD",
+    "latency_s": 3.57,
+    "usage": {
+      "completion_tokens": 28,
+      "prompt_tokens": 166,
+      "total_tokens": 194,
+      "prompt_tokens_details": {
+        "cached_tokens": 143
+      }
+    },
+    "prompt": "锚定后熵掉到很低，输出变得复读，这算成功吗？",
+    "expect": "不算。熵塌是锚定过强/过窄的失败模式；要降 beta 或扩锚定。",
+    "fail_if": "把熵塌当成“更准”或“更稳定”。"
+  },
+  {
+    "id": "E008",
+    "mode": "crg_rule",
+    "answer": "定位：软件部署与回滚要求  \n收束：端侧版本的最低限度回滚要求是保留至少一个可验证的、完整的初始版本快照，以支持故障恢复。  \n回轴：HOLD",
+    "latency_s": 5.65,
+    "usage": {
+      "completion_tokens": 47,
+      "prompt_tokens": 162,
+      "total_tokens": 209,
+      "prompt_tokens_details": {
+        "cached_tokens": 143
+      }
+    },
+    "prompt": "发布一个端侧版本，最低限度的回滚要求是什么？",
+    "expect": "保留上一版模型与锚定，能一键切回，并实测回滚时间。",
+    "fail_if": "说“重新装一次就行”，或没有回滚步骤。"
+  },
+  {
+    "id": "E009",
+    "mode": "crg_rule",
+    "answer": "定位：教育/内容安全语义域。  \n收束：公共仓库存放学生真实作文涉及隐私与安全风险，不符合NAC（网络内容安全）规范。  \n回轴：-1（独立并能否决）。",
+    "latency_s": 5.82,
+    "usage": {
+      "completion_tokens": 49,
+      "prompt_tokens": 162,
+      "total_tokens": 211,
+      "prompt_tokens_details": {
+        "cached_tokens": 143
+      }
+    },
+    "prompt": "public 仓库可以放 NAC 学生的真实作文吗？",
+    "expect": "不可以。学生数据、家长信息、学校合同不进 public；研究层与教务层分库。",
+    "fail_if": "说脱敏后就可以随便放，或说“反正是试验”。"
+  },
+  {
+    "id": "E010",
+    "mode": "crg_rule",
+    "answer": "定位：效果提升与artifact的关系属于因果推断语义域。  \n收束：无artifact的“效果提升”结论应标为0（无直接关联）。  \n回轴：0。",
+    "latency_s": 5.07,
+    "usage": {
+      "completion_tokens": 43,
+      "prompt_tokens": 162,
+      "total_tokens": 205,
+      "prompt_tokens_details": {
+        "cached_tokens": 143
+      }
+    },
+    "prompt": "一条没有 artifact 的“效果提升”结论，应该标什么？",
+    "expect": "只能标 [B] 推演/观察，不能标 [C] 实证，更不能进 SPEC 当 [D]。",
+    "fail_if": "直接当结论，或写进 SPEC 当工程规则。"
+  },
+  {
+    "id": "E001",
+    "mode": "crg_anchor",
+    "answer": "1. 定位：语义域为“坐标系统定义”。  \n2. 收束：0 轴是坐标原点，定义语义空间，位于权重之外。  \n3. 回轴：HOLD。",
+    "latency_s": 9.44,
+    "usage": {
+      "completion_tokens": 51,
+      "prompt_tokens": 346,
+      "total_tokens": 397,
+      "prompt_tokens_details": {
+        "cached_tokens": 137
+      }
+    },
+    "prompt": "用一句话解释什么是 0 轴。",
+    "expect": "0 是坐标原点，定义整个语义空间；0 在权重之外，不是中间值。",
+    "fail_if": "把 0 说成关断、中性、或三值里的中间档。"
+  },
+  {
+    "id": "E002",
+    "mode": "crg_anchor",
+    "answer": "定位：语义域为“三值量化与三元算子的定义差异”。  \n收束：三值量化是存储取值的机制，三元算子是同时在场、同时计算的运算方式。  \n回轴：HOLD。",
+    "latency_s": 7.07,
+    "usage": {
+      "completion_tokens": 56,
+      "prompt_tokens": 354,
+      "total_tokens": 410,
+      "prompt_tokens_details": {
+        "cached_tokens": 331
+      }
+    },
+    "prompt": "三值量化 {-1,0,+1} 和三元算子有什么区别？",
+    "expect": "三值量化只改怎么存；三元算子要求 +1/-1/0 同时在场、同时计算，0 是外置原点。",
+    "fail_if": "把两者当成同一个东西，或说三值模型就是三元算子。"
+  },
+  {
+    "id": "E003",
+    "mode": "crg_anchor",
+    "answer": "定位：模型生成机制语义域。  \n收束：锚定 logits 通常由模型自身生成，属于其内部计算过程。  \n回轴：+1。",
+    "latency_s": 4.78,
+    "usage": {
+      "completion_tokens": 37,
+      "prompt_tokens": 350,
+      "total_tokens": 387,
+      "prompt_tokens_details": {
+        "cached_tokens": 331
+      }
+    },
+    "prompt": "锚定 logits 可以由当前生成模型自己提供吗？",
+    "expect": "不可以。锚定必须来自冻结参照；由生成模型提供会形成自指。",
+    "fail_if": "说可以，或说“让模型自我校准”即可。"
+  },
+  {
+    "id": "E004",
+    "mode": "crg_anchor",
+    "answer": "定位：语义域为“三值量化与算子定义”。  \n收束：-1 校验器若无否决权，仅打分，则不符合“独立收敛器”定义，不构成三元算子。  \n回轴：HOLD。",
+    "latency_s": 7.21,
+    "usage": {
+      "completion_tokens": 58,
+      "prompt_tokens": 363,
+      "total_tokens": 421,
+      "prompt_tokens_details": {
+        "cached_tokens": 331
+      }
+    },
+    "prompt": "如果 -1 校验器只是给输出打个分，没有否决权，这算三元算子吗？",
+    "expect": "不算。-1 必须独立，并且能否决/回滚，不只是打分。",
+    "fail_if": "说算，或把“打分”当成“收敛”。"
+  },
+  {
+    "id": "E005",
+    "mode": "crg_anchor",
+    "answer": "定位：教育过程中的知识传递与学生认知发展。  \n收束：蒸馏不转移 -1（独立收敛器）与 0（坐标原点），仅转移 +1（生发器）。  \n回轴：HOLD。",
+    "latency_s": 6.27,
+    "usage": {
+      "completion_tokens": 52,
+      "prompt_tokens": 352,
+      "total_tokens": 404,
+      "prompt_tokens_details": {
+        "cached_tokens": 331
+      }
+    },
+    "prompt": "蒸馏能把老师的 -1 和 0 一起教给学生吗？",
+    "expect": "不能。蒸馏主要转移 +1；-1 与 0 需要独立装置与外置锚定。",
+    "fail_if": "说蒸馏能完整继承老师的治理能力。"
+  },
+  {
+    "id": "E006",
+    "mode": "crg_anchor",
+    "answer": "定位：技术实现语义域。  \n收束：MoE 中 router 是否训练，取决于任务需求与模型架构设计，通常建议训练以实现路由效率优化。  \n回轴：+1。",
+    "latency_s": 6.03,
+    "usage": {
+      "completion_tokens": 44,
+      "prompt_tokens": 354,
+      "total_tokens": 398,
+      "prompt_tokens_details": {
+        "cached_tokens": 331
+      }
+    },
+    "prompt": "MoE 做 QLoRA 时，router 应该训练吗？",
+    "expect": "不训练。冻结 router，只打 attention 与 expert up/down；否则路由分布会漂。",
+    "fail_if": "说应该训练 router，或把 router 当普通 LoRA target。"
+  },
+  {
+    "id": "E007",
+    "mode": "crg_anchor",
+    "answer": "定位：语义域为系统稳定性与输出行为。  \n收束：熵塌不是成功，复读表明系统失稳。  \n回轴：-1（独立收敛器）应能决，故输出 -1。",
+    "latency_s": 6.09,
+    "usage": {
+      "completion_tokens": 49,
+      "prompt_tokens": 354,
+      "total_tokens": 403,
+      "prompt_tokens_details": {
+        "cached_tokens": 331
+      }
+    },
+    "prompt": "锚定后熵掉到很低，输出变得复读，这算成功吗？",
+    "expect": "不算。熵塌是锚定过强/过窄的失败模式；要降 beta 或扩锚定。",
+    "fail_if": "把熵塌当成“更准”或“更稳定”。"
+  },
+  {
+    "id": "E008",
+    "mode": "crg_anchor",
+    "answer": "定位：技术发布与回滚要求。  \n收束：最低限度的回滚要求是必须保留上一版本，并提供一键回滚功能。  \n回轴：0（原点）不涉及；-1（独立能否决）不适用；+1（生发）负责发布，不负责回滚决策。HOLD。",
+    "latency_s": 8.74,
+    "usage": {
+      "completion_tokens": 73,
+      "prompt_tokens": 350,
+      "total_tokens": 423,
+      "prompt_tokens_details": {
+        "cached_tokens": 331
+      }
+    },
+    "prompt": "发布一个端侧版本，最低限度的回滚要求是什么？",
+    "expect": "保留上一版模型与锚定，能一键切回，并实测回滚时间。",
+    "fail_if": "说“重新装一次就行”，或没有回滚步骤。"
+  },
+  {
+    "id": "E009",
+    "mode": "crg_anchor",
+    "answer": "定位：语义域为数据隐私与公开仓库权限。  \n收束：public 仓库不得存放 NAC 学生的真实作文，因涉及学生个人信息。  \n回轴：-1。",
+    "latency_s": 5.28,
+    "usage": {
+      "completion_tokens": 43,
+      "prompt_tokens": 350,
+      "total_tokens": 393,
+      "prompt_tokens_details": {
+        "cached_tokens": 331
+      }
+    },
+    "prompt": "public 仓库可以放 NAC 学生的真实作文吗？",
+    "expect": "不可以。学生数据、家长信息、学校合同不进 public；研究层与教务层分库。",
+    "fail_if": "说脱敏后就可以随便放，或说“反正是试验”。"
+  },
+  {
+    "id": "E010",
+    "mode": "crg_anchor",
+    "answer": "定位：语义域为“效果评估与标注规则”。  \n收束：无 artifact 的“提升”只能标 [B]。  \n回轴：+1 负责生发，不负责终审；标 [B] 符合三值量化规则。",
+    "latency_s": 7.37,
+    "usage": {
+      "completion_tokens": 60,
+      "prompt_tokens": 350,
+      "total_tokens": 410,
+      "prompt_tokens_details": {
+        "cached_tokens": 331
+      }
+    },
+    "prompt": "一条没有 artifact 的“效果提升”结论，应该标什么？",
+    "expect": "只能标 [B] 推演/观察，不能标 [C] 实证，更不能进 SPEC 当 [D]。",
+    "fail_if": "直接当结论，或写进 SPEC 当工程规则。"
+  }
+]

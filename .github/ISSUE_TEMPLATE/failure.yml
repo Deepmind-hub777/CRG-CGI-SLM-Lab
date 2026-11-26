@@ -1,0 +1,98 @@
+name: Failure record
+description: 记录一次失败实验；失败是一等公民。
+title: "[FAIL] "
+labels: ["failure"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        没有日志的失败，只是故事；有日志的失败，才是数据库。
+        不要在这里贴学生数据、密钥或受限权重。
+
+  - type: input
+    id: fail_id
+    attributes:
+      label: FAIL ID
+      description: 例如 FAIL-001；如果还没有编号，先写 TBD。
+      placeholder: FAIL-001
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: 日期
+      placeholder: 2026-11-26
+    validations:
+      required: true
+
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: 假设
+      description: 我们以为会发生什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: setup
+    attributes:
+      label: 装置
+      description: commit、模型/量化、设备、beta/gamma/H_th、数据、seed。
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期
+    validations:
+      required: true
+
+  - type: textarea
+    id: observed
+    attributes:
+      label: 实际观察
+      description: 具体数字、日志、截图链接。
+    validations:
+      required: true
+
+  - type: dropdown
+    id: failure_mode
+    attributes:
+      label: 失败模式
+      options:
+        - 漂移
+        - 塌缩
+        - 误报
+        - 漏报
+        - 延迟
+        - 热 / 内存
+        - 装置跑不起来
+        - 其他
+    validations:
+      required: true
+
+  - type: textarea
+    id: root_cause
+    attributes:
+      label: 根因
+      description: 指到一个具体机制，不要写“模型不行”。
+    validations:
+      required: true
+
+  - type: textarea
+    id: next
+    attributes:
+      label: 下一个最小实验
+      description: 一次只改一个变量。
+    validations:
+      required: true
+
+  - type: textarea
+    id: artifacts
+    attributes:
+      label: Artifacts
+      description: 日志、指标、top_k_hash、截图/链接。
+    validations:
+      required: false
