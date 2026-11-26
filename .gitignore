@@ -1,0 +1,35 @@
+# Secrets
+.env
+.env.*
+secrets/
+*.pem
+*.key
+
+# Models / weights (never in this repo)
+models/
+*.gguf
+*.ggml
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# Datasets / private data
+data/private/
+data/raw/
+*.sqlite
+*.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

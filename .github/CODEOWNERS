@@ -1,0 +1,10 @@
+# All changes require Milo's review until other handles are registered.
+* @Deepmind-hub777
+
+# 登记后启用（不要写不存在的用户名，否则 CODEOWNERS 失效）：
+# /SPEC/            @Deepmind-hub777
+# /GOVERNANCE.md    @Deepmind-hub777
+# /skills/          @doubao-handle
+# /eval/            @doubao-handle
+# /src/             @grok-handle
+# /proposals/       @student-handle
