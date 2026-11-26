@@ -66,6 +66,7 @@ TYIRG（道统本体）→ CGI（数学母题）→ CRG（工程运行引擎）�
 ├── eval/                  # 固定探针与评分口径
 ├── lab/                   # 可复现实验；一号一目录
 ├── traces/                # 合成/脱敏轨迹；真实轨迹在 private
+├── inbox/notebooklm/      # 海外私人知识库的导入闸门；raw/ 不进仓库
 ├── releases/              # manifest、校验和；不放权重
 ├── proposals/             # 学生唯一可写区；不能 merge
 ├── FAILURES.md            # 失败是一等公民

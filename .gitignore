@@ -17,6 +17,7 @@ models/
 # Datasets / private data
 data/private/
 data/raw/
+inbox/notebooklm/raw/
 *.sqlite
 *.db
 
