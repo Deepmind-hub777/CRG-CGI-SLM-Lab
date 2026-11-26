@@ -23,36 +23,25 @@ https://github.com/Deepmind-hub777/CRG-CGI-SLM-Lab
 - 当前本地分支：`lab/day-0-skeleton`；最新 commit `2f96b86`。
 - 已有 PR #1：`https://github.com/Deepmind-hub777/CRG-CGI-SLM-Lab/pull/1`，draft / OPEN / 未合并。
 
-### 0.2 重要：GitHub 上还没有 lab/01
+### 0.2 重要：lab/01 已推上 PR 分支，但不在 main
 
-`lab/01-qwen4b-eval/` 目前在本地是**未跟踪目录**，还没有推到 GitHub。  
-所以 Grok 只 clone `main` 是拿不到 `claim_engine.py`、`governed_runtime.py`、`anchor_v0.json`、`claim_policy_v0.json` 和 `seed.jsonl` 的。
+`lab/01-qwen4b-eval/` 的代码、治理账本、报告、图片已推到 `lab/day-0-skeleton` 分支，并进入 PR #1。  
+但 PR #1 目前是 **draft / OPEN / 未合并**，所以直接 clone `main` 还看不到 `lab/01`。
 
-为了让 Grok 能直接开工，已打包一个 **57KB 的 claim runtime 包**（不含模型、探针、llama.cpp、handoff 本身）：
+- 未合并前：checkout `lab/day-0-skeleton`。
+- 合并后：`main` 才会有 `lab/01`。
+- 模型权重不进 git 树，走 GitHub Release：
+
+```text
+https://github.com/Deepmind-hub777/CRG-CGI-SLM-Lab/releases/tag/lab-qwen3-4b-v0.1
+```
+
+- `probes/` 与 `llama.cpp/` 源码树不进 git；只保留 `llama-attn-probe.patch`。
+
+离线快照（可选，57KB，不含模型、探针、llama.cpp）：
 
 ```text
 https://aka.doubaocdn.com/s/x9uMhk4tTU
-```
-
-包内结构：
-
-```text
-claim_runtime/
-  claim_engine.py
-  governed_runtime.py
-  run_eval.py
-  governance/
-    anchor_v0.json
-    claim_policy_v0.json
-    calibration_e003.jsonl
-    holdout_e003.jsonl
-    state/
-    state_claim/
-eval/
-  seed.jsonl
-REPORT.md
-CLAIM_LEVEL_REPORT.md
-GOVERNANCE_REPORT.md
 ```
 
 ### 0.3 正确的开工方式
@@ -64,22 +53,25 @@ git clone https://github.com/Deepmind-hub777/CRG-CGI-SLM-Lab.git
 cd CRG-CGI-SLM-Lab
 ```
 
-2. 从交接包解出 `claim_runtime/` 与 `eval/seed.jsonl`，放进：
+2. 若 PR #1 尚未合并，切到已有实验分支：
 
-```text
-lab/02-gemma-e2b-eval/claim_runtime/
-lab/02-gemma-e2b-eval/eval/seed.jsonl
+```bash
+git fetch origin lab/day-0-skeleton
+git checkout lab/day-0-skeleton
 ```
 
-3. 新建分支：
+3. 确认 `lab/01-qwen4b-eval/claim_engine.py` 与 `governed_runtime.py` 在树里；  
+   如果不在，再用 57KB 离线包补齐。
+
+4. 新建分支：
 
 ```bash
 git checkout -b lab/02-gemma-e2b-smoke
 ```
 
-4. 所有改动只走 PR，不直推 `main`。
+5. 所有改动只走 PR，不直推 `main`。
 
-> 注意：`lab/01-qwen4b-eval/` 的模型、probes、llama.cpp 构建产物不在交接包里；Grok 不需要它们来训 E2B。需要复核 Qwen 基线时，直接读交接包里的报告与账本。
+> 注意：`lab/01-qwen4b-eval/` 的模型、probes、llama.cpp 构建产物不在 git 树里；Grok 不需要它们来训 E2B。需要复核 Qwen 基线时，读 `lab/01-qwen4b-eval/REPORT.md`、`CLAIM_LEVEL_REPORT.md` 与 `governance/state_claim/`。
 
 ---
 
@@ -385,18 +377,20 @@ Grok，接 CRG-CGI-SLM-Lab 的 E2B smoke QLoRA。
 
 仓库：
 https://github.com/Deepmind-hub777/CRG-CGI-SLM-Lab
-先 clone，默认 main；新建分支 lab/02-gemma-e2b-smoke。不要直推 main。
+先 clone。PR #1 未合并时，checkout lab/day-0-skeleton；合并后用 main。
+新建分支 lab/02-gemma-e2b-smoke。不要直推 main。
 
-注意：GitHub 上目前没有 lab/01 的 claim runtime，lab/01 是本地未跟踪目录。
-先下这个 57KB claim runtime 包：
+lab/01 的代码、治理账本、报告已在 PR #1 分支里。
+模型权重走 Release，不在 git 树：
+https://github.com/Deepmind-hub777/CRG-CGI-SLM-Lab/releases/tag/lab-qwen3-4b-v0.1
+如果分支里缺 claim runtime，再用 57KB 离线包：
 https://aka.doubaocdn.com/s/x9uMhk4tTU
-解出 claim_runtime/ 和 eval/seed.jsonl，放到 lab/02-gemma-e2b-eval/ 下。
 
 先读：
 - HANDOFF-GEMMA-E2B.md（尤其第 0 节仓库与工作区）
-- claim_runtime/claim_engine.py
-- claim_runtime/governed_runtime.py
-- 交接包里的 REPORT.md / CLAIM_LEVEL_REPORT.md
+- lab/01-qwen4b-eval/claim_engine.py
+- lab/01-qwen4b-eval/governed_runtime.py
+- lab/01-qwen4b-eval/REPORT.md / CLAIM_LEVEL_REPORT.md
 
 任务：在 lab/02-gemma-e2b-eval/ 下跑通 Gemma 4 E2B 的 4-bit QLoRA smoke。
 硬约束：0 不进权重；-1 仍用 claim_engine.py；只训过程不训答案；GGUF 只做推理不做训练；不直推 main。
