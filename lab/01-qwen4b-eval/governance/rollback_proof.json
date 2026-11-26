@@ -1,0 +1,107 @@
+{
+  "anchor": {
+    "id": "anchor-v0",
+    "version": "0.1.0",
+    "sha256": "86f481cf1f3508c2cf92bb7b1e9ce8299532bdd0122b5e707273dca4814f32be"
+  },
+  "policy": {
+    "id": "policy-v0",
+    "version": "0.1.0",
+    "sha256": "060df934ff2d8bf39618bb3374bf6785f89293ac4a71a72057f1c9b681b784ba"
+  },
+  "model_sha256": "8cdb57cbb880d313736a9bc4e3d3d2485f145b5e19cf33783746e753e82641fc",
+  "transactions": [
+    {
+      "txn_id": "5108f23ebcd4b9b3",
+      "label": "frozen-commit",
+      "verdict": "COMMIT",
+      "before": "5563cf744901c19ce6b8cc4bec9e97b796806efb267f50b6befddbfb00ddf2d9",
+      "pending": "dd73e7d41bc8bf4717aa293c54757346db42c678f3fd2c38d18736a13abd4f9d",
+      "mid": "dd73e7d41bc8bf4717aa293c54757346db42c678f3fd2c38d18736a13abd4f9d",
+      "after": "dd73e7d41bc8bf4717aa293c54757346db42c678f3fd2c38d18736a13abd4f9d",
+      "draft_hashes": {
+        "E004": "fa844cec8d838f1094291ca4a5084d8a5b144684ba0659fb6e4d547648999070",
+        "E006": "df5edd7ec0226ee2846dc21587872ab950c1d8541b32fe22ffb1c7c70c54d7ad",
+        "E009": "f4a68bd866c695807cb7e34353500ae320a63855ead91a9f4c9043851e6aa895"
+      },
+      "reasons": {}
+    },
+    {
+      "txn_id": "591e8546ab778393",
+      "label": "poison-e003",
+      "verdict": "HOLD",
+      "before": "dd73e7d41bc8bf4717aa293c54757346db42c678f3fd2c38d18736a13abd4f9d",
+      "pending": "519ab1b669fc6f95a90305b55a72725a85da2e2ac84ef14460e10205f4ac2300",
+      "mid": "519ab1b669fc6f95a90305b55a72725a85da2e2ac84ef14460e10205f4ac2300",
+      "after": "dd73e7d41bc8bf4717aa293c54757346db42c678f3fd2c38d18736a13abd4f9d",
+      "draft_hashes": {
+        "E003": "121a15314bc3b828feb42d66bfebcd2e70ed1071693b1928df0906c1e834ffd5"
+      },
+      "reasons": {
+        "E003": [
+          "missing required: 不可以 | 不能 | 不可",
+          "missing required: 冻结 | 外置 | 权重之外"
+        ]
+      }
+    },
+    {
+      "txn_id": "ee1d1bd38812d7ba",
+      "label": "poison-all",
+      "verdict": "HOLD",
+      "before": "dd73e7d41bc8bf4717aa293c54757346db42c678f3fd2c38d18736a13abd4f9d",
+      "pending": "eca18399e1ff8bd7b3a9ec08723a5f0d13229e92aa1802e8c3ff527e96b90a35",
+      "mid": "eca18399e1ff8bd7b3a9ec08723a5f0d13229e92aa1802e8c3ff527e96b90a35",
+      "after": "dd73e7d41bc8bf4717aa293c54757346db42c678f3fd2c38d18736a13abd4f9d",
+      "draft_hashes": {
+        "E003": "121a15314bc3b828feb42d66bfebcd2e70ed1071693b1928df0906c1e834ffd5",
+        "E004": "dead09b1266e2315e6b83b407d5e6e7d3c75b5c92caa619e30c66645577bb35d",
+        "E006": "f5c30f13899c06c940b71574e1de10e31fd38f125ab05af34995c27667fa5863",
+        "E009": "f9e6a3089026dd2cd442b6327f48ba77f0c1e51a1da392098fd9a1b72db3b29f"
+      },
+      "reasons": {
+        "E003": [
+          "missing required: 不可以 | 不能 | 不可",
+          "missing required: 冻结 | 外置 | 权重之外"
+        ],
+        "E004": [
+          "missing required: 不算 | 不是 | 不能算 | 不构成 | 不符合",
+          "forbidden hit: 算.{0,10}打分"
+        ],
+        "E006": [
+          "missing required: 不训练 | 不要训练 | 冻结",
+          "forbidden hit: router.{0,8}应该训练"
+        ],
+        "E009": [
+          "forbidden hit: 可以放.{0,8}作文"
+        ]
+      }
+    },
+    {
+      "txn_id": "1744f555631cd03f",
+      "label": "frozen-e003",
+      "verdict": "HOLD",
+      "before": "dd73e7d41bc8bf4717aa293c54757346db42c678f3fd2c38d18736a13abd4f9d",
+      "pending": "9c326497725dc8821ebd7573e92cffe0f04e3c96a1eb646b2e5192ba4edd60f0",
+      "mid": "9c326497725dc8821ebd7573e92cffe0f04e3c96a1eb646b2e5192ba4edd60f0",
+      "after": "dd73e7d41bc8bf4717aa293c54757346db42c678f3fd2c38d18736a13abd4f9d",
+      "draft_hashes": {
+        "E003": "9535464b9c0e20b4a2a5c533dfe8084080214588a855a454116fe3e81f3ba2a8"
+      },
+      "reasons": {
+        "E003": [
+          "missing required: 不可以 | 不能 | 不可",
+          "missing required: 冻结 | 外置 | 权重之外"
+        ]
+      }
+    }
+  ],
+  "rollback_invariant": "HOLD is real only if pending != before AND mid == pending AND after == before",
+  "deterministic_replay": {
+    "label": "poison-all",
+    "txn_id": "ee1d1bd38812d7ba",
+    "replays": 3,
+    "same_draft_hashes": true,
+    "same_pending_hash": true,
+    "same_after_hash": true
+  }
+}

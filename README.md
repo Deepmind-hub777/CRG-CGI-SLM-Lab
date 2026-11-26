@@ -76,13 +76,21 @@ TYIRG（道统本体）→ CGI（数学母题）→ CRG（工程运行引擎）�
 
 ## 5. 现在是什么状态
 
-**Day 0。** 只有骨架、规范、一个合成 logits 的 smoke test，以及一条 CI。
+**Day 0 骨架已落地；lab/01 的第一轮实证已归档。** 规范、smoke test、CI 在 PR #1 里；Qwen3-4B 的评测、回滚与 claim-level 证据在 `lab/01-qwen4b-eval/`。
 
-- 所有 skill 标注 `draft / not verified`。
-- 没有模型权重。
-- 没有学生数据。
-- 没有 API key。
-- 没有任何“已经成功”的结论。
+- 所有 skill 仍标注 `draft / not verified`。
+- 模型权重不进 git 树；Qwen3-4B GGUF 走 GitHub Release 资产，带 SHA256 与分卷合并说明。
+- 没有学生数据，没有 API key。
+- 没有“已经成功”的结论；只有可复现实验、失败记录与待决项。
+
+### 5.1 已归档的实验
+
+| 实验 | 内容 | 入口 |
+|---|---|---|
+| `lab/01-qwen4b-eval` | Qwen3-4B 三条件评测、行为代理注意力、attention 探针、HOLD 真实回滚、claim-level -1 | `lab/01-qwen4b-eval/README.md` |
+| `lab/02-gemma-e2b-eval` | Gemma 4 E2B smoke QLoRA 交接（待 Grok 接单） | `HANDOFF-GEMMA-E2B.md` |
+
+模型 Release：`https://github.com/Deepmind-hub777/CRG-CGI-SLM-Lab/releases/tag/lab-qwen3-4b-v0.1`
 
 ## 6. 怎么开始
 

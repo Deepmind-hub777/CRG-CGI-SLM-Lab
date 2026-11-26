@@ -1,0 +1,2492 @@
+{
+  "base": [
+    {
+      "layer": 0,
+      "entropy_mean": 2.080524444580078,
+      "entropy_min": 0.0026834988966584206,
+      "entropy_max": 3.3650553226470947,
+      "anchor_mass_mean": 0.154083251953125,
+      "anchor_mass_max": 0.40115705132484436,
+      "key_mass_mean": {
+        "q0": 0.007742696441709995
+      },
+      "key_mass_max": {
+        "q0": 0.07163820415735245
+      },
+      "key_mass_argmax_head": {
+        "q0": 31
+      }
+    },
+    {
+      "layer": 1,
+      "entropy_mean": 1.9808409214019775,
+      "entropy_min": 0.525090217590332,
+      "entropy_max": 3.203589677810669,
+      "anchor_mass_mean": 0.17309068143367767,
+      "anchor_mass_max": 0.8238133788108826,
+      "key_mass_mean": {
+        "q0": 0.0073244934901595116
+      },
+      "key_mass_max": {
+        "q0": 0.059783969074487686
+      },
+      "key_mass_argmax_head": {
+        "q0": 25
+      }
+    },
+    {
+      "layer": 2,
+      "entropy_mean": 1.8933053016662598,
+      "entropy_min": 0.9497028589248657,
+      "entropy_max": 2.748929262161255,
+      "anchor_mass_mean": 0.20030814409255981,
+      "anchor_mass_max": 0.41278257966041565,
+      "key_mass_mean": {
+        "q0": 0.0046041738241910934
+      },
+      "key_mass_max": {
+        "q0": 0.025011243298649788
+      },
+      "key_mass_argmax_head": {
+        "q0": 13
+      }
+    },
+    {
+      "layer": 3,
+      "entropy_mean": 1.7797168493270874,
+      "entropy_min": 0.9529546499252319,
+      "entropy_max": 2.894845962524414,
+      "anchor_mass_mean": 0.2467086911201477,
+      "anchor_mass_max": 0.4520566761493683,
+      "key_mass_mean": {
+        "q0": 0.008728226646780968
+      },
+      "key_mass_max": {
+        "q0": 0.07284928858280182
+      },
+      "key_mass_argmax_head": {
+        "q0": 16
+      }
+    },
+    {
+      "layer": 4,
+      "entropy_mean": 1.819235920906067,
+      "entropy_min": 0.8598558306694031,
+      "entropy_max": 2.896111249923706,
+      "anchor_mass_mean": 0.285764217376709,
+      "anchor_mass_max": 0.44685083627700806,
+      "key_mass_mean": {
+        "q0": 0.0064646461978554726
+      },
+      "key_mass_max": {
+        "q0": 0.026838786900043488
+      },
+      "key_mass_argmax_head": {
+        "q0": 26
+      }
+    },
+    {
+      "layer": 5,
+      "entropy_mean": 1.8345718383789062,
+      "entropy_min": 0.337454229593277,
+      "entropy_max": 3.2115042209625244,
+      "anchor_mass_mean": 0.23369713127613068,
+      "anchor_mass_max": 0.4373728334903717,
+      "key_mass_mean": {
+        "q0": 0.0047410624101758
+      },
+      "key_mass_max": {
+        "q0": 0.034817297011613846
+      },
+      "key_mass_argmax_head": {
+        "q0": 2
+      }
+    },
+    {
+      "layer": 6,
+      "entropy_mean": 2.0900230407714844,
+      "entropy_min": 1.0741204023361206,
+      "entropy_max": 3.0056424140930176,
+      "anchor_mass_mean": 0.2060987949371338,
+      "anchor_mass_max": 0.4186740219593048,
+      "key_mass_mean": {
+        "q0": 0.0020926077850162983
+      },
+      "key_mass_max": {
+        "q0": 0.016616344451904297
+      },
+      "key_mass_argmax_head": {
+        "q0": 16
+      }
+    },
+    {
+      "layer": 7,
+      "entropy_mean": 1.1669833660125732,
+      "entropy_min": 0.0177752822637558,
+      "entropy_max": 2.5516302585601807,
+      "anchor_mass_mean": 0.02854732796549797,
+      "anchor_mass_max": 0.21408280730247498,
+      "key_mass_mean": {
+        "q0": 0.001687541138380766
+      },
+      "key_mass_max": {
+        "q0": 0.011191134341061115
+      },
+      "key_mass_argmax_head": {
+        "q0": 3
+      }
+    },
+    {
+      "layer": 8,
+      "entropy_mean": 1.4611682891845703,
+      "entropy_min": 0.20486482977867126,
+      "entropy_max": 2.798942804336548,
+      "anchor_mass_mean": 0.03472738713026047,
+      "anchor_mass_max": 0.2960866391658783,
+      "key_mass_mean": {
+        "q0": 0.002922988496720791
+      },
+      "key_mass_max": {
+        "q0": 0.026905648410320282
+      },
+      "key_mass_argmax_head": {
+        "q0": 24
+      }
+    },
+    {
+      "layer": 9,
+      "entropy_mean": 1.2798576354980469,
+      "entropy_min": 0.116856649518013,
+      "entropy_max": 2.724642753601074,
+      "anchor_mass_mean": 0.05580349639058113,
+      "anchor_mass_max": 0.29791271686553955,
+      "key_mass_mean": {
+        "q0": 0.0022545447573065758
+      },
+      "key_mass_max": {
+        "q0": 0.019967596977949142
+      },
+      "key_mass_argmax_head": {
+        "q0": 22
+      }
+    },
+    {
+      "layer": 10,
+      "entropy_mean": 1.5025420188903809,
+      "entropy_min": 0.23784810304641724,
+      "entropy_max": 2.595219850540161,
+      "anchor_mass_mean": 0.05886498838663101,
+      "anchor_mass_max": 0.25632262229919434,
+      "key_mass_mean": {
+        "q0": 0.0017879260703921318
+      },
+      "key_mass_max": {
+        "q0": 0.017715387046337128
+      },
+      "key_mass_argmax_head": {
+        "q0": 14
+      }
+    },
+    {
+      "layer": 11,
+      "entropy_mean": 1.38388192653656,
+      "entropy_min": 0.07166814804077148,
+      "entropy_max": 2.6728014945983887,
+      "anchor_mass_mean": 0.03649929165840149,
+      "anchor_mass_max": 0.3302311301231384,
+      "key_mass_mean": {
+        "q0": 0.004060275852680206
+      },
+      "key_mass_max": {
+        "q0": 0.028147248551249504
+      },
+      "key_mass_argmax_head": {
+        "q0": 0
+      }
+    },
+    {
+      "layer": 12,
+      "entropy_mean": 1.7128769159317017,
+      "entropy_min": 0.29460492730140686,
+      "entropy_max": 2.528031349182129,
+      "anchor_mass_mean": 0.044867344200611115,
+      "anchor_mass_max": 0.20425742864608765,
+      "key_mass_mean": {
+        "q0": 0.00386320473626256
+      },
+      "key_mass_max": {
+        "q0": 0.025684460997581482
+      },
+      "key_mass_argmax_head": {
+        "q0": 18
+      }
+    },
+    {
+      "layer": 13,
+      "entropy_mean": 1.4835846424102783,
+      "entropy_min": 6.35555261396803e-05,
+      "entropy_max": 2.616823434829712,
+      "anchor_mass_mean": 0.03047442063689232,
+      "anchor_mass_max": 0.16473999619483948,
+      "key_mass_mean": {
+        "q0": 0.003675292944535613
+      },
+      "key_mass_max": {
+        "q0": 0.0190619844943285
+      },
+      "key_mass_argmax_head": {
+        "q0": 27
+      }
+    },
+    {
+      "layer": 14,
+      "entropy_mean": 1.6413789987564087,
+      "entropy_min": 0.3451879918575287,
+      "entropy_max": 2.704390525817871,
+      "anchor_mass_mean": 0.0531490221619606,
+      "anchor_mass_max": 0.5688924789428711,
+      "key_mass_mean": {
+        "q0": 0.005318541079759598
+      },
+      "key_mass_max": {
+        "q0": 0.02264021337032318
+      },
+      "key_mass_argmax_head": {
+        "q0": 8
+      }
+    },
+    {
+      "layer": 15,
+      "entropy_mean": 1.621391773223877,
+      "entropy_min": 0.6553741693496704,
+      "entropy_max": 2.725332498550415,
+      "anchor_mass_mean": 0.030449887737631798,
+      "anchor_mass_max": 0.15161320567131042,
+      "key_mass_mean": {
+        "q0": 0.004098669625818729
+      },
+      "key_mass_max": {
+        "q0": 0.02516140788793564
+      },
+      "key_mass_argmax_head": {
+        "q0": 25
+      }
+    },
+    {
+      "layer": 16,
+      "entropy_mean": 2.0098679065704346,
+      "entropy_min": 0.7626140117645264,
+      "entropy_max": 2.6998956203460693,
+      "anchor_mass_mean": 0.050345636904239655,
+      "anchor_mass_max": 0.2020120918750763,
+      "key_mass_mean": {
+        "q0": 0.0080623310059309
+      },
+      "key_mass_max": {
+        "q0": 0.059234898537397385
+      },
+      "key_mass_argmax_head": {
+        "q0": 29
+      }
+    },
+    {
+      "layer": 17,
+      "entropy_mean": 1.6424264907836914,
+      "entropy_min": 0.2789419889450073,
+      "entropy_max": 2.44189715385437,
+      "anchor_mass_mean": 0.033539656549692154,
+      "anchor_mass_max": 0.1977042555809021,
+      "key_mass_mean": {
+        "q0": 0.011667737737298012
+      },
+      "key_mass_max": {
+        "q0": 0.05021347850561142
+      },
+      "key_mass_argmax_head": {
+        "q0": 17
+      }
+    },
+    {
+      "layer": 18,
+      "entropy_mean": 1.8492076396942139,
+      "entropy_min": 0.7940003871917725,
+      "entropy_max": 2.5104691982269287,
+      "anchor_mass_mean": 0.04460286349058151,
+      "anchor_mass_max": 0.4585121273994446,
+      "key_mass_mean": {
+        "q0": 0.016333559527993202
+      },
+      "key_mass_max": {
+        "q0": 0.061752937734127045
+      },
+      "key_mass_argmax_head": {
+        "q0": 29
+      }
+    },
+    {
+      "layer": 19,
+      "entropy_mean": 1.7935359477996826,
+      "entropy_min": 0.5177326798439026,
+      "entropy_max": 2.6697137355804443,
+      "anchor_mass_mean": 0.029125845059752464,
+      "anchor_mass_max": 0.19014078378677368,
+      "key_mass_mean": {
+        "q0": 0.0185718797147274
+      },
+      "key_mass_max": {
+        "q0": 0.09331347048282623
+      },
+      "key_mass_argmax_head": {
+        "q0": 0
+      }
+    },
+    {
+      "layer": 20,
+      "entropy_mean": 1.6212307214736938,
+      "entropy_min": 0.011630815453827381,
+      "entropy_max": 2.516557216644287,
+      "anchor_mass_mean": 0.01636209897696972,
+      "anchor_mass_max": 0.05381860211491585,
+      "key_mass_mean": {
+        "q0": 0.019753722473978996
+      },
+      "key_mass_max": {
+        "q0": 0.09632817655801773
+      },
+      "key_mass_argmax_head": {
+        "q0": 17
+      }
+    },
+    {
+      "layer": 21,
+      "entropy_mean": 1.846867322921753,
+      "entropy_min": 0.3942679464817047,
+      "entropy_max": 2.585505723953247,
+      "anchor_mass_mean": 0.015721281990408897,
+      "anchor_mass_max": 0.08237539231777191,
+      "key_mass_mean": {
+        "q0": 0.02938114106655121
+      },
+      "key_mass_max": {
+        "q0": 0.08713784068822861
+      },
+      "key_mass_argmax_head": {
+        "q0": 19
+      }
+    },
+    {
+      "layer": 22,
+      "entropy_mean": 1.41341233253479,
+      "entropy_min": 0.1647307425737381,
+      "entropy_max": 2.2908098697662354,
+      "anchor_mass_mean": 0.012089528143405914,
+      "anchor_mass_max": 0.032132379710674286,
+      "key_mass_mean": {
+        "q0": 0.009266024455428123
+      },
+      "key_mass_max": {
+        "q0": 0.057174891233444214
+      },
+      "key_mass_argmax_head": {
+        "q0": 4
+      }
+    },
+    {
+      "layer": 23,
+      "entropy_mean": 1.5383906364440918,
+      "entropy_min": 0.3195805847644806,
+      "entropy_max": 2.219381093978882,
+      "anchor_mass_mean": 0.013395951129496098,
+      "anchor_mass_max": 0.1853974610567093,
+      "key_mass_mean": {
+        "q0": 0.027019735425710678
+      },
+      "key_mass_max": {
+        "q0": 0.22281193733215332
+      },
+      "key_mass_argmax_head": {
+        "q0": 4
+      }
+    },
+    {
+      "layer": 24,
+      "entropy_mean": 1.724513053894043,
+      "entropy_min": 0.060838013887405396,
+      "entropy_max": 2.7114744186401367,
+      "anchor_mass_mean": 0.028553560376167297,
+      "anchor_mass_max": 0.3156336843967438,
+      "key_mass_mean": {
+        "q0": 0.025278300046920776
+      },
+      "key_mass_max": {
+        "q0": 0.09493108093738556
+      },
+      "key_mass_argmax_head": {
+        "q0": 29
+      }
+    },
+    {
+      "layer": 25,
+      "entropy_mean": 1.088731288909912,
+      "entropy_min": 0.046281397342681885,
+      "entropy_max": 2.5718443393707275,
+      "anchor_mass_mean": 0.006947370711714029,
+      "anchor_mass_max": 0.049310069531202316,
+      "key_mass_mean": {
+        "q0": 0.010189737193286419
+      },
+      "key_mass_max": {
+        "q0": 0.1395600289106369
+      },
+      "key_mass_argmax_head": {
+        "q0": 30
+      }
+    },
+    {
+      "layer": 26,
+      "entropy_mean": 1.0908352136611938,
+      "entropy_min": 0.06958387792110443,
+      "entropy_max": 1.980948567390442,
+      "anchor_mass_mean": 0.005952073261141777,
+      "anchor_mass_max": 0.024447746574878693,
+      "key_mass_mean": {
+        "q0": 0.02838379144668579
+      },
+      "key_mass_max": {
+        "q0": 0.24407309293746948
+      },
+      "key_mass_argmax_head": {
+        "q0": 15
+      }
+    },
+    {
+      "layer": 27,
+      "entropy_mean": 1.027799129486084,
+      "entropy_min": 0.0324019193649292,
+      "entropy_max": 2.361743688583374,
+      "anchor_mass_mean": 0.005473221652209759,
+      "anchor_mass_max": 0.023867778480052948,
+      "key_mass_mean": {
+        "q0": 0.009142404422163963
+      },
+      "key_mass_max": {
+        "q0": 0.0670313760638237
+      },
+      "key_mass_argmax_head": {
+        "q0": 13
+      }
+    },
+    {
+      "layer": 28,
+      "entropy_mean": 1.2191212177276611,
+      "entropy_min": 0.14227955043315887,
+      "entropy_max": 2.3246512413024902,
+      "anchor_mass_mean": 0.007478177081793547,
+      "anchor_mass_max": 0.037244342267513275,
+      "key_mass_mean": {
+        "q0": 0.05379292741417885
+      },
+      "key_mass_max": {
+        "q0": 0.5189107060432434
+      },
+      "key_mass_argmax_head": {
+        "q0": 0
+      }
+    },
+    {
+      "layer": 29,
+      "entropy_mean": 1.0516862869262695,
+      "entropy_min": 0.043906792998313904,
+      "entropy_max": 2.3617501258850098,
+      "anchor_mass_mean": 0.009028356522321701,
+      "anchor_mass_max": 0.07025764882564545,
+      "key_mass_mean": {
+        "q0": 0.04767465218901634
+      },
+      "key_mass_max": {
+        "q0": 0.439967542886734
+      },
+      "key_mass_argmax_head": {
+        "q0": 11
+      }
+    },
+    {
+      "layer": 30,
+      "entropy_mean": 0.9100672006607056,
+      "entropy_min": 0.23822258412837982,
+      "entropy_max": 1.849696159362793,
+      "anchor_mass_mean": 0.005291071254760027,
+      "anchor_mass_max": 0.015860922634601593,
+      "key_mass_mean": {
+        "q0": 0.010247920639812946
+      },
+      "key_mass_max": {
+        "q0": 0.1540408432483673
+      },
+      "key_mass_argmax_head": {
+        "q0": 11
+      }
+    },
+    {
+      "layer": 31,
+      "entropy_mean": 0.818185567855835,
+      "entropy_min": 0.04388792812824249,
+      "entropy_max": 1.9649872779846191,
+      "anchor_mass_mean": 0.006589130964130163,
+      "anchor_mass_max": 0.036786019802093506,
+      "key_mass_mean": {
+        "q0": 0.019934797659516335
+      },
+      "key_mass_max": {
+        "q0": 0.17636434733867645
+      },
+      "key_mass_argmax_head": {
+        "q0": 30
+      }
+    },
+    {
+      "layer": 32,
+      "entropy_mean": 0.7675685882568359,
+      "entropy_min": 0.09268347173929214,
+      "entropy_max": 2.039952516555786,
+      "anchor_mass_mean": 0.00597439706325531,
+      "anchor_mass_max": 0.03363113850355148,
+      "key_mass_mean": {
+        "q0": 0.018033621832728386
+      },
+      "key_mass_max": {
+        "q0": 0.28476446866989136
+      },
+      "key_mass_argmax_head": {
+        "q0": 10
+      }
+    },
+    {
+      "layer": 33,
+      "entropy_mean": 0.7273143529891968,
+      "entropy_min": 0.08130822330713272,
+      "entropy_max": 2.3938121795654297,
+      "anchor_mass_mean": 0.008469716645777225,
+      "anchor_mass_max": 0.09188619256019592,
+      "key_mass_mean": {
+        "q0": 0.019665582105517387
+      },
+      "key_mass_max": {
+        "q0": 0.13490091264247894
+      },
+      "key_mass_argmax_head": {
+        "q0": 28
+      }
+    },
+    {
+      "layer": 34,
+      "entropy_mean": 0.7618710994720459,
+      "entropy_min": 0.031460098922252655,
+      "entropy_max": 1.706770658493042,
+      "anchor_mass_mean": 0.004890156909823418,
+      "anchor_mass_max": 0.02402186021208763,
+      "key_mass_mean": {
+        "q0": 0.007484600879251957
+      },
+      "key_mass_max": {
+        "q0": 0.0486869290471077
+      },
+      "key_mass_argmax_head": {
+        "q0": 7
+      }
+    },
+    {
+      "layer": 35,
+      "entropy_mean": 0.7805814146995544,
+      "entropy_min": 0.06307312846183777,
+      "entropy_max": 2.8657162189483643,
+      "anchor_mass_mean": 0.009332915768027306,
+      "anchor_mass_max": 0.10409952700138092,
+      "key_mass_mean": {
+        "q0": 0.0027031900826841593
+      },
+      "key_mass_max": {
+        "q0": 0.01897411420941353
+      },
+      "key_mass_argmax_head": {
+        "q0": 17
+      }
+    }
+  ],
+  "correct": [
+    {
+      "layer": 0,
+      "entropy_mean": 2.4337844848632812,
+      "entropy_min": 0.036061227321624756,
+      "entropy_max": 4.094205856323242,
+      "anchor_mass_mean": 0.23869282007217407,
+      "anchor_mass_max": 0.5007273554801941,
+      "key_mass_mean": {
+        "anchor0": 0.003270562272518873,
+        "weight": 0.0035643642768263817,
+        "outside": 0.0031322480645030737,
+        "q0": 0.004953013267368078
+      },
+      "key_mass_max": {
+        "anchor0": 0.01799006387591362,
+        "weight": 0.03158242255449295,
+        "outside": 0.029125863686203957,
+        "q0": 0.05678222328424454
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 31,
+        "weight": 27,
+        "outside": 29,
+        "q0": 31
+      }
+    },
+    {
+      "layer": 1,
+      "entropy_mean": 2.2826614379882812,
+      "entropy_min": 0.47403812408447266,
+      "entropy_max": 3.857386827468872,
+      "anchor_mass_mean": 0.1398010104894638,
+      "anchor_mass_max": 0.4616854786872864,
+      "key_mass_mean": {
+        "anchor0": 0.006074216216802597,
+        "weight": 0.0024824938736855984,
+        "outside": 0.001115016988478601,
+        "q0": 0.005908217281103134
+      },
+      "key_mass_max": {
+        "anchor0": 0.11284732073545456,
+        "weight": 0.04202301800251007,
+        "outside": 0.008570842444896698,
+        "q0": 0.05363576114177704
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 20,
+        "weight": 11,
+        "outside": 24,
+        "q0": 25
+      }
+    },
+    {
+      "layer": 2,
+      "entropy_mean": 2.122100353240967,
+      "entropy_min": 1.066541314125061,
+      "entropy_max": 3.3614931106567383,
+      "anchor_mass_mean": 0.06804321706295013,
+      "anchor_mass_max": 0.2665952444076538,
+      "key_mass_mean": {
+        "anchor0": 0.0020032967440783978,
+        "weight": 0.0021684151142835617,
+        "outside": 0.0010037727188318968,
+        "q0": 0.0024757687933743
+      },
+      "key_mass_max": {
+        "anchor0": 0.011366479098796844,
+        "weight": 0.029700692743062973,
+        "outside": 0.005675787106156349,
+        "q0": 0.012520251795649529
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 16,
+        "weight": 15,
+        "outside": 15,
+        "q0": 13
+      }
+    },
+    {
+      "layer": 3,
+      "entropy_mean": 2.0287625789642334,
+      "entropy_min": 0.9638590812683105,
+      "entropy_max": 3.6115119457244873,
+      "anchor_mass_mean": 0.062229789793491364,
+      "anchor_mass_max": 0.2995535731315613,
+      "key_mass_mean": {
+        "anchor0": 0.003261575708165765,
+        "weight": 0.003469663904979825,
+        "outside": 0.001784194028005004,
+        "q0": 0.003638248424977064
+      },
+      "key_mass_max": {
+        "anchor0": 0.02058047614991665,
+        "weight": 0.05689121410250664,
+        "outside": 0.02580195479094982,
+        "q0": 0.03406837210059166
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 21,
+        "weight": 11,
+        "outside": 8,
+        "q0": 11
+      }
+    },
+    {
+      "layer": 4,
+      "entropy_mean": 2.0776658058166504,
+      "entropy_min": 0.8411136269569397,
+      "entropy_max": 3.7039246559143066,
+      "anchor_mass_mean": 0.07498645782470703,
+      "anchor_mass_max": 0.26973068714141846,
+      "key_mass_mean": {
+        "anchor0": 0.0029808529652655125,
+        "weight": 0.0013704858720302582,
+        "outside": 0.0010206045117229223,
+        "q0": 0.004602616652846336
+      },
+      "key_mass_max": {
+        "anchor0": 0.013284198008477688,
+        "weight": 0.009252936579287052,
+        "outside": 0.012075082398951054,
+        "q0": 0.04237130656838417
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 20,
+        "weight": 25,
+        "outside": 25,
+        "q0": 25
+      }
+    },
+    {
+      "layer": 5,
+      "entropy_mean": 2.0868635177612305,
+      "entropy_min": 0.3975294828414917,
+      "entropy_max": 3.812086343765259,
+      "anchor_mass_mean": 0.0685848817229271,
+      "anchor_mass_max": 0.48499375581741333,
+      "key_mass_mean": {
+        "anchor0": 0.0018222047947347164,
+        "weight": 0.0032468773424625397,
+        "outside": 0.0012702923268079758,
+        "q0": 0.003272410249337554
+      },
+      "key_mass_max": {
+        "anchor0": 0.015807554125785828,
+        "weight": 0.07112105935811996,
+        "outside": 0.011944257654249668,
+        "q0": 0.02774549275636673
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 12,
+        "weight": 2,
+        "outside": 2,
+        "q0": 9
+      }
+    },
+    {
+      "layer": 6,
+      "entropy_mean": 2.2666656970977783,
+      "entropy_min": 1.2173185348510742,
+      "entropy_max": 3.441767930984497,
+      "anchor_mass_mean": 0.04962341487407684,
+      "anchor_mass_max": 0.21989606320858002,
+      "key_mass_mean": {
+        "anchor0": 0.0018004195298999548,
+        "weight": 0.0007365026976913214,
+        "outside": 0.000634314026683569,
+        "q0": 0.001243234844878316
+      },
+      "key_mass_max": {
+        "anchor0": 0.009020199999213219,
+        "weight": 0.006858410779386759,
+        "outside": 0.0038054506294429302,
+        "q0": 0.01192881353199482
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 5,
+        "weight": 11,
+        "outside": 11,
+        "q0": 16
+      }
+    },
+    {
+      "layer": 7,
+      "entropy_mean": 1.3275375366210938,
+      "entropy_min": 0.0286147091537714,
+      "entropy_max": 2.8342955112457275,
+      "anchor_mass_mean": 0.02376544661819935,
+      "anchor_mass_max": 0.19605231285095215,
+      "key_mass_mean": {
+        "anchor0": 0.0015967655926942825,
+        "weight": 0.0006599839543923736,
+        "outside": 0.0003212798619642854,
+        "q0": 0.0009189492557197809
+      },
+      "key_mass_max": {
+        "anchor0": 0.010871198028326035,
+        "weight": 0.010356416925787926,
+        "outside": 0.0024075342807918787,
+        "q0": 0.0038489827420562506
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 12,
+        "weight": 3,
+        "outside": 21,
+        "q0": 8
+      }
+    },
+    {
+      "layer": 8,
+      "entropy_mean": 1.7263606786727905,
+      "entropy_min": 0.1859949231147766,
+      "entropy_max": 3.557929039001465,
+      "anchor_mass_mean": 0.05741078034043312,
+      "anchor_mass_max": 0.23553366959095,
+      "key_mass_mean": {
+        "anchor0": 0.0032786717638373375,
+        "weight": 0.0012268878053873777,
+        "outside": 0.0006906960625201464,
+        "q0": 0.0017195272957906127
+      },
+      "key_mass_max": {
+        "anchor0": 0.01968095265328884,
+        "weight": 0.01826605573296547,
+        "outside": 0.006370267365127802,
+        "q0": 0.018018273636698723
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 19,
+        "weight": 24,
+        "outside": 24,
+        "q0": 24
+      }
+    },
+    {
+      "layer": 9,
+      "entropy_mean": 1.5548315048217773,
+      "entropy_min": 0.13421250879764557,
+      "entropy_max": 3.435774326324463,
+      "anchor_mass_mean": 0.051594652235507965,
+      "anchor_mass_max": 0.28567105531692505,
+      "key_mass_mean": {
+        "anchor0": 0.0024718227796256542,
+        "weight": 0.0007363626500591636,
+        "outside": 0.0006618127226829529,
+        "q0": 0.0010934219462797046
+      },
+      "key_mass_max": {
+        "anchor0": 0.022927748039364815,
+        "weight": 0.007619363721460104,
+        "outside": 0.00526079535484314,
+        "q0": 0.005932231899350882
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 24,
+        "weight": 14,
+        "outside": 25,
+        "q0": 22
+      }
+    },
+    {
+      "layer": 10,
+      "entropy_mean": 1.5784705877304077,
+      "entropy_min": 0.2516375482082367,
+      "entropy_max": 2.691223621368408,
+      "anchor_mass_mean": 0.04073287174105644,
+      "anchor_mass_max": 0.1443808376789093,
+      "key_mass_mean": {
+        "anchor0": 0.0007335557602345943,
+        "weight": 0.0007239127298817039,
+        "outside": 0.0007887487881816924,
+        "q0": 0.001258299918845296
+      },
+      "key_mass_max": {
+        "anchor0": 0.00473687332123518,
+        "weight": 0.004968611989170313,
+        "outside": 0.007155804894864559,
+        "q0": 0.014199118129909039
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 12,
+        "weight": 23,
+        "outside": 23,
+        "q0": 14
+      }
+    },
+    {
+      "layer": 11,
+      "entropy_mean": 1.564617395401001,
+      "entropy_min": 0.06887663155794144,
+      "entropy_max": 3.3558623790740967,
+      "anchor_mass_mean": 0.03543883562088013,
+      "anchor_mass_max": 0.19252143800258636,
+      "key_mass_mean": {
+        "anchor0": 0.0011627611238509417,
+        "weight": 0.0009347029263153672,
+        "outside": 0.0002850706223398447,
+        "q0": 0.0018993080593645573
+      },
+      "key_mass_max": {
+        "anchor0": 0.0056825848296284676,
+        "weight": 0.014651109464466572,
+        "outside": 0.0017864108085632324,
+        "q0": 0.016475092619657516
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 3,
+        "weight": 0,
+        "outside": 0,
+        "q0": 16
+      }
+    },
+    {
+      "layer": 12,
+      "entropy_mean": 1.8751887083053589,
+      "entropy_min": 0.3191165328025818,
+      "entropy_max": 3.6708970069885254,
+      "anchor_mass_mean": 0.04070962220430374,
+      "anchor_mass_max": 0.32323017716407776,
+      "key_mass_mean": {
+        "anchor0": 0.0013399994932115078,
+        "weight": 0.0013853050768375397,
+        "outside": 0.00017588798073120415,
+        "q0": 0.002188489306718111
+      },
+      "key_mass_max": {
+        "anchor0": 0.00794097688049078,
+        "weight": 0.029182014986872673,
+        "outside": 0.0009829805931076407,
+        "q0": 0.017832914367318153
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 26,
+        "weight": 18,
+        "outside": 18,
+        "q0": 18
+      }
+    },
+    {
+      "layer": 13,
+      "entropy_mean": 1.754003643989563,
+      "entropy_min": 0.00012251966109033674,
+      "entropy_max": 3.2306416034698486,
+      "anchor_mass_mean": 0.046625420451164246,
+      "anchor_mass_max": 0.17914128303527832,
+      "key_mass_mean": {
+        "anchor0": 0.004675636999309063,
+        "weight": 0.0007327767671085894,
+        "outside": 0.0005510018672794104,
+        "q0": 0.00231349840760231
+      },
+      "key_mass_max": {
+        "anchor0": 0.034765951335430145,
+        "weight": 0.006138648372143507,
+        "outside": 0.004178888630121946,
+        "q0": 0.010914682410657406
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 30,
+        "weight": 27,
+        "outside": 27,
+        "q0": 27
+      }
+    },
+    {
+      "layer": 14,
+      "entropy_mean": 1.9161275625228882,
+      "entropy_min": 0.47569021582603455,
+      "entropy_max": 2.9612486362457275,
+      "anchor_mass_mean": 0.03917790576815605,
+      "anchor_mass_max": 0.16655339300632477,
+      "key_mass_mean": {
+        "anchor0": 0.0024728071875870228,
+        "weight": 0.0007727924967184663,
+        "outside": 0.0013561517698690295,
+        "q0": 0.005607670173048973
+      },
+      "key_mass_max": {
+        "anchor0": 0.00884349923580885,
+        "weight": 0.005094349849969149,
+        "outside": 0.019301149994134903,
+        "q0": 0.028006602078676224
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 19,
+        "weight": 7,
+        "outside": 27,
+        "q0": 8
+      }
+    },
+    {
+      "layer": 15,
+      "entropy_mean": 2.2349226474761963,
+      "entropy_min": 0.6727412343025208,
+      "entropy_max": 3.350033760070801,
+      "anchor_mass_mean": 0.0692976638674736,
+      "anchor_mass_max": 0.2904457151889801,
+      "key_mass_mean": {
+        "anchor0": 0.003042772877961397,
+        "weight": 0.0017999904230237007,
+        "outside": 0.0014435230987146497,
+        "q0": 0.003961774520576
+      },
+      "key_mass_max": {
+        "anchor0": 0.0129849286749959,
+        "weight": 0.013298776932060719,
+        "outside": 0.007884458638727665,
+        "q0": 0.016247786581516266
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 19,
+        "weight": 13,
+        "outside": 0,
+        "q0": 16
+      }
+    },
+    {
+      "layer": 16,
+      "entropy_mean": 2.437347173690796,
+      "entropy_min": 1.0721843242645264,
+      "entropy_max": 3.407806158065796,
+      "anchor_mass_mean": 0.06590168923139572,
+      "anchor_mass_max": 0.19639036059379578,
+      "key_mass_mean": {
+        "anchor0": 0.002470744773745537,
+        "weight": 0.0017968195024877787,
+        "outside": 0.0015830707270652056,
+        "q0": 0.0051523479633033276
+      },
+      "key_mass_max": {
+        "anchor0": 0.005531759932637215,
+        "weight": 0.01425420492887497,
+        "outside": 0.008021563291549683,
+        "q0": 0.021833600476384163
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 27,
+        "weight": 2,
+        "outside": 23,
+        "q0": 18
+      }
+    },
+    {
+      "layer": 17,
+      "entropy_mean": 2.264739513397217,
+      "entropy_min": 0.4921031892299652,
+      "entropy_max": 3.3631479740142822,
+      "anchor_mass_mean": 0.0721123069524765,
+      "anchor_mass_max": 0.22658924758434296,
+      "key_mass_mean": {
+        "anchor0": 0.001647929078899324,
+        "weight": 0.0011734338477253914,
+        "outside": 0.0018269418505951762,
+        "q0": 0.016603581607341766
+      },
+      "key_mass_max": {
+        "anchor0": 0.0045023164711892605,
+        "weight": 0.0058284057304263115,
+        "outside": 0.008648578077554703,
+        "q0": 0.1493702232837677
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 22,
+        "weight": 15,
+        "outside": 15,
+        "q0": 3
+      }
+    },
+    {
+      "layer": 18,
+      "entropy_mean": 2.575620174407959,
+      "entropy_min": 1.062040090560913,
+      "entropy_max": 3.6259982585906982,
+      "anchor_mass_mean": 0.0978405773639679,
+      "anchor_mass_max": 0.28050291538238525,
+      "key_mass_mean": {
+        "anchor0": 0.001539887278340757,
+        "weight": 0.002516542561352253,
+        "outside": 0.0039635710418224335,
+        "q0": 0.014158643782138824
+      },
+      "key_mass_max": {
+        "anchor0": 0.004685384687036276,
+        "weight": 0.011540865525603294,
+        "outside": 0.02973463200032711,
+        "q0": 0.07973801344633102
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 4,
+        "weight": 19,
+        "outside": 11,
+        "q0": 30
+      }
+    },
+    {
+      "layer": 19,
+      "entropy_mean": 2.317927837371826,
+      "entropy_min": 0.7065639495849609,
+      "entropy_max": 3.3826119899749756,
+      "anchor_mass_mean": 0.07775714248418808,
+      "anchor_mass_max": 0.269944429397583,
+      "key_mass_mean": {
+        "anchor0": 0.001928481156937778,
+        "weight": 0.0012160998303443193,
+        "outside": 0.003173531498759985,
+        "q0": 0.017522452399134636
+      },
+      "key_mass_max": {
+        "anchor0": 0.01027405634522438,
+        "weight": 0.005224727559834719,
+        "outside": 0.032219965010881424,
+        "q0": 0.08703925460577011
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 23,
+        "weight": 0,
+        "outside": 13,
+        "q0": 31
+      }
+    },
+    {
+      "layer": 20,
+      "entropy_mean": 2.2242836952209473,
+      "entropy_min": 0.02507777512073517,
+      "entropy_max": 3.7060022354125977,
+      "anchor_mass_mean": 0.11458046734333038,
+      "anchor_mass_max": 0.34110167622566223,
+      "key_mass_mean": {
+        "anchor0": 0.0017733527347445488,
+        "weight": 0.004194784909486771,
+        "outside": 0.0063033318147063255,
+        "q0": 0.022855814546346664
+      },
+      "key_mass_max": {
+        "anchor0": 0.011733420193195343,
+        "weight": 0.025635235011577606,
+        "outside": 0.07645867019891739,
+        "q0": 0.07456818222999573
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 27,
+        "weight": 30,
+        "outside": 28,
+        "q0": 18
+      }
+    },
+    {
+      "layer": 21,
+      "entropy_mean": 2.3121910095214844,
+      "entropy_min": 0.6457265019416809,
+      "entropy_max": 3.3970518112182617,
+      "anchor_mass_mean": 0.11816568672657013,
+      "anchor_mass_max": 0.3848862946033478,
+      "key_mass_mean": {
+        "anchor0": 0.0014996076934039593,
+        "weight": 0.0016215010546147823,
+        "outside": 0.002696199109777808,
+        "q0": 0.04699484258890152
+      },
+      "key_mass_max": {
+        "anchor0": 0.011871055699884892,
+        "weight": 0.006881324108690023,
+        "outside": 0.02001660317182541,
+        "q0": 0.34568172693252563
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 20,
+        "weight": 27,
+        "outside": 31,
+        "q0": 19
+      }
+    },
+    {
+      "layer": 22,
+      "entropy_mean": 1.6899288892745972,
+      "entropy_min": 0.11867518723011017,
+      "entropy_max": 2.9346671104431152,
+      "anchor_mass_mean": 0.043240487575531006,
+      "anchor_mass_max": 0.17838530242443085,
+      "key_mass_mean": {
+        "anchor0": 0.0014462865656241775,
+        "weight": 0.0009931703098118305,
+        "outside": 0.001370282843708992,
+        "q0": 0.03033144772052765
+      },
+      "key_mass_max": {
+        "anchor0": 0.011723417788743973,
+        "weight": 0.007515070494264364,
+        "outside": 0.01163993589580059,
+        "q0": 0.19823402166366577
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 20,
+        "weight": 20,
+        "outside": 4,
+        "q0": 7
+      }
+    },
+    {
+      "layer": 23,
+      "entropy_mean": 2.0116353034973145,
+      "entropy_min": 0.45749008655548096,
+      "entropy_max": 3.3299715518951416,
+      "anchor_mass_mean": 0.06111075356602669,
+      "anchor_mass_max": 0.2173878252506256,
+      "key_mass_mean": {
+        "anchor0": 0.0005835883785039186,
+        "weight": 0.0010267868638038635,
+        "outside": 0.0013231092598289251,
+        "q0": 0.0443064346909523
+      },
+      "key_mass_max": {
+        "anchor0": 0.004070395138114691,
+        "weight": 0.004992350935935974,
+        "outside": 0.006196186412125826,
+        "q0": 0.20422795414924622
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 4,
+        "weight": 10,
+        "outside": 28,
+        "q0": 4
+      }
+    },
+    {
+      "layer": 24,
+      "entropy_mean": 2.098818302154541,
+      "entropy_min": 0.09856220334768295,
+      "entropy_max": 3.6195807456970215,
+      "anchor_mass_mean": 0.11742719262838364,
+      "anchor_mass_max": 0.3990947902202606,
+      "key_mass_mean": {
+        "anchor0": 0.002390254521742463,
+        "weight": 0.0017817332409322262,
+        "outside": 0.0031821480952203274,
+        "q0": 0.02285747043788433
+      },
+      "key_mass_max": {
+        "anchor0": 0.025915632024407387,
+        "weight": 0.01607857644557953,
+        "outside": 0.01878138817846775,
+        "q0": 0.11836410313844681
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 21,
+        "weight": 18,
+        "outside": 28,
+        "q0": 23
+      }
+    },
+    {
+      "layer": 25,
+      "entropy_mean": 1.4297738075256348,
+      "entropy_min": 0.06041865050792694,
+      "entropy_max": 3.3990840911865234,
+      "anchor_mass_mean": 0.07335653901100159,
+      "anchor_mass_max": 0.45032718777656555,
+      "key_mass_mean": {
+        "anchor0": 0.0018403951544314623,
+        "weight": 0.0014473714400082827,
+        "outside": 0.0012835604138672352,
+        "q0": 0.023294489830732346
+      },
+      "key_mass_max": {
+        "anchor0": 0.022806545719504356,
+        "weight": 0.014220472425222397,
+        "outside": 0.009110224433243275,
+        "q0": 0.12510806322097778
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 30,
+        "weight": 9,
+        "outside": 9,
+        "q0": 30
+      }
+    },
+    {
+      "layer": 26,
+      "entropy_mean": 1.4793567657470703,
+      "entropy_min": 0.05271514877676964,
+      "entropy_max": 2.720513105392456,
+      "anchor_mass_mean": 0.10332487523555756,
+      "anchor_mass_max": 0.35356301069259644,
+      "key_mass_mean": {
+        "anchor0": 0.004201157949864864,
+        "weight": 0.003091096645221114,
+        "outside": 0.002538310596719384,
+        "q0": 0.03590543568134308
+      },
+      "key_mass_max": {
+        "anchor0": 0.0311626847833395,
+        "weight": 0.01612643152475357,
+        "outside": 0.019236011430621147,
+        "q0": 0.2689151465892792
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 27,
+        "weight": 4,
+        "outside": 27,
+        "q0": 4
+      }
+    },
+    {
+      "layer": 27,
+      "entropy_mean": 1.2367000579833984,
+      "entropy_min": 0.07614028453826904,
+      "entropy_max": 2.9461097717285156,
+      "anchor_mass_mean": 0.045850835740566254,
+      "anchor_mass_max": 0.13880090415477753,
+      "key_mass_mean": {
+        "anchor0": 0.003490051021799445,
+        "weight": 0.0008655498386360705,
+        "outside": 0.0004848550306633115,
+        "q0": 0.032354190945625305
+      },
+      "key_mass_max": {
+        "anchor0": 0.03478264808654785,
+        "weight": 0.006229839287698269,
+        "outside": 0.0036837151274085045,
+        "q0": 0.11163835972547531
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 15,
+        "weight": 31,
+        "outside": 16,
+        "q0": 16
+      }
+    },
+    {
+      "layer": 28,
+      "entropy_mean": 1.5396298170089722,
+      "entropy_min": 0.1797133982181549,
+      "entropy_max": 3.0623321533203125,
+      "anchor_mass_mean": 0.08828040957450867,
+      "anchor_mass_max": 0.31698787212371826,
+      "key_mass_mean": {
+        "anchor0": 0.009786652401089668,
+        "weight": 0.002643969375640154,
+        "outside": 0.002682396210730076,
+        "q0": 0.06439731270074844
+      },
+      "key_mass_max": {
+        "anchor0": 0.1399839073419571,
+        "weight": 0.011856944300234318,
+        "outside": 0.032080359756946564,
+        "q0": 0.44715115427970886
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 23,
+        "weight": 9,
+        "outside": 9,
+        "q0": 0
+      }
+    },
+    {
+      "layer": 29,
+      "entropy_mean": 1.2427434921264648,
+      "entropy_min": 0.02799556776881218,
+      "entropy_max": 2.6164937019348145,
+      "anchor_mass_mean": 0.07390104234218597,
+      "anchor_mass_max": 0.25389888882637024,
+      "key_mass_mean": {
+        "anchor0": 0.011549113318324089,
+        "weight": 0.003467926289886236,
+        "outside": 0.0002971069479826838,
+        "q0": 0.12126296758651733
+      },
+      "key_mass_max": {
+        "anchor0": 0.05985002964735031,
+        "weight": 0.01711864024400711,
+        "outside": 0.0013056994648650289,
+        "q0": 0.773529052734375
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 5,
+        "weight": 26,
+        "outside": 22,
+        "q0": 11
+      }
+    },
+    {
+      "layer": 30,
+      "entropy_mean": 0.9930258393287659,
+      "entropy_min": 0.21797014772891998,
+      "entropy_max": 2.284292221069336,
+      "anchor_mass_mean": 0.02896820195019245,
+      "anchor_mass_max": 0.15166279673576355,
+      "key_mass_mean": {
+        "anchor0": 0.002987247658893466,
+        "weight": 0.0009473413228988647,
+        "outside": 0.0003343737917020917,
+        "q0": 0.02364819124341011
+      },
+      "key_mass_max": {
+        "anchor0": 0.052061282098293304,
+        "weight": 0.0060322219505906105,
+        "outside": 0.0020285677164793015,
+        "q0": 0.1940467804670334
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 11,
+        "weight": 17,
+        "outside": 2,
+        "q0": 11
+      }
+    },
+    {
+      "layer": 31,
+      "entropy_mean": 0.9932278990745544,
+      "entropy_min": 0.03414776921272278,
+      "entropy_max": 2.6039295196533203,
+      "anchor_mass_mean": 0.04262594133615494,
+      "anchor_mass_max": 0.18789058923721313,
+      "key_mass_mean": {
+        "anchor0": 0.0070679341442883015,
+        "weight": 0.0027518586721271276,
+        "outside": 0.000314985285513103,
+        "q0": 0.027310291305184364
+      },
+      "key_mass_max": {
+        "anchor0": 0.0675482526421547,
+        "weight": 0.0334247425198555,
+        "outside": 0.0028336786199361086,
+        "q0": 0.27113786339759827
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 30,
+        "weight": 15,
+        "outside": 10,
+        "q0": 28
+      }
+    },
+    {
+      "layer": 32,
+      "entropy_mean": 0.9381916522979736,
+      "entropy_min": 0.10101349651813507,
+      "entropy_max": 2.3939332962036133,
+      "anchor_mass_mean": 0.030880175530910492,
+      "anchor_mass_max": 0.1355104148387909,
+      "key_mass_mean": {
+        "anchor0": 0.004975024610757828,
+        "weight": 0.0009399754926562309,
+        "outside": 0.0003140565240755677,
+        "q0": 0.019503138959407806
+      },
+      "key_mass_max": {
+        "anchor0": 0.08616799116134644,
+        "weight": 0.008126436732709408,
+        "outside": 0.0015627729007974267,
+        "q0": 0.3412114381790161
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 10,
+        "weight": 8,
+        "outside": 10,
+        "q0": 10
+      }
+    },
+    {
+      "layer": 33,
+      "entropy_mean": 1.02090322971344,
+      "entropy_min": 0.11192749440670013,
+      "entropy_max": 3.4589033126831055,
+      "anchor_mass_mean": 0.05410836637020111,
+      "anchor_mass_max": 0.3204411268234253,
+      "key_mass_mean": {
+        "anchor0": 0.006935172714293003,
+        "weight": 0.0018238199409097433,
+        "outside": 0.0005394291365519166,
+        "q0": 0.021082857623696327
+      },
+      "key_mass_max": {
+        "anchor0": 0.05120489001274109,
+        "weight": 0.014948325231671333,
+        "outside": 0.009260782040655613,
+        "q0": 0.14844787120819092
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 28,
+        "weight": 4,
+        "outside": 4,
+        "q0": 28
+      }
+    },
+    {
+      "layer": 34,
+      "entropy_mean": 1.0413894653320312,
+      "entropy_min": 0.03789706528186798,
+      "entropy_max": 2.279003620147705,
+      "anchor_mass_mean": 0.03169041499495506,
+      "anchor_mass_max": 0.1080271303653717,
+      "key_mass_mean": {
+        "anchor0": 0.0016728369519114494,
+        "weight": 0.0012983104679733515,
+        "outside": 0.00015782912669237703,
+        "q0": 0.009148608893156052
+      },
+      "key_mass_max": {
+        "anchor0": 0.013213960453867912,
+        "weight": 0.01589701697230339,
+        "outside": 0.0010219586547464132,
+        "q0": 0.04272565245628357
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 6,
+        "weight": 3,
+        "outside": 19,
+        "q0": 19
+      }
+    },
+    {
+      "layer": 35,
+      "entropy_mean": 1.006016731262207,
+      "entropy_min": 0.05139367654919624,
+      "entropy_max": 3.29901123046875,
+      "anchor_mass_mean": 0.02124667540192604,
+      "anchor_mass_max": 0.1559799313545227,
+      "key_mass_mean": {
+        "anchor0": 0.0005837847711518407,
+        "weight": 0.0005445257993414998,
+        "outside": 0.0005168007337488234,
+        "q0": 0.004028890281915665
+      },
+      "key_mass_max": {
+        "anchor0": 0.005918372888118029,
+        "weight": 0.005570962559431791,
+        "outside": 0.008113513700664043,
+        "q0": 0.02662557363510132
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 8,
+        "weight": 11,
+        "outside": 11,
+        "q0": 25
+      }
+    }
+  ],
+  "flipped": [
+    {
+      "layer": 0,
+      "entropy_mean": 2.4349515438079834,
+      "entropy_min": 0.036061227321624756,
+      "entropy_max": 4.093046188354492,
+      "anchor_mass_mean": 0.23909181356430054,
+      "anchor_mass_max": 0.49891701340675354,
+      "key_mass_mean": {
+        "anchor0": 0.003271565306931734,
+        "weight": 0.003559158183634281,
+        "inside": 0.0037476764991879463,
+        "q0": 0.004950630944222212
+      },
+      "key_mass_max": {
+        "anchor0": 0.01799287088215351,
+        "weight": 0.03142477571964264,
+        "inside": 0.0310337096452713,
+        "q0": 0.05679108574986458
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 31,
+        "weight": 27,
+        "inside": 29,
+        "q0": 31
+      }
+    },
+    {
+      "layer": 1,
+      "entropy_mean": 2.281644344329834,
+      "entropy_min": 0.473591148853302,
+      "entropy_max": 3.8554396629333496,
+      "anchor_mass_mean": 0.14019230008125305,
+      "anchor_mass_max": 0.4626586437225342,
+      "key_mass_mean": {
+        "anchor0": 0.006113273557275534,
+        "weight": 0.0024485462345182896,
+        "inside": 0.0012522060424089432,
+        "q0": 0.005772478878498077
+      },
+      "key_mass_max": {
+        "anchor0": 0.11433493345975876,
+        "weight": 0.04106072336435318,
+        "inside": 0.007995269261300564,
+        "q0": 0.053185928612947464
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 20,
+        "weight": 11,
+        "inside": 24,
+        "q0": 25
+      }
+    },
+    {
+      "layer": 2,
+      "entropy_mean": 2.1296186447143555,
+      "entropy_min": 1.0753990411758423,
+      "entropy_max": 3.34757661819458,
+      "anchor_mass_mean": 0.06934694200754166,
+      "anchor_mass_max": 0.270609974861145,
+      "key_mass_mean": {
+        "anchor0": 0.002019526669755578,
+        "weight": 0.002177830319851637,
+        "inside": 0.0014067485462874174,
+        "q0": 0.0025366402696818113
+      },
+      "key_mass_max": {
+        "anchor0": 0.011773704551160336,
+        "weight": 0.029629606753587723,
+        "inside": 0.011638344265520573,
+        "q0": 0.012607450596988201
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 16,
+        "weight": 15,
+        "inside": 3,
+        "q0": 13
+      }
+    },
+    {
+      "layer": 3,
+      "entropy_mean": 2.0239646434783936,
+      "entropy_min": 0.9623141288757324,
+      "entropy_max": 3.60597562789917,
+      "anchor_mass_mean": 0.062061116099357605,
+      "anchor_mass_max": 0.3006581664085388,
+      "key_mass_mean": {
+        "anchor0": 0.0032365149818360806,
+        "weight": 0.0034699123352766037,
+        "inside": 0.0017512377817183733,
+        "q0": 0.0036274027079343796
+      },
+      "key_mass_max": {
+        "anchor0": 0.020263178274035454,
+        "weight": 0.057048480957746506,
+        "inside": 0.02047574892640114,
+        "q0": 0.034122105687856674
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 21,
+        "weight": 11,
+        "inside": 8,
+        "q0": 11
+      }
+    },
+    {
+      "layer": 4,
+      "entropy_mean": 2.076737880706787,
+      "entropy_min": 0.8414902687072754,
+      "entropy_max": 3.715362310409546,
+      "anchor_mass_mean": 0.0755508691072464,
+      "anchor_mass_max": 0.2728614807128906,
+      "key_mass_mean": {
+        "anchor0": 0.0030099579598754644,
+        "weight": 0.0014061043038964272,
+        "inside": 0.001257486641407013,
+        "q0": 0.004600881598889828
+      },
+      "key_mass_max": {
+        "anchor0": 0.012949910946190357,
+        "weight": 0.009509657509624958,
+        "inside": 0.01064407266676426,
+        "q0": 0.04227202758193016
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 20,
+        "weight": 25,
+        "inside": 22,
+        "q0": 25
+      }
+    },
+    {
+      "layer": 5,
+      "entropy_mean": 2.090179204940796,
+      "entropy_min": 0.3949304223060608,
+      "entropy_max": 3.7996416091918945,
+      "anchor_mass_mean": 0.06839920580387115,
+      "anchor_mass_max": 0.47926437854766846,
+      "key_mass_mean": {
+        "anchor0": 0.00182858866173774,
+        "weight": 0.003284627804532647,
+        "inside": 0.001053385785780847,
+        "q0": 0.0032318122684955597
+      },
+      "key_mass_max": {
+        "anchor0": 0.015716679394245148,
+        "weight": 0.07236453890800476,
+        "inside": 0.008687365800142288,
+        "q0": 0.027623482048511505
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 12,
+        "weight": 2,
+        "inside": 10,
+        "q0": 9
+      }
+    },
+    {
+      "layer": 6,
+      "entropy_mean": 2.270050525665283,
+      "entropy_min": 1.2307908535003662,
+      "entropy_max": 3.4278388023376465,
+      "anchor_mass_mean": 0.04932873323559761,
+      "anchor_mass_max": 0.21521532535552979,
+      "key_mass_mean": {
+        "anchor0": 0.0018288814462721348,
+        "weight": 0.0007526460685767233,
+        "inside": 0.0006061692838557065,
+        "q0": 0.0012758462689816952
+      },
+      "key_mass_max": {
+        "anchor0": 0.009453014470636845,
+        "weight": 0.007043950259685516,
+        "inside": 0.002982191974297166,
+        "q0": 0.012408952228724957
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 5,
+        "weight": 11,
+        "inside": 11,
+        "q0": 16
+      }
+    },
+    {
+      "layer": 7,
+      "entropy_mean": 1.3117761611938477,
+      "entropy_min": 0.027766091749072075,
+      "entropy_max": 2.7986724376678467,
+      "anchor_mass_mean": 0.023000497370958328,
+      "anchor_mass_max": 0.18893864750862122,
+      "key_mass_mean": {
+        "anchor0": 0.0015459819696843624,
+        "weight": 0.0006640444044023752,
+        "inside": 0.00025850426754914224,
+        "q0": 0.0009323614649474621
+      },
+      "key_mass_max": {
+        "anchor0": 0.010658874176442623,
+        "weight": 0.010398127138614655,
+        "inside": 0.002030499977990985,
+        "q0": 0.0038762695621699095
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 12,
+        "weight": 3,
+        "inside": 21,
+        "q0": 8
+      }
+    },
+    {
+      "layer": 8,
+      "entropy_mean": 1.7504533529281616,
+      "entropy_min": 0.21762093901634216,
+      "entropy_max": 3.5586235523223877,
+      "anchor_mass_mean": 0.058175262063741684,
+      "anchor_mass_max": 0.235122412443161,
+      "key_mass_mean": {
+        "anchor0": 0.0032811553683131933,
+        "weight": 0.001264739315956831,
+        "inside": 0.0005562203004956245,
+        "q0": 0.0017813119338825345
+      },
+      "key_mass_max": {
+        "anchor0": 0.019525662064552307,
+        "weight": 0.018412278965115547,
+        "inside": 0.0037988482508808374,
+        "q0": 0.018747584894299507
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 19,
+        "weight": 24,
+        "inside": 24,
+        "q0": 24
+      }
+    },
+    {
+      "layer": 9,
+      "entropy_mean": 1.566506266593933,
+      "entropy_min": 0.12682484090328217,
+      "entropy_max": 3.4596803188323975,
+      "anchor_mass_mean": 0.05282244086265564,
+      "anchor_mass_max": 0.2961358428001404,
+      "key_mass_mean": {
+        "anchor0": 0.0024910750798881054,
+        "weight": 0.0007832953706383705,
+        "inside": 0.000513398670591414,
+        "q0": 0.0010857069864869118
+      },
+      "key_mass_max": {
+        "anchor0": 0.022385017946362495,
+        "weight": 0.008244871161878109,
+        "inside": 0.0035888152197003365,
+        "q0": 0.0057957409881055355
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 24,
+        "weight": 14,
+        "inside": 25,
+        "q0": 22
+      }
+    },
+    {
+      "layer": 10,
+      "entropy_mean": 1.5356577634811401,
+      "entropy_min": 0.23966781795024872,
+      "entropy_max": 2.6341216564178467,
+      "anchor_mass_mean": 0.039079468697309494,
+      "anchor_mass_max": 0.14300844073295593,
+      "key_mass_mean": {
+        "anchor0": 0.0007100561633706093,
+        "weight": 0.0007036124588921666,
+        "inside": 0.0007086278055794537,
+        "q0": 0.0012340592220425606
+      },
+      "key_mass_max": {
+        "anchor0": 0.004549125209450722,
+        "weight": 0.00484674284234643,
+        "inside": 0.00805025827139616,
+        "q0": 0.013941774144768715
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 12,
+        "weight": 23,
+        "inside": 23,
+        "q0": 14
+      }
+    },
+    {
+      "layer": 11,
+      "entropy_mean": 1.5940015316009521,
+      "entropy_min": 0.07018984854221344,
+      "entropy_max": 3.347222328186035,
+      "anchor_mass_mean": 0.035672128200531006,
+      "anchor_mass_max": 0.18365314602851868,
+      "key_mass_mean": {
+        "anchor0": 0.0011585480533540249,
+        "weight": 0.00098937819711864,
+        "inside": 0.0002891490876208991,
+        "q0": 0.0019809999503195286
+      },
+      "key_mass_max": {
+        "anchor0": 0.005631354171782732,
+        "weight": 0.015323545783758163,
+        "inside": 0.0019237324595451355,
+        "q0": 0.016970837488770485
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 18,
+        "weight": 0,
+        "inside": 16,
+        "q0": 16
+      }
+    },
+    {
+      "layer": 12,
+      "entropy_mean": 1.8795360326766968,
+      "entropy_min": 0.3056533634662628,
+      "entropy_max": 3.6896157264709473,
+      "anchor_mass_mean": 0.041175730526447296,
+      "anchor_mass_max": 0.33318954706192017,
+      "key_mass_mean": {
+        "anchor0": 0.0013171113096177578,
+        "weight": 0.0014816162874922156,
+        "inside": 0.00020813601440750062,
+        "q0": 0.0022335080429911613
+      },
+      "key_mass_max": {
+        "anchor0": 0.007721662987023592,
+        "weight": 0.03183373808860779,
+        "inside": 0.0022275622468441725,
+        "q0": 0.018805690109729767
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 26,
+        "weight": 18,
+        "inside": 18,
+        "q0": 18
+      }
+    },
+    {
+      "layer": 13,
+      "entropy_mean": 1.7657065391540527,
+      "entropy_min": 0.00013879832113161683,
+      "entropy_max": 3.2444450855255127,
+      "anchor_mass_mean": 0.047167062759399414,
+      "anchor_mass_max": 0.18117350339889526,
+      "key_mass_mean": {
+        "anchor0": 0.004616348072886467,
+        "weight": 0.0007374290726147592,
+        "inside": 0.0004951739101670682,
+        "q0": 0.002384303603321314
+      },
+      "key_mass_max": {
+        "anchor0": 0.03359571099281311,
+        "weight": 0.005995011422783136,
+        "inside": 0.004372626543045044,
+        "q0": 0.01036311499774456
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 30,
+        "weight": 27,
+        "inside": 27,
+        "q0": 27
+      }
+    },
+    {
+      "layer": 14,
+      "entropy_mean": 1.912766456604004,
+      "entropy_min": 0.48906761407852173,
+      "entropy_max": 2.937559127807617,
+      "anchor_mass_mean": 0.03765765577554703,
+      "anchor_mass_max": 0.1400376260280609,
+      "key_mass_mean": {
+        "anchor0": 0.0025158741045743227,
+        "weight": 0.0007517474004998803,
+        "inside": 0.0007233771029859781,
+        "q0": 0.00562335504218936
+      },
+      "key_mass_max": {
+        "anchor0": 0.009219253435730934,
+        "weight": 0.004855832550674677,
+        "inside": 0.004545656498521566,
+        "q0": 0.026547636836767197
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 19,
+        "weight": 7,
+        "inside": 27,
+        "q0": 8
+      }
+    },
+    {
+      "layer": 15,
+      "entropy_mean": 2.2165298461914062,
+      "entropy_min": 0.5966213345527649,
+      "entropy_max": 3.366948366165161,
+      "anchor_mass_mean": 0.07038477063179016,
+      "anchor_mass_max": 0.3103202283382416,
+      "key_mass_mean": {
+        "anchor0": 0.003041433170437813,
+        "weight": 0.0018547261133790016,
+        "inside": 0.0021654004231095314,
+        "q0": 0.0038551955949515104
+      },
+      "key_mass_max": {
+        "anchor0": 0.012391017749905586,
+        "weight": 0.013605908490717411,
+        "inside": 0.01398202683776617,
+        "q0": 0.017804469913244247
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 19,
+        "weight": 13,
+        "inside": 2,
+        "q0": 16
+      }
+    },
+    {
+      "layer": 16,
+      "entropy_mean": 2.4706649780273438,
+      "entropy_min": 1.0802268981933594,
+      "entropy_max": 3.4243009090423584,
+      "anchor_mass_mean": 0.07067801058292389,
+      "anchor_mass_max": 0.22044450044631958,
+      "key_mass_mean": {
+        "anchor0": 0.0025284430012106895,
+        "weight": 0.0018558771116659045,
+        "inside": 0.0020614631939679384,
+        "q0": 0.005282963626086712
+      },
+      "key_mass_max": {
+        "anchor0": 0.005543665029108524,
+        "weight": 0.014633283019065857,
+        "inside": 0.011337214149534702,
+        "q0": 0.023660821840167046
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 26,
+        "weight": 2,
+        "inside": 23,
+        "q0": 16
+      }
+    },
+    {
+      "layer": 17,
+      "entropy_mean": 2.2683053016662598,
+      "entropy_min": 0.48875027894973755,
+      "entropy_max": 3.370434522628784,
+      "anchor_mass_mean": 0.06985707581043243,
+      "anchor_mass_max": 0.21010041236877441,
+      "key_mass_mean": {
+        "anchor0": 0.0016858021263033152,
+        "weight": 0.001229710876941681,
+        "inside": 0.0014343204675242305,
+        "q0": 0.015727227553725243
+      },
+      "key_mass_max": {
+        "anchor0": 0.004568468313664198,
+        "weight": 0.006102240178734064,
+        "inside": 0.008387659676373005,
+        "q0": 0.1470763236284256
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 22,
+        "weight": 15,
+        "inside": 15,
+        "q0": 3
+      }
+    },
+    {
+      "layer": 18,
+      "entropy_mean": 2.5819437503814697,
+      "entropy_min": 1.073042392730713,
+      "entropy_max": 3.6369340419769287,
+      "anchor_mass_mean": 0.0958174616098404,
+      "anchor_mass_max": 0.2896508276462555,
+      "key_mass_mean": {
+        "anchor0": 0.0015718437498435378,
+        "weight": 0.002870328724384308,
+        "inside": 0.0021619191393256187,
+        "q0": 0.015169138088822365
+      },
+      "key_mass_max": {
+        "anchor0": 0.004694173578172922,
+        "weight": 0.014342417940497398,
+        "inside": 0.0066368114203214645,
+        "q0": 0.0753432959318161
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 4,
+        "weight": 19,
+        "inside": 19,
+        "q0": 30
+      }
+    },
+    {
+      "layer": 19,
+      "entropy_mean": 2.289233446121216,
+      "entropy_min": 0.6374549269676208,
+      "entropy_max": 3.3779613971710205,
+      "anchor_mass_mean": 0.07728676497936249,
+      "anchor_mass_max": 0.2256411612033844,
+      "key_mass_mean": {
+        "anchor0": 0.001952841179445386,
+        "weight": 0.001344184041954577,
+        "inside": 0.001994241029024124,
+        "q0": 0.021517621353268623
+      },
+      "key_mass_max": {
+        "anchor0": 0.011073778383433819,
+        "weight": 0.005684944335371256,
+        "inside": 0.01174141839146614,
+        "q0": 0.13070693612098694
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 23,
+        "weight": 0,
+        "inside": 13,
+        "q0": 31
+      }
+    },
+    {
+      "layer": 20,
+      "entropy_mean": 2.2462692260742188,
+      "entropy_min": 0.029310744255781174,
+      "entropy_max": 3.6827335357666016,
+      "anchor_mass_mean": 0.11525101214647293,
+      "anchor_mass_max": 0.38630539178848267,
+      "key_mass_mean": {
+        "anchor0": 0.002057183301076293,
+        "weight": 0.004350426606833935,
+        "inside": 0.004438979085534811,
+        "q0": 0.023959213867783546
+      },
+      "key_mass_max": {
+        "anchor0": 0.015757422894239426,
+        "weight": 0.0272645466029644,
+        "inside": 0.03916499391198158,
+        "q0": 0.08516490459442139
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 27,
+        "weight": 30,
+        "inside": 30,
+        "q0": 2
+      }
+    },
+    {
+      "layer": 21,
+      "entropy_mean": 2.298464775085449,
+      "entropy_min": 0.59455406665802,
+      "entropy_max": 3.4772841930389404,
+      "anchor_mass_mean": 0.11470740288496017,
+      "anchor_mass_max": 0.35177120566368103,
+      "key_mass_mean": {
+        "anchor0": 0.0016128593124449253,
+        "weight": 0.0017169425264000893,
+        "inside": 0.0023521166294813156,
+        "q0": 0.04145144671201706
+      },
+      "key_mass_max": {
+        "anchor0": 0.012223822996020317,
+        "weight": 0.007853233255445957,
+        "inside": 0.0162753127515316,
+        "q0": 0.3083529770374298
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 20,
+        "weight": 27,
+        "inside": 31,
+        "q0": 19
+      }
+    },
+    {
+      "layer": 22,
+      "entropy_mean": 1.659978985786438,
+      "entropy_min": 0.09561725705862045,
+      "entropy_max": 2.865539312362671,
+      "anchor_mass_mean": 0.044079188257455826,
+      "anchor_mass_max": 0.16169442236423492,
+      "key_mass_mean": {
+        "anchor0": 0.0015858904225751758,
+        "weight": 0.001184294931590557,
+        "inside": 0.0010290245991200209,
+        "q0": 0.026900101453065872
+      },
+      "key_mass_max": {
+        "anchor0": 0.013686115853488445,
+        "weight": 0.0092201828956604,
+        "inside": 0.004209368024021387,
+        "q0": 0.1844930648803711
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 20,
+        "weight": 20,
+        "inside": 4,
+        "q0": 7
+      }
+    },
+    {
+      "layer": 23,
+      "entropy_mean": 1.9594330787658691,
+      "entropy_min": 0.45069730281829834,
+      "entropy_max": 3.1988236904144287,
+      "anchor_mass_mean": 0.05825772136449814,
+      "anchor_mass_max": 0.21605046093463898,
+      "key_mass_mean": {
+        "anchor0": 0.0005477725062519312,
+        "weight": 0.0011506015434861183,
+        "inside": 0.0015803383430466056,
+        "q0": 0.04226696491241455
+      },
+      "key_mass_max": {
+        "anchor0": 0.0034022012259811163,
+        "weight": 0.006789773236960173,
+        "inside": 0.011182990856468678,
+        "q0": 0.19405655562877655
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 4,
+        "weight": 10,
+        "inside": 28,
+        "q0": 4
+      }
+    },
+    {
+      "layer": 24,
+      "entropy_mean": 2.0432000160217285,
+      "entropy_min": 0.1002095490694046,
+      "entropy_max": 3.5659396648406982,
+      "anchor_mass_mean": 0.11496773362159729,
+      "anchor_mass_max": 0.4039444029331207,
+      "key_mass_mean": {
+        "anchor0": 0.0022513526491820812,
+        "weight": 0.0020279660820961,
+        "inside": 0.004374499432742596,
+        "q0": 0.025836177170276642
+      },
+      "key_mass_max": {
+        "anchor0": 0.023716337978839874,
+        "weight": 0.019812820479273796,
+        "inside": 0.02892792411148548,
+        "q0": 0.12583231925964355
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 21,
+        "weight": 18,
+        "inside": 14,
+        "q0": 23
+      }
+    },
+    {
+      "layer": 25,
+      "entropy_mean": 1.3695807456970215,
+      "entropy_min": 0.06368834525346756,
+      "entropy_max": 3.2981832027435303,
+      "anchor_mass_mean": 0.06921636313199997,
+      "anchor_mass_max": 0.423171728849411,
+      "key_mass_mean": {
+        "anchor0": 0.0018122849287465215,
+        "weight": 0.001697981613688171,
+        "inside": 0.0019251814810559154,
+        "q0": 0.023670699447393417
+      },
+      "key_mass_max": {
+        "anchor0": 0.02202693186700344,
+        "weight": 0.016124434769153595,
+        "inside": 0.023119904100894928,
+        "q0": 0.12042590975761414
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 30,
+        "weight": 9,
+        "inside": 9,
+        "q0": 30
+      }
+    },
+    {
+      "layer": 26,
+      "entropy_mean": 1.4289087057113647,
+      "entropy_min": 0.04512369632720947,
+      "entropy_max": 2.5994861125946045,
+      "anchor_mass_mean": 0.097526915371418,
+      "anchor_mass_max": 0.3336634933948517,
+      "key_mass_mean": {
+        "anchor0": 0.004078698344528675,
+        "weight": 0.003724184585735202,
+        "inside": 0.003951116465032101,
+        "q0": 0.04149440675973892
+      },
+      "key_mass_max": {
+        "anchor0": 0.029184628278017044,
+        "weight": 0.018302306532859802,
+        "inside": 0.0430297888815403,
+        "q0": 0.3096477687358856
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 27,
+        "weight": 4,
+        "inside": 27,
+        "q0": 4
+      }
+    },
+    {
+      "layer": 27,
+      "entropy_mean": 1.2306565046310425,
+      "entropy_min": 0.07278211414813995,
+      "entropy_max": 2.8851511478424072,
+      "anchor_mass_mean": 0.04576718062162399,
+      "anchor_mass_max": 0.1231604665517807,
+      "key_mass_mean": {
+        "anchor0": 0.0037244223058223724,
+        "weight": 0.0010212862398475409,
+        "inside": 0.0008074815268628299,
+        "q0": 0.032086607068777084
+      },
+      "key_mass_max": {
+        "anchor0": 0.0342337004840374,
+        "weight": 0.008027773350477219,
+        "inside": 0.004602112341672182,
+        "q0": 0.13460838794708252
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 15,
+        "weight": 31,
+        "inside": 17,
+        "q0": 16
+      }
+    },
+    {
+      "layer": 28,
+      "entropy_mean": 1.5337793827056885,
+      "entropy_min": 0.17802464962005615,
+      "entropy_max": 3.09824275970459,
+      "anchor_mass_mean": 0.0887221246957779,
+      "anchor_mass_max": 0.31571418046951294,
+      "key_mass_mean": {
+        "anchor0": 0.00975467637181282,
+        "weight": 0.003300899174064398,
+        "inside": 0.003587127663195133,
+        "q0": 0.06420451402664185
+      },
+      "key_mass_max": {
+        "anchor0": 0.14448504149913788,
+        "weight": 0.018811576068401337,
+        "inside": 0.026616154238581657,
+        "q0": 0.44889283180236816
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 23,
+        "weight": 9,
+        "inside": 9,
+        "q0": 0
+      }
+    },
+    {
+      "layer": 29,
+      "entropy_mean": 1.1970715522766113,
+      "entropy_min": 0.026109378784894943,
+      "entropy_max": 2.4925549030303955,
+      "anchor_mass_mean": 0.06983894109725952,
+      "anchor_mass_max": 0.2550722658634186,
+      "key_mass_mean": {
+        "anchor0": 0.01106100995093584,
+        "weight": 0.0038593055214732885,
+        "inside": 0.00038926955312490463,
+        "q0": 0.11749593168497086
+      },
+      "key_mass_max": {
+        "anchor0": 0.056368179619312286,
+        "weight": 0.019214721396565437,
+        "inside": 0.0017641540616750717,
+        "q0": 0.7832273244857788
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 15,
+        "weight": 26,
+        "inside": 22,
+        "q0": 11
+      }
+    },
+    {
+      "layer": 30,
+      "entropy_mean": 0.9833426475524902,
+      "entropy_min": 0.22745196521282196,
+      "entropy_max": 2.227118968963623,
+      "anchor_mass_mean": 0.027579128742218018,
+      "anchor_mass_max": 0.1250154674053192,
+      "key_mass_mean": {
+        "anchor0": 0.003237923141568899,
+        "weight": 0.0011174938408657908,
+        "inside": 0.0003813356743194163,
+        "q0": 0.0234102550894022
+      },
+      "key_mass_max": {
+        "anchor0": 0.05505929887294769,
+        "weight": 0.007513666991144419,
+        "inside": 0.0019725465681403875,
+        "q0": 0.2028457522392273
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 11,
+        "weight": 17,
+        "inside": 2,
+        "q0": 11
+      }
+    },
+    {
+      "layer": 31,
+      "entropy_mean": 0.9745445251464844,
+      "entropy_min": 0.03268009051680565,
+      "entropy_max": 2.5758323669433594,
+      "anchor_mass_mean": 0.043060302734375,
+      "anchor_mass_max": 0.19089782238006592,
+      "key_mass_mean": {
+        "anchor0": 0.00732248742133379,
+        "weight": 0.003322529373690486,
+        "inside": 0.0003374767256900668,
+        "q0": 0.024603713303804398
+      },
+      "key_mass_max": {
+        "anchor0": 0.0703345388174057,
+        "weight": 0.03878201171755791,
+        "inside": 0.0032965445425361395,
+        "q0": 0.2323552519083023
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 30,
+        "weight": 15,
+        "inside": 10,
+        "q0": 28
+      }
+    },
+    {
+      "layer": 32,
+      "entropy_mean": 0.8949615955352783,
+      "entropy_min": 0.09632456302642822,
+      "entropy_max": 2.3797922134399414,
+      "anchor_mass_mean": 0.029223378747701645,
+      "anchor_mass_max": 0.12851399183273315,
+      "key_mass_mean": {
+        "anchor0": 0.004342603962868452,
+        "weight": 0.0012079316657036543,
+        "inside": 0.00029895425541326404,
+        "q0": 0.016887156292796135
+      },
+      "key_mass_max": {
+        "anchor0": 0.07703260332345963,
+        "weight": 0.011198639869689941,
+        "inside": 0.001404833747074008,
+        "q0": 0.3067304491996765
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 10,
+        "weight": 8,
+        "inside": 16,
+        "q0": 10
+      }
+    },
+    {
+      "layer": 33,
+      "entropy_mean": 0.9753769636154175,
+      "entropy_min": 0.10443374514579773,
+      "entropy_max": 3.3986783027648926,
+      "anchor_mass_mean": 0.05133787542581558,
+      "anchor_mass_max": 0.304555743932724,
+      "key_mass_mean": {
+        "anchor0": 0.00649011367931962,
+        "weight": 0.0021001091226935387,
+        "inside": 0.0005987819749861956,
+        "q0": 0.01840619184076786
+      },
+      "key_mass_max": {
+        "anchor0": 0.049144383519887924,
+        "weight": 0.014667650684714317,
+        "inside": 0.008054900914430618,
+        "q0": 0.13774654269218445
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 28,
+        "weight": 4,
+        "inside": 4,
+        "q0": 28
+      }
+    },
+    {
+      "layer": 34,
+      "entropy_mean": 1.0183329582214355,
+      "entropy_min": 0.03844984248280525,
+      "entropy_max": 2.1938421726226807,
+      "anchor_mass_mean": 0.03161665052175522,
+      "anchor_mass_max": 0.10309205204248428,
+      "key_mass_mean": {
+        "anchor0": 0.0016708341427147388,
+        "weight": 0.0017393013695254922,
+        "inside": 0.0002439466625219211,
+        "q0": 0.008995959535241127
+      },
+      "key_mass_max": {
+        "anchor0": 0.013712148182094097,
+        "weight": 0.021644994616508484,
+        "inside": 0.001998168183490634,
+        "q0": 0.03862622007727623
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 6,
+        "weight": 3,
+        "inside": 19,
+        "q0": 5
+      }
+    },
+    {
+      "layer": 35,
+      "entropy_mean": 0.9966935515403748,
+      "entropy_min": 0.050963062793016434,
+      "entropy_max": 3.288357734680176,
+      "anchor_mass_mean": 0.021851537749171257,
+      "anchor_mass_max": 0.17664575576782227,
+      "key_mass_mean": {
+        "anchor0": 0.0006142767961136997,
+        "weight": 0.0005936387460678816,
+        "inside": 0.0005194945842958987,
+        "q0": 0.0036706007085740566
+      },
+      "key_mass_max": {
+        "anchor0": 0.00600005267187953,
+        "weight": 0.00655066454783082,
+        "inside": 0.008576917462050915,
+        "q0": 0.024912888184189796
+      },
+      "key_mass_argmax_head": {
+        "anchor0": 8,
+        "weight": 11,
+        "inside": 11,
+        "q0": 25
+      }
+    }
+  ]
+}

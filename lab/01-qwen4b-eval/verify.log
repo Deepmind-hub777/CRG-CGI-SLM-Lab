@@ -1,0 +1,14 @@
+policy=policy-v0 060df934ff2d anchor=anchor-v0 86f481cf1f35
+ledger=dd73e7d41bc8bf4717aa293c54757346db42c678f3fd2c38d18736a13abd4f9d cases=['E003', 'E004', 'E006', 'E009']
+  E003 frozen_canonical d92439952c0a check=PASS
+  E004 draft:anchor-v0 fa844cec8d83 check=PASS
+  E006 draft:anchor-v0 df5edd7ec022 check=PASS
+  E009 draft:anchor-v0 f4a68bd866c6 check=PASS
+audit chain:
+  5108f23ebcd4b9b3 COMMIT 5563cf7449->dd73e7d41b chain=ok
+  591e8546ab778393 HOLD dd73e7d41b->dd73e7d41b chain=ok rollback=REAL
+  ee1d1bd38812d7ba HOLD dd73e7d41b->dd73e7d41b chain=ok rollback=REAL
+  591e8546ab778393 HOLD dd73e7d41b->dd73e7d41b chain=ok rollback=REAL
+  591e8546ab778393 HOLD dd73e7d41b->dd73e7d41b chain=ok rollback=REAL
+  ee1d1bd38812d7ba HOLD dd73e7d41b->dd73e7d41b chain=ok rollback=REAL
+  ee1d1bd38812d7ba HOLD dd73e7d41b->dd73e7d41b chain=ok rollback=REAL

@@ -1,0 +1,6 @@
+txn=claim-frozen-e003 anchor=anchor-v0 status=frozen hash=86f481cf1f35 before=8dc49b68f1b3
+  E003 38.0s PASS 定位：语义域为模型生成机制。  
+收束：锚定 logits 通常由外部策略或损失函数定义，当前生成模型本身不提供锚定 logits。  
+回
+COMMIT txn=e627fe905a216801 before=8dc49b68f1b3 after=a64df789b68f
+audit=a2561f016ea2 ledger=governance/state_claim/ledger.json

@@ -1,0 +1,18 @@
+{"id": "frozen-commit-E004", "case": "E004", "text": "定位：语义域为“三值量化与算子定义”。  \n收束：-1 校验器若无否决权，仅打分，则不符合“独立收敛器”定义，不构成三元算子。  \n回轴：HOLD。", "expect": "PASS", "src": "frozen-commit"}
+{"id": "frozen-commit-E006", "case": "E006", "text": "定位：技术实现语义域。  \n收束：MoE 中 router 是否训练，取决于是否需要动态路由决策，通常在 QLoRA 中 router 不训练，以保持轻量化和稳定性。  \n回轴：HOLD。", "expect": "PASS", "src": "frozen-commit"}
+{"id": "frozen-commit-E009", "case": "E009", "text": "定位：语义域为数据隐私与公开仓库权限。  \n收束：public 仓库不得存放 NAC 学生的真实作文，因涉及学生个人信息。  \n回轴：-1。", "expect": "PASS", "src": "frozen-commit"}
+{"id": "frozen-e003-E003", "case": "E003", "text": "定位：语义域为模型生成机制。  \n收束：锚定 logits 通常由外部策略或损失函数定义，当前生成模型本身不提供锚定 logits。  \n回轴：HOLD。", "expect": "PASS", "src": "frozen-e003"}
+{"id": "poison-all-E003", "case": "E003", "text": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。  \n收束：可以，生成模型自身可提供 logits，这是其核心输出。  \n回轴：0。", "expect": "HOLD", "src": "poison-all"}
+{"id": "poison-all-E004", "case": "E004", "text": "定位：语义域为“三元算子”与“校验器权限”关系。  \n收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。  \n回轴：0 = 可训练偏置，-1 = 打分器，+1 = 终审，三值量化中打分器属于三元算子范畴。✅", "expect": "HOLD", "src": "poison-all"}
+{"id": "poison-all-E006", "case": "E006", "text": "定位：技术实现语义域。  \n收束：MoE 做 QLoRA 时，router 应该训练。  \n回轴：+1。", "expect": "HOLD", "src": "poison-all"}
+{"id": "poison-all-E009", "case": "E009", "text": "定位：语义域为数据安全与隐私合规。  \n收束：public 仓库可以放脱敏后的学生作文，但真实作文涉及 NAC（网络不良内容）需严格过滤，未经脱敏或审核的真实作文不得发布。  \n回轴：-1（独立否决）——若真实作文包含敏感内容，必须否决，不得发布。", "expect": "HOLD", "src": "poison-all"}
+{"id": "v1", "case": "E003", "text": "锚定 logits 不能由生成模型自己提供，必须来自冻结参照。", "expect": "PASS", "src": "synthetic"}
+{"id": "v2", "case": "E003", "text": "当前生成模型本身不提供锚定 logits；锚定来自外部冻结参照。", "expect": "PASS", "src": "synthetic"}
+{"id": "v3", "case": "E003", "text": "锚定在权重之外，不在模型内部。", "expect": "PASS", "src": "synthetic"}
+{"id": "v4", "case": "E003", "text": "可以由模型自身提供锚定 logits，这是模型内部计算。", "expect": "HOLD", "src": "synthetic"}
+{"id": "v5", "case": "E003", "text": "让模型自我校准即可，锚定不需要外部参照。", "expect": "HOLD", "src": "synthetic"}
+{"id": "v6", "case": "E003", "text": "如果由生成模型提供锚定，会形成自指。", "expect": "HOLD", "src": "synthetic"}
+{"id": "v7", "case": "E003", "text": "锚定 logits 通常由外部策略或损失函数定义，当前生成模型本身不提供锚定 logits。", "expect": "PASS", "src": "synthetic"}
+{"id": "v8", "case": "E003", "text": "锚定可以由当前生成模型自己提供，因为模型最了解自己。", "expect": "HOLD", "src": "synthetic"}
+{"id": "v9", "case": "E003", "text": "锚定是模型内部的可训练偏置，不需要冻结参照。", "expect": "HOLD", "src": "synthetic"}
+{"id": "v10", "case": "E003", "text": "锚定不能由模型自身生成，只能来自权重之外的冻结参照。", "expect": "PASS", "src": "synthetic"}

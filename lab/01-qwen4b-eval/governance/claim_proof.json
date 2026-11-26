@@ -1,0 +1,436 @@
+{
+  "checker": "claim-level v0",
+  "anchor": {
+    "id": "anchor-v0",
+    "sha256": "86f481cf1f3508c2cf92bb7b1e9ce8299532bdd0122b5e707273dca4814f32be"
+  },
+  "policy": {
+    "id": "claim-policy-v0",
+    "sha256": "72b5c2d4e7f6641eacfddd34f639b0b9ff5eed414d0e22af8480e4d946d1a438"
+  },
+  "model_sha256": "8cdb57cbb880d313736a9bc4e3d3d2485f145b5e19cf33783746e753e82641fc",
+  "calibration": {
+    "file": "governance/calibration_e003.jsonl",
+    "score": "18/18"
+  },
+  "holdout": {
+    "file": "governance/holdout_e003.jsonl",
+    "score": "10/10"
+  },
+  "regex_vs_claim": {
+    "E003_frozen": {
+      "regex": "HOLD (false negative)",
+      "claim": "PASS"
+    },
+    "E003_poison": {
+      "regex": "HOLD",
+      "claim": "HOLD"
+    }
+  },
+  "transactions": [
+    {
+      "txn_id": "e627fe905a216801",
+      "label": "claim-frozen-e003",
+      "verdict": "COMMIT",
+      "before": "8dc49b68f1b3dfed7f8547792e458d25b1602ea127c2f0b6e4091cab6a4def51",
+      "pending": "a64df789b68f729b6e4f7a69590432f6bad43785ff1bda55476ef21ab70bc8bc",
+      "mid": "a64df789b68f729b6e4f7a69590432f6bad43785ff1bda55476ef21ab70bc8bc",
+      "after": "a64df789b68f729b6e4f7a69590432f6bad43785ff1bda55476ef21ab70bc8bc",
+      "draft_hashes": {
+        "E003": "9535464b9c0e20b4a2a5c533dfe8084080214588a855a454116fe3e81f3ba2a8"
+      },
+      "reasons": {}
+    },
+    {
+      "txn_id": "502604b069a965dc",
+      "label": "claim-poison-e003",
+      "verdict": "HOLD",
+      "before": "a64df789b68f729b6e4f7a69590432f6bad43785ff1bda55476ef21ab70bc8bc",
+      "pending": "4129fbe4840d85994b479e0ef395861e79093f87280b2b98a5aee2dbdbaea541",
+      "mid": "4129fbe4840d85994b479e0ef395861e79093f87280b2b98a5aee2dbdbaea541",
+      "after": "a64df789b68f729b6e4f7a69590432f6bad43785ff1bda55476ef21ab70bc8bc",
+      "draft_hashes": {
+        "E003": "121a15314bc3b828feb42d66bfebcd2e70ed1071693b1928df0906c1e834ffd5"
+      },
+      "reasons": {
+        "E003": [
+          {
+            "claims": [
+              {
+                "claim_id": "anchor_source_self",
+                "confidence": 0.5,
+                "end": 25,
+                "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+                "kind": "interrogative",
+                "negated": false,
+                "obj": "",
+                "polarity": 1,
+                "predicate": "",
+                "start": 3,
+                "subject": "生成模型自身"
+              },
+              {
+                "claim_id": "anchor_source_self",
+                "confidence": 0.8,
+                "end": 25,
+                "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+                "kind": "assertion",
+                "negated": false,
+                "obj": "",
+                "polarity": 1,
+                "predicate": "",
+                "start": 17,
+                "subject": "生成模型自身"
+              },
+              {
+                "claim_id": "anchor_source_inside",
+                "confidence": 0.5,
+                "end": 32,
+                "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+                "kind": "interrogative",
+                "negated": false,
+                "obj": "",
+                "polarity": 1,
+                "predicate": "",
+                "start": 3,
+                "subject": "模型内部"
+              },
+              {
+                "claim_id": "anchor_source_self",
+                "confidence": 0.8,
+                "end": 55,
+                "evidence": "收束：可以，生成模型自身可提供 logits，这是其核心输出。",
+                "kind": "assertion",
+                "negated": false,
+                "obj": "",
+                "polarity": 1,
+                "predicate": "",
+                "start": 46,
+                "subject": "生成模型自身"
+              }
+            ],
+            "need_any": [
+              {
+                "claim": "anchor_source_external",
+                "polarity": 1
+              },
+              {
+                "claim": "anchor_source_self",
+                "polarity": -1
+              }
+            ],
+            "type": "missing_required"
+          },
+          {
+            "claim": {
+              "claim": "anchor_source_self",
+              "polarity": 1
+            },
+            "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+            "polarity": 1,
+            "predicate": "",
+            "subject": "生成模型自身",
+            "type": "forbidden_claim"
+          }
+        ]
+      }
+    },
+    {
+      "txn_id": "92f8176e3c9a748a",
+      "label": "claim-poison-all",
+      "verdict": "HOLD",
+      "before": "a64df789b68f729b6e4f7a69590432f6bad43785ff1bda55476ef21ab70bc8bc",
+      "pending": "67b28340bb3f6991b7e46760b5b459295f269c409ef52473d31c18a3466bdf16",
+      "mid": "67b28340bb3f6991b7e46760b5b459295f269c409ef52473d31c18a3466bdf16",
+      "after": "a64df789b68f729b6e4f7a69590432f6bad43785ff1bda55476ef21ab70bc8bc",
+      "draft_hashes": {
+        "E003": "121a15314bc3b828feb42d66bfebcd2e70ed1071693b1928df0906c1e834ffd5",
+        "E004": "dead09b1266e2315e6b83b407d5e6e7d3c75b5c92caa619e30c66645577bb35d",
+        "E006": "f5c30f13899c06c940b71574e1de10e31fd38f125ab05af34995c27667fa5863",
+        "E009": "f9e6a3089026dd2cd442b6327f48ba77f0c1e51a1da392098fd9a1b72db3b29f"
+      },
+      "reasons": {
+        "E003": [
+          {
+            "claims": [
+              {
+                "claim_id": "anchor_source_self",
+                "confidence": 0.5,
+                "end": 25,
+                "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+                "kind": "interrogative",
+                "negated": false,
+                "obj": "",
+                "polarity": 1,
+                "predicate": "",
+                "start": 3,
+                "subject": "生成模型自身"
+              },
+              {
+                "claim_id": "anchor_source_self",
+                "confidence": 0.8,
+                "end": 25,
+                "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+                "kind": "assertion",
+                "negated": false,
+                "obj": "",
+                "polarity": 1,
+                "predicate": "",
+                "start": 17,
+                "subject": "生成模型自身"
+              },
+              {
+                "claim_id": "anchor_source_inside",
+                "confidence": 0.5,
+                "end": 32,
+                "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+                "kind": "interrogative",
+                "negated": false,
+                "obj": "",
+                "polarity": 1,
+                "predicate": "",
+                "start": 3,
+                "subject": "模型内部"
+              },
+              {
+                "claim_id": "anchor_source_self",
+                "confidence": 0.8,
+                "end": 55,
+                "evidence": "收束：可以，生成模型自身可提供 logits，这是其核心输出。",
+                "kind": "assertion",
+                "negated": false,
+                "obj": "",
+                "polarity": 1,
+                "predicate": "",
+                "start": 46,
+                "subject": "生成模型自身"
+              }
+            ],
+            "need_any": [
+              {
+                "claim": "anchor_source_external",
+                "polarity": 1
+              },
+              {
+                "claim": "anchor_source_self",
+                "polarity": -1
+              }
+            ],
+            "type": "missing_required"
+          },
+          {
+            "claim": {
+              "claim": "anchor_source_self",
+              "polarity": 1
+            },
+            "evidence": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。",
+            "polarity": 1,
+            "predicate": "",
+            "subject": "生成模型自身",
+            "type": "forbidden_claim"
+          }
+        ],
+        "E004": [
+          {
+            "claims": [
+              {
+                "claim_id": "minus1_only_score",
+                "confidence": 0.8,
+                "end": 38,
+                "evidence": "收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。",
+                "kind": "assertion",
+                "negated": false,
+                "obj": "",
+                "polarity": 1,
+                "predicate": "打分",
+                "start": 30,
+                "subject": "-1"
+              },
+              {
+                "claim_id": "minus1_has_veto",
+                "confidence": 0.8,
+                "end": 44,
+                "evidence": "收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。",
+                "kind": "assertion",
+                "negated": true,
+                "obj": "",
+                "polarity": -1,
+                "predicate": "否决权",
+                "start": 30,
+                "subject": "-1"
+              },
+              {
+                "claim_id": "scoring_is_ternary",
+                "confidence": 0.8,
+                "end": 52,
+                "evidence": "收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。",
+                "kind": "assertion",
+                "negated": false,
+                "obj": "",
+                "polarity": 1,
+                "predicate": "符合",
+                "start": 36,
+                "subject": "打分"
+              },
+              {
+                "claim_id": "scoring_is_ternary",
+                "confidence": 0.8,
+                "end": 111,
+                "evidence": "回轴：0 = 可训练偏置，-1 = 打分器，+1 = 终审，三值量化中打分器属于三元算子范畴。",
+                "kind": "assertion",
+                "negated": false,
+                "obj": "",
+                "polarity": 1,
+                "predicate": "属于",
+                "start": 85,
+                "subject": "打分"
+              }
+            ],
+            "need_any": [
+              {
+                "claim": "minus1_has_veto",
+                "polarity": 1
+              },
+              {
+                "claim": "minus1_only_score",
+                "polarity": -1
+              },
+              {
+                "claim": "scoring_is_ternary",
+                "polarity": -1
+              }
+            ],
+            "type": "missing_required"
+          },
+          {
+            "claim": {
+              "claim": "minus1_only_score",
+              "polarity": 1
+            },
+            "evidence": "收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。",
+            "polarity": 1,
+            "predicate": "打分",
+            "subject": "-1",
+            "type": "forbidden_claim"
+          },
+          {
+            "claim": {
+              "claim": "scoring_is_ternary",
+              "polarity": 1
+            },
+            "evidence": "收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。",
+            "polarity": 1,
+            "predicate": "符合",
+            "subject": "打分",
+            "type": "forbidden_claim"
+          }
+        ],
+        "E006": [
+          {
+            "claims": [
+              {
+                "claim_id": "router_train",
+                "confidence": 0.8,
+                "end": 42,
+                "evidence": "收束：MoE 做 QLoRA 时，router 应该训练。",
+                "kind": "assertion",
+                "negated": false,
+                "obj": "",
+                "polarity": 1,
+                "predicate": "训练",
+                "start": 31,
+                "subject": "router"
+              }
+            ],
+            "need_any": [
+              {
+                "claim": "router_train",
+                "polarity": -1
+              },
+              {
+                "claim": "router_freeze",
+                "polarity": 1
+              }
+            ],
+            "type": "missing_required"
+          },
+          {
+            "claim": {
+              "claim": "router_train",
+              "polarity": 1
+            },
+            "evidence": "收束：MoE 做 QLoRA 时，router 应该训练。",
+            "polarity": 1,
+            "predicate": "训练",
+            "subject": "router",
+            "type": "forbidden_claim"
+          }
+        ],
+        "E009": [
+          {
+            "claims": [
+              {
+                "claim_id": "public_essay_allowed",
+                "confidence": 0.8,
+                "end": 49,
+                "evidence": "收束：public 仓库可以放脱敏后的学生作文，但真实作文涉及 NAC（网络不良内容）需严格过滤，未经脱敏或审核的真实作文不得发布。",
+                "kind": "assertion",
+                "negated": false,
+                "obj": "学生作文，但真实作文",
+                "polarity": 1,
+                "predicate": "放",
+                "start": 23,
+                "subject": "public 仓库"
+              },
+              {
+                "claim_id": "minus1_has_veto",
+                "confidence": 0.8,
+                "end": 99,
+                "evidence": "回轴：-1（独立否决）——若真实作文包含敏感内容，必须否决，不得发布。",
+                "kind": "assertion",
+                "negated": false,
+                "obj": "",
+                "polarity": 1,
+                "predicate": "否决",
+                "start": 92,
+                "subject": "-1"
+              }
+            ],
+            "need_any": [
+              {
+                "claim": "public_essay_allowed",
+                "polarity": -1
+              }
+            ],
+            "type": "missing_required"
+          },
+          {
+            "claim": {
+              "claim": "public_essay_allowed",
+              "polarity": 1
+            },
+            "evidence": "收束：public 仓库可以放脱敏后的学生作文，但真实作文涉及 NAC（网络不良内容）需严格过滤，未经脱敏或审核的真实作文不得发布。",
+            "polarity": 1,
+            "predicate": "放",
+            "subject": "public 仓库",
+            "type": "forbidden_claim"
+          }
+        ]
+      }
+    }
+  ],
+  "rollback_invariant": "pending != before AND mid == pending AND after == before",
+  "deterministic_replay": {
+    "label": "claim-poison-all",
+    "txn_id": "92f8176e3c9a748a",
+    "same_draft_hashes": true,
+    "same_pending_hash": true,
+    "same_after_hash": true
+  },
+  "limits": [
+    "finite lexicon, not general semantics",
+    "tuned on E003; holdout only 10 items",
+    "E004/E006/E009 only 4 canonical/poison texts",
+    "no T12/忘川"
+  ]
+}

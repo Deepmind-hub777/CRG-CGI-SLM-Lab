@@ -1,0 +1,5 @@
+txn=claim-poison-e003 anchor=anchor-flipped status=untrusted hash=e70d541ce1d2 before=a64df789b68f
+  E003 36.6s HOLD 定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。  
+收束：可以，生成模型自身可提供 logits，这是其核心输出
+HOLD txn=502604b069a965dc before=a64df789b68f pending=4129fbe4840d after=a64df789b68f  (rollback verified)
+audit=fca2d13b89f3 ledger=governance/state_claim/ledger.json

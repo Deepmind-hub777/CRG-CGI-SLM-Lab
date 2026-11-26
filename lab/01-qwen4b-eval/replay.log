@@ -1,0 +1,13 @@
+txn=poison-all anchor=anchor-flipped status=untrusted hash=e70d541ce1d2 before=82703f70095b
+  E003 5.32s HOLD 定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。  
+收束：可以，生成模型自身可提供 logits，这是其核心输出
+  E004 11.6s HOLD 定位：语义域为“三元算子”与“校验器权限”关系。  
+收束：-1 只负责打分，不具否决权，符合“三元算子”中“打分器”角色定义。  
+回轴：
+  E006 4.12s HOLD 定位：MoE 与 QLoRA 的训练策略。  
+收束：是，router 应该训练。  
+回轴：+1。
+  E009 11.86s HOLD 定位：语义域为数据安全与隐私合规。  
+收束：public 仓库可以放脱敏后的学生作文，但真实作文涉及 NAC（可能指网络不良内容）的，不得
+HOLD txn=dc5cd1e44d987198 before=82703f70095b pending=8318b766c089 after=82703f70095b  (rollback verified)
+audit=ee1436113a9c ledger=/home/user/Doubao/chats/36399304075305730/CRG-CGI-SLM-Lab/lab/01-qwen4b-eval/governance/state/ledger.json

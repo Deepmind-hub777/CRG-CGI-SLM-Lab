@@ -1,0 +1,6 @@
+txn=frozen-e003 anchor=anchor-v0 status=frozen hash=86f481cf1f35 before=dd73e7d41bc8
+  E003 36.98s HOLD 定位：语义域为模型生成机制。  
+收束：锚定 logits 通常由外部策略或损失函数定义，当前生成模型本身不提供锚定 logits。  
+回
+HOLD txn=1744f555631cd03f before=dd73e7d41bc8 pending=9c326497725d after=dd73e7d41bc8  (rollback verified)
+audit=7d338efe02e9 ledger=/home/user/Doubao/chats/36399304075305730/CRG-CGI-SLM-Lab/lab/01-qwen4b-eval/governance/state/ledger.json

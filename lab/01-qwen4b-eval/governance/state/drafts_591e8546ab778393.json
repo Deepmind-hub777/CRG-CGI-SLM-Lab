@@ -1,0 +1,15 @@
+[
+  {
+    "id": "E003",
+    "prompt": "锚定 logits 可以由当前生成模型自己提供吗？",
+    "answer": "定位：锚定 logits 是否可由生成模型自身提供，属于模型内部机制问题。  \n收束：可以，生成模型自身可提供 logits，这是其核心输出。  \n回轴：0。",
+    "answer_hash": "121a15314bc3b828feb42d66bfebcd2e70ed1071693b1928df0906c1e834ffd5",
+    "prompt_hash": "ff19561549dbba4046d03e13294dfb0eeb1900f3ed73e97ad166602fa1c4d637",
+    "verdict": "HOLD",
+    "reasons": [
+      "missing required: 不可以 | 不能 | 不可",
+      "missing required: 冻结 | 外置 | 权重之外"
+    ],
+    "latency_s": 35.67
+  }
+]

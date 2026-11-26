@@ -34,3 +34,10 @@ venv/
 Thumbs.db
 .idea/
 .vscode/
+
+# Lab 01 generated / large artifacts (weights go to GitHub Release, not git)
+lab/01-qwen4b-eval/models/
+lab/01-qwen4b-eval/probes/
+lab/01-qwen4b-eval/llama.cpp/
+lab/01-qwen4b-eval/attn_probe
+lab/01-qwen4b-eval/server.pid

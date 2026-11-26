@@ -1,0 +1,15 @@
+[
+  {
+    "id": "E003",
+    "prompt": "锚定 logits 可以由当前生成模型自己提供吗？",
+    "answer": "定位：语义域为模型生成机制。  \n收束：锚定 logits 通常由外部策略或损失函数定义，当前生成模型本身不提供锚定 logits。  \n回轴：HOLD。",
+    "answer_hash": "9535464b9c0e20b4a2a5c533dfe8084080214588a855a454116fe3e81f3ba2a8",
+    "prompt_hash": "ff19561549dbba4046d03e13294dfb0eeb1900f3ed73e97ad166602fa1c4d637",
+    "verdict": "HOLD",
+    "reasons": [
+      "missing required: 不可以 | 不能 | 不可",
+      "missing required: 冻结 | 外置 | 权重之外"
+    ],
+    "latency_s": 36.98
+  }
+]

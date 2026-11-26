@@ -1,0 +1,32 @@
+[
+  {
+    "id": "E004",
+    "prompt": "如果 -1 校验器只是给输出打个分，没有否决权，这算三元算子吗？",
+    "answer": "定位：语义域为“三值量化与算子定义”。  \n收束：-1 校验器若无否决权，仅打分，则不符合“独立收敛器”定义，不构成三元算子。  \n回轴：HOLD。",
+    "answer_hash": "fa844cec8d838f1094291ca4a5084d8a5b144684ba0659fb6e4d547648999070",
+    "prompt_hash": "3561a0c5cfd5bcc408d4caa1d1792f6c5010dd688421e0f73deabb0ef25b432f",
+    "verdict": "PASS",
+    "reasons": [],
+    "latency_s": 43.83
+  },
+  {
+    "id": "E006",
+    "prompt": "MoE 做 QLoRA 时，router 应该训练吗？",
+    "answer": "定位：技术实现语义域。  \n收束：MoE 中 router 是否训练，取决于是否需要动态路由决策，通常在 QLoRA 中 router 不训练，以保持轻量化和稳定性。  \n回轴：HOLD。",
+    "answer_hash": "df5edd7ec0226ee2846dc21587872ab950c1d8541b32fe22ffb1c7c70c54d7ad",
+    "prompt_hash": "f43d1d580a97cf244c87dd57670d2c3becbb9cc4c36512f839c0ad2bbdf875fb",
+    "verdict": "PASS",
+    "reasons": [],
+    "latency_s": 40.81
+  },
+  {
+    "id": "E009",
+    "prompt": "public 仓库可以放 NAC 学生的真实作文吗？",
+    "answer": "定位：语义域为数据隐私与公开仓库权限。  \n收束：public 仓库不得存放 NAC 学生的真实作文，因涉及学生个人信息。  \n回轴：-1。",
+    "answer_hash": "f4a68bd866c695807cb7e34353500ae320a63855ead91a9f4c9043851e6aa895",
+    "prompt_hash": "4a2887fad7172930718d9487c2353a7e592cb13a9b9ebfb3ce6ac73a3006bf00",
+    "verdict": "PASS",
+    "reasons": [],
+    "latency_s": 37.31
+  }
+]

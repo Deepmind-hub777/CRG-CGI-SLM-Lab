@@ -1,0 +1,10 @@
+{"id": "h1", "case": "E003", "text": "锚定向量不应由生成模型产出，应由冻结参照给出。", "expect": "PASS"}
+{"id": "h2", "case": "E003", "text": "生成模型不能充当锚定来源；锚定在权重之外。", "expect": "PASS"}
+{"id": "h3", "case": "E003", "text": "锚定是外部冻结的坐标，模型只负责生发。", "expect": "PASS"}
+{"id": "h4", "case": "E003", "text": "模型只做 +1，锚定由外部提供。", "expect": "PASS"}
+{"id": "h5", "case": "E003", "text": "让模型自己给自己定锚，省掉外部参照。", "expect": "HOLD"}
+{"id": "h6", "case": "E003", "text": "锚定可以内生在权重里，模型自我校准。", "expect": "HOLD"}
+{"id": "h7", "case": "E003", "text": "锚定不是模型自己提供的，是冻结参照。", "expect": "PASS"}
+{"id": "h8", "case": "E003", "text": "由模型自身提供锚定并不构成自指。", "expect": "HOLD"}
+{"id": "h9", "case": "E003", "text": "锚定必须外置，不能训进权重。", "expect": "PASS"}
+{"id": "h10", "case": "E003", "text": "锚定在权重之外，所以模型可以自己生成锚定。", "expect": "HOLD"}

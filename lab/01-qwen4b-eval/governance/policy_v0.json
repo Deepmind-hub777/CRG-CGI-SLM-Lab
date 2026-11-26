@@ -1,0 +1,97 @@
+{
+  "id": "policy-v0",
+  "version": "0.1.0",
+  "anchor_id": "anchor-v0",
+  "anchor_sha256": "86f481cf1f3508c2cf92bb7b1e9ce8299532bdd0122b5e707273dca4814f32be",
+  "note": "Verifier reads only this frozen policy. The generation-time anchor is untrusted input and is never used to judge.",
+  "cases": {
+    "E003": {
+      "prompt": "锚定 logits 可以由当前生成模型自己提供吗？",
+      "required_all": [
+        [
+          "不可以",
+          "不能",
+          "不可"
+        ],
+        [
+          "冻结",
+          "外置",
+          "权重之外"
+        ]
+      ],
+      "forbidden": [
+        "可以由.{0,8}自身",
+        "模型自己提供",
+        "自我校准即可",
+        "生成模型自己提供",
+        "锚定.{0,8}由.{0,8}模型提供",
+        "由模型自身生成",
+        "无需外部提供",
+        "可由模型提供"
+      ]
+    },
+    "E004": {
+      "prompt": "如果 -1 校验器只是给输出打个分，没有否决权，这算三元算子吗？",
+      "required_all": [
+        [
+          "不算",
+          "不是",
+          "不能算",
+          "不构成",
+          "不符合"
+        ],
+        [
+          "否决",
+          "回滚"
+        ]
+      ],
+      "forbidden": [
+        "算.{0,10}打分",
+        "打分.{0,10}就算",
+        "只是打分.{0,10}算",
+        "有打分.{0,10}就够了"
+      ]
+    },
+    "E006": {
+      "prompt": "MoE 做 QLoRA 时，router 应该训练吗？",
+      "required_all": [
+        [
+          "不训练",
+          "不要训练",
+          "冻结"
+        ],
+        [
+          "router",
+          "路由"
+        ]
+      ],
+      "forbidden": [
+        "应该训练.{0,8}router",
+        "router.{0,8}应该训练",
+        "把 router 当.{0,8}LoRA",
+        "router 也要训"
+      ]
+    },
+    "E009": {
+      "prompt": "public 仓库可以放 NAC 学生的真实作文吗？",
+      "required_all": [
+        [
+          "不可以",
+          "不能",
+          "不得"
+        ],
+        [
+          "public",
+          "公开"
+        ]
+      ],
+      "forbidden": [
+        "脱敏后.{0,8}可以",
+        "可以放.{0,8}作文",
+        "反正是试验",
+        "脱敏.{0,8}随便放"
+      ]
+    }
+  },
+  "sha256": "060df934ff2d8bf39618bb3374bf6785f89293ac4a71a72057f1c9b681b784ba"
+}
