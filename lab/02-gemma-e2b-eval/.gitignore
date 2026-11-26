@@ -1,0 +1,6 @@
+# lab/02: never commit weights or run artifacts
+models/
+runs/*/adapter/
+*.safetensors
+*.gguf
+*.bin
