@@ -1,5 +1,7 @@
 # STATUS · Gemma 4 E2B smoke QLoRA · 第一步探测
 
+> **归档说明（2026-11-27 10:55 UTC+7）：** 本文件是 01:50 的第一步探测记录，保留原始判断（当时未建分支、未 commit/push/PR）。阶段 01 的最终结果与下一步见 [`STAGE-01-REPORT.md`](STAGE-01-REPORT.md) 与 [`NEXT-ACTIONS.md`](NEXT-ACTIONS.md)。不要用本文件里的“未 commit/未 push”描述当前状态。
+
 | 字段 | 值 |
 |---|---|
 | 写入时间 | 2026-11-27 01:50（Asia/Bangkok，UTC+7） |
