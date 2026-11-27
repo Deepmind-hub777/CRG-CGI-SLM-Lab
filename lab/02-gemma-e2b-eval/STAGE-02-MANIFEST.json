@@ -23,7 +23,8 @@
     "qwen3_4b_adapter_eval_recomputed": true,
     "qwen3_4b_gate_passed": false,
     "ruler_semantic_contract_fixed": false,
-    "qwen_param_count_corrected": true
+    "qwen_param_count_corrected": true,
+    "a4_stocktake_added": true
   },
   "claim_boundary": {
     "governance_layer_model_agnostic": "design-level only; not empirically proven across models",
@@ -149,8 +150,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6456,
-      "sha256": "15c01af50475bb6cb9a61ef3a83b875b080047baa3354b278abaa34664d8d999"
+      "bytes": 6589,
+      "sha256": "41a32bd30aaf676b3b83b79075490a6a9964644b548e6e60f0fdba71d8add64a"
     },
     {
       "path": "rubric_v1.json",
@@ -289,8 +290,8 @@
     },
     {
       "path": "a4_qwen_recompute.py",
-      "bytes": 5122,
-      "sha256": "06b9e87af026c83f43eb4c0a07d2b7f75dfd04e2976535017cc18d82405484c7"
+      "bytes": 5276,
+      "sha256": "71639f66b77086469ebafb446963e57612f70992f14136ac0091863966eb5b97"
     },
     {
       "path": "evidence/qwen3-4b/base_eval.json",
@@ -314,13 +315,18 @@
     },
     {
       "path": "evidence/a4-recompute.md",
-      "bytes": 1700,
-      "sha256": "131c835c0c5a069c4fe6ecfe1145a1b6d058d0ad11a26d224314ed96e8fd8916"
+      "bytes": 1837,
+      "sha256": "0dc855a7b367fd69143c05176bf47a1cb1758b0975a1f96e614c926ba4896f9f"
     },
     {
       "path": "evidence/qwen3-4b/param_check.json",
       "bytes": 641,
       "sha256": "bf66183e5ede6f677a6b960b129e34b51eda512e37b780d5a1b062b50d5b26f1"
+    },
+    {
+      "path": "A4-STOCKTAKE.md",
+      "bytes": 10578,
+      "sha256": "b73e324493615f8b29a7dd93273a7c954335b94b897ab51d2b465618e950c199"
     }
   ],
   "a3_offline_fix": {
@@ -384,5 +390,10 @@
     "qwen_train_sha256": "54fd202c4df00c635ab0086acf01493ecbdaed10f95624eec1655e2165994492",
     "gemma_old_train_sha256": "f1072fa95f2514ca9dba36f990bcdb276bb71266a8ccfac466efc68fb8238371",
     "note": "A3 changed train from f1072f to 54fd20 (canonical predicate/object fill, 0 empty; gold_claims added to holdout). Qwen vs Gemma is not a controlled model comparison."
+  },
+  "a4_stocktake": {
+    "path": "A4-STOCKTAKE.md",
+    "scope": "facts, open questions, candidate next steps; no pass/fail conclusion",
+    "open_questions": 19
   }
 }
