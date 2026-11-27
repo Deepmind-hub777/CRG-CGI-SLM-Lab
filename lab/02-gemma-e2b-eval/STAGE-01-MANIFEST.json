@@ -69,9 +69,9 @@
       "passed": false,
       "rubric": "contract-v1",
       "issues": [
-        "base schema 0/10: polarity positive/negative aliases and kind fact/restriction",
-        "adapter schema 0/10: polarity:0, kind:PASS, missing polarity/kind/evidence",
-        "structural 8/10 only; no output passed both structural and schema"
+        "base strict schema 0/10: polarity positive/negative aliases and kind fact/restriction; lenient 7/10",
+        "adapter strict schema 0/10; lenient 0/10: polarity:0, kind:PASS, missing polarity/kind/evidence",
+        "structural 8/10 and core triple 8/10; no output passed both structural and strict schema"
       ]
     },
     "target_gold_alignment": {
@@ -98,7 +98,9 @@
         "verdict_accuracy": 0.5,
         "hold_recall": "0/4",
         "always_pass_baseline": 0.6,
-        "claim_set_exact": null
+        "claim_set_exact": null,
+        "core_triple_pass": "8/10",
+        "lenient_schema_pass": "7/10"
       },
       "adapter": {
         "n": 10,
@@ -108,9 +110,11 @@
         "verdict_accuracy": 0.5,
         "hold_recall": "0/4",
         "always_pass_baseline": 0.6,
-        "claim_set_exact": null
+        "claim_set_exact": null,
+        "core_triple_pass": "8/10",
+        "lenient_schema_pass": "0/10"
       },
-      "note": "claim_set exact is None because no output passed both structural and schema gates"
+      "note": "strict schema 0/10 both; core triple 8/10 both; base lenient 7/10 (alias issue), adapter lenient 0/10 (not only harness)"
     }
   },
   "next_gate": {
@@ -140,23 +144,23 @@
     },
     {
       "path": "STAGE-01-REPORT.md",
-      "bytes": 15755,
-      "sha256": "7cf40cf86ff81b16bd6374a40c18ca1d4ffdb2766bb3815910a26e42b70fc1bd"
+      "bytes": 16258,
+      "sha256": "6e1cce2d1a02e9b5075db20c1ada23b2f052989f47977b35ec9ca8059c99addd"
     },
     {
       "path": "NEXT-ACTIONS.md",
-      "bytes": 3074,
-      "sha256": "ccd1e18349d0498cb103dd6626c140fdf0262e886c1d1c7e48defe92b41ed6ce"
+      "bytes": 3150,
+      "sha256": "293670c82614b31a162eb5e7cc39e08590f9c693e7ca8c63e46c3e2d6c2d83b1"
     },
     {
       "path": "rubric_v1.json",
-      "bytes": 1692,
-      "sha256": "cc31a736a5c5621fec703ef95981c8f6020331ba591de7b55cc8b517cbcd8871"
+      "bytes": 2077,
+      "sha256": "371c33b448e0f24657c8cc890ec1274b70a26282278cd63b1cf7746fc3c46b45"
     },
     {
       "path": "contract_eval.py",
-      "bytes": 9586,
-      "sha256": "b719bbf013d4adc9e5ddc2169336ffea7c5ca55c791854df6143c5a76cedcb15"
+      "bytes": 11325,
+      "sha256": "50fbed1ae89ef0a5df200ec025f18dc5bfd4176b6239978df32d77d0761df5c5"
     },
     {
       "path": "test_contract_eval.py",
@@ -175,13 +179,13 @@
     },
     {
       "path": "evidence/contract-eval-v1.md",
-      "bytes": 2110,
-      "sha256": "64f4e60b30b4a6a64fbd4686f528dde11f8cd112026beeffbcdee8820383debd"
+      "bytes": 2474,
+      "sha256": "916433c9e9aead3570d74394c3299504222f71fb2f842a3abe5b33ea8f270d5b"
     },
     {
       "path": "evidence/contract-eval-v1.json",
-      "bytes": 12094,
-      "sha256": "1bb446ed662d6080d8fc3dae2f74bd95bd5b67b59a4445652db1994db0b54c0b"
+      "bytes": 13645,
+      "sha256": "c1f40dd53370cc3dcfb12f9edf8d6f9b2ed8ddbbe4a8da55f05fac06e3bb24eb"
     },
     {
       "path": "data/train.jsonl",

@@ -11,8 +11,10 @@
 |---|---:|---:|
 | n | 10 | 10 |
 | 结构合格 | 8/10 | 8/10 |
-| schema 合格 | **0/10** | **0/10** |
-| 完整三元组 | **0/10** | **0/10** |
+| 核心三元组非空（诊断） | 8/10 | 8/10 |
+| 宽松 schema（接受 positive/negative、fact/restriction 别名） | 7/10 | **0/10** |
+| schema 合格（严格） | **0/10** | **0/10** |
+| 完整三元组（严格） | **0/10** | **0/10** |
 | verdict 准确率 | 0.5 | 0.5 |
 | HOLD recall | 0/4 | 0/4 |
 | always-PASS 基线 | 0.6 | 0.6 |
@@ -34,9 +36,9 @@
 
 ## 结论
 
-1. **8/10 只是结构合格。** 按 target 的 schema 严格判，base 与 adapter 都是 **0/10**。
-2. **base 的 schema 失败主要是别名：** `polarity` 写 `"positive"` / `"negative"`，`kind` 写 `fact` / `restriction`；不是 target 用的 `±1` 和 `assertion/antecedent/consequent/hypothetical`。
-3. **adapter 的 schema 失败主要是缺字段和非法值：** `polarity:0`、`kind:"PASS"`、claims 缺 `polarity/kind/evidence`，另有 2 条截断。
+1. **8/10 只是结构合格；核心三元组也是 8/10。** 两边在有效样本里都能给出非空的 claim_id / subject / predicate / object，内容层不是“全空”。
+2. **base 的严格 0/10 主要是 harness 严格度。** 它把 `polarity` 写成 `"positive"` / `"negative"`、`kind` 写成 `fact` / `restriction`；放宽别名后是 **7/10**，按 target 的 `±1` + 枚举才是 0/10。
+3. **adapter 的 0/10 不能全推给 harness。** 即使放宽别名，它仍是 **0/10**：`polarity:0`、`kind:"PASS"`、claims 缺 `polarity/kind/evidence`，另有 2 条截断。这里有 prompt/schema 没说清的部分，但输出确实不合契约。
 4. **HOLD recall 0/4，verdict 0.5 < always-PASS 0.6。** 这是模型行为，不是 rubric 造成的。
 5. **claim set 旧 0.1 不能当能力指标。** 唯一“精确匹配”的样本是结构不合格的 base 005；在“结构 + schema 都合格”的门槛下，没有可计算样本。
 

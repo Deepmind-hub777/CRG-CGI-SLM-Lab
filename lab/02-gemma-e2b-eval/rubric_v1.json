@@ -42,6 +42,10 @@
     ],
     "note": "Schema may pass while full triples are still empty; report both."
   },
+  "diagnostics": {
+    "core_triple": "structural + non-empty claim_id/subject/predicate/object; ignores polarity/kind/evidence, used only to separate content from harness strictness",
+    "lenient_schema": "core_triple + accepts positive/negative and fact/restriction aliases + evidence non-empty; still rejects polarity 0 and kind PASS; diagnostic only, not an acceptance gate"
+  },
   "failure_classes": [
     "fence",
     "bad_json",

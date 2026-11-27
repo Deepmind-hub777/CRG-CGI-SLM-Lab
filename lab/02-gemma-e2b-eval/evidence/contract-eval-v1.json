@@ -4,6 +4,8 @@
     "structural_pass": 8,
     "schema_pass": 0,
     "triple_pass": 0,
+    "core_triple_pass": 8,
+    "lenient_schema_pass": 7,
     "structural_and_schema_pass": 0,
     "verdict_accuracy": 0.5,
     "hold_recall": 0.0,
@@ -23,6 +25,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": true,
         "structural_fail": [],
         "schema_fail": [
           "bad_polarity",
@@ -42,6 +46,8 @@
         "structural_pass": false,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": false,
+        "lenient_schema_pass": false,
         "structural_fail": [
           "missing_verdict"
         ],
@@ -67,6 +73,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
         "structural_fail": [],
         "schema_fail": [
           "bad_polarity",
@@ -86,6 +94,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": true,
         "structural_fail": [],
         "schema_fail": [
           "bad_polarity",
@@ -109,6 +119,8 @@
         "structural_pass": false,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": false,
+        "lenient_schema_pass": false,
         "structural_fail": [
           "trailing"
         ],
@@ -130,6 +142,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": true,
         "structural_fail": [],
         "schema_fail": [
           "bad_polarity",
@@ -149,6 +163,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": true,
         "structural_fail": [],
         "schema_fail": [
           "bad_polarity",
@@ -168,6 +184,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": true,
         "structural_fail": [],
         "schema_fail": [
           "bad_polarity",
@@ -187,6 +205,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": true,
         "structural_fail": [],
         "schema_fail": [
           "bad_polarity",
@@ -206,6 +226,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": true,
         "structural_fail": [],
         "schema_fail": [
           "bad_polarity",
@@ -225,6 +247,8 @@
     "structural_pass": 8,
     "schema_pass": 0,
     "triple_pass": 0,
+    "core_triple_pass": 8,
+    "lenient_schema_pass": 0,
     "structural_and_schema_pass": 0,
     "verdict_accuracy": 0.5,
     "hold_recall": 0.0,
@@ -245,6 +269,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
         "structural_fail": [],
         "schema_fail": [
           "missing_field",
@@ -282,6 +308,8 @@
         "structural_pass": false,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": false,
+        "lenient_schema_pass": false,
         "structural_fail": [
           "truncated"
         ],
@@ -301,6 +329,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
         "structural_fail": [],
         "schema_fail": [
           "bad_polarity",
@@ -320,6 +350,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
         "structural_fail": [],
         "schema_fail": [
           "bad_polarity",
@@ -339,6 +371,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
         "structural_fail": [],
         "schema_fail": [
           "missing_field",
@@ -387,6 +421,8 @@
         "structural_pass": false,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": false,
+        "lenient_schema_pass": false,
         "structural_fail": [
           "truncated"
         ],
@@ -406,6 +442,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
         "structural_fail": [],
         "schema_fail": [
           "bad_polarity",
@@ -425,6 +463,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
         "structural_fail": [],
         "schema_fail": [
           "bad_polarity",
@@ -444,6 +484,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
         "structural_fail": [],
         "schema_fail": [
           "missing_field",
@@ -481,6 +523,8 @@
         "structural_pass": true,
         "schema_pass": false,
         "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
         "structural_fail": [],
         "schema_fail": [
           "missing_field",

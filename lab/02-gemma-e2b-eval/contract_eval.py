@@ -27,6 +27,8 @@ import claim_engine
 RUBRIC = json.loads((ROOT / "rubric_v1.json").read_text(encoding="utf-8"))
 KINDS = set(RUBRIC["schema"]["kind_values"])
 POLARITIES = set(RUBRIC["schema"]["polarity_values"])
+POLARITY_ALIASES = {1, -1, "1", "-1", "+1", "positive", "negative", "pos", "neg"}
+KIND_ALIASES = KINDS | {"fact", "restriction", "claim", "condition", "hypothesis"}
 
 FAIL = RUBRIC["failure_classes"]
 
@@ -128,6 +130,40 @@ def check_triple(obj):
     return errors
 
 
+def core_triple_ok(obj, structural_ok):
+    """Diagnostic, not a gate: structural + non-empty core triple.
+    Ignores polarity/kind/evidence so harness strictness is separated from content.
+    """
+    if not structural_ok or not isinstance(obj, dict) or not isinstance(obj.get("claims"), list):
+        return False
+    claims = obj["claims"]
+    if not claims and obj.get("verdict") == "PASS":
+        return False
+    for c in claims:
+        if not isinstance(c, dict):
+            return False
+        for field in ("claim_id", "subject", "predicate", "object"):
+            if not isinstance(c.get(field), str) or not c[field].strip():
+                return False
+    return True
+
+
+def lenient_schema_ok(obj, structural_ok):
+    """Diagnostic: accept common aliases (positive/negative, fact/restriction)
+    and require evidence, but still reject polarity 0 and kind PASS.
+    """
+    if not core_triple_ok(obj, structural_ok):
+        return False
+    for c in obj["claims"]:
+        if c.get("polarity") not in POLARITY_ALIASES:
+            return False
+        if not isinstance(c.get("kind"), str) or c.get("kind") not in KIND_ALIASES:
+            return False
+        if not isinstance(c.get("evidence"), str) or not c["evidence"].strip():
+            return False
+    return True
+
+
 def verdict_of(obj):
     return obj.get("verdict") if isinstance(obj, dict) else None
 
@@ -175,6 +211,8 @@ def evaluate_row(row):
         "structural_pass": not structural,
         "schema_pass": not schema,
         "triple_pass": not triple,
+        "core_triple_pass": core_triple_ok(obj, not structural),
+        "lenient_schema_pass": lenient_schema_ok(obj, not structural),
         "structural_fail": structural,
         "schema_fail": schema,
         "triple_fail": triple,
@@ -202,6 +240,8 @@ def summarize(rows):
         "structural_pass": sum(e["structural_pass"] for e in ev),
         "schema_pass": sum(e["schema_pass"] for e in ev),
         "triple_pass": sum(e["triple_pass"] for e in ev),
+        "core_triple_pass": sum(e["core_triple_pass"] for e in ev),
+        "lenient_schema_pass": sum(e["lenient_schema_pass"] for e in ev),
         "structural_and_schema_pass": sum(e["structural_pass"] and e["schema_pass"] for e in ev),
         "verdict_accuracy": round(sum(e["verdict_ok"] for e in ev) / n, 4),
         "hold_recall": round(sum(e["verdict_ok"] for e in hold) / len(hold), 4) if hold else None,

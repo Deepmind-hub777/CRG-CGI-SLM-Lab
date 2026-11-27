@@ -103,11 +103,13 @@
 | verdict 一致率 | 0.5 | 0.5 |
 | claim set 精确率（旧口径，仅对照） | 0.0 | 0.1 |
 | 结构契约（统一 rubric） | 8/10 | 8/10 |
-| schema 契约（统一 rubric） | **0/10** | **0/10** |
-| 完整三元组（统一 rubric） | **0/10** | **0/10** |
+| 核心三元组非空（诊断） | 8/10 | 8/10 |
+| 宽松 schema（接受别名，诊断） | 7/10 | **0/10** |
+| schema 契约（严格） | **0/10** | **0/10** |
+| 完整三元组（严格） | **0/10** | **0/10** |
 | 平均延迟 | 78.77 s | 12.48 s |
 
-**统一 rubric 的重算方式：** `contract_eval.py --report evidence/e2b-contract-eval-report.md` 直接解析云端报告里的原始输出，不占 GPU、不改模型。结构 8/10 与云端一致；schema 0/10 是新增的硬结果，详见 3.3。旧 claim set 0.0/0.1 只在“结构不合格输出也能参与精确匹配”的旧口径下成立，本报告不再把它当能力指标。
+**统一 rubric 的重算方式：** `contract_eval.py --report evidence/e2b-contract-eval-report.md` 直接解析云端报告里的原始输出，不占 GPU、不改模型。结构 8/10 与云端一致；核心三元组也是 8/10，说明“内容全空”不是主因。严格 schema 0/10 是新增的硬结果，但要拆开看：base 放宽别名后 7/10，主要是 harness 严格度；adapter 放宽后仍 0/10，不能全推给 harness。旧 claim set 0.0/0.1 只在“结构不合格输出也能参与精确匹配”的旧口径下成立，本报告不再把它当能力指标。
 
 **归因边界：** prompt 是两边同时改的，base 的绝对分也变了。本轮能干净归因的只有 **harness 效应**；adapter 从旧口径回到 8/10，不能全部记在 adapter 头上。
 
@@ -123,8 +125,8 @@
 3. **claim set 低分是 schema/评测口径 bug，不是能力结论；而且 target 与 gold 其实已经同源。**
    逐行审计确认：`build_data.py` 的 `target_from_engine` 和 `eval_e2b.py` 的 `expected_claims` 都调用同一个 `claim_engine.evaluate()`；`holdout.jsonl` 没有存 `claims`，但 gold 是现场用同一引擎抽的，不是另一套抽取。真正的问题是这条引擎对 `anchor_source_*` 常返回空 `predicate` / `obj`：70 条 train claims 里 60 条 `object` 空、24 条 `predicate` 空；holdout 11 条 gold claims 的 `predicate` / `object` 全空。训练 target 忠实复制了这些空字段，模型被教成“填 null”；评测 `claim_set` 只比较 `(claim_id, polarity)`，低分主要来自模型输出的 claim_id / polarity 对不上，不是 gold 来自另一套抽取。先把 claim 三元组 schema 和 gold 存储修好，再谈 claim set。
 
-4. **schema 契约也是 0/10。**
-   base 的 `polarity` 写成 `"positive"` / `"negative"`、`kind` 写成 `fact` / `restriction`；adapter 出现 `polarity:0`、`kind:"PASS"`、claims 缺 `polarity` / `kind` / `evidence`。按 target 的 schema（`polarity ∈ {±1}`、`kind` 枚举、字段齐全）判，base 与 adapter 都是 **0/10**，不是 8/10。8/10 只是结构合格。
+4. **严格 schema 契约是 0/10，但 base 的 0 主要是 harness 严格度。**
+   base 的 `polarity` 写成 `"positive"` / `"negative"`、`kind` 写成 `fact` / `restriction`；放宽这两个别名后是 **7/10**。adapter 即使放宽别名仍是 **0/10**：出现 `polarity:0`、`kind:"PASS"`、claims 缺 `polarity` / `kind` / `evidence`。按 target 的 schema（`polarity ∈ {±1}`、`kind` 枚举、字段齐全）判，base 与 adapter 都是 0/10；8/10 只是结构合格。这个 0/10 不能直接写成“模型语义能力 0”，必须带上“严格契约”这个限定。
 
 ### 3.4 尾部与语义问题
 

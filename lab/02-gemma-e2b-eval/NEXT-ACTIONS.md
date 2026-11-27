@@ -12,7 +12,7 @@
   - 结构：单对象根、无围栏、顶层 `verdict`、`claims` 数组、无重复键、未截断。
   - 语义：`polarity ∈ {±1}`、`kind` 枚举、三元组非空、`evidence` 完整、禁止 `kind:"PASS"`。
   - 输出失败分类：`fence / truncated / dupkey / missing_verdict / array_root / bad_polarity / bad_kind / missing_field`。
-  - 云端报告重算结果：结构 8/10、schema 0/10、完整三元组 0/10。
+  - 云端报告重算结果：结构 8/10、核心三元组 8/10、宽松 schema 7/10（base）/0（adapter）、严格 schema 0/10、完整三元组 0/10。
 
 - [ ] **A2. 重算四个 `eval.json`**
   - `runs/base/eval.json`（旧）
