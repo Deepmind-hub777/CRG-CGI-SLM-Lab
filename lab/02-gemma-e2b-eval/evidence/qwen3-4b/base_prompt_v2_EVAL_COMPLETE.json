@@ -1,0 +1,14 @@
+{
+  "model_id": "/mnt/systemDisk/e2b/models/Qwen3-4B-Instruct-2507",
+  "adapter": "",
+  "data": "/mnt/systemDisk/e2b/lab/02-gemma-e2b-eval/data/holdout.jsonl",
+  "prompt_contract": "contract-semantics-v1 + claim_id allowlist",
+  "n": 10,
+  "json_ok_rate": 1.0,
+  "verdict_accuracy": 0.3,
+  "claim_set_exact_rate": 0.1,
+  "avg_latency_s": 18.1709,
+  "status": "completed",
+  "finished_at": "2026-11-27T14:38:25+0800",
+  "eval_sha256": "18e2c8e279b901b763af77e2f23446f4c72cd0ed006b341e00b00871eadfdae9"
+}

@@ -44,7 +44,19 @@
   - 已做 `f1072fa9` → `54fd202c` 的字段级 diff：训练集只补 60 处 `object`、24 处 `predicate`；holdout 只新增 10 条 `gold_claims`。
   - 离线语义审计：gold claims 与草稿抽取都 10/10 复现 gold；Qwen base/adapter 自己的 verdict 0.2/0.3，模型 claims 经 policy 重判都是 0.4，允许 ID 命中都是 0/10。
   - 产物：`A5-ZERO-GPU-PATCH.md`、`evidence/a5-semantic-audit.*`、`evidence/data-diff-a3-*.json`。
-  - 下一步：同一 Qwen base、同一 10 条 holdout、只换 v2 prompt，跑一次不训练的 GPU 对照。
+
+- [x] **A5-GPU. 不训练的 v2 prompt 对照**
+  - 同一 Qwen base、同一 10 条 holdout、同一 greedy/768，只换 v2 prompt（PASS/HOLD 语义 + `claim_id` 允许表）。
+  - 结果：结构 10/10；严格 schema 0/10；`claim_id_allowed` 10/10；`strict_contract_pass` 0/10；核心三元组 8/10；verdict 0.30；HOLD recall 1/4；PASS recall 2/6。
+  - 模型 claims 交给 policy 重判：0.80；模型自己 verdict 与自己 claims 的 policy 重判只 5/10 一致；与 A3 gold 的 claim set 精确匹配 2/10。
+  - 云端 summary 的 `claim_set_exact_rate=0.1` 受 `int(polarity)` 解析限制，需按 alias-aware 重算后再解释。
+  - 产物：`A5-INITIAL-TRAINING-STOCKTAKE.md`、`evidence/qwen3-4b/base_prompt_v2_*`、`a5_gpu_recompute.py`。
+
+- [ ] **A6. 零 GPU 复算与 schema 决策（下一步）**
+  - 修 `eval_e2b.claim_set()` 与 `contract_eval.claim_set()` 的 polarity 归一化，从现有 v2 `eval.json` 重算，不加 GPU。
+  - 把 v2 的 16 条 claims 做“只归一化、不改文本”的 strict 复算，分开报归一化前/后。
+  - 决定 `kind` 是收紧到五枚举，还是把 `source/definition/existence` 纳入 rubric；先做离线影响评估。
+  - 明确 verdict 归属：模型 verdict 与 `claim_engine.adjudicate_claims()` 分两列，不互相替代。
 
 ---
 

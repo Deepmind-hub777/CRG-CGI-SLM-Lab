@@ -10,6 +10,10 @@
 | `a5-semantic-audit.json` / `.md` | A5 零 GPU 语义审计：gold/草稿/模型 verdict/模型 claims 分源对照 | 见 `STAGE-02-MANIFEST.json` |
 | `data-diff-a3-train.json` / `.md` | A3 前后训练集字段级差异 | 见 `STAGE-02-MANIFEST.json` |
 | `data-diff-a3-holdout.json` / `.md` | A3 前后 holdout 字段级差异 | 见 `STAGE-02-MANIFEST.json` |
+| `qwen3-4b/base_prompt_v2_eval.json` | A5 云端原始 v2 prompt 评测；`eval_sha256=18e2c8e2…` | `18e2c8e279b901b763af77e2f23446f4c72cd0ed006b341e00b00871eadfdae9` |
+| `qwen3-4b/base_prompt_v2_eval.log` | A5 云端运行日志 | `268236b7427c1f14479910717bce9b4d5a22339ee58df084d4fd5cefcca6b8c1` |
+| `qwen3-4b/base_prompt_v2_EVAL_COMPLETE.json` | A5 完成哨兵与 eval hash | `54548d8b31e33a7caaae5d4aa8033cfac9ad98eb3425792da607ac15d8e5084c` |
+| `qwen3-4b/base_prompt_v2_recompute.json` | 本机 strict/policy/exact 复算，非云端原始 | `6eaaf3863134a779bcb0733178539dc12422b991b5356827ed85a0f13f49aea9` |
 
 使用说明：
 

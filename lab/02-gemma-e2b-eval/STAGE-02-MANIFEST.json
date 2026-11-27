@@ -29,7 +29,12 @@
     "strict_contract_gate_added": true,
     "param_accounting_scripted": true,
     "run_sentinel_added": true,
-    "data_diff_a3": true
+    "data_diff_a3": true,
+    "a5_gpu_prompt_v2_run": true,
+    "a5_initial_training_stocktake": true,
+    "prompt_v2_schema_aligned": false,
+    "strict_gate_passed": false,
+    "claim_set_metric_audit_required": true
   },
   "claim_boundary": {
     "governance_layer_model_agnostic": "design-level only; not empirically proven across models",
@@ -99,7 +104,29 @@
       "manifest_total_params": 2238840320,
       "total_params_est": 4022795776,
       "trainable_ratio_real": 0.008210743432977096,
-      "ratio_note": "manifest total_params is a bnb 4-bit numel artifact; real 4.023B from index total_size / 2 bytes; ratio 0.821%"
+      "ratio_note": "manifest total_params is a bnb 4-bit numel artifact; real 4.023B from index total_size / 2 bytes; ratio 0.821%",
+      "prompt_v2": {
+        "structural": "10/10",
+        "strict_schema": "0/10",
+        "lenient_schema": "2/10",
+        "core_triple": "8/10",
+        "claim_id_allowed": "10/10",
+        "strict_contract_pass": "0/10",
+        "verdict_accuracy": 0.3,
+        "hold_recall": "1/4",
+        "pass_recall": "2/6",
+        "output_hold": "4/10",
+        "claims_policy_accuracy": 0.8,
+        "model_verdict_equals_own_policy": "5/10",
+        "gold_claim_set_exact_alias_aware": "2/10",
+        "claims_total": 16,
+        "failure_counts": {
+          "bad_polarity": 16,
+          "bad_kind": 11
+        },
+        "cloud_reported_claim_set_exact_rate": 0.1,
+        "cloud_claim_set_rate_note": "eval_e2b.claim_set() calls int(polarity); string aliases collapse to empty set"
+      }
     }
   },
   "ring0": {
@@ -134,8 +161,9 @@
     "Is human merge the physical anchor of Ring 0, and what audit trail does it require?"
   ],
   "next_actions": [
-    "A5 zero-GPU patch done: freeze verdict semantics, closed claim_id allowlist, strict contract gate, index-based param count, data diff, run sentinels.",
-    "Next: one no-training Qwen base rerun on the same 10 holdout with the v2 prompt; compare verdict distribution before deciding to retrain.",
+    "A5 GPU prompt-v2 control completed: base verdict 0.30, claim_id_allowed 10/10, strict_contract_pass 0/10, claims→policy 0.80.",
+    "Next zero-GPU: fix alias-aware claim_set and recompute existing v2 output; normalize-only strict rerun; decide kind enum; separate model verdict from policy verdict.",
+    "Do not retrain 50 records until the zero-GPU schema/verdict audit is closed.",
     "Keep PR draft; human merge remains final authority."
   ],
   "files": [
@@ -145,19 +173,24 @@
       "sha256": "b73e324493615f8b29a7dd93273a7c954335b94b897ab51d2b465618e950c199"
     },
     {
+      "path": "A5-INITIAL-TRAINING-STOCKTAKE.md",
+      "bytes": 11990,
+      "sha256": "853f1616b5175de72c39b96a2850e6ae2bd26fc925a0c5d8cbd66c69129d514e"
+    },
+    {
       "path": "A5-ZERO-GPU-PATCH.md",
       "bytes": 5538,
       "sha256": "2c631c7acc33934bba40544793e1bc494e5f7d706756d33abec47fe529b91f66"
     },
     {
       "path": "NEXT-ACTIONS.md",
-      "bytes": 5808,
-      "sha256": "b1f377a64dedf5412377253c4d183ef973a90855fa856886383087dd1be49995"
+      "bytes": 7015,
+      "sha256": "444734b118e91e9d1c839fa39bed0c4cc88fe6ac5fb8bf9e01329b414054de57"
     },
     {
       "path": "README.md",
-      "bytes": 6759,
-      "sha256": "818cffdd4e7d205e8630669024e76dd61367281e73c17fb0ef070407a5e667bb"
+      "bytes": 7134,
+      "sha256": "ad24afa7ac0a7f5ca3d8d172d7c845d8996001962b55131e713ab1e4f18ddd78"
     },
     {
       "path": "STAGE-01-REPORT.md",
@@ -178,6 +211,11 @@
       "path": "a4_qwen_recompute.py",
       "bytes": 5276,
       "sha256": "71639f66b77086469ebafb446963e57612f70992f14136ac0091863966eb5b97"
+    },
+    {
+      "path": "a5_gpu_recompute.py",
+      "bytes": 3475,
+      "sha256": "66558073430ce7f4d3668e41961a05fd8efc63bc87750cd0ada8257206e818d8"
     },
     {
       "path": "a5_zero_gpu_audit.py",
@@ -226,8 +264,8 @@
     },
     {
       "path": "evidence/README.md",
-      "bytes": 1562,
-      "sha256": "66a53ee079d8afd6ff2fa14a4f2ff64f695d0ee5e3241cb3c42c5fcce2a3a97d"
+      "bytes": 2183,
+      "sha256": "b2b0f4176f386145011b69f3d97b93686e398adf8cd8744f1e3092ffbc174cc5"
     },
     {
       "path": "evidence/a2-cloud/adapter_eval.json",
@@ -328,6 +366,26 @@
       "path": "evidence/qwen3-4b/base_eval.json",
       "bytes": 16975,
       "sha256": "0ab2ed92e21ff3ba34a4944d3f44cae46165a8b02249d51126f6e3d91edca37a"
+    },
+    {
+      "path": "evidence/qwen3-4b/base_prompt_v2_EVAL_COMPLETE.json",
+      "bytes": 503,
+      "sha256": "54548d8b31e33a7caaae5d4aa8033cfac9ad98eb3425792da607ac15d8e5084c"
+    },
+    {
+      "path": "evidence/qwen3-4b/base_prompt_v2_eval.json",
+      "bytes": 16042,
+      "sha256": "18e2c8e279b901b763af77e2f23446f4c72cd0ed006b341e00b00871eadfdae9"
+    },
+    {
+      "path": "evidence/qwen3-4b/base_prompt_v2_eval.log",
+      "bytes": 5412,
+      "sha256": "268236b7427c1f14479910717bce9b4d5a22339ee58df084d4fd5cefcca6b8c1"
+    },
+    {
+      "path": "evidence/qwen3-4b/base_prompt_v2_recompute.json",
+      "bytes": 6149,
+      "sha256": "6eaaf3863134a779bcb0733178539dc12422b991b5356827ed85a0f13f49aea9"
     },
     {
       "path": "evidence/qwen3-4b/manifest.json",
@@ -481,5 +539,26 @@
     "path": "A4-STOCKTAKE.md",
     "scope": "facts, open questions, candidate next steps; no pass/fail conclusion",
     "open_questions": 19
+  },
+  "a5_gpu_stocktake": {
+    "path": "A5-INITIAL-TRAINING-STOCKTAKE.md",
+    "scope": "Qwen base, 50-record QLoRA, v2 prompt control; facts, open questions, candidate next steps; no pass/fail conclusion",
+    "run_dir": "/mnt/systemDisk/e2b/runs/qwen3-base-prompt-v2",
+    "eval_sha256": "18e2c8e279b901b763af77e2f23446f4c72cd0ed006b341e00b00871eadfdae9",
+    "cloud_holdout_sha256": "6d9de69ea03ed664fa3f7c480d34a5876282a6d1002ade7d7d4e6a1d5e3d8e41",
+    "cloud_code_sha256": {
+      "prompt_contract.py": "c96ddcefe6b9f90809c6ed8cb8605a2551f3bb3a4c391aeac6316564e0da34e1",
+      "claim_engine.py": "b2e7c9f9a0ff21b8b05aa3a9b4c244a338418d32ddfdbd967c808762a6877986",
+      "eval_e2b.py": "9d33db28f9abaa5e9f8b0d763cfe030079d55204416dfdd71e1f966e2ac0ec91"
+    },
+    "open_questions": 19,
+    "candidate_next_steps": [
+      "zero-GPU recompute polarity/claim_set metrics",
+      "normalize-only strict rerun of v2 claims",
+      "freeze kind enum or rubric policy",
+      "separate model verdict from policy verdict",
+      "only then decide whether to retrain 50 records"
+    ],
+    "note": "cloud holdout lacks gold_claims; gold reconciliation uses A3 holdout locally"
   }
 }

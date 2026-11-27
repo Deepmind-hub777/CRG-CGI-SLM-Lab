@@ -1,0 +1,272 @@
+{
+  "source_eval": "evidence/qwen3-4b/base_prompt_v2_eval.json",
+  "holdout": "/home/user/Doubao/chats/36399304075305730/CRG-CGI-SLM-Lab/lab/02-gemma-e2b-eval/data/holdout.jsonl",
+  "summary": {
+    "n": 10,
+    "structural_pass": 10,
+    "schema_pass": 0,
+    "triple_pass": 0,
+    "claim_id_allowed": 10,
+    "strict_contract_pass": 0,
+    "core_triple_pass": 8,
+    "lenient_schema_pass": 2,
+    "structural_and_schema_pass": 0,
+    "verdict_accuracy": 0.3,
+    "hold_recall": 0.25,
+    "always_pass_baseline": 0.6,
+    "claim_set_exact": null,
+    "claim_set_semantic": null,
+    "fail_counts": {
+      "bad_polarity": 16,
+      "bad_kind": 11
+    }
+  },
+  "claims_policy_accuracy": 0.8,
+  "model_verdict_equals_own_policy": "5/10",
+  "gold_claim_set_exact_alias_aware": "2/10",
+  "claims_total": 16,
+  "claim_id_counts": {
+    "anchor_source_external": 6,
+    "anchor_source_inside": 7,
+    "anchor_source_self": 3
+  },
+  "rows": [
+    {
+      "id": "E003-holdout-001",
+      "expected_verdict": "PASS",
+      "model_verdict": "PASS",
+      "claims_policy_verdict": "PASS",
+      "model_verdict_matches_own_policy": true,
+      "gold_claim_set_exact": false,
+      "gold_claim_set": [
+        [
+          "anchor_source_external",
+          1
+        ]
+      ],
+      "model_claim_set_alias_aware": [
+        [
+          "anchor_source_external",
+          1
+        ],
+        [
+          "anchor_source_inside",
+          -1
+        ]
+      ],
+      "claim_count": 2
+    },
+    {
+      "id": "E003-holdout-002",
+      "expected_verdict": "PASS",
+      "model_verdict": "HOLD",
+      "claims_policy_verdict": "HOLD",
+      "model_verdict_matches_own_policy": true,
+      "gold_claim_set_exact": false,
+      "gold_claim_set": [
+        [
+          "anchor_source_external",
+          1
+        ]
+      ],
+      "model_claim_set_alias_aware": [
+        [
+          "anchor_source_external",
+          -1
+        ],
+        [
+          "anchor_source_inside",
+          -1
+        ]
+      ],
+      "claim_count": 2
+    },
+    {
+      "id": "E003-holdout-003",
+      "expected_verdict": "PASS",
+      "model_verdict": "HOLD",
+      "claims_policy_verdict": "PASS",
+      "model_verdict_matches_own_policy": false,
+      "gold_claim_set_exact": false,
+      "gold_claim_set": [
+        [
+          "anchor_source_external",
+          1
+        ]
+      ],
+      "model_claim_set_alias_aware": [
+        [
+          "anchor_source_external",
+          1
+        ],
+        [
+          "anchor_source_inside",
+          -1
+        ],
+        [
+          "anchor_source_self",
+          -1
+        ]
+      ],
+      "claim_count": 3
+    },
+    {
+      "id": "E003-holdout-004",
+      "expected_verdict": "PASS",
+      "model_verdict": "PASS",
+      "claims_policy_verdict": "PASS",
+      "model_verdict_matches_own_policy": true,
+      "gold_claim_set_exact": true,
+      "gold_claim_set": [
+        [
+          "anchor_source_external",
+          1
+        ]
+      ],
+      "model_claim_set_alias_aware": [
+        [
+          "anchor_source_external",
+          1
+        ]
+      ],
+      "claim_count": 1
+    },
+    {
+      "id": "E003-holdout-005",
+      "expected_verdict": "HOLD",
+      "model_verdict": "PASS",
+      "claims_policy_verdict": "HOLD",
+      "model_verdict_matches_own_policy": false,
+      "gold_claim_set_exact": false,
+      "gold_claim_set": [],
+      "model_claim_set_alias_aware": [
+        [
+          "anchor_source_inside",
+          1
+        ]
+      ],
+      "claim_count": 1
+    },
+    {
+      "id": "E003-holdout-006",
+      "expected_verdict": "HOLD",
+      "model_verdict": "HOLD",
+      "claims_policy_verdict": "HOLD",
+      "model_verdict_matches_own_policy": true,
+      "gold_claim_set_exact": false,
+      "gold_claim_set": [
+        [
+          "anchor_source_inside",
+          1
+        ]
+      ],
+      "model_claim_set_alias_aware": [
+        [
+          "anchor_source_inside",
+          1
+        ],
+        [
+          "anchor_source_self",
+          1
+        ]
+      ],
+      "claim_count": 2
+    },
+    {
+      "id": "E003-holdout-007",
+      "expected_verdict": "PASS",
+      "model_verdict": "HOLD",
+      "claims_policy_verdict": "HOLD",
+      "model_verdict_matches_own_policy": true,
+      "gold_claim_set_exact": false,
+      "gold_claim_set": [
+        [
+          "anchor_source_external",
+          1
+        ],
+        [
+          "anchor_source_self",
+          -1
+        ]
+      ],
+      "model_claim_set_alias_aware": [
+        [
+          "anchor_source_external",
+          -1
+        ],
+        [
+          "anchor_source_self",
+          1
+        ]
+      ],
+      "claim_count": 2
+    },
+    {
+      "id": "E003-holdout-008",
+      "expected_verdict": "HOLD",
+      "model_verdict": "PASS",
+      "claims_policy_verdict": "HOLD",
+      "model_verdict_matches_own_policy": false,
+      "gold_claim_set_exact": false,
+      "gold_claim_set": [
+        [
+          "anchor_source_self",
+          1
+        ]
+      ],
+      "model_claim_set_alias_aware": [
+        [
+          "anchor_source_inside",
+          1
+        ]
+      ],
+      "claim_count": 1
+    },
+    {
+      "id": "E003-holdout-009",
+      "expected_verdict": "PASS",
+      "model_verdict": "HOLD",
+      "claims_policy_verdict": "PASS",
+      "model_verdict_matches_own_policy": false,
+      "gold_claim_set_exact": true,
+      "gold_claim_set": [
+        [
+          "anchor_source_external",
+          1
+        ]
+      ],
+      "model_claim_set_alias_aware": [
+        [
+          "anchor_source_external",
+          1
+        ]
+      ],
+      "claim_count": 1
+    },
+    {
+      "id": "E003-holdout-010",
+      "expected_verdict": "HOLD",
+      "model_verdict": "PASS",
+      "claims_policy_verdict": "HOLD",
+      "model_verdict_matches_own_policy": false,
+      "gold_claim_set_exact": false,
+      "gold_claim_set": [
+        [
+          "anchor_source_external",
+          1
+        ],
+        [
+          "anchor_source_self",
+          1
+        ]
+      ],
+      "model_claim_set_alias_aware": [
+        [
+          "anchor_source_inside",
+          1
+        ]
+      ],
+      "claim_count": 1
+    }
+  ]
+}
