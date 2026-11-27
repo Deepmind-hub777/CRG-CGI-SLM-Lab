@@ -22,7 +22,8 @@
     "qwen3_4b_qlora_50_run": true,
     "qwen3_4b_adapter_eval_recomputed": true,
     "qwen3_4b_gate_passed": false,
-    "ruler_semantic_contract_fixed": false
+    "ruler_semantic_contract_fixed": false,
+    "qwen_param_count_corrected": true
   },
   "claim_boundary": {
     "governance_layer_model_agnostic": "design-level only; not empirically proven across models",
@@ -82,7 +83,11 @@
       "train_records": 50,
       "train_steps": 13,
       "train_sha256": "54fd202c4df00c635ab0086acf01493ecbdaed10f95624eec1655e2165994492",
-      "adapter_first_file_sha256": "0acdda1df96dbd76fe64563c6729e9dc81883477325efcfacedaf0fb199e1aac"
+      "adapter_first_file_sha256": "0acdda1df96dbd76fe64563c6729e9dc81883477325efcfacedaf0fb199e1aac",
+      "manifest_total_params": 2238840320,
+      "total_params_est": 4022795776,
+      "trainable_ratio_real": 0.008210743432977096,
+      "ratio_note": "manifest total_params is a bnb 4-bit numel artifact; real 4.023B from index total_size / 2 bytes; ratio 0.821%"
     }
   },
   "ring0": {
@@ -129,8 +134,8 @@
   "files": [
     {
       "path": "STAGE-02-REPORT.md",
-      "bytes": 15724,
-      "sha256": "ab55776e8e80ab65d97c0bc08af9067b39582cf20e1d3ee4d6dabb1db7d241fc"
+      "bytes": 16420,
+      "sha256": "d2a70824215f2f133dc82c4d58c8dc11d5f48bd03b8dc550d41a77f17caa0964"
     },
     {
       "path": "STAGE-01-REPORT.md",
@@ -284,8 +289,8 @@
     },
     {
       "path": "a4_qwen_recompute.py",
-      "bytes": 4670,
-      "sha256": "e7b7f8d337ae6e6e6e215c364a2934243bb66f971278029403367a88a04e73be"
+      "bytes": 5122,
+      "sha256": "06b9e87af026c83f43eb4c0a07d2b7f75dfd04e2976535017cc18d82405484c7"
     },
     {
       "path": "evidence/qwen3-4b/base_eval.json",
@@ -309,8 +314,13 @@
     },
     {
       "path": "evidence/a4-recompute.md",
-      "bytes": 1350,
-      "sha256": "fe6cf26ae3c75ffb71c6baaf55f4d4bd6719ebef0af4ec327279531b12d81aad"
+      "bytes": 1700,
+      "sha256": "131c835c0c5a069c4fe6ecfe1145a1b6d058d0ad11a26d224314ed96e8fd8916"
+    },
+    {
+      "path": "evidence/qwen3-4b/param_check.json",
+      "bytes": 641,
+      "sha256": "bf66183e5ede6f677a6b960b129e34b51eda512e37b780d5a1b062b50d5b26f1"
     }
   ],
   "a3_offline_fix": {
@@ -369,5 +379,10 @@
     "evidence": "evidence/a4-recompute.md",
     "base_sha256": "0ab2ed92e21ff3ba34a4944d3f44cae46165a8b02249d51126f6e3d91edca37a",
     "adapter_sha256": "9e4759e71c780e4da3dc2c37a8e7812816d11187582321fa16cd6770c1c0e6cb"
+  },
+  "data_comparability": {
+    "qwen_train_sha256": "54fd202c4df00c635ab0086acf01493ecbdaed10f95624eec1655e2165994492",
+    "gemma_old_train_sha256": "f1072fa95f2514ca9dba36f990bcdb276bb71266a8ccfac466efc68fb8238371",
+    "note": "A3 changed train from f1072f to 54fd20 (canonical predicate/object fill, 0 empty; gold_claims added to holdout). Qwen vs Gemma is not a controlled model comparison."
   }
 }

@@ -1,0 +1,13 @@
+{
+  "source": "/mnt/systemDisk/e2b/models/Qwen3-4B-Instruct-2507/model.safetensors.index.json",
+  "sha256_note": "index read via DSW file API; total_size from metadata",
+  "total_size_bytes": 8045591552,
+  "assumed_dtype_bytes": 2,
+  "params_est": 4022795776,
+  "params_est_b": 4.022795776,
+  "trainable_params": 33030144,
+  "trainable_ratio_real": 0.008210743432977096,
+  "manifest_total_params": 2238840320,
+  "manifest_trainable_ratio": 0.014753237962053498,
+  "note": "manifest total_params is from sum(p.numel()) on a bnb 4-bit loaded model; it is not the real parameter count. Use index total_size / dtype bytes as the denominator."
+}

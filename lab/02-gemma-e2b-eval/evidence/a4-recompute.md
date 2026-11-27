@@ -20,3 +20,9 @@
 - adapter 在 6 条 PASS 上全部输出 HOLD；HOLD recall 0.75 不能当总体能力。
 - claim set 在严格合格样本上：base 不可计算（0 条合格），adapter 0.0；raw claim set base 0.1、adapter 0.0。
 - 主要缺口不是 JSON 语法，而是 (a) PASS/HOLD 语义未在 prompt 定义；(b) claim_id 词表未给模型；(c) 云端 contract gate 过弱。
+
+## 参数量核对
+
+- `model.safetensors.index.json` 的 `total_size=8,045,591,552` bytes；按 bf16 每参数 2 bytes 估算约 **4.023B** 参数。
+- `trainable=33,030,144`，真实占比 **0.821%**；manifest 里的 `2.238B / 1.475%` 是 4-bit 加载后的 `numel()` 伪影，不用作分母。
+- 细表：`evidence/qwen3-4b/param_check.json`。

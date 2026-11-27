@@ -183,7 +183,7 @@ A2 已完成。四个云端产物已取回，统一用 `rubric_v1` 重算，不�
 
 - 底座：`Qwen/Qwen3-4B-Instruct-2507`，约 7.6GB，ModelScope 下载到云端，不进 git。
 - 训练：A3 重建后的 `train.jsonl`，50 条，hash `54fd202c…`；4-bit NF4，LoRA `r=16/alpha=32/dropout=0.05`，1 epoch，batch 1，grad accumulation 4，lr `1e-4`，max length 1024，seed 42。
-- 训练结果：13 步，50.8 秒，train loss `1.2597`；trainable `33,030,144 / 2,238,840,320`（1.475%），252 个 target modules；V100-SXM2-16GB，fp16。
+- 训练结果：13 步，50.8 秒，train loss `1.2597`；trainable `33,030,144`；按 `model.safetensors.index.json` 的 `total_size=8,045,591,552` bytes（bf16）估算真实参数约 **4.023B**，可训练占比 **0.821%**；manifest 里的 `total_params=2,238,840,320 / 1.475%` 是 4-bit 加载后用 `sum(p.numel())` 得到的计数伪影，不能当作真实分母。252 个 target modules；V100-SXM2-16GB，fp16。
 - adapter：`/mnt/systemDisk/e2b/runs/qwen3-4b/qwen3-qlora-50-20261127-1340/adapter`，首个文件 sha256 `0acdda1d…`。
 - 评测：同一份 10 条 holdout；云端运行时是 A3 前版本（只差 `gold_claims`，prompt/draft 完全相同），因此模型输出不受影响；claim set 在本机用 A3 冻结 gold 重算。
 - 评测参数：greedy，`max_new_tokens=768`，同一 system/user prompt，Qwen chat template。
@@ -201,11 +201,12 @@ A2 已完成。四个云端产物已取回，统一用 `rubric_v1` 重算，不�
 - adapter：`missing_field 4 / bad_polarity 4`。它学会了 integer polarity 和 `assertion`，但仍有缺字段；另有 2 条核心三元组不完整。
 - 云端 `contract_ok_rate=1.0` 与严格 schema 0/10 同时成立，因为云端 contract 只查“单对象根 + verdict + claims 数组”，不查 claim 字段、polarity、kind。这不是同一个门。
 
-### 11.3 三个尺子缺口
+### 11.3 四个尺子/比较缺口
 
 1. **PASS/HOLD 没有定义。** system prompt 只说“给出 PASS/HOLD”，没有说 PASS 指的是“草稿的 claims 可被冻结锚定接受”，不是“草稿是否同意用户问题”。Qwen 实际在判后者：`E003-holdout-001` 的问题是“模型能否自己提供锚定”，草稿说“不能”，gold 是 PASS（草稿合规），Qwen 却给 HOLD；`E003-holdout-005` 草稿说“可以自己锚定”，gold 是 HOLD，Qwen 给 PASS。base 与 adapter 都继承了这个错位，所以 0.2/0.3 不能直接当“模型能力”。
 2. **claim set 的 exact 口径不可达。** 评测要求 claim_id 与 gold 完全一致，但 prompt 没有给 claim_id 词表。Qwen adapter 输出的是 `anchor_vector_source` 一类自造名，严格 claim set 0/5；base 的 raw claim set 1/10 也只是因为有一条 HOLD 的 gold 集合为空。这个指标现在测的是“猜隐藏标签”，不是“抽得对不对”。
 3. **训练 target 与评测 verdict 的语义没有对齐。** target 里 verdict 是 claim 审计结论；模型输出却按“问题—草稿一致/矛盾”来判。50 条 QLoRA 把格式学得更像，把 HOLD 偏置也放大了：6 条 PASS 全被压成 HOLD，adapter 0.30 反而低于 always-HOLD 0.40。
+4. **训练集不是同一版。** Qwen 用的是 A3 重建的 `54fd202c…`；Gemma 旧 run 用的是 A3 前 `f1072fa9…`。A3 把空 `predicate/object` 填成 canonical，并给 holdout 补了 `gold_claims`。所以 Qwen 的 0.2/0.3 与 Gemma 的 0.5 不能当“模型差异”，只能当“格式契约”对照。要比较模型，必须在同一份 train 上重跑，或者至少同一份 holdout + 同一把 rubric。
 
 ### 11.4 结论
 
