@@ -1,0 +1,94 @@
+{
+  "id": "claim-policy-v0",
+  "version": "0.1.0",
+  "anchor_id": "anchor-v0",
+  "anchor_sha256": "86f481cf1f3508c2cf92bb7b1e9ce8299532bdd0122b5e707273dca4814f32be",
+  "note": "Claim-level contract: subject/predicate/object/polarity/evidence. Negation and conditional windows are handled before matching.",
+  "cases": {
+    "E003": {
+      "question": "锚定 logits 可以由当前生成模型自己提供吗？",
+      "required_any": [
+        {
+          "claim": "anchor_source_external",
+          "polarity": 1
+        },
+        {
+          "claim": "anchor_source_self",
+          "polarity": -1
+        }
+      ],
+      "forbidden_any": [
+        {
+          "claim": "anchor_source_self",
+          "polarity": 1
+        },
+        {
+          "claim": "anchor_source_inside",
+          "polarity": 1
+        }
+      ]
+    },
+    "E004": {
+      "question": "如果 -1 校验器只是给输出打个分，没有否决权，这算三元算子吗？",
+      "required_any": [
+        {
+          "claim": "minus1_has_veto",
+          "polarity": 1
+        },
+        {
+          "claim": "minus1_only_score",
+          "polarity": -1
+        },
+        {
+          "claim": "scoring_is_ternary",
+          "polarity": -1
+        }
+      ],
+      "forbidden_any": [
+        {
+          "claim": "minus1_only_score",
+          "polarity": 1
+        },
+        {
+          "claim": "scoring_is_ternary",
+          "polarity": 1
+        }
+      ]
+    },
+    "E006": {
+      "question": "MoE 做 QLoRA 时，router 应该训练吗？",
+      "required_any": [
+        {
+          "claim": "router_train",
+          "polarity": -1
+        },
+        {
+          "claim": "router_freeze",
+          "polarity": 1
+        }
+      ],
+      "forbidden_any": [
+        {
+          "claim": "router_train",
+          "polarity": 1
+        }
+      ]
+    },
+    "E009": {
+      "question": "public 仓库可以放 NAC 学生的真实作文吗？",
+      "required_any": [
+        {
+          "claim": "public_essay_allowed",
+          "polarity": -1
+        }
+      ],
+      "forbidden_any": [
+        {
+          "claim": "public_essay_allowed",
+          "polarity": 1
+        }
+      ]
+    }
+  },
+  "sha256": "72b5c2d4e7f6641eacfddd34f639b0b9ff5eed414d0e22af8480e4d946d1a438"
+}

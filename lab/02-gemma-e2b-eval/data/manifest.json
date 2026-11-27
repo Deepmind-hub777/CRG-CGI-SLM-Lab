@@ -1,0 +1,73 @@
+{
+  "dataset": "gemma-e2b-smoke-v0",
+  "created_by": "Doubao / lab",
+  "created_at": "2026-11-27",
+  "purpose": "QLoRA smoke: claim extraction process, not answer memorization",
+  "license": "CC-BY-NC-4.0",
+  "train": {
+    "path": "data/train.jsonl",
+    "count": 50,
+    "sha256": "f1072fa95f2514ca9dba36f990bcdb276bb71266a8ccfac466efc68fb8238371"
+  },
+  "holdout": {
+    "path": "data/holdout.jsonl",
+    "count": 10,
+    "sha256": "6d9de69ea03ed664fa3f7c480d34a5876282a6d1002ade7d7d4e6a1d5e3d8e41"
+  },
+  "case_counts": {
+    "E003": 20,
+    "E004": 10,
+    "E006": 10,
+    "E009": 10
+  },
+  "verdict_counts": {
+    "PASS": 25,
+    "HOLD": 25
+  },
+  "anchor_sha256": "86f481cf1f3508c2cf92bb7b1e9ce8299532bdd0122b5e707273dca4814f32be",
+  "claim_policy_sha256": "72b5c2d4e7f6641eacfddd34f639b0b9ff5eed414d0e22af8480e4d946d1a438",
+  "line_hashes": {
+    "E003-train-001": "8ef6df6e9b49ed343834ada68aab9676f99c15fd641423e9e181d19f92e449f6",
+    "E003-train-002": "966f1b726bd5deb7b39c46e62d5f8c3052e4ec44cca80979bec7b978210f9ff7",
+    "E003-train-003": "83c6ce787187821640452674433de77f9f0e00e62c362b273dc33fb6499e7b3f",
+    "E003-train-004": "d6683d85b62a237ebf2fb2b0f404506426a26e8472d32311fd996fc8e3652969",
+    "E003-train-005": "82f2d6ea252e44040423e10da16a8c7784fb0877f044dd332c5876872e5efd36",
+    "E003-train-006": "3e2d9c31d7d2908ecdeb024b8f77af41f1b04102f85e324e27c3d749849ed1a2",
+    "E003-train-007": "32c60465e90b5b05f122404856ff0f108f12b9a57eda23b37c2cd6092fdbe198",
+    "E003-train-008": "81692a8a82ece913fbaca7e32cecb940c7440a9262ac31158ae80fe57e459e61",
+    "E003-train-009": "4f39e36b3860d546f98228ff74dde6b8f2d912b18a796cd1a25f0417ce07247b",
+    "E003-train-010": "003cc9ff203debf7deb15c145ab78d00fe49e5744b284ac238d1835cd0a5ea46",
+    "E004-train-001": "2ab37527343c5399758fe0fb46d7573e39e494dfcb162b9dde892d26740e58a0",
+    "E004-train-002": "9d7dac25e3e57b5b3f3f5810b00f127cacbcf1f0e9cc1ddac168cc1a70ae8b05",
+    "E004-train-003": "43cc9857d21609ee276405927cc033b692585ea98a01df68cd7f37cbfc49260f",
+    "E004-train-004": "9f028225f5698b08cc1427094611d3caacf30b5c88ab6e645a3b58e579f9ec44",
+    "E004-train-005": "57cf725a10f329cf4e8ea6164b4d949d0f7537a5552ddcba8eed19184c6a999d",
+    "E006-train-001": "e2cebb10b906de7a4c876bd119e419759b084351be20d4e895b6e9d72cdf0390",
+    "E006-train-002": "a98cc84b7d1c04db0a4780fc6e48356b32d62693fdeb64c6f0acd62dfc54172f",
+    "E006-train-003": "573eeeed74dcc54b36d0bac460e1b16933a6198e5a0caafa595ddefd541fb3e0",
+    "E006-train-004": "b96a171d208fd53ec21924f9b515b87c357036569a15d39398a778f2ad17977e",
+    "E006-train-005": "f0d7c3dd86141d0ae06e8a71502c129b20770bc59b70ed77cf0c5efd28ac2d43",
+    "E009-train-001": "03f8669406b1ab3967c752806488eff7254873a352ac1c1b941160030189e856",
+    "E009-train-002": "3200513047912519d41e9bc848a147fcfa439f3d84b0cc896acd3aee37a7cc38",
+    "E009-train-003": "dde57272818ab8c7ed006032947547f150f4b6b9f4589321cb7edf9ffd7e9b85",
+    "E009-train-004": "880525309b11d073df53a7af85e62dc9dc2b5abfd1f7e695e11f2456262185d0",
+    "E009-train-005": "35c0636d256ad8f864bdf136bf23cf581be097cf553c6a7228caa458e65c0d07",
+    "E003-holdout-001": "37d3be57ec97227838f35d2ba9690517bbad0ec512946f8ea425b389d755a0bf",
+    "E003-holdout-002": "6c55c1a425f43185860a7347893e3c68bb5f687144bfa34f514e4577dcfab3f6",
+    "E003-holdout-003": "edab7b62da78751f49a8b8d1fdd2c4fced28822e9befa2c476352b00174c8df9",
+    "E003-holdout-004": "72c36d629da6388c561bbdecb8cd1fdd27f632f3601d796d3a65add05f26a13e",
+    "E003-holdout-005": "e78ba783c5498ab137290b7be44ec3eb9045e89c7e915bc689272a159106cd98",
+    "E003-holdout-006": "5f7eeabddcfe64cd6a27c5e49c8bfd4c13bfa4f97720a74f8b0dfdac3bc4ce7e",
+    "E003-holdout-007": "5b84a6d1eab00defcdf63854a3efa00a0c92665bebec591fa120ddd8bba0d1d1",
+    "E003-holdout-008": "01ae41f21be1a39ffddf466ec5748f758d92d88275e21d3b0a3f51666c48746e",
+    "E003-holdout-009": "86fefac788596300aeb35f00ff23ebb4e425ca0516271778a6a431a64594a1df",
+    "E003-holdout-010": "da60b2ec9251a5f6b8367043c1e1db30d1eb59e3fa85264c04f7e370c17e2899"
+  },
+  "holdout_source": "lab/01-qwen4b-eval/governance/holdout_e003.jsonl",
+  "notes": [
+    "No anchor_v0 or claim_policy_v0 text is copied into any target.",
+    "Every target is the claim structure/verdict extracted from the draft by claim_engine.py.",
+    "Holdout is the existing E003 holdout and is not used in training.",
+    "No student data, parent data, contracts, keys or restricted weights."
+  ]
+}
