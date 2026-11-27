@@ -1,0 +1,94 @@
+{
+  "version": "contract-v1.1",
+  "frozen_at": "2026-11-27",
+  "purpose": "Single rubric for structural + schema + full-triple + claim_id checks. Do not compare scores produced under different rubrics.",
+  "semantics": "governance/contract_semantics_v1.json",
+  "structural": {
+    "root": "single JSON object",
+    "no_code_fence": true,
+    "top_level_verdict": ["PASS", "HOLD"],
+    "claims": "list",
+    "duplicate_keys": "forbidden",
+    "trailing_tokens": "forbidden",
+    "truncated": "forbidden"
+  },
+  "schema": {
+    "required_claim_fields": [
+      "claim_id",
+      "subject",
+      "predicate",
+      "object",
+      "polarity",
+      "kind",
+      "evidence"
+    ],
+    "polarity_values": [1, -1],
+    "kind_values": [
+      "assertion",
+      "antecedent",
+      "consequent",
+      "hypothetical",
+      "interrogative"
+    ],
+    "empty_claims_allowed_for_hold": true,
+    "empty_claims_allowed_for_pass": false
+  },
+  "claim_id": {
+    "mode": "closed_allowlist",
+    "allowlist_source": "claim_policy_v0.json required_any + forbidden_any",
+    "match": "claim_id + polarity",
+    "on_violation": "claim_id_not_allowed"
+  },
+  "gate": {
+    "strict_contract_pass": "structural + schema + full_triple + claim_id_allowed",
+    "weak_parse": "structural only; parse health, not an acceptance gate"
+  },
+  "full_triple": {
+    "non_empty_fields": [
+      "claim_id",
+      "subject",
+      "predicate",
+      "object",
+      "evidence"
+    ],
+    "note": "Schema may pass while full triples are still empty; report both."
+  },
+  "diagnostics": {
+    "core_triple": "structural + non-empty claim_id/subject/predicate/object; ignores polarity/kind/evidence, used only to separate content from harness strictness",
+    "lenient_schema": "core_triple + accepts positive/negative and fact/restriction aliases + evidence non-empty; still rejects polarity 0 and kind PASS; diagnostic only, not an acceptance gate"
+  },
+  "failure_classes": [
+    "fence",
+    "bad_json",
+    "truncated",
+    "trailing",
+    "dupkey",
+    "array_root",
+    "missing_verdict",
+    "bad_verdict",
+    "bad_claims",
+    "missing_field",
+    "bad_polarity",
+    "bad_kind",
+    "claim_id_not_allowed",
+    "empty_claim_id",
+    "empty_subject",
+    "empty_predicate",
+    "empty_object",
+    "empty_evidence",
+    "empty_claims_pass",
+    "claim_not_object"
+  ],
+  "metrics": [
+    "structural_pass",
+    "schema_pass",
+    "triple_pass",
+    "claim_id_allowed",
+    "strict_contract_pass",
+    "verdict_accuracy",
+    "hold_recall",
+    "always_pass_baseline",
+    "claim_set_exact",
+    "claim_set_semantic"
+  ]
+}

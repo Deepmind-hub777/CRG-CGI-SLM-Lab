@@ -1,0 +1,169 @@
+{
+  "schema": "lab02-manifest-plan/v0",
+  "status": "PLAN ONLY - no train/holdout samples exist yet; nothing in this file is training data",
+  "created": "2026-11-27 (Asia/Bangkok, UTC+7)",
+  "executor": "CGI/CRG 治理",
+  "acceptance": "豆包",
+  "approval": "Milo",
+  "base_branch": "lab/day-0-skeleton @ e47c438",
+  "canonicalization": {
+    "id": "HASH-01",
+    "verdict": "NOT FAIL: canonical hash matches HANDOFF §4.1; file-level sha256 differs by design",
+    "algorithm": "sha256(json.dumps(obj_without_key('sha256'), ensure_ascii=False, sort_keys=True, separators=(',',':')).encode('utf-8'))",
+    "source": "lab/01-qwen4b-eval/governed_runtime.py canon()/anchor_hash()"
+  },
+  "offline_package": {
+    "note": "57KB runtime package; all 34 files byte-identical to the paths below on lab/day-0-skeleton@e47c438, so not duplicated into lab/02",
+    "zip_sha256": "bea9ac1f068b35b07f79e584ced3d703bc4bf3b978a1a1fdf5df16e41ae42390",
+    "short_link": "https://aka.doubaocdn.com/s/x9uMhk4tTU"
+  },
+  "referenced_files": [
+    {
+      "path": "lab/01-qwen4b-eval/claim_engine.py",
+      "sha256": "7050977dfdc195c3103d8b598da48c765157d38234baba6b1c0d1e6021a75fc7"
+    },
+    {
+      "path": "lab/01-qwen4b-eval/governed_runtime.py",
+      "sha256": "22ec3970409fa107ad8e90abb77fda3f15b31a3cff6825f32108740d57c1408a"
+    },
+    {
+      "path": "lab/01-qwen4b-eval/run_eval.py",
+      "sha256": "38fcb3171eeaf6a8fce6ca58497ccc68749b5fda0db1580b088ce74ab441ab32"
+    },
+    {
+      "path": "lab/01-qwen4b-eval/governance/anchor_v0.json",
+      "sha256": "112da3a356b95cef817099a2d142b5ee8fa11fadb8ea5b00cba22afb08668a03",
+      "canonical_sha256": "86f481cf1f3508c2cf92bb7b1e9ce8299532bdd0122b5e707273dca4814f32be",
+      "embedded_sha256": "86f481cf1f3508c2cf92bb7b1e9ce8299532bdd0122b5e707273dca4814f32be",
+      "canonical_matches_embedded": true
+    },
+    {
+      "path": "lab/01-qwen4b-eval/governance/claim_policy_v0.json",
+      "sha256": "96591271f747fa111c4360f0843a352af34467d6653b2b525b373862a525c5a3",
+      "canonical_sha256": "72b5c2d4e7f6641eacfddd34f639b0b9ff5eed414d0e22af8480e4d946d1a438",
+      "embedded_sha256": "72b5c2d4e7f6641eacfddd34f639b0b9ff5eed414d0e22af8480e4d946d1a438",
+      "canonical_matches_embedded": true
+    },
+    {
+      "path": "lab/01-qwen4b-eval/governance/policy_v0.json",
+      "sha256": "c02e3b9219597ec650d6c5047d82f7afa12c4a6711b63f167022af468961c29d",
+      "canonical_sha256": "060df934ff2d8bf39618bb3374bf6785f89293ac4a71a72057f1c9b681b784ba",
+      "embedded_sha256": "060df934ff2d8bf39618bb3374bf6785f89293ac4a71a72057f1c9b681b784ba",
+      "canonical_matches_embedded": true
+    },
+    {
+      "path": "lab/01-qwen4b-eval/governance/anchor_flipped.json",
+      "sha256": "c79b2f3da5807bb59a90b42df636ecf3a759a01084064c07b0befdb74c5036c6",
+      "canonical_sha256": "e70d541ce1d209f5ac9735dd9ef69f40051ac6b63049e211377194cba73ce5d9",
+      "embedded_sha256": "e70d541ce1d209f5ac9735dd9ef69f40051ac6b63049e211377194cba73ce5d9",
+      "canonical_matches_embedded": true
+    },
+    {
+      "path": "lab/01-qwen4b-eval/governance/calibration_e003.jsonl",
+      "sha256": "ec3a8caf954c96a7f6234ef88c9c1c8e102acff24cff08e06b4a97844dcd90a1"
+    },
+    {
+      "path": "lab/01-qwen4b-eval/governance/holdout_e003.jsonl",
+      "sha256": "9696e09738b16fdaa4965ad237becea3a367df91e6855349b04e1434f96b9ec1"
+    },
+    {
+      "path": "eval/cases/seed.jsonl",
+      "sha256": "4b6cc1cbff118bdceb268461b2b1571dda70807db687b172c5d88a42dc6c96c3"
+    },
+    {
+      "path": "lab/01-qwen4b-eval/REPORT.md",
+      "sha256": "4f4bdbded797d02b0fbe1e89ae008e35ca0b3f5e7ef00b9e6b9abe3d694ac1da"
+    },
+    {
+      "path": "lab/01-qwen4b-eval/CLAIM_LEVEL_REPORT.md",
+      "sha256": "bf413eae3ebf5f226d984ba4ee215fc51a6304ac042919aea1c91b3bda1aa494"
+    },
+    {
+      "path": "lab/01-qwen4b-eval/GOVERNANCE_REPORT.md",
+      "sha256": "74abf73a1429e52b6df16c16f337bcec51852852e44e841e89d03a72f045a68a"
+    },
+    {
+      "path": "SPEC/03-metrics-and-gates.md",
+      "sha256": "6ab9161098fa4e7d6d6b274ca8c4f5729c7aca86162df7f5c526ae2362676add"
+    }
+  ],
+  "split_plan": {
+    "claim_policy_cases": [
+      "E003",
+      "E004",
+      "E006",
+      "E009"
+    ],
+    "train": {
+      "total": 50,
+      "by_case": {
+        "E003": {
+          "n": 20,
+          "PASS": 10,
+          "HOLD": 10
+        },
+        "E004": {
+          "n": 10,
+          "PASS": 5,
+          "HOLD": 5
+        },
+        "E006": {
+          "n": 10,
+          "PASS": 5,
+          "HOLD": 5
+        },
+        "E009": {
+          "n": 10,
+          "PASS": 5,
+          "HOLD": 5
+        }
+      },
+      "negative_drift_types": {
+        "fake_evidence": 5,
+        "second_half_self_plus": 5,
+        "antecedent_as_assertion": 5,
+        "question_as_claim": 5,
+        "double_negation": 5
+      }
+    },
+    "holdout": {
+      "total": 10,
+      "source": "lab/01-qwen4b-eval/governance/holdout_e003.jsonl",
+      "sha256": "9696e09738b16fdaa4965ad237becea3a367df91e6855349b04e1434f96b9ec1",
+      "composition": {
+        "E003": {
+          "PASS": 6,
+          "HOLD": 4
+        }
+      },
+      "open_item": "E004/E006/E009 holdout to be added (CPU work) before training, per Milo t9u; otherwise smoke only covers E003"
+    },
+    "excluded_from_train": [
+      "lab/01-qwen4b-eval/governance/calibration_e003.jsonl",
+      "lab/01-qwen4b-eval/governance/holdout_e003.jsonl"
+    ],
+    "dedup": [
+      "exact sha256 of normalized text across train/holdout/calibration",
+      "near-dup char 5-gram Jaccard >= 0.6 (threshold [推演], 豆包 to set)"
+    ],
+    "anchor_leak_guard": "targets must not contain any anchor_v0 'lines' or claim_policy_v0 question/note/patterns verbatim; LCS >= 10 CJK chars flagged for human review ([推演] threshold)",
+    "gates": [
+      "schema validation",
+      "claim_engine.evaluate verdict == label, mismatches logged as FAIL-### (labels not bent to engine)",
+      "evidence must be verbatim substring of draft",
+      "manifest per-sample sha256",
+      "豆包 spot-check 10 (5 PASS / 5 HOLD)"
+    ],
+    "data_rules": [
+      "no student data",
+      "no un-anonymized teacher traces",
+      "each sample carries source + license",
+      "no Claude / OpenAI API generated data"
+    ]
+  },
+  "not_done": [
+    "no training code",
+    "no weights / safetensors / GGUF downloaded or committed",
+    "no train.jsonl / holdout.jsonl generated"
+  ]
+}

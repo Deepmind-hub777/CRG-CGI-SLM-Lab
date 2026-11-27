@@ -1,0 +1,26 @@
+{
+  "stage": "02-A3",
+  "scope": "offline data/schema freeze; no model weights, no training, no GPU",
+  "built_at": "2026-11-27",
+  "train": {
+    "records": 50,
+    "claims": 70,
+    "empty_object_claims": 0,
+    "empty_predicate_claims": 0,
+    "sha256": "54fd202c4df00c635ab0086acf01493ecbdaed10f95624eec1655e2165994492"
+  },
+  "holdout": {
+    "records": 10,
+    "gold_claims": 11,
+    "empty_object_claims": 0,
+    "empty_predicate_claims": 0,
+    "sha256": "87d2fb1b0b85203fc34d55e37642acd063ba5ad356941e4067bb83b8f37846e3"
+  },
+  "data_manifest_sha256": "82e23714310a07b3add247ddc8251d992542db01bb1c99c1eb6fbf53187f5836",
+  "checks": {
+    "test_candidates_failures": 0,
+    "test_data_contract": "pass",
+    "test_contract_eval": "4/4"
+  },
+  "not_run_on_new_data": "base/adapter model scores; old metrics remain tied to pre-A3 data"
+}

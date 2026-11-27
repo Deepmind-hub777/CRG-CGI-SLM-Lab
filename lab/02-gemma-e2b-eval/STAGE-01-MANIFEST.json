@@ -1,0 +1,253 @@
+{
+  "stage": "STAGE-01",
+  "title": "Gemma 4 E2B smoke QLoRA: link verification and contract eval review",
+  "date": "2026-11-27",
+  "timezone": "Asia/Bangkok (UTC+7)",
+  "repo": "https://github.com/Deepmind-hub777/CRG-CGI-SLM-Lab",
+  "branch": "lab/02-gemma-e2b-stage-01",
+  "status": {
+    "link_verified": true,
+    "model_gate_passed": false,
+    "formal_run_started": false,
+    "new_data_generated": false,
+    "weights_published": false,
+    "main_merged": false
+  },
+  "run": {
+    "run_id": "smoke-v100c-20261127-1011",
+    "instance": "e2b-smoke-v100c",
+    "instance_id": "dsw-ff6b8ir3vsfvlcw7df",
+    "gpu": "Tesla V100-SXM2-16GB",
+    "steps": 13,
+    "epochs": 1,
+    "samples": 50,
+    "train_seconds": 52.627092123031616,
+    "train_loss": 2.50362741947417,
+    "loss_first": 3.693,
+    "loss_last": 0.6903,
+    "trainable_params": 24158208,
+    "total_params": 3960178208,
+    "trainable_ratio": 0.0061,
+    "target_modules": 205,
+    "compute_dtype": "torch.float16",
+    "known_issue": "grad_norm is nan for the first two steps"
+  },
+  "eval": {
+    "holdout_n": 10,
+    "gold_verdicts": {
+      "PASS": 6,
+      "HOLD": 4
+    },
+    "old_baseline": {
+      "note": "two incompatible rubrics exist; not used as baseline",
+      "cloud_conclusion_adapter_contract": "2/10",
+      "strict_table_adapter_contract": "0/10",
+      "strict_table_base_contract": "0/10"
+    },
+    "new_compare": {
+      "prompt": "only one JSON object; no code fence; stop at fence",
+      "max_new_tokens": 768,
+      "repetition_penalty": 1.05,
+      "base": {
+        "json_ok_rate": 0.9,
+        "verdict_accuracy": 0.5,
+        "claim_set_exact": 0.0,
+        "structural_contract": "8/10",
+        "latency_s": 78.77
+      },
+      "adapter": {
+        "json_ok_rate": 0.8,
+        "verdict_accuracy": 0.5,
+        "claim_set_exact": 0.1,
+        "structural_contract": "8/10",
+        "latency_s": 12.48
+      },
+      "always_pass_baseline": 0.6,
+      "hold_recall": "0/4 for both"
+    },
+    "semantic_contract": {
+      "passed": false,
+      "rubric": "contract-v1",
+      "issues": [
+        "base strict schema 0/10: polarity positive/negative aliases and kind fact/restriction; lenient 7/10",
+        "adapter strict schema 0/10; lenient 0/10: polarity:0, kind:PASS, missing polarity/kind/evidence",
+        "structural 8/10 and core triple 8/10; no output passed both structural and strict schema"
+      ]
+    },
+    "target_gold_alignment": {
+      "passed": false,
+      "source": "same claim_engine.evaluate() for train target and holdout gold",
+      "train_claims": 70,
+      "train_object_empty_claims": "60/70",
+      "train_predicate_empty_claims": "24/70",
+      "holdout_claims": 11,
+      "holdout_gold_object_empty": "11/11 (historical, before A3)",
+      "holdout_gold_predicate_empty": "11/11 (historical, before A3)",
+      "holdout_has_gold_claims": false,
+      "note": "historical stage-01 view; A3 later froze gold_claims and canonicalized triples; current data hashes differ",
+      "train_object_empty": "60/70 (historical, before A3)",
+      "train_predicate_empty": "24/70 (historical, before A3)"
+    },
+    "contract_v1": {
+      "rubric": "rubric_v1.json",
+      "runner": "contract_eval.py",
+      "input": "evidence/e2b-contract-eval-report.md",
+      "base": {
+        "n": 10,
+        "structural_pass": "8/10",
+        "schema_pass": "0/10",
+        "triple_pass": "0/10",
+        "verdict_accuracy": 0.5,
+        "hold_recall": "0/4",
+        "always_pass_baseline": 0.6,
+        "claim_set_exact": null,
+        "core_triple_pass": "8/10",
+        "lenient_schema_pass": "7/10"
+      },
+      "adapter": {
+        "n": 10,
+        "structural_pass": "8/10",
+        "schema_pass": "0/10",
+        "triple_pass": "0/10",
+        "verdict_accuracy": 0.5,
+        "hold_recall": "0/4",
+        "always_pass_baseline": 0.6,
+        "claim_set_exact": null,
+        "core_triple_pass": "8/10",
+        "lenient_schema_pass": "0/10"
+      },
+      "note": "strict schema 0/10 both; core triple 8/10 both; base lenient 7/10 (alias issue), adapter lenient 0/10 (not only harness)"
+    }
+  },
+  "next_gate": {
+    "formal_run": false,
+    "data_supplement": false,
+    "first_action": "fix claim_engine empty predicate/object and freeze gold_claims before any new run",
+    "acceptance": {
+      "structural_contract": ">= 8/10 for base and adapter",
+      "semantic_contract": ">= 9/10; no polarity:0, kind:PASS, or missing fields",
+      "hold_recall": ">= 1/4",
+      "verdict_accuracy": "> 0.6 always-PASS baseline"
+    }
+  },
+  "evidence": {
+    "cloud_report": "evidence/e2b-contract-eval-report.md",
+    "cloud_report_sha256": "30ac18e0b996f60263de15a8b18b12aa1b34f340eee882255346bcdf182de9c4",
+    "train_sha256": "f1072fa95f2514ca9dba36f990bcdb276bb71266a8ccfac466efc68fb8238371",
+    "holdout_sha256": "6d9de69ea03ed664fa3f7c480d34a5876282a6d1002ade7d7d4e6a1d5e3d8e41",
+    "adapter_model_sha256": "03bf5e2caa62fb17b60bf6ceec25a3e7d3aa40b06e9c86d542bdb0",
+    "adapter_note": "cloud record; not re-read locally; adapter is not committed"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5690,
+      "sha256": "c3c48fe040637e1c5ff32fff4a45cd05a40ac4418ba9f77e60847fe20d17e271"
+    },
+    {
+      "path": "STAGE-01-REPORT.md",
+      "bytes": 16441,
+      "sha256": "8bf31534827ec1f95a172b896c54b0a52fbd05c07daa2d64dc463c5a32e5e3ab"
+    },
+    {
+      "path": "NEXT-ACTIONS.md",
+      "bytes": 3359,
+      "sha256": "ed25f1e7be5de71256854e94e7f956d937d6cc265a974253bbfd2ee9e7d1408a"
+    },
+    {
+      "path": "rubric_v1.json",
+      "bytes": 2077,
+      "sha256": "371c33b448e0f24657c8cc890ec1274b70a26282278cd63b1cf7746fc3c46b45"
+    },
+    {
+      "path": "contract_eval.py",
+      "bytes": 11526,
+      "sha256": "120d629d044995dac5edcd3098d79fbc5fc0233d6b71206d464120b070a40f7b"
+    },
+    {
+      "path": "test_contract_eval.py",
+      "bytes": 1890,
+      "sha256": "01c832e8baf14a27d874a1633bd80b777a0ea78eb1a834b7c117a40c5ccc91ef"
+    },
+    {
+      "path": "evidence/README.md",
+      "bytes": 1200,
+      "sha256": "002f2800f6eb34097170ece638fe0457af9ce75765ac8bab4bc650deea2c82a8"
+    },
+    {
+      "path": "evidence/e2b-contract-eval-report.md",
+      "bytes": 15562,
+      "sha256": "30ac18e0b996f60263de15a8b18b12aa1b34f340eee882255346bcdf182de9c4"
+    },
+    {
+      "path": "evidence/contract-eval-v1.md",
+      "bytes": 2474,
+      "sha256": "916433c9e9aead3570d74394c3299504222f71fb2f842a3abe5b33ea8f270d5b"
+    },
+    {
+      "path": "evidence/contract-eval-v1.json",
+      "bytes": 13645,
+      "sha256": "c1f40dd53370cc3dcfb12f9edf8d6f9b2ed8ddbbe4a8da55f05fac06e3bb24eb"
+    },
+    {
+      "path": "data/train.jsonl",
+      "bytes": 32323,
+      "sha256": "54fd202c4df00c635ab0086acf01493ecbdaed10f95624eec1655e2165994492"
+    },
+    {
+      "path": "data/holdout.jsonl",
+      "bytes": 5628,
+      "sha256": "87d2fb1b0b85203fc34d55e37642acd063ba5ad356941e4067bb83b8f37846e3"
+    },
+    {
+      "path": "data/manifest.json",
+      "bytes": 4577,
+      "sha256": "82e23714310a07b3add247ddc8251d992542db01bb1c99c1eb6fbf53187f5836"
+    },
+    {
+      "path": "build_data.py",
+      "bytes": 10284,
+      "sha256": "ec398d93092bdd95f5b3fab29f515841b8d18283b2a59d88142d8d2438a5f7d9"
+    },
+    {
+      "path": "test_candidates.py",
+      "bytes": 3995,
+      "sha256": "fd9281645c6c38881250e3865c16ca45cd57f544200342236ee7831be89437c8"
+    },
+    {
+      "path": "eval_e2b.py",
+      "bytes": 7095,
+      "sha256": "fa0fffb3079ed590e94e8b2210c5c16e18257cbed06fc60d0d3414dbac5bb1fc"
+    },
+    {
+      "path": "train_qlora.py",
+      "bytes": 11073,
+      "sha256": "b29bdf49c7af1a0affaa0ecc1de82fed52f1c0ce21bc4cd694b6dc15ad14b745"
+    },
+    {
+      "path": "claim_engine.py",
+      "bytes": 12507,
+      "sha256": "b15b7fc8e7796e6d90ba87a082ece014250c327c954be9436d02bc81dc538ce3"
+    },
+    {
+      "path": "governed_runtime.py",
+      "bytes": 15221,
+      "sha256": "22ec3970409fa107ad8e90abb77fda3f15b31a3cff6825f32108740d57c1408a"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 145,
+      "sha256": "c137693542320060815c0e57d24bf8f8cfa0d460dd541714a1fb8cfa225ce4e6"
+    },
+    {
+      "path": "governance/anchor_v0.json",
+      "bytes": 747,
+      "sha256": "112da3a356b95cef817099a2d142b5ee8fa11fadb8ea5b00cba22afb08668a03"
+    },
+    {
+      "path": "governance/claim_policy_v0.json",
+      "bytes": 2276,
+      "sha256": "96591271f747fa111c4360f0843a352af34467d6653b2b525b373862a525c5a3"
+    }
+  ]
+}

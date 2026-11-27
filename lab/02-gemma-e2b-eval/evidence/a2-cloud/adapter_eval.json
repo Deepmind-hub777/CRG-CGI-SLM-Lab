@@ -1,0 +1,212 @@
+{
+  "summary": {
+    "model_id": "/mnt/systemDisk/e2b/models/gemma-4-E2B-it",
+    "adapter": "/mnt/systemDisk/e2b/runs/smoke-v100c-20261127-1011/adapter",
+    "data": "/mnt/systemDisk/e2b/lab/02-gemma-e2b-eval/data/holdout.jsonl",
+    "n": 10,
+    "json_ok_rate": 0.7,
+    "verdict_accuracy": 0.0,
+    "claim_set_exact_rate": 0.0,
+    "avg_latency_s": 26.008699999999997
+  },
+  "rows": [
+    {
+      "id": "E003-holdout-001",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 67.061,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"anchor_vector_source\",\"subject\":\"锚定向量\",\"predicate\":\"不应由\",\"object\":\"生成模型产出\",\"polarity\":0,\"kind\":\"negative\",\"evidence\":\"锚定向量不应由生成模型产出，应由冻结参照给出。\",\"hold_reason\":\"草稿中明确指出了锚定向量的来源限制，与问题中“可以由当前生成模型自己提供吗？”的疑问直接相关。\",\"rollback_required\":false,\"hold_reason\":\"草稿明确了锚定向量的来源限制，与问题中“可以由当前生成模型自己提供吗？”的疑问直接相关。\",\"rollback_required\":false,\"hold_reason\":\"草稿明确了锚定向量的来源限制，与问题中“可以由当前生成模型自己提供吗？”的疑问直接相关。\",\"rollback_required\":false,\"hold_reason\":\"草稿明确了锚定向量的来源限制，与问题中“可以由当前生成模型自己提供吗？”的疑问直接相关。\",\"rollback_required\":false,\"hold_reason\":\"草稿明确了锚定向量的来源限制，与问题中“可以由当前生成模型自己提供吗？”的疑问直接相关。\",\"rollback_required\":false,\"hold_reason\":\"草稿明确了锚定向量的来源限制，与问题中“可以由当前生成模型自己提供吗？”的疑问直接相关。\",\"rollback_required\":false,\"hold_reason\":\"草稿明确了锚定向量的来源限制，与问题中“可以由当前生成模型自己提供吗？”的疑问直接相关。\",\"rollback_required\":false,\"hold_reason\":\"草稿明确了锚定向量的来源限制，与问题中“可以由当前生成模型自己提供吗？”的疑问直接相关。\",\"rollback_required\":false,\"hold",
+      "json_ok": false,
+      "parse_error": "no JSON object",
+      "verdict_match": false,
+      "claim_set_match": false
+    },
+    {
+      "id": "E003-holdout-002",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 15.499,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"C1\",\"subject\":\"生成模型\",\"predicate\":\"不能充当锚定来源\",\"object\":null,\"polarity\":null,\"kind\":null,\"evidence\":null,\"hold_reason\":\"生成模型不能充当锚定来源\",\"rollback_required\":false,\"hold_reason\":\"生成模型不能充当锚定来源\",\"hold_reason\":\"锚定在权重之外\",\"rollback_required\":false}]}",
+      "json_ok": true,
+      "model_verdict": null,
+      "model_claims": [
+        {
+          "claim_id": "C1",
+          "subject": "生成模型",
+          "predicate": "不能充当锚定来源",
+          "object": null,
+          "polarity": null,
+          "kind": null,
+          "evidence": null,
+          "hold_reason": "锚定在权重之外",
+          "rollback_required": false
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false
+    },
+    {
+      "id": "E003-holdout-003",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 18.783,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"anchor_is_external_frozen_coordinate\",\"subject\":\"锚定\",\"predicate\":\"是\",\"object\":\"外部冻结的坐标\",\"polarity\":0,\"kind\":\"fact\",\"evidence\":\"锚定是外部冻结的坐标，模型只负责生发。\"}],\"hold_reason\":\"锚定是外部冻结的坐标，模型只负责生发。\",\"rollback_required\":false,\"hold_reason\":\"锚定是外部冻结的坐标，模型只负责生发。\"}",
+      "json_ok": true,
+      "model_verdict": null,
+      "model_claims": [
+        {
+          "claim_id": "anchor_is_external_frozen_coordinate",
+          "subject": "锚定",
+          "predicate": "是",
+          "object": "外部冻结的坐标",
+          "polarity": 0,
+          "kind": "fact",
+          "evidence": "锚定是外部冻结的坐标，模型只负责生发。"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false
+    },
+    {
+      "id": "E003-holdout-004",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 16.586,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"model_only_does_plus_one\",\"subject\":\"model\",\"predicate\":\"does\",\"object\":\"plus_one\",\"polarity\":0,\"kind\":\"assertion\",\"evidence\":\"模型只做 +1\"},{\"claim_id\":\"anchoring_provided_externally\",\"subject\":\"anchoring\",\"predicate\":\"is_provided_by\",\"object\":\"external\",\"polarity\":0,\"kind\":\"assertion\",\"evidence\":\"锚定由外部提供\"}]}",
+      "json_ok": true,
+      "model_verdict": null,
+      "model_claims": [
+        {
+          "claim_id": "model_only_does_plus_one",
+          "subject": "model",
+          "predicate": "does",
+          "object": "plus_one",
+          "polarity": 0,
+          "kind": "assertion",
+          "evidence": "模型只做 +1"
+        },
+        {
+          "claim_id": "anchoring_provided_externally",
+          "subject": "anchoring",
+          "predicate": "is_provided_by",
+          "object": "external",
+          "polarity": 0,
+          "kind": "assertion",
+          "evidence": "锚定由外部提供"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false
+    },
+    {
+      "id": "E003-holdout-005",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 8.364,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"让模型自己给自己定锚，省掉外部参照。\",\"subject\":\"模型\",\"predicate\":\"给自己定锚\",\"object\":\"锚\",\"polarity\":0,\"kind\":0,\"evidence\":\"\"}",
+      "json_ok": false,
+      "parse_error": "Expecting ',' delimiter: line 1 column 129 (char 128)",
+      "verdict_match": false,
+      "claim_set_match": false
+    },
+    {
+      "id": "E003-holdout-006",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 22.588,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"anchor_can_be_internal\",\"subject\":\"anchor\",\"predicate\":\"can_be_internal\",\"object\":\"weight\",\"polarity\":0,\"kind\":\"assertion\",\"evidence\":\"\"}],\"hold_reason\":\"The claim is about the possibility of anchoring being internal, which is a statement about the mechanism, not a direct answer to 'can it be provided by the model itself'.\",\"rollback_required\":false,\"hold_reason\":\"The claim is about the possibility of anchoring being internal, which is a statement about the mechanism, not a direct answer to 'can it be provided by the model itself'.\"}",
+      "json_ok": true,
+      "model_verdict": null,
+      "model_claims": [
+        {
+          "claim_id": "anchor_can_be_internal",
+          "subject": "anchor",
+          "predicate": "can_be_internal",
+          "object": "weight",
+          "polarity": 0,
+          "kind": "assertion",
+          "evidence": ""
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false
+    },
+    {
+      "id": "E003-holdout-007",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 14.479,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"anchor_is_not_model_provided\",\"subject\":\"锚定\",\"predicate\":\"不是模型自己提供的\",\"object\":\"是冻结参照\",\"polarity\":0,\"kind\":\"fact\",\"evidence\":\"锚定不是模型自己提供的，是冻结参照\"}],\"hold_reason\":\"锚定不是模型自己提供的，是冻结参照\"}",
+      "json_ok": true,
+      "model_verdict": null,
+      "model_claims": [
+        {
+          "claim_id": "anchor_is_not_model_provided",
+          "subject": "锚定",
+          "predicate": "不是模型自己提供的",
+          "object": "是冻结参照",
+          "polarity": 0,
+          "kind": "fact",
+          "evidence": "锚定不是模型自己提供的，是冻结参照"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false
+    },
+    {
+      "id": "E003-holdout-008",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 66.859,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"由模型自身提供锚定并不构成自指\",\"subject\":\"模型自身提供锚定\",\"predicate\":\"并不构成自指\",\"object\":null,\"polarity\":null,\"kind\":null,\"evidence\":null,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback_required\":false,\"hold_reason\":\"模型自身提供锚定并不构成自指\",\"rollback",
+      "json_ok": false,
+      "parse_error": "no JSON object",
+      "verdict_match": false,
+      "claim_set_match": false
+    },
+    {
+      "id": "E003-holdout-009",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 16.643,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"anchor_must_be_external\",\"subject\":\"锚定\",\"predicate\":\"必须\",\"object\":\"外置\"},{\"claim_id\":\"anchor_cannot_be_trained\",\"subject\":\"锚定\",\"predicate\":\"不能\",\"object\":\"训进权重\"}],\"hold_reason\":\"锚定必须外置，不能训进权重。\",\"rollback_required\":false,\"hold_reason\":\"锚定必须外置，不能训进权重。\"}",
+      "json_ok": true,
+      "model_verdict": null,
+      "model_claims": [
+        {
+          "claim_id": "anchor_must_be_external",
+          "subject": "锚定",
+          "predicate": "必须",
+          "object": "外置"
+        },
+        {
+          "claim_id": "anchor_cannot_be_trained",
+          "subject": "锚定",
+          "predicate": "不能",
+          "object": "训进权重"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false
+    },
+    {
+      "id": "E003-holdout-010",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 13.225,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"anchor_generation\",\"subject\":\"模型\",\"predicate\":\"可以生成\",\"object\":\"锚定\"}],\"hold_reason\":\"草稿中提到模型可以自己生成锚定，但未明确说明是否可以由当前生成模型自己提供。\",\"rollback_required\":true,\"hold_reason\":\"模型可以自己生成锚定\"}",
+      "json_ok": true,
+      "model_verdict": null,
+      "model_claims": [
+        {
+          "claim_id": "anchor_generation",
+          "subject": "模型",
+          "predicate": "可以生成",
+          "object": "锚定"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false
+    }
+  ]
+}

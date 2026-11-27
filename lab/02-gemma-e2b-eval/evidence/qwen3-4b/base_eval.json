@@ -1,0 +1,371 @@
+{
+  "summary": {
+    "model_id": "/mnt/systemDisk/e2b/models/Qwen3-4B-Instruct-2507",
+    "adapter": "",
+    "data": "/mnt/systemDisk/e2b/lab/02-gemma-e2b-eval/data/holdout.jsonl",
+    "n": 10,
+    "json_ok_rate": 1.0,
+    "verdict_accuracy": 0.2,
+    "claim_set_exact_rate": 0.1,
+    "avg_latency_s": 19.2712,
+    "contract_ok_rate": 1.0,
+    "failures": {}
+  },
+  "rows": [
+    {
+      "id": "E003-holdout-001",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 22.114,
+      "raw_output": "{\n  \"verdict\": \"HOLD\",\n  \"hold_reason\": \"草稿明确指出锚定向量不应由生成模型产出，与用户问题中‘可以由当前生成模型自己提供’相矛盾，因此不能PASS。\",\n  \"claims\": [\n    {\n      \"claim_id\": \"c1\",\n      \"subject\": \"锚定向量\",\n      \"predicate\": \"不应由\",\n      \"object\": \"生成模型产出\",\n      \"polarity\": \"negative\",\n      \"kind\": \"prohibition\",\n      \"evidence\": \"锚定向量不应由生成模型产出，应由冻结参照给出。\"\n    },\n    {\n      \"claim_id\": \"c2\",\n      \"subject\": \"锚定向量\",\n      \"predicate\": \"应由\",\n      \"object\": \"冻结参照给出\",\n      \"polarity\": \"positive\",\n      \"kind\": \"requirement\",\n      \"evidence\": \"锚定向量不应由生成模型产出，应由冻结参照给出。\"\n    }\n  ]\n}",
+      "json_ok": true,
+      "model_verdict": "HOLD",
+      "model_claims": [
+        {
+          "claim_id": "c1",
+          "subject": "锚定向量",
+          "predicate": "不应由",
+          "object": "生成模型产出",
+          "polarity": "negative",
+          "kind": "prohibition",
+          "evidence": "锚定向量不应由生成模型产出，应由冻结参照给出。"
+        },
+        {
+          "claim_id": "c2",
+          "subject": "锚定向量",
+          "predicate": "应由",
+          "object": "冻结参照给出",
+          "polarity": "positive",
+          "kind": "requirement",
+          "evidence": "锚定向量不应由生成模型产出，应由冻结参照给出。"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-002",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 22.922,
+      "raw_output": "{\n  \"verdict\": \"HOLD\",\n  \"hold_reason\": \"草稿未明确说明锚定 logits 是否可以由生成模型自己提供，且直接否定生成模型充当锚定来源，但未直接回答用户问题中的可能性，因此无法确认断言。\",\n  \"claims\": [\n    {\n      \"claim_id\": \"c1\",\n      \"subject\": \"生成模型\",\n      \"predicate\": \"不能充当\",\n      \"object\": \"锚定来源\",\n      \"polarity\": \"negative\",\n      \"kind\": \"capability\",\n      \"evidence\": \"生成模型不能充当锚定来源；锚定在权重之外。\"\n    },\n    {\n      \"claim_id\": \"c2\",\n      \"subject\": \"锚定\",\n      \"predicate\": \"位于\",\n      \"object\": \"权重之外\",\n      \"polarity\": \"neutral\",\n      \"kind\": \"location\",\n      \"evidence\": \"生成模型不能充当锚定来源；锚定在权重之外。\"\n    }\n  ]\n}",
+      "json_ok": true,
+      "model_verdict": "HOLD",
+      "model_claims": [
+        {
+          "claim_id": "c1",
+          "subject": "生成模型",
+          "predicate": "不能充当",
+          "object": "锚定来源",
+          "polarity": "negative",
+          "kind": "capability",
+          "evidence": "生成模型不能充当锚定来源；锚定在权重之外。"
+        },
+        {
+          "claim_id": "c2",
+          "subject": "锚定",
+          "predicate": "位于",
+          "object": "权重之外",
+          "polarity": "neutral",
+          "kind": "location",
+          "evidence": "生成模型不能充当锚定来源；锚定在权重之外。"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-003",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 27.123,
+      "raw_output": "{\n  \"verdict\": \"HOLD\",\n  \"hold_reason\": \"草稿未明确说明锚定logits是否可由生成模型自己提供，仅提到锚定是外部冻结的坐标，模型负责生发，缺乏关于logits来源的直接断言。\",\n  \"claims\": [\n    {\n      \"claim_id\": \"c1\",\n      \"subject\": \"锚定\",\n      \"predicate\": \"是\",\n      \"object\": \"外部冻结的坐标\",\n      \"polarity\": \"positive\",\n      \"kind\": \"definition\",\n      \"evidence\": \"锚定是外部冻结的坐标，模型只负责生发。\"\n    },\n    {\n      \"claim_id\": \"c2\",\n      \"subject\": \"模型\",\n      \"predicate\": \"负责\",\n      \"object\": \"生发\",\n      \"polarity\": \"positive\",\n      \"kind\": \"function\",\n      \"evidence\": \"锚定是外部冻结的坐标，模型只负责生发。\"\n    }\n  ]\n}",
+      "json_ok": true,
+      "model_verdict": "HOLD",
+      "model_claims": [
+        {
+          "claim_id": "c1",
+          "subject": "锚定",
+          "predicate": "是",
+          "object": "外部冻结的坐标",
+          "polarity": "positive",
+          "kind": "definition",
+          "evidence": "锚定是外部冻结的坐标，模型只负责生发。"
+        },
+        {
+          "claim_id": "c2",
+          "subject": "模型",
+          "predicate": "负责",
+          "object": "生发",
+          "polarity": "positive",
+          "kind": "function",
+          "evidence": "锚定是外部冻结的坐标，模型只负责生发。"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-004",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 14.904,
+      "raw_output": "{\n  \"verdict\": \"HOLD\",\n  \"hold_reason\": \"草稿明确指出锚定由外部提供，未提及模型可自行提供锚定 logits\",\n  \"claims\": [\n    {\n      \"claim_id\": \"c001\",\n      \"subject\": \"模型\",\n      \"predicate\": \"可以提供\",\n      \"object\": \"锚定 logits\",\n      \"polarity\": \"negative\",\n      \"kind\": \"capability\",\n      \"evidence\": \"模型只做 +1，锚定由外部提供\"\n    }\n  ]\n}",
+      "json_ok": true,
+      "model_verdict": "HOLD",
+      "model_claims": [
+        {
+          "claim_id": "c001",
+          "subject": "模型",
+          "predicate": "可以提供",
+          "object": "锚定 logits",
+          "polarity": "negative",
+          "kind": "capability",
+          "evidence": "模型只做 +1，锚定由外部提供"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-005",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 13.56,
+      "raw_output": "{\n  \"verdict\": \"PASS\",\n  \"claims\": [\n    {\n      \"claim_id\": \"c1\",\n      \"subject\": \"锚定 logits\",\n      \"predicate\": \"可以由\",\n      \"object\": \"当前生成模型自己提供\",\n      \"polarity\": \"positive\",\n      \"kind\": \"existence\",\n      \"evidence\": \"让模型自己给自己定锚，省掉外部参照。\"\n    }\n  ],\n  \"hold_reason\": \"\",\n  \"rollback_required\": false\n}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "c1",
+          "subject": "锚定 logits",
+          "predicate": "可以由",
+          "object": "当前生成模型自己提供",
+          "polarity": "positive",
+          "kind": "existence",
+          "evidence": "让模型自己给自己定锚，省掉外部参照。"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": true,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-006",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 29.362,
+      "raw_output": "{\n  \"verdict\": \"HOLD\",\n  \"hold_reason\": \"草稿未明确说明锚定logits是否可由当前生成模型自己提供，仅提到‘锚定可以内生在权重里’和‘模型自我校准’，缺乏对‘logits’和‘由模型自己提供’的直接断言。\",\n  \"claims\": [\n    {\n      \"claim_id\": \"c1\",\n      \"subject\": \"锚定\",\n      \"predicate\": \"可以内生在权重里\",\n      \"object\": \"权重\",\n      \"polarity\": \"positive\",\n      \"kind\": \"existence\",\n      \"evidence\": \"锚定可以内生在权重里，模型自我校准。\"\n    },\n    {\n      \"claim_id\": \"c2\",\n      \"subject\": \"模型\",\n      \"predicate\": \"能够自我校准\",\n      \"object\": \"模型\",\n      \"polarity\": \"positive\",\n      \"kind\": \"capability\",\n      \"evidence\": \"锚定可以内生在权重里，模型自我校准。\"\n    }\n  ]\n}",
+      "json_ok": true,
+      "model_verdict": "HOLD",
+      "model_claims": [
+        {
+          "claim_id": "c1",
+          "subject": "锚定",
+          "predicate": "可以内生在权重里",
+          "object": "权重",
+          "polarity": "positive",
+          "kind": "existence",
+          "evidence": "锚定可以内生在权重里，模型自我校准。"
+        },
+        {
+          "claim_id": "c2",
+          "subject": "模型",
+          "predicate": "能够自我校准",
+          "object": "模型",
+          "polarity": "positive",
+          "kind": "capability",
+          "evidence": "锚定可以内生在权重里，模型自我校准。"
+        }
+      ],
+      "verdict_match": true,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-007",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 18.379,
+      "raw_output": "{\n  \"verdict\": \"HOLD\",\n  \"hold_reason\": \"草稿明确指出锚定不是模型自己提供的，但未直接回答用户问题中关于‘锚定 logits 是否可以由当前生成模型自己提供’的问题，且缺乏对模型是否能提供 logits 的断言。\",\n  \"claims\": [\n    {\n      \"claim_id\": \"c1\",\n      \"subject\": \"锚定\",\n      \"predicate\": \"不是模型自己提供的\",\n      \"object\": \"冻结参照\",\n      \"polarity\": \"negative\",\n      \"kind\": \"factual\",\n      \"evidence\": \"锚定不是模型自己提供的，是冻结参照。\"\n    }\n  ]\n}",
+      "json_ok": true,
+      "model_verdict": "HOLD",
+      "model_claims": [
+        {
+          "claim_id": "c1",
+          "subject": "锚定",
+          "predicate": "不是模型自己提供的",
+          "object": "冻结参照",
+          "polarity": "negative",
+          "kind": "factual",
+          "evidence": "锚定不是模型自己提供的，是冻结参照。"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-008",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 12.214,
+      "raw_output": "{\n  \"verdict\": \"HOLD\",\n  \"hold_reason\": \"草稿未明确回答锚定logits是否可以由当前生成模型自己提供\",\n  \"claims\": [\n    {\n      \"claim_id\": \"c1\",\n      \"subject\": \"锚定 logits\",\n      \"predicate\": \"可以由当前生成模型自己提供\",\n      \"object\": \"否\",\n      \"polarity\": \"negative\",\n      \"kind\": \"assertion\",\n      \"evidence\": \"由模型自身提供锚定并不构成自指\"\n    }\n  ]\n}",
+      "json_ok": true,
+      "model_verdict": "HOLD",
+      "model_claims": [
+        {
+          "claim_id": "c1",
+          "subject": "锚定 logits",
+          "predicate": "可以由当前生成模型自己提供",
+          "object": "否",
+          "polarity": "negative",
+          "kind": "assertion",
+          "evidence": "由模型自身提供锚定并不构成自指"
+        }
+      ],
+      "verdict_match": true,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-009",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 21.266,
+      "raw_output": "{\n  \"verdict\": \"HOLD\",\n  \"hold_reason\": \"草稿明确表示锚定必须外置，不能训进权重，未提及当前生成模型是否可提供锚定 logits，无法支持‘可以由当前生成模型自己提供’这一断言。\",\n  \"claims\": [\n    {\n      \"claim_id\": \"c1\",\n      \"subject\": \"锚定\",\n      \"predicate\": \"必须外置\",\n      \"object\": \"外置\",\n      \"polarity\": \"positive\",\n      \"kind\": \"restriction\",\n      \"evidence\": \"锚定必须外置，不能训进权重\"\n    },\n    {\n      \"claim_id\": \"c2\",\n      \"subject\": \"锚定\",\n      \"predicate\": \"不能训进权重\",\n      \"object\": \"权重\",\n      \"polarity\": \"negative\",\n      \"kind\": \"restriction\",\n      \"evidence\": \"锚定必须外置，不能训进权重\"\n    }\n  ]\n}",
+      "json_ok": true,
+      "model_verdict": "HOLD",
+      "model_claims": [
+        {
+          "claim_id": "c1",
+          "subject": "锚定",
+          "predicate": "必须外置",
+          "object": "外置",
+          "polarity": "positive",
+          "kind": "restriction",
+          "evidence": "锚定必须外置，不能训进权重"
+        },
+        {
+          "claim_id": "c2",
+          "subject": "锚定",
+          "predicate": "不能训进权重",
+          "object": "权重",
+          "polarity": "negative",
+          "kind": "restriction",
+          "evidence": "锚定必须外置，不能训进权重"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-010",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 10.868,
+      "raw_output": "{\n  \"verdict\": \"PASS\",\n  \"claims\": [\n    {\n      \"claim_id\": \"c1\",\n      \"subject\": \"锚定\",\n      \"predicate\": \"可以由当前生成模型自己提供\",\n      \"object\": \"\",\n      \"polarity\": \"positive\",\n      \"kind\": \"existence\",\n      \"evidence\": \"锚定在权重之外，所以模型可以自己生成锚定。\"\n    }\n  ],\n  \"hold_reason\": \"\",\n  \"rollback_required\": false\n}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "c1",
+          "subject": "锚定",
+          "predicate": "可以由当前生成模型自己提供",
+          "object": "",
+          "polarity": "positive",
+          "kind": "existence",
+          "evidence": "锚定在权重之外，所以模型可以自己生成锚定。"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    }
+  ]
+}
