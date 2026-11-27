@@ -29,6 +29,19 @@
   - 新哈希：`train=54fd202c…`，`holdout=87d2fb1b…`，`data/manifest=82e23714…`。
   - `test_candidates.py` 0 FAIL；`test_data_contract.py` 通过；`contract_eval` 单测 4/4。模型分数尚未在新数据上重跑。
 
+- [x] **A4. Qwen3-4B 基线 + 50 条 QLoRA**
+  - 底座 `Qwen3-4B-Instruct-2507`，A3 train 50 条，4-bit QLoRA，1 epoch，13 步，50.8 秒，train loss 1.2597。
+  - base：结构 10/10，严格 schema 0/10，核心三元组 9/10，verdict 0.20；adapter：结构 10/10，严格 schema 5/10，核心三元组 8/10，verdict 0.30。
+  - 两者都低于 always-PASS 0.60；adapter 也低于 always-HOLD 0.40。6 条 PASS 被 adapter 全判 HOLD；HOLD recall 0.75 是 HOLD 偏置的副作用。
+  - 云端 `contract_ok=1.0` 只是弱门，不校验 claim 字段、polarity、kind；与严格 schema 0/10 不矛盾。
+  - 产物：`evidence/qwen3-4b/*.json`、`evidence/a4-recompute.json`、`evidence/a4-recompute.md`。
+
+- [ ] **A5. 修 PASS/HOLD 语义与 claim_id 契约（零 GPU，先于扩数据）**
+  - 在 system prompt 或 runtime contract 里写死：PASS = 草稿 claims 可被冻结锚定接受；HOLD = 草稿出现不允许的断言/来源；不是“草稿是否同意用户问题”。
+  - 决定 claim set 口径：要么在 prompt 给出 claim_id 允许词表，要么改为按 `(subject,predicate,object,polarity)` 语义匹配，不再要求猜隐藏 ID。
+  - 把云端 `contract_ok` 升级为 `rubric_v1` strict schema；弱门结果不再写进主表。
+  - 修订后用同一 10 条重跑 Qwen base，确认语义修正本身是否改变 verdict；再决定是否重训 50 条。
+
 ---
 
 ## B. 再做（10 条 GPU A/B，不正式 run）
@@ -46,7 +59,7 @@
 - [ ] 200–300 条，优先补完整负例三元组
 - [ ] 配比暂定：40% HOLD 负例、20% 双重否定/条件前件、20% 中文三元组与契约样板、10% 长 claim/截断、10% PASS 对照
 - [ ] epoch 先保持 1
-- [ ] 补数据前，A1–A3 必须完成
+- [ ] 补数据前，A1–A5 必须完成
 
 ---
 
@@ -58,6 +71,7 @@
 | 语义合格 | ≥ 9/10；无 `polarity:0`、`kind:"PASS"`、缺字段 |
 | HOLD recall | ≥ 1/4 |
 | verdict 准确率 | > 0.6 的 always-PASS 基线 |
+| 退化检查 | adapter 不得低于 always-HOLD 0.4；PASS recall 不得为 0 |
 
 达不到：查生成停止与 target 序列化，不补数据、不加 epoch、不进正式 run。
 

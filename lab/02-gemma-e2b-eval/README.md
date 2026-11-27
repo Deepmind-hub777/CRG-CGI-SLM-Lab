@@ -15,6 +15,7 @@
 - [evidence/contract-eval-v1.md](evidence/contract-eval-v1.md) — 统一 rubric 的重算摘要。
 - [STAGE-02-MANIFEST.json](STAGE-02-MANIFEST.json) — 阶段 02 状态与文件哈希。
 - [evidence/a2-recompute.md](evidence/a2-recompute.md) — A2：四个云端 eval 产物的统一 rubric 重算。
+- [evidence/a4-recompute.md](evidence/a4-recompute.md) — A4：Qwen3-4B base 与 50 条 QLoRA 的统一 rubric 复算；不含“更强”结论。
 
 ---
 
@@ -79,6 +80,8 @@ holdout 87d2fb1b0b85203fc34d55e37642acd063ba5ad356941e4067bb83b8f37846e3
 - 文本配置：35 层，hidden 1536；`num_kv_shared_layers=20`；总参数约 5.12B，模型卡 2.3B effective。
 - 最低 12GB VRAM；本 smoke 用阿里云 PAI-DSW 免费试用 V100 16GB（A10 24GB 在 `cn-shanghai-d` 暂停销售，未用）。
 - 音频塔/视觉塔不进入 LoRA target；只打文本 decoder 的 7 个投影。
+
+第二底座 smoke：`Qwen/Qwen3-4B-Instruct-2507`（约 7.6GB，ModelScope 下载，不进 git）。A3 的 50 条 train 上跑 50 条 4-bit QLoRA，1 epoch、13 步、50.8 秒、train loss 1.2597。结果不是“更强”：base 结构 10/10、严格 schema 0/10、verdict 0.20；adapter 结构 10/10、严格 schema 5/10、verdict 0.30；两者都低于 always-PASS 0.60，adapter 也低于 always-HOLD 0.40。只报逐底座结果，不做跨底座平均，也不写“可移植性已实证”。
 
 ---
 

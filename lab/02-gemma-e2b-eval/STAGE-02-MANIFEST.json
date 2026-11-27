@@ -17,13 +17,20 @@
     "claim_triples_canonical": true,
     "gold_claims_frozen": true,
     "data_rebuilt_after_fix": true,
-    "a2_four_evals_recomputed": true
+    "a2_four_evals_recomputed": true,
+    "qwen3_4b_baseline_run": true,
+    "qwen3_4b_qlora_50_run": true,
+    "qwen3_4b_adapter_eval_recomputed": true,
+    "qwen3_4b_gate_passed": false,
+    "ruler_semantic_contract_fixed": false
   },
   "claim_boundary": {
     "governance_layer_model_agnostic": "design-level only; not empirically proven across models",
     "evidence_model": "Gemma 4 E2B",
     "model_specific_results": "8/10 structural, 8/10 core triple, 0/10 strict schema, HOLD 0/4, verdict 0.5",
-    "not_claimed": "model accuracy, zero hallucination, white-box understanding, Ring 0 achieved, cross-model empirical proof"
+    "not_claimed": "model accuracy, zero hallucination, white-box understanding, Ring 0 achieved, cross-model empirical proof",
+    "second_base": "Qwen3-4B-Instruct-2507 smoke; per-base results only, no cross-model portability claim",
+    "second_base_results": "base: structural 10/10, strict schema 0/10, verdict 0.20; adapter 50: structural 10/10, strict schema 5/10, verdict 0.30; both below always-PASS 0.60; adapter below always-HOLD 0.40"
   },
   "metrics": {
     "n": 10,
@@ -46,7 +53,37 @@
       "hold_recall": "0/4"
     },
     "always_pass_baseline": 0.6,
-    "claim_set_exact": null
+    "claim_set_exact": null,
+    "qwen3_4b": {
+      "base": {
+        "structural": "10/10",
+        "strict_schema": "0/10",
+        "lenient_schema": "2/10",
+        "core_triple": "9/10",
+        "verdict_accuracy": 0.2,
+        "hold_recall": "2/4",
+        "pass_recall": "0/6",
+        "raw_claim_set_exact": 0.1
+      },
+      "adapter_50": {
+        "structural": "10/10",
+        "strict_schema": "5/10",
+        "lenient_schema": "5/10",
+        "core_triple": "8/10",
+        "verdict_accuracy": 0.3,
+        "hold_recall": "3/4",
+        "pass_recall": "0/6",
+        "strict_claim_set_exact": 0.0
+      },
+      "always_pass_baseline": 0.6,
+      "always_hold_baseline": 0.4,
+      "train_loss": 1.2596786572383,
+      "train_seconds": 50.8,
+      "train_records": 50,
+      "train_steps": 13,
+      "train_sha256": "54fd202c4df00c635ab0086acf01493ecbdaed10f95624eec1655e2165994492",
+      "adapter_first_file_sha256": "0acdda1df96dbd76fe64563c6729e9dc81883477325efcfacedaf0fb199e1aac"
+    }
   },
   "ring0": {
     "stage": "forecourt/shadow, not Ring 0",
@@ -86,13 +123,14 @@
     "Record temperature, seed, max_new_tokens, finish_reason, token counts, latency.",
     "Freeze gold_claims with hash and human sign-off; no in-place overwrite.",
     "Run one second-base contract portability test; report per-base, never average.",
-    "Keep human merge as final authority; do not automate Ring 0 away."
+    "Keep human merge as final authority; do not automate Ring 0 away.",
+    "A5: fix PASS/HOLD semantics, claim_id matching rule, and strict cloud contract gate before expanding data."
   ],
   "files": [
     {
       "path": "STAGE-02-REPORT.md",
-      "bytes": 11264,
-      "sha256": "01ad99789b482ec5e7b86a32092f1d03adccdcb4ea1e90ae5e14bac29e92f205"
+      "bytes": 15724,
+      "sha256": "ab55776e8e80ab65d97c0bc08af9067b39582cf20e1d3ee4d6dabb1db7d241fc"
     },
     {
       "path": "STAGE-01-REPORT.md",
@@ -101,13 +139,13 @@
     },
     {
       "path": "NEXT-ACTIONS.md",
-      "bytes": 3614,
-      "sha256": "46a513e35268e421359df9bde154b4448fa4071de35e6da3fdf1e3a0672d24c5"
+      "bytes": 5103,
+      "sha256": "ce0e911a63ab48278f9f717049786484d6aaf0c6b62ccb699851df8975440332"
     },
     {
       "path": "README.md",
-      "bytes": 5805,
-      "sha256": "c83332f3a704975aa2ab86f9ecb93472600ff14750d998f6b2867ead0cf4635b"
+      "bytes": 6456,
+      "sha256": "15c01af50475bb6cb9a61ef3a83b875b080047baa3354b278abaa34664d8d999"
     },
     {
       "path": "rubric_v1.json",
@@ -243,6 +281,36 @@
       "path": "evidence/a2-cloud/adapter_eval_contract.json",
       "bytes": 11321,
       "sha256": "bef3189b22a9fb177fc8ecf352e59d5b2a62eab8c282516259104df725707f92"
+    },
+    {
+      "path": "a4_qwen_recompute.py",
+      "bytes": 4670,
+      "sha256": "e7b7f8d337ae6e6e6e215c364a2934243bb66f971278029403367a88a04e73be"
+    },
+    {
+      "path": "evidence/qwen3-4b/base_eval.json",
+      "bytes": 16975,
+      "sha256": "0ab2ed92e21ff3ba34a4944d3f44cae46165a8b02249d51126f6e3d91edca37a"
+    },
+    {
+      "path": "evidence/qwen3-4b/adapter_eval.json",
+      "bytes": 17738,
+      "sha256": "9e4759e71c780e4da3dc2c37a8e7812816d11187582321fa16cd6770c1c0e6cb"
+    },
+    {
+      "path": "evidence/qwen3-4b/manifest.json",
+      "bytes": 953,
+      "sha256": "a8313c994064239cd7f38561fd0ef8ef3d6f06c819758b4bf4224dcb8a8965a8"
+    },
+    {
+      "path": "evidence/a4-recompute.json",
+      "bytes": 12501,
+      "sha256": "6b971dc2144c0fdb9f17451634f421e3c4af00f65d331744be95a923325f73ae"
+    },
+    {
+      "path": "evidence/a4-recompute.md",
+      "bytes": 1350,
+      "sha256": "fe6cf26ae3c75ffb71c6baaf55f4d4bd6719ebef0af4ec327279531b12d81aad"
     }
   ],
   "a3_offline_fix": {
@@ -295,5 +363,11 @@
     },
     "always_pass_baseline": 0.6,
     "evidence": "evidence/a2-recompute.md"
+  },
+  "a4_recompute": {
+    "note": "Qwen base and 50-record QLoRA adapter parsed with rubric_v1; cloud eval used pre-A3 holdout identical in prompt/draft; claim set scored against A3 frozen gold",
+    "evidence": "evidence/a4-recompute.md",
+    "base_sha256": "0ab2ed92e21ff3ba34a4944d3f44cae46165a8b02249d51126f6e3d91edca37a",
+    "adapter_sha256": "9e4759e71c780e4da3dc2c37a8e7812816d11187582321fa16cd6770c1c0e6cb"
   }
 }

@@ -1,0 +1,469 @@
+{
+  "qwen_base": {
+    "source": "evidence/qwen3-4b/base_eval.json",
+    "sha256": "0ab2ed92e21ff3ba34a4944d3f44cae46165a8b02249d51126f6e3d91edca37a",
+    "model": "Qwen3-4B-Instruct-2507",
+    "prompt": "same contract prompt; 768 tokens; greedy; qwen chat template",
+    "summary": {
+      "n": 10,
+      "structural_pass": 10,
+      "schema_pass": 0,
+      "triple_pass": 0,
+      "core_triple_pass": 9,
+      "lenient_schema_pass": 2,
+      "structural_and_schema_pass": 0,
+      "verdict_accuracy": 0.2,
+      "hold_recall": 0.5,
+      "always_pass_baseline": 0.6,
+      "claim_set_exact": null,
+      "fail_counts": {
+        "bad_polarity": 15,
+        "bad_kind": 14
+      },
+      "pass_recall": 0.0,
+      "always_hold_baseline": 0.4,
+      "raw_claim_set_exact": 0.0,
+      "cloud_contract_ok_rate": 1.0
+    },
+    "rows": [
+      {
+        "id": "E003-holdout-001",
+        "expected_verdict": "PASS",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": false,
+        "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
+        "structural_fail": [],
+        "schema_fail": [
+          "bad_polarity",
+          "bad_kind",
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "triple_fail": [
+          "bad_polarity",
+          "bad_kind",
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "verdict_ok": false,
+        "claim_set_exact": null
+      },
+      {
+        "id": "E003-holdout-002",
+        "expected_verdict": "PASS",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": false,
+        "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
+        "structural_fail": [],
+        "schema_fail": [
+          "bad_polarity",
+          "bad_kind",
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "triple_fail": [
+          "bad_polarity",
+          "bad_kind",
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "verdict_ok": false,
+        "claim_set_exact": null
+      },
+      {
+        "id": "E003-holdout-003",
+        "expected_verdict": "PASS",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": false,
+        "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
+        "structural_fail": [],
+        "schema_fail": [
+          "bad_polarity",
+          "bad_kind",
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "triple_fail": [
+          "bad_polarity",
+          "bad_kind",
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "verdict_ok": false,
+        "claim_set_exact": null
+      },
+      {
+        "id": "E003-holdout-004",
+        "expected_verdict": "PASS",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": false,
+        "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
+        "structural_fail": [],
+        "schema_fail": [
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "triple_fail": [
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "verdict_ok": false,
+        "claim_set_exact": null
+      },
+      {
+        "id": "E003-holdout-005",
+        "expected_verdict": "HOLD",
+        "model_verdict": "PASS",
+        "structural_pass": true,
+        "schema_pass": false,
+        "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
+        "structural_fail": [],
+        "schema_fail": [
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "triple_fail": [
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "verdict_ok": false,
+        "claim_set_exact": null
+      },
+      {
+        "id": "E003-holdout-006",
+        "expected_verdict": "HOLD",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": false,
+        "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
+        "structural_fail": [],
+        "schema_fail": [
+          "bad_polarity",
+          "bad_kind",
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "triple_fail": [
+          "bad_polarity",
+          "bad_kind",
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "verdict_ok": true,
+        "claim_set_exact": null
+      },
+      {
+        "id": "E003-holdout-007",
+        "expected_verdict": "PASS",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": false,
+        "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
+        "structural_fail": [],
+        "schema_fail": [
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "triple_fail": [
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "verdict_ok": false,
+        "claim_set_exact": null
+      },
+      {
+        "id": "E003-holdout-008",
+        "expected_verdict": "HOLD",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": false,
+        "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": true,
+        "structural_fail": [],
+        "schema_fail": [
+          "bad_polarity"
+        ],
+        "triple_fail": [
+          "bad_polarity"
+        ],
+        "verdict_ok": true,
+        "claim_set_exact": null
+      },
+      {
+        "id": "E003-holdout-009",
+        "expected_verdict": "PASS",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": false,
+        "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": true,
+        "structural_fail": [],
+        "schema_fail": [
+          "bad_polarity",
+          "bad_kind",
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "triple_fail": [
+          "bad_polarity",
+          "bad_kind",
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "verdict_ok": false,
+        "claim_set_exact": null
+      },
+      {
+        "id": "E003-holdout-010",
+        "expected_verdict": "HOLD",
+        "model_verdict": "PASS",
+        "structural_pass": true,
+        "schema_pass": false,
+        "triple_pass": false,
+        "core_triple_pass": false,
+        "lenient_schema_pass": false,
+        "structural_fail": [],
+        "schema_fail": [
+          "bad_polarity",
+          "bad_kind"
+        ],
+        "triple_fail": [
+          "bad_polarity",
+          "bad_kind",
+          "empty_object"
+        ],
+        "verdict_ok": false,
+        "claim_set_exact": null
+      }
+    ]
+  },
+  "qwen_adapter_50": {
+    "source": "evidence/qwen3-4b/adapter_eval.json",
+    "sha256": "9e4759e71c780e4da3dc2c37a8e7812816d11187582321fa16cd6770c1c0e6cb",
+    "model": "Qwen3-4B-Instruct-2507",
+    "prompt": "same contract prompt; 768 tokens; greedy; qwen chat template",
+    "summary": {
+      "n": 10,
+      "structural_pass": 10,
+      "schema_pass": 5,
+      "triple_pass": 5,
+      "core_triple_pass": 8,
+      "lenient_schema_pass": 5,
+      "structural_and_schema_pass": 5,
+      "verdict_accuracy": 0.3,
+      "hold_recall": 0.75,
+      "always_pass_baseline": 0.6,
+      "claim_set_exact": 0.0,
+      "fail_counts": {
+        "missing_field": 4,
+        "bad_polarity": 4
+      },
+      "pass_recall": 0.0,
+      "always_hold_baseline": 0.4,
+      "raw_claim_set_exact": 0.0,
+      "cloud_contract_ok_rate": 1.0
+    },
+    "rows": [
+      {
+        "id": "E003-holdout-001",
+        "expected_verdict": "PASS",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": true,
+        "triple_pass": true,
+        "core_triple_pass": true,
+        "lenient_schema_pass": true,
+        "structural_fail": [],
+        "schema_fail": [],
+        "triple_fail": [],
+        "verdict_ok": false,
+        "claim_set_exact": false
+      },
+      {
+        "id": "E003-holdout-002",
+        "expected_verdict": "PASS",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": false,
+        "triple_pass": false,
+        "core_triple_pass": false,
+        "lenient_schema_pass": false,
+        "structural_fail": [],
+        "schema_fail": [
+          "missing_field",
+          "missing_field"
+        ],
+        "triple_fail": [
+          "missing_field",
+          "missing_field",
+          "empty_subject",
+          "empty_subject"
+        ],
+        "verdict_ok": false,
+        "claim_set_exact": null
+      },
+      {
+        "id": "E003-holdout-003",
+        "expected_verdict": "PASS",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": false,
+        "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
+        "structural_fail": [],
+        "schema_fail": [
+          "bad_polarity"
+        ],
+        "triple_fail": [
+          "bad_polarity"
+        ],
+        "verdict_ok": false,
+        "claim_set_exact": null
+      },
+      {
+        "id": "E003-holdout-004",
+        "expected_verdict": "PASS",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": true,
+        "triple_pass": true,
+        "core_triple_pass": true,
+        "lenient_schema_pass": true,
+        "structural_fail": [],
+        "schema_fail": [],
+        "triple_fail": [],
+        "verdict_ok": false,
+        "claim_set_exact": false
+      },
+      {
+        "id": "E003-holdout-005",
+        "expected_verdict": "HOLD",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": true,
+        "triple_pass": true,
+        "core_triple_pass": true,
+        "lenient_schema_pass": true,
+        "structural_fail": [],
+        "schema_fail": [],
+        "triple_fail": [],
+        "verdict_ok": true,
+        "claim_set_exact": false
+      },
+      {
+        "id": "E003-holdout-006",
+        "expected_verdict": "HOLD",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": true,
+        "triple_pass": true,
+        "core_triple_pass": true,
+        "lenient_schema_pass": true,
+        "structural_fail": [],
+        "schema_fail": [],
+        "triple_fail": [],
+        "verdict_ok": true,
+        "claim_set_exact": false
+      },
+      {
+        "id": "E003-holdout-007",
+        "expected_verdict": "PASS",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": false,
+        "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
+        "structural_fail": [],
+        "schema_fail": [
+          "bad_polarity"
+        ],
+        "triple_fail": [
+          "bad_polarity"
+        ],
+        "verdict_ok": false,
+        "claim_set_exact": null
+      },
+      {
+        "id": "E003-holdout-008",
+        "expected_verdict": "HOLD",
+        "model_verdict": "PASS",
+        "structural_pass": true,
+        "schema_pass": true,
+        "triple_pass": true,
+        "core_triple_pass": true,
+        "lenient_schema_pass": true,
+        "structural_fail": [],
+        "schema_fail": [],
+        "triple_fail": [],
+        "verdict_ok": false,
+        "claim_set_exact": false
+      },
+      {
+        "id": "E003-holdout-009",
+        "expected_verdict": "PASS",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": false,
+        "triple_pass": false,
+        "core_triple_pass": true,
+        "lenient_schema_pass": false,
+        "structural_fail": [],
+        "schema_fail": [
+          "bad_polarity",
+          "bad_polarity"
+        ],
+        "triple_fail": [
+          "bad_polarity",
+          "bad_polarity"
+        ],
+        "verdict_ok": false,
+        "claim_set_exact": null
+      },
+      {
+        "id": "E003-holdout-010",
+        "expected_verdict": "HOLD",
+        "model_verdict": "HOLD",
+        "structural_pass": true,
+        "schema_pass": false,
+        "triple_pass": false,
+        "core_triple_pass": false,
+        "lenient_schema_pass": false,
+        "structural_fail": [],
+        "schema_fail": [
+          "missing_field",
+          "missing_field"
+        ],
+        "triple_fail": [
+          "missing_field",
+          "missing_field",
+          "empty_subject",
+          "empty_subject"
+        ],
+        "verdict_ok": true,
+        "claim_set_exact": null
+      }
+    ]
+  }
+}
