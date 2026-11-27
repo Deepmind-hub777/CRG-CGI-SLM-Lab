@@ -109,8 +109,11 @@ def main():
         expected = rec.get("expected_verdict")
         if not expected:
             expected = claim_engine.evaluate(rec["draft"], rec["case_id"])["verdict"]
-        policy = claim_engine.evaluate(rec["draft"], rec["case_id"])
-        expected_claims = {(c["claim_id"], c["polarity"]) for c in policy["claims"]}
+        if rec.get("gold_claims") is not None:
+            expected_claims = {(c["claim_id"], c["polarity"]) for c in rec["gold_claims"]}
+        else:
+            policy = claim_engine.evaluate(rec["draft"], rec["case_id"])
+            expected_claims = {(c["claim_id"], c["polarity"]) for c in policy["claims"]}
         prompt = build_prompt(tokenizer, rec)
         inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=1024)
         inputs = {k: v.to(model.device) for k, v in inputs.items()}

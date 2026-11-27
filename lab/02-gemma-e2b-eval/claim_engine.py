@@ -73,6 +73,7 @@ CLAIM_META = {
     "minus1_has_veto": ("-1 权限", "veto", "-1 能否决/回滚"),
     "scoring_is_ternary": ("三元算子", "scoring_is_ternary", "打分/三值量化就是三元算子"),
     "router_train": ("router 策略", "train", "router 训练/冻结"),
+    "router_freeze": ("router 策略", "freeze", "router 保持冻结"),
     "public_essay_allowed": ("public 数据", "student_essay", "public 放学生作文"),
 }
 
@@ -148,6 +149,17 @@ def extract_claims(text: str) -> List[Claim]:
                     src = gd.get("src") or gd.get("subj") or ""
                     pred = gd.get("pred") or ""
                     obj = gd.get("obj") or ""
+                    # Canonical schema fill: the regex may capture only the role,
+                    # leaving predicate/object empty. CLAIM_META is the frozen
+                    # display triple, not new evidence; evidence stays the draft.
+                    meta = CLAIM_META.get(cid)
+                    if meta:
+                        if not src.strip():
+                            src = meta[0]
+                        if not pred.strip():
+                            pred = meta[1]
+                        if not obj.strip():
+                            obj = meta[2]
                     # Negation: group neg, or a negator inside the matched predicate phrase,
                     # after the last punctuation boundary.
                     neg = bool(gd.get("neg"))

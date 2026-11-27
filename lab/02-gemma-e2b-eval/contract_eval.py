@@ -185,8 +185,10 @@ def claim_set(obj):
 def expected_claim_set(row):
     if isinstance(row.get("expected_claims"), list):
         return {(str(c.get("claim_id")), int(c.get("polarity"))) for c in row["expected_claims"] if c.get("polarity") in (1, -1)}
-    # report mode: resolve from the holdout draft by id index
+    # report mode: prefer frozen gold_claims, then fall back to the holdout draft.
     data = row.get("_holdout")
+    if data and data.get("gold_claims") is not None:
+        return {(str(c.get("claim_id")), int(c.get("polarity"))) for c in data["gold_claims"] if c.get("polarity") in (1, -1)}
     if data and row.get("case_id"):
         res = claim_engine.evaluate(data.get("draft", ""), data.get("case_id", "E003"))
         return {(str(c["claim_id"]), int(c["polarity"])) for c in res["claims"]}

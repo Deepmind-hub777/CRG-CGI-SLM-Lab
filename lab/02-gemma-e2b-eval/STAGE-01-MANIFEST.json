@@ -81,10 +81,12 @@
       "train_object_empty_claims": "60/70",
       "train_predicate_empty_claims": "24/70",
       "holdout_claims": 11,
-      "holdout_gold_object_empty": "11/11",
-      "holdout_gold_predicate_empty": "11/11",
+      "holdout_gold_object_empty": "11/11 (historical, before A3)",
+      "holdout_gold_predicate_empty": "11/11 (historical, before A3)",
       "holdout_has_gold_claims": false,
-      "note": "target and gold are same source; real defect is empty triple fields, not different extraction paths"
+      "note": "historical stage-01 view; A3 later froze gold_claims and canonicalized triples; current data hashes differ",
+      "train_object_empty": "60/70 (historical, before A3)",
+      "train_predicate_empty": "24/70 (historical, before A3)"
     },
     "contract_v1": {
       "rubric": "rubric_v1.json",
@@ -139,18 +141,18 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 5660,
-      "sha256": "8f47fd35a5805ee59f0212e9d88a13d586c97fbce465e2ec5fe6b9b934ea4d95"
+      "bytes": 5690,
+      "sha256": "c3c48fe040637e1c5ff32fff4a45cd05a40ac4418ba9f77e60847fe20d17e271"
     },
     {
       "path": "STAGE-01-REPORT.md",
-      "bytes": 16258,
-      "sha256": "6e1cce2d1a02e9b5075db20c1ada23b2f052989f47977b35ec9ca8059c99addd"
+      "bytes": 16441,
+      "sha256": "8bf31534827ec1f95a172b896c54b0a52fbd05c07daa2d64dc463c5a32e5e3ab"
     },
     {
       "path": "NEXT-ACTIONS.md",
-      "bytes": 3150,
-      "sha256": "293670c82614b31a162eb5e7cc39e08590f9c693e7ca8c63e46c3e2d6c2d83b1"
+      "bytes": 3359,
+      "sha256": "ed25f1e7be5de71256854e94e7f956d937d6cc265a974253bbfd2ee9e7d1408a"
     },
     {
       "path": "rubric_v1.json",
@@ -159,8 +161,8 @@
     },
     {
       "path": "contract_eval.py",
-      "bytes": 11325,
-      "sha256": "50fbed1ae89ef0a5df200ec025f18dc5bfd4176b6239978df32d77d0761df5c5"
+      "bytes": 11526,
+      "sha256": "120d629d044995dac5edcd3098d79fbc5fc0233d6b71206d464120b070a40f7b"
     },
     {
       "path": "test_contract_eval.py",
@@ -189,23 +191,23 @@
     },
     {
       "path": "data/train.jsonl",
-      "bytes": 30579,
-      "sha256": "f1072fa95f2514ca9dba36f990bcdb276bb71266a8ccfac466efc68fb8238371"
+      "bytes": 32323,
+      "sha256": "54fd202c4df00c635ab0086acf01493ecbdaed10f95624eec1655e2165994492"
     },
     {
       "path": "data/holdout.jsonl",
-      "bytes": 3016,
-      "sha256": "6d9de69ea03ed664fa3f7c480d34a5876282a6d1002ade7d7d4e6a1d5e3d8e41"
+      "bytes": 5628,
+      "sha256": "87d2fb1b0b85203fc34d55e37642acd063ba5ad356941e4067bb83b8f37846e3"
     },
     {
       "path": "data/manifest.json",
-      "bytes": 4431,
-      "sha256": "1f3e2348dc5c7b012c5dd5c5924bcb28af8970560343bed64d2657942f91f22a"
+      "bytes": 4577,
+      "sha256": "82e23714310a07b3add247ddc8251d992542db01bb1c99c1eb6fbf53187f5836"
     },
     {
       "path": "build_data.py",
-      "bytes": 9913,
-      "sha256": "c91cda6ff3055ad7de0f431ac82c70b24d7e343e0d3bc8450239ee0a9aaaa248"
+      "bytes": 10284,
+      "sha256": "ec398d93092bdd95f5b3fab29f515841b8d18283b2a59d88142d8d2438a5f7d9"
     },
     {
       "path": "test_candidates.py",
@@ -214,8 +216,8 @@
     },
     {
       "path": "eval_e2b.py",
-      "bytes": 6935,
-      "sha256": "1c3cf0eea5c005aa4b6e8b231a59f9828a14a5ffc89c69be611fda6b0d7a5a51"
+      "bytes": 7095,
+      "sha256": "fa0fffb3079ed590e94e8b2210c5c16e18257cbed06fc60d0d3414dbac5bb1fc"
     },
     {
       "path": "train_qlora.py",
@@ -224,8 +226,8 @@
     },
     {
       "path": "claim_engine.py",
-      "bytes": 11855,
-      "sha256": "7050977dfdc195c3103d8b598da48c765157d38234baba6b1c0d1e6021a75fc7"
+      "bytes": 12507,
+      "sha256": "b15b7fc8e7796e6d90ba87a082ece014250c327c954be9436d02bc81dc538ce3"
     },
     {
       "path": "governed_runtime.py",

@@ -20,12 +20,13 @@
   - 新 prompt 的 base / adapter 对照结果
   - 全部用同一份 rubric；输出结构合格率、语义合格率、HOLD recall、verdict 准确率、always-PASS 基线。
 
-- [ ] **A3. 修 claim 三元组 schema 与 gold 存储**
+- [x] **A3. 修 claim 三元组 schema 与 gold 存储**
   - 训练 target 与 holdout gold 已经都走 `claim_engine` 同一套抽取；不要重复做“同源”改造。
-  - 真正要修的是 `claim_engine` 对 `anchor_source_*` 的空 `predicate` / `obj`：补齐抽取规则，或在 `build_data` 写明确的 canonical triple。
-  - `holdout.jsonl` 补 `gold_claims`，把现场抽取变成冻结 gold。
-  - `claims` 补完整三元组；`polarity` 统一 ±1；`kind` 用枚举；顶层 `verdict` 固定。
-  - 重跑 `test_candidates.py` 与 `contract_eval.py`，更新 `data/manifest.json` 与 hash。
+  - 真正要修的是 `claim_engine` 对 `anchor_source_*` 的空 `predicate` / `obj`：已用 `CLAIM_META` 做 canonical schema 填充，补上 `router_freeze`；evidence 仍是草稿原句。
+  - `holdout.jsonl` 已补 `gold_claims`，把现场抽取变成冻结 gold。
+  - 重建后：`train` 70 条 claims 的空 `object` / `predicate` 均为 **0/70**；`holdout` 11 条 gold claims 的空字段为 **0/11**。
+  - 新哈希：`train=54fd202c…`，`holdout=87d2fb1b…`，`data/manifest=82e23714…`。
+  - `test_candidates.py` 0 FAIL；`test_data_contract.py` 通过；`contract_eval` 单测 4/4。模型分数尚未在新数据上重跑。
 
 ---
 

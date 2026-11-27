@@ -176,6 +176,8 @@
 | `evidence/e2b-contract-eval-report.md` | `30ac18e0b996f60263de15a8b18b12aa1b34f340eee882255346bcdf182de9c4` | 云端原始报告，只读证据 |
 | `runs/.../adapter/adapter_model.safetensors` | `03bf5e2caa62fb17b60bf6ceec25a3e7d3aa40b06e9c86d542bdb0` | 云端记录，未在本机回读；adapter 不进 git |
 
+> 注：A3 之后 `train.jsonl` / `holdout.jsonl` 已重建，当前哈希见 `STAGE-02-REPORT.md` 第 9 节；上表是阶段 01 的历史值，不要拿旧哈希校验新数据。
+
 - 训练 run：`smoke-v100c-20261127-1011`
 - 产物根：`/mnt/systemDisk/e2b/runs`
 - manifest：`/mnt/systemDisk/e2b/runs/smoke-v100c-20261127-1011/manifest.json`

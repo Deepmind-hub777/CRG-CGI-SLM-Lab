@@ -193,6 +193,9 @@ holdout_src = ROOT.parent.parent / "lab/01-qwen4b-eval/governance/holdout_e003.j
 holdout = []
 for n, line in enumerate(holdout_src.read_text(encoding="utf-8").splitlines(), 1):
     obj = json.loads(line)
+    gold = target_from_engine(obj["text"], "E003")
+    if gold["verdict"] != obj["expect"]:
+        raise SystemExit(f"holdout {n}: expected {obj['expect']}, got {gold['verdict']}")
     rec = {
         "id": f"E003-holdout-{n:03d}",
         "case_id": "E003",
@@ -200,6 +203,7 @@ for n, line in enumerate(holdout_src.read_text(encoding="utf-8").splitlines(), 1
         "anchor_excerpt": "",
         "draft": obj["text"],
         "expected_verdict": obj["expect"],
+        "gold_claims": gold["claims"],
         "source": "existing_holdout_e003",
         "license": "CC-BY-NC-4.0",
         "split": "holdout",
@@ -240,7 +244,8 @@ manifest = {
     "notes": [
         "No anchor_v0 or claim_policy_v0 text is copied into any target.",
         "Every target is the claim structure/verdict extracted from the draft by claim_engine.py.",
-        "Holdout is the existing E003 holdout and is not used in training.",
+        "CLAIM_META is used only as a canonical schema fill when predicate/object are empty; evidence remains the draft sentence.",
+        "Holdout gold_claims are frozen at build time and are not recomputed by eval_e2b.py.",
         "No student data, parent data, contracts, keys or restricted weights.",
     ],
 }

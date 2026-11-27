@@ -139,7 +139,21 @@
 
 ---
 
-## 9. 记录声明
+## 9. A3 落地记录（离线，不训练）
+
+A3 已完成离线部分，模型分数没有在新数据上重跑；这是“先修尺子”的第一步，不是新的模型结论。
+
+- `claim_engine.py`：`CLAIM_META` 作为 canonical schema 填充；补了 `router_freeze`；evidence 仍取草稿原句。
+- `train.jsonl`：70 条 claims 的空 `object` / `predicate` 均为 **0/70**（修复前为 60/70 与 24/70）。
+- `holdout.jsonl`：11 条 `gold_claims`，空字段 **0/11**（修复前 11/11 为空）。
+- `eval_e2b.py`：优先读冻结 `gold_claims`，不再每次现场重抽。
+- 新哈希：`train=54fd202c4df00c635ab0086acf01493ecbdaed10f95624eec1655e2165994492`；`holdout=87d2fb1b0b85203fc34d55e37642acd063ba5ad356941e4067bb83b8f37846e3`；`data/manifest=82e23714310a07b3add247ddc8251d992542db01bb1c99c1eb6fbf53187f5836`。
+- 校验：`test_candidates.py` 0 FAIL；`test_data_contract.py` 通过；`test_contract_eval.py` 4/4。审计快照见 `evidence/a3-freeze-audit.json`。
+- 未做：A2 的四个旧 `eval.json` 重算、Qwen base 契约基线、Qwen 50 条 QLoRA。
+
+---
+
+## 10. 记录声明
 
 - 本文只记录已发生的事实与已复算的数字；未跨模型复现的判断标 `[B]`。
 - 不把“治理架构可分离”写成“治理效果已跨模型验证”。

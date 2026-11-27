@@ -65,8 +65,8 @@ python3 build_data.py
 当前数据哈希：
 
 ```text
-train   f1072fa95f2514ca9dba36f990bcdb276bb71266a8ccfac466efc68fb8238371
-holdout 6d9de69ea03ed664fa3f7c480d34a5876282a6d1002ade7d7d4e6a1d5e3d8e41
+train   54fd202c4df00c635ab0086acf01493ecbdaed10f95624eec1655e2165994492
+holdout 87d2fb1b0b85203fc34d55e37642acd063ba5ad356941e4067bb83b8f37846e3
 ```
 
 ---
@@ -146,6 +146,7 @@ python3 eval_e2b.py --model-id google/gemma-4-E2B-it \
 ```bash
 python3 contract_eval.py --report evidence/e2b-contract-eval-report.md
 python3 test_contract_eval.py
+python3 test_data_contract.py
 ```
 
 **不写“准确 / 零幻觉 / 超越某模型”。**
