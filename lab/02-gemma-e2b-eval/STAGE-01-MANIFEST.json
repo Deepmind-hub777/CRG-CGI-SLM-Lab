@@ -34,7 +34,10 @@
   },
   "eval": {
     "holdout_n": 10,
-    "gold_verdicts": {"PASS": 6, "HOLD": 4},
+    "gold_verdicts": {
+      "PASS": 6,
+      "HOLD": 4
+    },
     "old_baseline": {
       "note": "two incompatible rubrics exist; not used as baseline",
       "cloud_conclusion_adapter_contract": "2/10",
@@ -64,25 +67,56 @@
     },
     "semantic_contract": {
       "passed": false,
+      "rubric": "contract-v1",
       "issues": [
-        "adapter 003/004 output polarity:0",
-        "adapter 008 outputs kind:PASS",
-        "adapter 005 misses polarity/kind/evidence",
-        "8/10 only checks structure, not semantic fields"
+        "base schema 0/10: polarity positive/negative aliases and kind fact/restriction",
+        "adapter schema 0/10: polarity:0, kind:PASS, missing polarity/kind/evidence",
+        "structural 8/10 only; no output passed both structural and schema"
       ]
     },
     "target_gold_alignment": {
       "passed": false,
-      "train_object_empty": "38/50",
-      "train_predicate_empty": "18/50",
+      "source": "same claim_engine.evaluate() for train target and holdout gold",
+      "train_claims": 70,
+      "train_object_empty_claims": "60/70",
+      "train_predicate_empty_claims": "24/70",
+      "holdout_claims": 11,
+      "holdout_gold_object_empty": "11/11",
+      "holdout_gold_predicate_empty": "11/11",
       "holdout_has_gold_claims": false,
-      "note": "train target and holdout gold use different extraction paths; claim-set exact is not meaningful until aligned"
+      "note": "target and gold are same source; real defect is empty triple fields, not different extraction paths"
+    },
+    "contract_v1": {
+      "rubric": "rubric_v1.json",
+      "runner": "contract_eval.py",
+      "input": "evidence/e2b-contract-eval-report.md",
+      "base": {
+        "n": 10,
+        "structural_pass": "8/10",
+        "schema_pass": "0/10",
+        "triple_pass": "0/10",
+        "verdict_accuracy": 0.5,
+        "hold_recall": "0/4",
+        "always_pass_baseline": 0.6,
+        "claim_set_exact": null
+      },
+      "adapter": {
+        "n": 10,
+        "structural_pass": "8/10",
+        "schema_pass": "0/10",
+        "triple_pass": "0/10",
+        "verdict_accuracy": 0.5,
+        "hold_recall": "0/4",
+        "always_pass_baseline": 0.6,
+        "claim_set_exact": null
+      },
+      "note": "claim_set exact is None because no output passed both structural and schema gates"
     }
   },
   "next_gate": {
     "formal_run": false,
     "data_supplement": false,
-    "first_action": "freeze structural + semantic rubric and recompute all eval.json under one rubric",
+    "first_action": "fix claim_engine empty predicate/object and freeze gold_claims before any new run",
     "acceptance": {
       "structural_contract": ">= 8/10 for base and adapter",
       "semantic_contract": ">= 9/10; no polarity:0, kind:PASS, or missing fields",
@@ -99,22 +133,115 @@
     "adapter_note": "cloud record; not re-read locally; adapter is not committed"
   },
   "files": [
-    {"path": "README.md", "bytes": 4781, "sha256": "a2524365d61547f0d5f380628aa217d82d8baacb915bba013034250fc763100b"},
-    {"path": "STAGE-01-REPORT.md", "bytes": 13477, "sha256": "ad64fe6322cb1cb682de088cbb02dd8bd61faffdf5a39d52851e61b3fbbeea9c"},
-    {"path": "NEXT-ACTIONS.md", "bytes": 2527, "sha256": "2cc3c46e20351ec455be2e6bdb940938a73f6eb9abd71fde87724b9c8df771d7"},
-    {"path": "evidence/README.md", "bytes": 793, "sha256": "1ae020ad7f32901580f8813540b44bfa45d5bc737370e26e22074e1ec3bc942e"},
-    {"path": "evidence/e2b-contract-eval-report.md", "bytes": 15562, "sha256": "30ac18e0b996f60263de15a8b18b12aa1b34f340eee882255346bcdf182de9c4"},
-    {"path": "data/train.jsonl", "bytes": 30579, "sha256": "f1072fa95f2514ca9dba36f990bcdb276bb71266a8ccfac466efc68fb8238371"},
-    {"path": "data/holdout.jsonl", "bytes": 3016, "sha256": "6d9de69ea03ed664fa3f7c480d34a5876282a6d1002ade7d7d4e6a1d5e3d8e41"},
-    {"path": "data/manifest.json", "bytes": 4431, "sha256": "1f3e2348dc5c7b012c5dd5c5924bcb28af8970560343bed64d2657942f91f22a"},
-    {"path": "build_data.py", "bytes": 9913, "sha256": "c91cda6ff3055ad7de0f431ac82c70b24d7e343e0d3bc8450239ee0a9aaaa248"},
-    {"path": "test_candidates.py", "bytes": 3995, "sha256": "fd9281645c6c38881250e3865c16ca45cd57f544200342236ee7831be89437c8"},
-    {"path": "eval_e2b.py", "bytes": 6935, "sha256": "1c3cf0eea5c005aa4b6e8b231a59f9828a14a5ffc89c69be611fda6b0d7a5a51"},
-    {"path": "train_qlora.py", "bytes": 11073, "sha256": "b29bdf49c7af1a0affaa0ecc1de82fed52f1c0ce21bc4cd694b6dc15ad14b745"},
-    {"path": "claim_engine.py", "bytes": 11855, "sha256": "7050977dfdc195c3103d8b598da48c765157d38234baba6b1c0d1e6021a75fc7"},
-    {"path": "governed_runtime.py", "bytes": 15221, "sha256": "22ec3970409fa107ad8e90abb77fda3f15b31a3cff6825f32108740d57c1408a"},
-    {"path": "requirements.txt", "bytes": 145, "sha256": "c137693542320060815c0e57d24bf8f8cfa0d460dd541714a1fb8cfa225ce4e6"},
-    {"path": "governance/anchor_v0.json", "bytes": 747, "sha256": "112da3a356b95cef817099a2d142b5ee8fa11fadb8ea5b00cba22afb08668a03"},
-    {"path": "governance/claim_policy_v0.json", "bytes": 2276, "sha256": "96591271f747fa111c4360f0843a352af34467d6653b2b525b373862a525c5a3"}
+    {
+      "path": "README.md",
+      "bytes": 5425,
+      "sha256": "6919cb0c344eea8035a967a955099320b56ea61008a80d5be906d7992c6d06be"
+    },
+    {
+      "path": "STAGE-01-REPORT.md",
+      "bytes": 15755,
+      "sha256": "7cf40cf86ff81b16bd6374a40c18ca1d4ffdb2766bb3815910a26e42b70fc1bd"
+    },
+    {
+      "path": "NEXT-ACTIONS.md",
+      "bytes": 3074,
+      "sha256": "ccd1e18349d0498cb103dd6626c140fdf0262e886c1d1c7e48defe92b41ed6ce"
+    },
+    {
+      "path": "rubric_v1.json",
+      "bytes": 1692,
+      "sha256": "cc31a736a5c5621fec703ef95981c8f6020331ba591de7b55cc8b517cbcd8871"
+    },
+    {
+      "path": "contract_eval.py",
+      "bytes": 9586,
+      "sha256": "b719bbf013d4adc9e5ddc2169336ffea7c5ca55c791854df6143c5a76cedcb15"
+    },
+    {
+      "path": "test_contract_eval.py",
+      "bytes": 1890,
+      "sha256": "01c832e8baf14a27d874a1633bd80b777a0ea78eb1a834b7c117a40c5ccc91ef"
+    },
+    {
+      "path": "evidence/README.md",
+      "bytes": 1200,
+      "sha256": "002f2800f6eb34097170ece638fe0457af9ce75765ac8bab4bc650deea2c82a8"
+    },
+    {
+      "path": "evidence/e2b-contract-eval-report.md",
+      "bytes": 15562,
+      "sha256": "30ac18e0b996f60263de15a8b18b12aa1b34f340eee882255346bcdf182de9c4"
+    },
+    {
+      "path": "evidence/contract-eval-v1.md",
+      "bytes": 2110,
+      "sha256": "64f4e60b30b4a6a64fbd4686f528dde11f8cd112026beeffbcdee8820383debd"
+    },
+    {
+      "path": "evidence/contract-eval-v1.json",
+      "bytes": 12094,
+      "sha256": "1bb446ed662d6080d8fc3dae2f74bd95bd5b67b59a4445652db1994db0b54c0b"
+    },
+    {
+      "path": "data/train.jsonl",
+      "bytes": 30579,
+      "sha256": "f1072fa95f2514ca9dba36f990bcdb276bb71266a8ccfac466efc68fb8238371"
+    },
+    {
+      "path": "data/holdout.jsonl",
+      "bytes": 3016,
+      "sha256": "6d9de69ea03ed664fa3f7c480d34a5876282a6d1002ade7d7d4e6a1d5e3d8e41"
+    },
+    {
+      "path": "data/manifest.json",
+      "bytes": 4431,
+      "sha256": "1f3e2348dc5c7b012c5dd5c5924bcb28af8970560343bed64d2657942f91f22a"
+    },
+    {
+      "path": "build_data.py",
+      "bytes": 9913,
+      "sha256": "c91cda6ff3055ad7de0f431ac82c70b24d7e343e0d3bc8450239ee0a9aaaa248"
+    },
+    {
+      "path": "test_candidates.py",
+      "bytes": 3995,
+      "sha256": "fd9281645c6c38881250e3865c16ca45cd57f544200342236ee7831be89437c8"
+    },
+    {
+      "path": "eval_e2b.py",
+      "bytes": 6935,
+      "sha256": "1c3cf0eea5c005aa4b6e8b231a59f9828a14a5ffc89c69be611fda6b0d7a5a51"
+    },
+    {
+      "path": "train_qlora.py",
+      "bytes": 11073,
+      "sha256": "b29bdf49c7af1a0affaa0ecc1de82fed52f1c0ce21bc4cd694b6dc15ad14b745"
+    },
+    {
+      "path": "claim_engine.py",
+      "bytes": 11855,
+      "sha256": "7050977dfdc195c3103d8b598da48c765157d38234baba6b1c0d1e6021a75fc7"
+    },
+    {
+      "path": "governed_runtime.py",
+      "bytes": 15221,
+      "sha256": "22ec3970409fa107ad8e90abb77fda3f15b31a3cff6825f32108740d57c1408a"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 145,
+      "sha256": "c137693542320060815c0e57d24bf8f8cfa0d460dd541714a1fb8cfa225ce4e6"
+    },
+    {
+      "path": "governance/anchor_v0.json",
+      "bytes": 747,
+      "sha256": "112da3a356b95cef817099a2d142b5ee8fa11fadb8ea5b00cba22afb08668a03"
+    },
+    {
+      "path": "governance/claim_policy_v0.json",
+      "bytes": 2276,
+      "sha256": "96591271f747fa111c4360f0843a352af34467d6653b2b525b373862a525c5a3"
+    }
   ]
 }

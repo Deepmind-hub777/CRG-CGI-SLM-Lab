@@ -5,10 +5,13 @@
 | 文件 | 来源 | SHA256 |
 |---|---|---|
 | `e2b-contract-eval-report.md` | 用户上传附件 `https://aka.doubaocdn.com/s/vP6h5Oz2Es`；本地接收 2026-11-27 | `30ac18e0b996f60263de15a8b18b12aa1b34f340eee882255346bcdf182de9c4` |
+| `contract-eval-v1.md` | 用 `rubric_v1.json` 对云端报告的重算摘要，非云端原始 | 见 `STAGE-01-MANIFEST.json` |
+| `contract-eval-v1.json` | 同一重算的逐行结果，非云端原始 | 见 `STAGE-01-MANIFEST.json` |
 
 使用说明：
 
-- 本文件作为阶段 01 的原始证据，不代表本仓库重新跑过全部评测。
+- `e2b-contract-eval-report.md` 作为阶段 01 的云端原始证据，未改动正文；不代表本仓库重新跑过模型。
+- `contract-eval-v1.*` 是本仓库对同一批原始输出的离线重算，**不是新的 GPU run**，不能写成模型提升。
 - 报告内存在两处口径不一致，已在 `../STAGE-01-REPORT.md` 第 3.1 与第 7 节标注：
   - 结论写 adapter 旧口径 2/10，第 2 节严格表写 0/10；
   - 006 同时被描述为“断在中间”和“不是截断”。

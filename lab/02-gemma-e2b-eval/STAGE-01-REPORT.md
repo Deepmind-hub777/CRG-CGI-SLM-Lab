@@ -1,8 +1,8 @@
 # STAGE-01 · Gemma 4 E2B smoke QLoRA：链路验证与契约评测复盘
 
-**状态：** 链路验证通过；模型能力 gate 未通过；**不进入正式 run**，不补新数据，不发布权重。  
-**日期：** 2026-11-27（Asia/Bangkok，UTC+7）  
-**范围：** 只做 smoke QLoRA + 契约评测；不替换 Qwen3-4B 主线，不做正式后训练。  
+**状态：** 链路验证通过；模型能力 gate 未通过；**不进入正式 run**，不补新数据，不发布权重。
+**日期：** 2026-11-27（Asia/Bangkok，UTC+7）
+**范围：** 只做 smoke QLoRA + 契约评测；不替换 Qwen3-4B 主线，不做正式后训练。
 **主张标签：** 工程与实测记录写作 `[D]`；模型能力数字一律 `[C]`，未复现前不得写成结论。
 
 ---
@@ -14,7 +14,7 @@
 所以结论是两句话：
 
 1. **链路通了，而且可复现、可审计。**
-2. **模型 gate 没过，不能进正式 run；下一步先修评测口径和 target/gold 同源，不是加 epoch、不是补数据。**
+2. **模型 gate 没过，不能进正式 run；下一步先修评测口径和 claim 三元组 schema，不是加 epoch、不是补数据。**
 
 ---
 
@@ -27,7 +27,7 @@
 - 用同一批 10 条 holdout 跑 base 与 adapter 评测。
 - 发现并修复 `eval_e2b.py` 的 `KeyError` 崩溃；把旧 `eval.json` 按契约重算。
 - 用更严格的 prompt / `max_new_tokens=768` / `repetition_penalty=1.05` / 围栏即停，做同批 10 条对照。
-- 把“评测失败”和“模型失败”分开，定位到 HOLD 判别、target/gold 口径、adapter 尾部稳定性三个问题。
+- 把“评测失败”和“模型失败”分开，定位到 HOLD 判别、claim 三元组 schema、adapter 尾部稳定性三个问题。
 
 ### 1.2 没做
 
@@ -93,7 +93,7 @@
 - 云端结论写作 adapter 旧口径 **2/10**；
 - 云端报告第 2 节严格重算表写作 adapter 旧口径 **0/10**（base 也是 0/10）。
 
-这两个数不能同时作为基线。严格表里 base 10 条全带代码围栏、9 条数组根，adapter 7 条重复键、7 条缺顶层 verdict、2 条截断、3 条不可解析；按“单对象根 + 无围栏 + 顶层 verdict + 无重复键 + 未截断”的严格规则，**两边都是 0/10**。本阶段不采用 2/10 或 0/10 作为提升叙事，等统一 rubric 后重算。
+这两个数不能同时作为基线。严格表里 base 10 条全带代码围栏、9 条数组根，adapter 7 条重复键、7 条缺顶层 verdict、2 条截断、3 条不可解析；按“单对象根 + 无围栏 + 顶层 verdict + 无重复键 + 未截断”的严格规则，**两边都是 0/10**。本阶段不采用 2/10 或 0/10 作为提升叙事。现已在 `rubric_v1.json` / `contract_eval.py` 下统一重算，见 3.2 与 3.3。
 
 ### 3.2 新对照（同 prompt / 768 / rep 1.05 / 围栏即停）
 
@@ -101,23 +101,30 @@
 |---|---|---|
 | json_ok_rate | 0.9 | 0.8 |
 | verdict 一致率 | 0.5 | 0.5 |
-| claim set 精确率 | 0.0 | 0.1 |
-| 契约合格率（结构口径） | 8/10 | 8/10 |
+| claim set 精确率（旧口径，仅对照） | 0.0 | 0.1 |
+| 结构契约（统一 rubric） | 8/10 | 8/10 |
+| schema 契约（统一 rubric） | **0/10** | **0/10** |
+| 完整三元组（统一 rubric） | **0/10** | **0/10** |
 | 平均延迟 | 78.77 s | 12.48 s |
+
+**统一 rubric 的重算方式：** `contract_eval.py --report evidence/e2b-contract-eval-report.md` 直接解析云端报告里的原始输出，不占 GPU、不改模型。结构 8/10 与云端一致；schema 0/10 是新增的硬结果，详见 3.3。旧 claim set 0.0/0.1 只在“结构不合格输出也能参与精确匹配”的旧口径下成立，本报告不再把它当能力指标。
 
 **归因边界：** prompt 是两边同时改的，base 的绝对分也变了。本轮能干净归因的只有 **harness 效应**；adapter 从旧口径回到 8/10，不能全部记在 adapter 头上。
 
-### 3.3 三个硬结论
+### 3.3 四个硬结论
 
-1. **8/10 是结构契约，不是语义契约。**  
+1. **8/10 是结构契约，不是语义契约。**
    当前只查了单对象根、顶层 `verdict`、`claims` 数组、无重复键、未截断；没有查 `polarity ∈ {±1}`、`kind` 枚举、三元组非空、`evidence` 完整。adapter 003/004 的 `polarity:0`、008 的 `kind:"PASS"`、005 的缺字段，仍算“合格”。
 
-2. **HOLD 判别为零。**  
-   4 条 gold=HOLD（005/006/008/010）全部漏判，base 与 adapter 一次 HOLD 都没输出。  
+2. **HOLD 判别为零。**
+   4 条 gold=HOLD（005/006/008/010）全部漏判，base 与 adapter 一次 HOLD 都没输出。
    这批 holdout 是 6 PASS / 4 HOLD；一个永远输出 PASS 的傻瓜基线是 **0.6**，base 和 adapter 都是 **0.5**，**比傻瓜基线还差**。
 
-3. **claim set 低分是口径 bug，不是能力结论。**  
-   `train.jsonl` 的 target 里 `object` 空 38/50、`predicate` 空 18/50、`polarity` 用 ±1 数字；`holdout.jsonl` 没有 gold claims，是 `claim_engine` 现场抽取的完整三元组。模型被训练成“填 null”，评测却要求“补全三元组”，精确匹配天然到不了。修 target/gold 同源之前，这项分数没有解释力。
+3. **claim set 低分是 schema/评测口径 bug，不是能力结论；而且 target 与 gold 其实已经同源。**
+   逐行审计确认：`build_data.py` 的 `target_from_engine` 和 `eval_e2b.py` 的 `expected_claims` 都调用同一个 `claim_engine.evaluate()`；`holdout.jsonl` 没有存 `claims`，但 gold 是现场用同一引擎抽的，不是另一套抽取。真正的问题是这条引擎对 `anchor_source_*` 常返回空 `predicate` / `obj`：70 条 train claims 里 60 条 `object` 空、24 条 `predicate` 空；holdout 11 条 gold claims 的 `predicate` / `object` 全空。训练 target 忠实复制了这些空字段，模型被教成“填 null”；评测 `claim_set` 只比较 `(claim_id, polarity)`，低分主要来自模型输出的 claim_id / polarity 对不上，不是 gold 来自另一套抽取。先把 claim 三元组 schema 和 gold 存储修好，再谈 claim set。
+
+4. **schema 契约也是 0/10。**
+   base 的 `polarity` 写成 `"positive"` / `"negative"`、`kind` 写成 `fact` / `restriction`；adapter 出现 `polarity:0`、`kind:"PASS"`、claims 缺 `polarity` / `kind` / `evidence`。按 target 的 schema（`polarity ∈ {±1}`、`kind` 枚举、字段齐全）判，base 与 adapter 都是 **0/10**，不是 8/10。8/10 只是结构合格。
 
 ### 3.4 尾部与语义问题
 
@@ -146,7 +153,7 @@
 
 - 结构契约 8/10 只是 harness 门槛，不是模型门槛。
 - HOLD 0/4，verdict 0.5 < 0.6 傻瓜基线。
-- claim set 0.0/0.1，且 target/gold 不同源，不能作为能力指标。
+- claim set 0.0/0.1 是旧口径；统一 rubric 下没有一条“结构 + schema”都合格的输出，claim set 无法作为能力指标。target/gold 已同源，但 claim 三元组字段大量为空。
 - 语义契约未过：非法 polarity、kind 串味、字段缺失。
 
 ### 4.3 边界没有被污染
@@ -180,16 +187,17 @@
 ### 6.1 先做（0 GPU）
 
 1. **冻结一份 rubric：结构 + 语义 + 失败分类。**
-   - 结构：单对象根、无围栏、顶层 `verdict`、`claims` 数组、无重复键、未截断。
-   - 语义：`polarity ∈ {±1}`、`kind` 枚举、三元组非空、`evidence` 完整、禁止 `kind:"PASS"`。
-   - 输出：结构合格率、语义合格率、失败分类、HOLD recall、verdict 准确率、always-PASS 基线。
+   - 已产出 `rubric_v1.json` 与 `contract_eval.py`；结构规则：单对象根、无围栏、顶层 `verdict`、`claims` 数组、无重复键、未截断。
+   - schema 规则：`polarity ∈ {±1}`、`kind` 枚举、字段齐全、PASS 不得空 claims；完整三元组再加 `subject` / `predicate` / `object` / `evidence` 非空。
+   - 已在云端报告上重算：base / adapter 结构 8/10，schema **0/10**，完整三元组 **0/10**；HOLD recall 0/4；verdict 0.5 < always-PASS 0.6。
    - 用同一份 rubric 重算四个 `eval.json`，不再跨口径比较。
 
-2. **修 target 与 gold 同源。**
-   - 训练 target 与 holdout gold 都走 `claim_engine` 同一套抽取。
-   - `holdout.jsonl` 补 `gold_claims`。
+2. **修 claim 三元组 schema 与 gold 存储。**
+   - 训练 target 与 holdout gold 已经都走 `claim_engine` 同一套抽取；不要再重复做“同源”改造。
+   - 真正要修的是 `claim_engine` 对 `anchor_source_*` 的空 `predicate` / `obj`：要么补齐抽取规则，要么在 `build_data` 里写明确的 canonical triple，不能继续把空字段当 target。
+   - `holdout.jsonl` 补 `gold_claims`，把现场抽取变成可审计的冻结 gold。
    - `claims` 补完整三元组；`polarity` 统一 ±1；`kind` 用枚举；顶层 `verdict` 固定。
-   - 重跑 `test_candidates.py`，更新 manifest/hash。
+   - 重跑 `test_candidates.py` 与 `contract_eval.py`，更新 manifest/hash。
 
 ### 6.2 再做（10 条 GPU A/B）
 
@@ -219,7 +227,7 @@
 ## 7. 未决与风险
 
 1. `grad_norm` 前两步 `nan` 未解决；正式 run 若复现，先处理 fp16/梯度裁剪/优化器稳定性。
-2. 旧口径 2/10 与严格表 0/10 冲突；必须统一 rubric 后重算。
+2. 旧口径 2/10 与严格表 0/10 冲突；已用 `rubric_v1.json` 重算，结构 8/10、schema 0/10，两个数不再混用。
 3. 8/10 只查结构，语义 gate 未过。
 4. 006 的“断在中间”与“不是截断”描述冲突，需 `finish_reason` 确认。
 5. 本地 `eval_e2b.py` 已同步 `row.get(k)` 修复；云端 `eval_e2b.py.bak` 仍作为回滚备份。
@@ -235,6 +243,9 @@ cd lab/02-gemma-e2b-eval
 
 # 数据校验
 python3 test_candidates.py
+
+# 统一 rubric：直接解析云端报告，不占 GPU
+python3 contract_eval.py --report evidence/e2b-contract-eval-report.md
 
 # 重建数据（会重写 train/holdout/manifest）
 python3 build_data.py
