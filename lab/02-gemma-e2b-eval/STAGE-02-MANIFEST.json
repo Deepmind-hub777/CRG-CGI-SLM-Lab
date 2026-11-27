@@ -34,7 +34,8 @@
     "a5_initial_training_stocktake": true,
     "prompt_v2_schema_aligned": false,
     "strict_gate_passed": false,
-    "claim_set_metric_audit_required": true
+    "claim_set_metric_audit_required": true,
+    "post_training_lessons_added": true
   },
   "claim_boundary": {
     "governance_layer_model_agnostic": "design-level only; not empirically proven across models",
@@ -184,13 +185,13 @@
     },
     {
       "path": "NEXT-ACTIONS.md",
-      "bytes": 7015,
-      "sha256": "444734b118e91e9d1c839fa39bed0c4cc88fe6ac5fb8bf9e01329b414054de57"
+      "bytes": 7125,
+      "sha256": "94d14eed374ed6d81275873c35d781967053b61598a8bcc835a9313917b93c57"
     },
     {
       "path": "README.md",
-      "bytes": 7134,
-      "sha256": "ad24afa7ac0a7f5ca3d8d172d7c845d8996001962b55131e713ab1e4f18ddd78"
+      "bytes": 7313,
+      "sha256": "612ee1c0470d7b273b1b4fdd3b1d8805833c32ba99b9345a1d614cf00faa85dc"
     },
     {
       "path": "STAGE-01-REPORT.md",
@@ -471,6 +472,11 @@
       "path": "train_qlora.py",
       "bytes": 11540,
       "sha256": "9e7d7e511e287056161f7ba03ede9ec5527b3c6e5ff0200ea862d37b96f08636"
+    },
+    {
+      "path": "POST-TRAINING-LESSONS.md",
+      "bytes": 15363,
+      "sha256": "d45cdf44cf46191519d87bbe57b53fa2ada18d10685e35cacd4af2838b9d8a67"
     }
   ],
   "a3_offline_fix": {
@@ -560,5 +566,11 @@
       "only then decide whether to retrain 50 records"
     ],
     "note": "cloud holdout lacks gold_claims; gold reconciliation uses A3 holdout locally"
+  },
+  "post_training_lessons": {
+    "path": "POST-TRAINING-LESSONS.md",
+    "scope": "methodology review, not an experiment result",
+    "core": "gray-box chain; CRG boundary; DeepSeek-style verifier-first post-training; GitHub small-model capability map",
+    "not_claimed": "industry-first, white-box understanding, model capability ranking, Ring 0 achieved"
   }
 }

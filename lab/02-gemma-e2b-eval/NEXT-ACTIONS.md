@@ -57,6 +57,7 @@
   - 把 v2 的 16 条 claims 做“只归一化、不改文本”的 strict 复算，分开报归一化前/后。
   - 决定 `kind` 是收紧到五枚举，还是把 `source/definition/existence` 纳入 rubric；先做离线影响评估。
   - 明确 verdict 归属：模型 verdict 与 `claim_engine.adjudicate_claims()` 分两列，不互相替代。
+  - 方法论复盘见 `POST-TRAINING-LESSONS.md`：DeepSeek 式“验证器优先”与拒绝采样顺序。
 
 ---
 
