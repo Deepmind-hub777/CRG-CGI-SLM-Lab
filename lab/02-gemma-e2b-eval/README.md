@@ -7,11 +7,13 @@
 ## 阶段成果
 
 - [STAGE-01-REPORT.md](STAGE-01-REPORT.md) — 2026-11-27 阶段复盘：过程、结论、证据与下一步。
+- [STAGE-02-REPORT.md](STAGE-02-REPORT.md) — 从链路验证到运行时治理灰箱：契约分层、模型无关性边界、Ring 0 缺口。
 - [NEXT-ACTIONS.md](NEXT-ACTIONS.md) — 阶段 02 的口径修复清单与验收门槛。
 - [rubric_v1.json](rubric_v1.json) — 结构 / schema / 完整三元组的统一 rubric。
 - [contract_eval.py](contract_eval.py) — 用统一 rubric 重算云端报告，0 GPU。
 - [evidence/e2b-contract-eval-report.md](evidence/e2b-contract-eval-report.md) — 云端原始契约评测报告，只读证据。
 - [evidence/contract-eval-v1.md](evidence/contract-eval-v1.md) — 统一 rubric 的重算摘要。
+- [STAGE-02-MANIFEST.json](STAGE-02-MANIFEST.json) — 阶段 02 状态与文件哈希。
 
 ---
 

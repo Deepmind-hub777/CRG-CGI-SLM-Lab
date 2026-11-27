@@ -1,0 +1,199 @@
+{
+  "stage": "STAGE-02",
+  "title": "From link verification to runtime-governance gray box: contract layering and model-agnostic boundary",
+  "date": "2026-11-27",
+  "timezone": "Asia/Bangkok (UTC+7)",
+  "repo": "https://github.com/Deepmind-hub777/CRG-CGI-SLM-Lab",
+  "branch": "lab/02-gemma-e2b-stage-01",
+  "status": {
+    "contract_rubric_frozen": true,
+    "harness_layering": true,
+    "model_gate_passed": false,
+    "formal_run_started": false,
+    "new_data_generated": false,
+    "cross_model_portability_tested": false,
+    "weights_published": false,
+    "main_merged": false
+  },
+  "claim_boundary": {
+    "governance_layer_model_agnostic": "design-level only; not empirically proven across models",
+    "evidence_model": "Gemma 4 E2B",
+    "model_specific_results": "8/10 structural, 8/10 core triple, 0/10 strict schema, HOLD 0/4, verdict 0.5",
+    "not_claimed": "model accuracy, zero hallucination, white-box understanding, Ring 0 achieved, cross-model empirical proof"
+  },
+  "metrics": {
+    "n": 10,
+    "base": {
+      "structural": "8/10",
+      "core_triple": "8/10",
+      "lenient_schema": "7/10",
+      "strict_schema": "0/10",
+      "strict_triple": "0/10",
+      "verdict_accuracy": 0.5,
+      "hold_recall": "0/4"
+    },
+    "adapter": {
+      "structural": "8/10",
+      "core_triple": "8/10",
+      "lenient_schema": "0/10",
+      "strict_schema": "0/10",
+      "strict_triple": "0/10",
+      "verdict_accuracy": 0.5,
+      "hold_recall": "0/4"
+    },
+    "always_pass_baseline": 0.6,
+    "claim_set_exact": null
+  },
+  "ring0": {
+    "stage": "forecourt/shadow, not Ring 0",
+    "conditions_met": [
+      "0 outside weights (prototype)",
+      "-1 external veto (claim_engine)",
+      "+1 prompt/claim contract",
+      "manifest/hash + offline replay"
+    ],
+    "gaps": [
+      "0 canonical definition and leakage audit",
+      "-1 precedence and rollback evidence chain",
+      "+1 runtime enforcement",
+      "gold claims not frozen",
+      "finish_reason/reproducibility fields",
+      "full signed audit chain",
+      "runtime monitor/drift",
+      "Ring 0 holder and authorization"
+    ]
+  },
+  "open_questions": [
+    "Who holds Ring 0 final authority: human root, external claim_engine, or layered?",
+    "What is the canonical definition of 0, and how to prevent leakage into target?",
+    "How to formalize -1 veto, conflict precedence, rollback object and evidence?",
+    "Should +1 contract be enforced by prompt, grammar decoding, or post-hoc validation?",
+    "How to canonicalize claim triples when predicate/object are empty?",
+    "How to freeze and sign gold_claims, and who accepts changes?",
+    "How to disclose strict vs lenient harness results without a single misleading score?",
+    "How to design a second-base portability test within zero budget?",
+    "Do we need runtime drift/abuse monitoring, or offline replay is enough for now?",
+    "Is human merge the physical anchor of Ring 0, and what audit trail does it require?"
+  ],
+  "next_actions": [
+    "Freeze CRG-RUNTIME-CONTRACT-v1 (roles, precedence, evidence, rollback, signature, human review).",
+    "Add contract_eval/test_contract_eval to CI; fail closed on schema regressions.",
+    "Add negative controls: always-PASS, random, base, adapter.",
+    "Record temperature, seed, max_new_tokens, finish_reason, token counts, latency.",
+    "Freeze gold_claims with hash and human sign-off; no in-place overwrite.",
+    "Run one second-base contract portability test; report per-base, never average.",
+    "Keep human merge as final authority; do not automate Ring 0 away."
+  ],
+  "files": [
+    {
+      "path": "STAGE-02-REPORT.md",
+      "bytes": 8861,
+      "sha256": "3841ab89e575df9fa241455ad63cf6955e5da3fc8f0a1b6109b9c223889887df"
+    },
+    {
+      "path": "STAGE-01-REPORT.md",
+      "bytes": 16258,
+      "sha256": "6e1cce2d1a02e9b5075db20c1ada23b2f052989f47977b35ec9ca8059c99addd"
+    },
+    {
+      "path": "NEXT-ACTIONS.md",
+      "bytes": 3150,
+      "sha256": "293670c82614b31a162eb5e7cc39e08590f9c693e7ca8c63e46c3e2d6c2d83b1"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5660,
+      "sha256": "8f47fd35a5805ee59f0212e9d88a13d586c97fbce465e2ec5fe6b9b934ea4d95"
+    },
+    {
+      "path": "rubric_v1.json",
+      "bytes": 2077,
+      "sha256": "371c33b448e0f24657c8cc890ec1274b70a26282278cd63b1cf7746fc3c46b45"
+    },
+    {
+      "path": "contract_eval.py",
+      "bytes": 11325,
+      "sha256": "50fbed1ae89ef0a5df200ec025f18dc5bfd4176b6239978df32d77d0761df5c5"
+    },
+    {
+      "path": "test_contract_eval.py",
+      "bytes": 1890,
+      "sha256": "01c832e8baf14a27d874a1633bd80b777a0ea78eb1a834b7c117a40c5ccc91ef"
+    },
+    {
+      "path": "evidence/contract-eval-v1.md",
+      "bytes": 2474,
+      "sha256": "916433c9e9aead3570d74394c3299504222f71fb2f842a3abe5b33ea8f270d5b"
+    },
+    {
+      "path": "evidence/contract-eval-v1.json",
+      "bytes": 13645,
+      "sha256": "c1f40dd53370cc3dcfb12f9edf8d6f9b2ed8ddbbe4a8da55f05fac06e3bb24eb"
+    },
+    {
+      "path": "evidence/e2b-contract-eval-report.md",
+      "bytes": 15562,
+      "sha256": "30ac18e0b996f60263de15a8b18b12aa1b34f340eee882255346bcdf182de9c4"
+    },
+    {
+      "path": "evidence/README.md",
+      "bytes": 1200,
+      "sha256": "002f2800f6eb34097170ece638fe0457af9ce75765ac8bab4bc650deea2c82a8"
+    },
+    {
+      "path": "data/train.jsonl",
+      "bytes": 30579,
+      "sha256": "f1072fa95f2514ca9dba36f990bcdb276bb71266a8ccfac466efc68fb8238371"
+    },
+    {
+      "path": "data/holdout.jsonl",
+      "bytes": 3016,
+      "sha256": "6d9de69ea03ed664fa3f7c480d34a5876282a6d1002ade7d7d4e6a1d5e3d8e41"
+    },
+    {
+      "path": "data/manifest.json",
+      "bytes": 4431,
+      "sha256": "1f3e2348dc5c7b012c5dd5c5924bcb28af8970560343bed64d2657942f91f22a"
+    },
+    {
+      "path": "claim_engine.py",
+      "bytes": 11855,
+      "sha256": "7050977dfdc195c3103d8b598da48c765157d38234baba6b1c0d1e6021a75fc7"
+    },
+    {
+      "path": "build_data.py",
+      "bytes": 9913,
+      "sha256": "c91cda6ff3055ad7de0f431ac82c70b24d7e343e0d3bc8450239ee0a9aaaa248"
+    },
+    {
+      "path": "test_candidates.py",
+      "bytes": 3995,
+      "sha256": "fd9281645c6c38881250e3865c16ca45cd57f544200342236ee7831be89437c8"
+    },
+    {
+      "path": "eval_e2b.py",
+      "bytes": 6935,
+      "sha256": "1c3cf0eea5c005aa4b6e8b231a59f9828a14a5ffc89c69be611fda6b0d7a5a51"
+    },
+    {
+      "path": "train_qlora.py",
+      "bytes": 11073,
+      "sha256": "b29bdf49c7af1a0affaa0ecc1de82fed52f1c0ce21bc4cd694b6dc15ad14b745"
+    },
+    {
+      "path": "governed_runtime.py",
+      "bytes": 15221,
+      "sha256": "22ec3970409fa107ad8e90abb77fda3f15b31a3cff6825f32108740d57c1408a"
+    },
+    {
+      "path": "governance/anchor_v0.json",
+      "bytes": 747,
+      "sha256": "112da3a356b95cef817099a2d142b5ee8fa11fadb8ea5b00cba22afb08668a03"
+    },
+    {
+      "path": "governance/claim_policy_v0.json",
+      "bytes": 2276,
+      "sha256": "96591271f747fa111c4360f0843a352af34467d6653b2b525b373862a525c5a3"
+    }
+  ]
+}
