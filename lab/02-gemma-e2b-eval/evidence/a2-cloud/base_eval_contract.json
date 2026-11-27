@@ -1,0 +1,361 @@
+{
+  "summary": {
+    "model_id": "/mnt/systemDisk/e2b/models/gemma-4-E2B-it",
+    "adapter": "",
+    "data": "/mnt/systemDisk/e2b/lab/02-gemma-e2b-eval/data/holdout.jsonl",
+    "n": 10,
+    "json_ok_rate": 0.9,
+    "verdict_accuracy": 0.5,
+    "claim_set_exact_rate": 0.0,
+    "avg_latency_s": 78.767,
+    "contract_ok_rate": 0.8,
+    "failures": {
+      "dupkey": 1,
+      "missing_verdict": 1,
+      "unparsable": 1
+    }
+  },
+  "rows": [
+    {
+      "id": "E003-holdout-001",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 93.842,
+      "raw_output": "{\n  \"claims\": [\n    {\n      \"claim_id\": \"claim1\",\n      \"subject\": \"锚定向量\",\n      \"predicate\": \"不应由生成模型产出\",\n      \"object\": \"生成模型\",\n      \"polarity\": \"negative\",\n      \"kind\": \"restriction\",\n      \"evidence\": \"锚定向量不应由生成模型产出，应由冻结参照给出\",\n      \"verdict\": \"PASS\",\n      \"hold_reason\": \"草稿中明确指出了锚定向量不应由生成模型产出\",\n      \"rollback_required\": false\n    }\n  ],\n  \"verdict\": \"PASS\"\n}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "claim1",
+          "subject": "锚定向量",
+          "predicate": "不应由生成模型产出",
+          "object": "生成模型",
+          "polarity": "negative",
+          "kind": "restriction",
+          "evidence": "锚定向量不应由生成模型产出，应由冻结参照给出",
+          "verdict": "PASS",
+          "hold_reason": "草稿中明确指出了锚定向量不应由生成模型产出",
+          "rollback_required": false
+        }
+      ],
+      "verdict_match": true,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-002",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 92.97,
+      "raw_output": "{\n  \"claims\": [\n    {\n      \"claim_id\": \"claim1\",\n      \"subject\": \"生成模型\",\n      \"predicate\": \"不能充当锚定来源\",\n      \"object\": \"锚定\",\n      \"polarity\": \"negative\",\n      \"kind\": \"fact\",\n      \"evidence\": \"生成模型不能充当锚定来源\",\n      \"verdict\": \"PASS\",\n      \"hold_reason\": \"草稿中明确表述了生成模型不能充当锚定来源。\",\n      \"rollback_required\": false\n    },\n    {\n      \"claim_id\": \"claim2\",\n      \"subject\": \"锚定\",\n      \"predicate\": \"在权重之外\",\n      \"object\": \"锚定\",\n      \"polarity\": \"fact\",\n      \"kind\": \"fact\",\n      \"evidence\": \"锚定在权重之外\",\n      \"verdict\": \"PASS\",\n      \"hold_reason\": \"草稿中明确表述了锚定在权重之外。\",\n      \"rollback_required\": false\n    }\n  ]\n}",
+      "json_ok": true,
+      "model_verdict": null,
+      "model_claims": [
+        {
+          "claim_id": "claim1",
+          "subject": "生成模型",
+          "predicate": "不能充当锚定来源",
+          "object": "锚定",
+          "polarity": "negative",
+          "kind": "fact",
+          "evidence": "生成模型不能充当锚定来源",
+          "verdict": "PASS",
+          "hold_reason": "草稿中明确表述了生成模型不能充当锚定来源。",
+          "rollback_required": false
+        },
+        {
+          "claim_id": "claim2",
+          "subject": "锚定",
+          "predicate": "在权重之外",
+          "object": "锚定",
+          "polarity": "fact",
+          "kind": "fact",
+          "evidence": "锚定在权重之外",
+          "verdict": "PASS",
+          "hold_reason": "草稿中明确表述了锚定在权重之外。",
+          "rollback_required": false
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": true,
+        "missing_verdict": true,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": false
+      }
+    },
+    {
+      "id": "E003-holdout-003",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 93.139,
+      "raw_output": "{\n  \"claims\": [\n    {\n      \"claim_id\": \"claim1\",\n      \"subject\": \"锚定\",\n      \"predicate\": \"是\",\n      \"object\": \"外部冻结的坐标\",\n      \"polarity\": \"事实\",\n      \"kind\": \"事实陈述\",\n      \"evidence\": \"锚定是外部冻结的坐标\"\n    }\n  ],\n  \"verdict\": \"PASS\"\n}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "claim1",
+          "subject": "锚定",
+          "predicate": "是",
+          "object": "外部冻结的坐标",
+          "polarity": "事实",
+          "kind": "事实陈述",
+          "evidence": "锚定是外部冻结的坐标"
+        }
+      ],
+      "verdict_match": true,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-004",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 20.981,
+      "raw_output": "{\n  \"claims\": [\n    {\n      \"claim_id\": \"claim1\",\n      \"subject\": \"模型\",\n      \"predicate\": \"只做\",\n      \"object\": \"+1\",\n      \"polarity\": \"positive\",\n      \"kind\": \"fact\",\n      \"evidence\": \"模型只做 +1\"\n    },\n    {\n      \"claim_id\": \"claim2\",\n      \"subject\": \"锚定\",\n      \"predicate\": \"由\",\n      \"object\": \"外部提供\",\n      \"polarity\": \"negative\",\n      \"kind\": \"fact\",\n      \"evidence\": \"锚定由外部提供\"\n    }\n  ],\n  \"verdict\": \"PASS\"\n}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "claim1",
+          "subject": "模型",
+          "predicate": "只做",
+          "object": "+1",
+          "polarity": "positive",
+          "kind": "fact",
+          "evidence": "模型只做 +1"
+        },
+        {
+          "claim_id": "claim2",
+          "subject": "锚定",
+          "predicate": "由",
+          "object": "外部提供",
+          "polarity": "negative",
+          "kind": "fact",
+          "evidence": "锚定由外部提供"
+        }
+      ],
+      "verdict_match": true,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-005",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 92.998,
+      "raw_output": "{\n  \"claims\": [\n    {\n      \"claim_id\": \"claim1\",\n      \"subject\": \"模型\",\n      \"predicate\": \"可以\",\n      \"object\": \"自己提供锚定 logits\",\n      \"polarity\": \"positive\",\n      \"kind\": \"claim\",\n      \"evidence\": \"让模型自己给自己定锚，省掉外部参照\"\n    }\n  ],\n  \"verdict\": \"PASS\"\n}\n}",
+      "json_ok": false,
+      "parse_error": "Extra data: line 15 column 1 (char 255)",
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": true,
+        "contract_ok": false
+      }
+    },
+    {
+      "id": "E003-holdout-006",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 92.378,
+      "raw_output": "{\n  \"claims\": [\n    {\n      \"claim_id\": \"claim1\",\n      \"subject\": \"锚定\",\n      \"predicate\": \"可以内生在权重里\",\n      \"object\": \"模型自我校准\",\n      \"polarity\": \"positive\",\n      \"kind\": \"fact\",\n      \"evidence\": \"锚定可以内生在权重里，模型自我校准\",\n      \"verdict\": \"PASS\",\n      \"hold_reason\": \"草稿中明确陈述了锚定可以内生在权重里并进行自我校准。\",\n      \"rollback_required\": false\n    }\n  ],\n  \"verdict\": \"PASS\"\n}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "claim1",
+          "subject": "锚定",
+          "predicate": "可以内生在权重里",
+          "object": "模型自我校准",
+          "polarity": "positive",
+          "kind": "fact",
+          "evidence": "锚定可以内生在权重里，模型自我校准",
+          "verdict": "PASS",
+          "hold_reason": "草稿中明确陈述了锚定可以内生在权重里并进行自我校准。",
+          "rollback_required": false
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-007",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 92.394,
+      "raw_output": "{\n  \"claims\": [\n    {\n      \"claim_id\": \"claim1\",\n      \"subject\": \"锚定\",\n      \"predicate\": \"不是模型自己提供的\",\n      \"object\": \"是冻结参照\",\n      \"polarity\": \"negative\",\n      \"kind\": \"fact\",\n      \"evidence\": \"锚定不是模型自己提供的，是冻结参照\",\n      \"verdict\": \"PASS\",\n      \"hold_reason\": \"草稿明确说明了锚定不是模型自己提供的，而是冻结参照。\",\n      \"rollback_required\": false\n    }\n  ],\n  \"verdict\": \"PASS\"\n}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "claim1",
+          "subject": "锚定",
+          "predicate": "不是模型自己提供的",
+          "object": "是冻结参照",
+          "polarity": "negative",
+          "kind": "fact",
+          "evidence": "锚定不是模型自己提供的，是冻结参照",
+          "verdict": "PASS",
+          "hold_reason": "草稿明确说明了锚定不是模型自己提供的，而是冻结参照。",
+          "rollback_required": false
+        }
+      ],
+      "verdict_match": true,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-008",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 95.473,
+      "raw_output": "{\n  \"claims\": [\n    {\n      \"claim_id\": \"claim1\",\n      \"subject\": \"锚定\",\n      \"predicate\": \"可以由当前生成模型自己提供\",\n      \"object\": \"否\",\n      \"polarity\": \"negative\",\n      \"kind\": \"fact\",\n      \"evidence\": \"由模型自身提供锚定并不构成自指\",\n      \"verdict\": \"PASS\",\n      \"hold_reason\": \"草稿明确指出了模型提供锚定不构成自指，与问题“可以由当前生成模型自己提供吗？”直接相关。\",\n      \"rollback_required\": false\n    }\n  ],\n  \"verdict\": \"PASS\"\n}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "claim1",
+          "subject": "锚定",
+          "predicate": "可以由当前生成模型自己提供",
+          "object": "否",
+          "polarity": "negative",
+          "kind": "fact",
+          "evidence": "由模型自身提供锚定并不构成自指",
+          "verdict": "PASS",
+          "hold_reason": "草稿明确指出了模型提供锚定不构成自指，与问题“可以由当前生成模型自己提供吗？”直接相关。",
+          "rollback_required": false
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-009",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 21.003,
+      "raw_output": "{\n  \"claims\": [\n    {\n      \"claim_id\": \"claim1\",\n      \"subject\": \"锚定\",\n      \"predicate\": \"必须外置\",\n      \"object\": \"不能训进权重\",\n      \"polarity\": \"negative\",\n      \"kind\": \"fact\",\n      \"evidence\": \"锚定必须外置，不能训进权重\",\n      \"verdict\": \"PASS\",\n      \"hold_reason\": \"草稿中明确陈述了锚定的要求\",\n      \"rollback_required\": false\n    }\n  ],\n  \"verdict\": \"PASS\"\n}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "claim1",
+          "subject": "锚定",
+          "predicate": "必须外置",
+          "object": "不能训进权重",
+          "polarity": "negative",
+          "kind": "fact",
+          "evidence": "锚定必须外置，不能训进权重",
+          "verdict": "PASS",
+          "hold_reason": "草稿中明确陈述了锚定的要求",
+          "rollback_required": false
+        }
+      ],
+      "verdict_match": true,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-010",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 92.492,
+      "raw_output": "{\n  \"claims\": [\n    {\n      \"claim_id\": \"claim1\",\n      \"subject\": \"锚定\",\n      \"predicate\": \"可以由当前生成模型自己提供\",\n      \"object\": \"模型\",\n      \"polarity\": \"positive\",\n      \"kind\": \"fact\",\n      \"evidence\": \"锚定在权重之外，所以模型可以自己生成锚定\",\n      \"verdict\": \"PASS\",\n      \"hold_reason\": \"草稿中明确指出了模型可以自己生成锚定\",\n      \"rollback_required\": false\n    }\n  ],\n  \"verdict\": \"PASS\"\n}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "claim1",
+          "subject": "锚定",
+          "predicate": "可以由当前生成模型自己提供",
+          "object": "模型",
+          "polarity": "positive",
+          "kind": "fact",
+          "evidence": "锚定在权重之外，所以模型可以自己生成锚定",
+          "verdict": "PASS",
+          "hold_reason": "草稿中明确指出了模型可以自己生成锚定",
+          "rollback_required": false
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    }
+  ]
+}

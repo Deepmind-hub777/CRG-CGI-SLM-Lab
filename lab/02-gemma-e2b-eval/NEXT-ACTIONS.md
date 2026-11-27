@@ -14,11 +14,12 @@
   - 输出失败分类：`fence / truncated / dupkey / missing_verdict / array_root / bad_polarity / bad_kind / missing_field`。
   - 云端报告重算结果：结构 8/10、核心三元组 8/10、宽松 schema 7/10（base）/0（adapter）、严格 schema 0/10、完整三元组 0/10。
 
-- [ ] **A2. 重算四个 `eval.json`**
-  - `runs/base/eval.json`（旧）
-  - `runs/smoke-v100c-20261127-1011/eval.json`（旧）
-  - 新 prompt 的 base / adapter 对照结果
-  - 全部用同一份 rubric；输出结构合格率、语义合格率、HOLD recall、verdict 准确率、always-PASS 基线。
+- [x] **A2. 重算四个 `eval.json`**
+  - 已取回并重算：旧 base、旧 adapter、新 prompt base、新 prompt adapter。
+  - 同一份 `rubric_v1` 下：旧两份结构 **0/10**；新 prompt 两份结构 **8/10**，严格 schema 仍 **0/10**。
+  - HOLD recall 四个产物全是 **0/4**；always-PASS 基线 **0.6**；new prompt verdict 0.5 低于基线。
+  - 产物：`evidence/a2-cloud/*.json`、`evidence/a2-recompute.json`、`evidence/a2-recompute.md`。
+  - 旧 base 的 0.4 是文件记录值，不是本次 raw 重算值；两者已分开列。
 
 - [x] **A3. 修 claim 三元组 schema 与 gold 存储**
   - 训练 target 与 holdout gold 已经都走 `claim_engine` 同一套抽取；不要重复做“同源”改造。

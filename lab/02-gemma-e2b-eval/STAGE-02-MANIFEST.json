@@ -16,7 +16,8 @@
     "main_merged": false,
     "claim_triples_canonical": true,
     "gold_claims_frozen": true,
-    "data_rebuilt_after_fix": true
+    "data_rebuilt_after_fix": true,
+    "a2_four_evals_recomputed": true
   },
   "claim_boundary": {
     "governance_layer_model_agnostic": "design-level only; not empirically proven across models",
@@ -90,8 +91,8 @@
   "files": [
     {
       "path": "STAGE-02-REPORT.md",
-      "bytes": 9961,
-      "sha256": "130d305a7bc6a012bf4ba72a086de882506c1fe194c3ee91be6b3eef124cd846"
+      "bytes": 11264,
+      "sha256": "01ad99789b482ec5e7b86a32092f1d03adccdcb4ea1e90ae5e14bac29e92f205"
     },
     {
       "path": "STAGE-01-REPORT.md",
@@ -100,13 +101,13 @@
     },
     {
       "path": "NEXT-ACTIONS.md",
-      "bytes": 3359,
-      "sha256": "ed25f1e7be5de71256854e94e7f956d937d6cc265a974253bbfd2ee9e7d1408a"
+      "bytes": 3614,
+      "sha256": "46a513e35268e421359df9bde154b4448fa4071de35e6da3fdf1e3a0672d24c5"
     },
     {
       "path": "README.md",
-      "bytes": 5690,
-      "sha256": "c3c48fe040637e1c5ff32fff4a45cd05a40ac4418ba9f77e60847fe20d17e271"
+      "bytes": 5805,
+      "sha256": "c83332f3a704975aa2ab86f9ecb93472600ff14750d998f6b2867ead0cf4635b"
     },
     {
       "path": "rubric_v1.json",
@@ -207,6 +208,41 @@
       "path": "evidence/a3-freeze-audit.json",
       "bytes": 844,
       "sha256": "b1667d19b29e3b08ccb052a96a63f0d30a40af4c76f25ff78b54a2bab5ff545e"
+    },
+    {
+      "path": "a2_recompute.py",
+      "bytes": 2532,
+      "sha256": "33d0d26b0c5684e6269476b7bf6ff0fda1fa2fe9c9bb8f85be26c40880c66cd4"
+    },
+    {
+      "path": "evidence/a2-recompute.json",
+      "bytes": 28017,
+      "sha256": "d15d84a9431e4726f50e43d9c3012d1f5303530e30e791616660140c89598f09"
+    },
+    {
+      "path": "evidence/a2-recompute.md",
+      "bytes": 2206,
+      "sha256": "5e91331ff431751f8d4ba5e9efeaa06e039e4ba3a14075bca569c6252ee4d24f"
+    },
+    {
+      "path": "evidence/a2-cloud/base_eval.json",
+      "bytes": 8301,
+      "sha256": "c1aed72b24e7e5449dec0eef8233bc62c220cba73265b07c623ee06808ce3cd3"
+    },
+    {
+      "path": "evidence/a2-cloud/base_eval_contract.json",
+      "bytes": 15573,
+      "sha256": "111c139746b2954800ac2fed0432d2eb407f045ee73855726dbba348a81f74dd"
+    },
+    {
+      "path": "evidence/a2-cloud/adapter_eval.json",
+      "bytes": 12211,
+      "sha256": "d15fb5c6e402d444011b020d46897cb04d8edc9b05a9f36824d2518158bd9a7e"
+    },
+    {
+      "path": "evidence/a2-cloud/adapter_eval_contract.json",
+      "bytes": 11321,
+      "sha256": "bef3189b22a9fb177fc8ecf352e59d5b2a62eab8c282516259104df725707f92"
     }
   ],
   "a3_offline_fix": {
@@ -218,5 +254,46 @@
     "test_candidates_failures": 0,
     "contract_eval_tests": "4/4",
     "test_data_contract": "pass"
+  },
+  "a2_recompute": {
+    "note": "four cloud eval artifacts parsed with rubric_v1; no model load, no weight change",
+    "base_old_384": {
+      "structural": "0/10",
+      "schema": "0/10",
+      "lenient": "0/10",
+      "core_triple": "0/10",
+      "raw_verdict": 0.0,
+      "recorded_verdict": 0.4,
+      "hold_recall": "0/4"
+    },
+    "adapter_old_384": {
+      "structural": "0/10",
+      "schema": "0/10",
+      "lenient": "0/10",
+      "core_triple": "0/10",
+      "raw_verdict": 0.0,
+      "recorded_verdict": 0.0,
+      "hold_recall": "0/4"
+    },
+    "base_new_prompt": {
+      "structural": "8/10",
+      "schema": "0/10",
+      "lenient": "7/10",
+      "core_triple": "8/10",
+      "raw_verdict": 0.5,
+      "recorded_verdict": 0.5,
+      "hold_recall": "0/4"
+    },
+    "adapter_new_prompt": {
+      "structural": "8/10",
+      "schema": "0/10",
+      "lenient": "0/10",
+      "core_triple": "8/10",
+      "raw_verdict": 0.5,
+      "recorded_verdict": 0.5,
+      "hold_recall": "0/4"
+    },
+    "always_pass_baseline": 0.6,
+    "evidence": "evidence/a2-recompute.md"
   }
 }

@@ -149,11 +149,33 @@ A3 已完成离线部分，模型分数没有在新数据上重跑；这是“�
 - `eval_e2b.py`：优先读冻结 `gold_claims`，不再每次现场重抽。
 - 新哈希：`train=54fd202c4df00c635ab0086acf01493ecbdaed10f95624eec1655e2165994492`；`holdout=87d2fb1b0b85203fc34d55e37642acd063ba5ad356941e4067bb83b8f37846e3`；`data/manifest=82e23714310a07b3add247ddc8251d992542db01bb1c99c1eb6fbf53187f5836`。
 - 校验：`test_candidates.py` 0 FAIL；`test_data_contract.py` 通过；`test_contract_eval.py` 4/4。审计快照见 `evidence/a3-freeze-audit.json`。
-- 未做：A2 的四个旧 `eval.json` 重算、Qwen base 契约基线、Qwen 50 条 QLoRA。
+- 未做：Qwen base 契约基线、Qwen 50 条 QLoRA。A2 的四个产物已在第 10 节完成。
 
 ---
 
-## 10. 记录声明
+## 10. A2 落地记录（四个 eval 产物，同一把尺子）
+
+A2 已完成。四个云端产物已取回，统一用 `rubric_v1` 重算，不加载模型、不改权重。
+
+| 产物 | prompt | 结构 | 严格 schema | 宽松 schema | 核心三元组 | raw verdict | 记录 verdict | HOLD |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| base 旧 | 384 tokens | 0/10 | 0/10 | 0/10 | 0/10 | 0.00 | 0.40 | 0/4 |
+| adapter 旧 | 384 tokens | 0/10 | 0/10 | 0/10 | 0/10 | 0.00 | 0.00 | 0/4 |
+| base 新 prompt | 768 / rep 1.05 | 8/10 | 0/10 | 7/10 | 8/10 | 0.50 | 0.50 | 0/4 |
+| adapter 新 prompt | 768 / rep 1.05 | 8/10 | 0/10 | 0/10 | 8/10 | 0.50 | 0.50 | 0/4 |
+
+读法：
+
+- 旧 base 的 0.4 是旧文件记录的 `model_verdict`，不是本次 raw 输出重算值；严格 rubric 下它连围栏和单对象根都没过。
+- 新 prompt 把结构拉到 8/10，但严格 schema 仍是 0/10；base 主要是别名，adapter 主要是缺字段、`polarity`/`kind` 和 2 条截断。
+- 四个产物 HOLD recall 全为 0/4；always-PASS 基线 0.6；new prompt verdict 0.5 仍低于基线。
+- 严格 schema 下没有可计算 claim set 的样本，因此不把 claim set 写成能力分数。
+
+证据：`evidence/a2-cloud/*.json`、`evidence/a2-recompute.json`、`evidence/a2-recompute.md`。
+
+---
+
+## 11. 记录声明
 
 - 本文只记录已发生的事实与已复算的数字；未跨模型复现的判断标 `[B]`。
 - 不把“治理架构可分离”写成“治理效果已跨模型验证”。

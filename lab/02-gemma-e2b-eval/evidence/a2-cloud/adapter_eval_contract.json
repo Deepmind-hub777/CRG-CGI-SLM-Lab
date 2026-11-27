@@ -1,0 +1,327 @@
+{
+  "summary": {
+    "model_id": "/mnt/systemDisk/e2b/models/gemma-4-E2B-it",
+    "adapter": "/mnt/systemDisk/e2b/runs/smoke-v100c-20261127-1011/adapter",
+    "data": "/mnt/systemDisk/e2b/lab/02-gemma-e2b-eval/data/holdout.jsonl",
+    "n": 10,
+    "json_ok_rate": 0.8,
+    "verdict_accuracy": 0.5,
+    "claim_set_exact_rate": 0.1,
+    "avg_latency_s": 12.4839,
+    "contract_ok_rate": 0.8,
+    "failures": {
+      "unparsable": 2
+    }
+  },
+  "rows": [
+    {
+      "id": "E003-holdout-001",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 13.08,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"anchor_vector_source\",\"subject\":\"锚定向量\",\"predicate\":\"不应由生成模型产出\",\"object\":\"生成模型\"},{\"claim_id\":\"anchor_vector_source\",\"subject\":\"锚定向量\",\"predicate\":\"应由冻结参照给出\",\"object\":\"冻结参照\"}],\"verdict\":\"PASS\"}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "anchor_vector_source",
+          "subject": "锚定向量",
+          "predicate": "不应由生成模型产出",
+          "object": "生成模型"
+        },
+        {
+          "claim_id": "anchor_vector_source",
+          "subject": "锚定向量",
+          "predicate": "应由冻结参照给出",
+          "object": "冻结参照"
+        }
+      ],
+      "verdict_match": true,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-002",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 15.727,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"1\",\"subject\":\"生成模型\",\"predicate\":\"不能充当锚定来源\",\"object\":null,\"polarity\":null,\"kind\":null,\"evidence\":null,\"verdict\":\"PASS\"},{\"claim_id\":\"2\",\"subject\":\"锚定\",\"predicate\":\"在权重之外\",\"object\":null,\"polarity\":null,\"kind\":null,\"evidence\":null\",\"verdict\":\"PASS\"}]}",
+      "json_ok": false,
+      "parse_error": "Expecting ',' delimiter: line 1 column 252 (char 251)",
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": true,
+        "contract_ok": false
+      }
+    },
+    {
+      "id": "E003-holdout-003",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 11.906,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"anchor_is_external_frozen_coordinate\",\"subject\":\"锚定\",\"predicate\":\"是\",\"object\":\"外部冻结的坐标\",\"polarity\":0,\"kind\":\"fact\",\"evidence\":\"锚定是外部冻结的坐标，模型只负责生发。\"}],\"verdict\":\"PASS\"}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "anchor_is_external_frozen_coordinate",
+          "subject": "锚定",
+          "predicate": "是",
+          "object": "外部冻结的坐标",
+          "polarity": 0,
+          "kind": "fact",
+          "evidence": "锚定是外部冻结的坐标，模型只负责生发。"
+        }
+      ],
+      "verdict_match": true,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-004",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 16.819,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"model_only_does_plus_one\",\"subject\":\"模型\",\"predicate\":\"做\",\"object\":\"+1\",\"polarity\":0,\"kind\":\"assertion\",\"evidence\":\"模型只做 +1\"},{\"claim_id\":\"anchoring_provided_externally\",\"subject\":\"锚定\",\"predicate\":\"由\",\"object\":\"外部\",\"polarity\":0,\"kind\":\"assertion\",\"evidence\":\"锚定由外部提供\"}],\"verdict\":\"PASS\"}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "model_only_does_plus_one",
+          "subject": "模型",
+          "predicate": "做",
+          "object": "+1",
+          "polarity": 0,
+          "kind": "assertion",
+          "evidence": "模型只做 +1"
+        },
+        {
+          "claim_id": "anchoring_provided_externally",
+          "subject": "锚定",
+          "predicate": "由",
+          "object": "外部",
+          "polarity": 0,
+          "kind": "assertion",
+          "evidence": "锚定由外部提供"
+        }
+      ],
+      "verdict_match": true,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-005",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 12.328,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"1\",\"subject\":\"模型\",\"predicate\":\"提供\",\"object\":\"锚定 logits\"},{\"claim_id\":\"2\",\"subject\":\"模型\",\"predicate\":\"自己定\",\"object\":\"锚\"},{\"claim_id\":\"3\",\"subject\":\"模型\",\"predicate\":\"省掉\",\"object\":\"外部参照\"}],\"verdict\":\"PASS\"}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "1",
+          "subject": "模型",
+          "predicate": "提供",
+          "object": "锚定 logits"
+        },
+        {
+          "claim_id": "2",
+          "subject": "模型",
+          "predicate": "自己定",
+          "object": "锚"
+        },
+        {
+          "claim_id": "3",
+          "subject": "模型",
+          "predicate": "省掉",
+          "object": "外部参照"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": true,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-006",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 9.114,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"anchor_self_calibrate\",\"subject\":\"锚定\",\"predicate\":\"可以内生在权重里\",\"object\":null,\"polarity\":null,\"kind\":null,\"evidence\":null,\"\"verdict\":\"PASS\"}",
+      "json_ok": false,
+      "parse_error": "Expecting ':' delimiter: line 1 column 146 (char 145)",
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": true,
+        "contract_ok": false
+      }
+    },
+    {
+      "id": "E003-holdout-007",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 12.801,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"anchor_is_not_model_provided\",\"subject\":\"锚定\",\"predicate\":\"不是模型自己提供的\",\"object\":\"是冻结参照\",\"polarity\":0,\"kind\":\"fact\",\"evidence\":\"锚定不是模型自己提供的，是冻结参照\"}],\"verdict\":\"PASS\"}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "anchor_is_not_model_provided",
+          "subject": "锚定",
+          "predicate": "不是模型自己提供的",
+          "object": "是冻结参照",
+          "polarity": 0,
+          "kind": "fact",
+          "evidence": "锚定不是模型自己提供的，是冻结参照"
+        }
+      ],
+      "verdict_match": true,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-008",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 11.708,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"1\",\"subject\":\"模型\",\"predicate\":\"提供锚定\",\"object\":\"模型\",\"polarity\":0,\"kind\":\"PASS\",\"evidence\":\"由模型自身提供锚定并不构成自指。\"}],\"verdict\":\"PASS\"}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "1",
+          "subject": "模型",
+          "predicate": "提供锚定",
+          "object": "模型",
+          "polarity": 0,
+          "kind": "PASS",
+          "evidence": "由模型自身提供锚定并不构成自指。"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-009",
+      "case": "E003",
+      "expected_verdict": "PASS",
+      "latency_s": 14.19,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"anchor_must_be_external\",\"subject\":\"锚定\",\"predicate\":\"必须\",\"object\":\"外置\"},{\"claim_id\":\"anchor_cannot_train_weights\",\"subject\":\"锚定\",\"predicate\":\"不能\",\"object\":\"训进权重\"}],\"verdict\":\"PASS\"}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "anchor_must_be_external",
+          "subject": "锚定",
+          "predicate": "必须",
+          "object": "外置"
+        },
+        {
+          "claim_id": "anchor_cannot_train_weights",
+          "subject": "锚定",
+          "predicate": "不能",
+          "object": "训进权重"
+        }
+      ],
+      "verdict_match": true,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    },
+    {
+      "id": "E003-holdout-010",
+      "case": "E003",
+      "expected_verdict": "HOLD",
+      "latency_s": 7.166,
+      "raw_output": "{\"claims\":[{\"claim_id\":\"anchor_generation\",\"subject\":\"模型\",\"predicate\":\"可以生成\",\"object\":\"锚定\"}],\"verdict\":\"PASS\"}",
+      "json_ok": true,
+      "model_verdict": "PASS",
+      "model_claims": [
+        {
+          "claim_id": "anchor_generation",
+          "subject": "模型",
+          "predicate": "可以生成",
+          "object": "锚定"
+        }
+      ],
+      "verdict_match": false,
+      "claim_set_match": false,
+      "contract": {
+        "fence": false,
+        "truncated": false,
+        "dupkey": false,
+        "missing_verdict": false,
+        "array_root": false,
+        "unparsable": false,
+        "contract_ok": true
+      }
+    }
+  ]
+}

@@ -14,6 +14,7 @@
 - [evidence/e2b-contract-eval-report.md](evidence/e2b-contract-eval-report.md) — 云端原始契约评测报告，只读证据。
 - [evidence/contract-eval-v1.md](evidence/contract-eval-v1.md) — 统一 rubric 的重算摘要。
 - [STAGE-02-MANIFEST.json](STAGE-02-MANIFEST.json) — 阶段 02 状态与文件哈希。
+- [evidence/a2-recompute.md](evidence/a2-recompute.md) — A2：四个云端 eval 产物的统一 rubric 重算。
 
 ---
 
