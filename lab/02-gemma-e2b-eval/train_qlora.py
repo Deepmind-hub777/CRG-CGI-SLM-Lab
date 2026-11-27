@@ -21,12 +21,11 @@ from transformers import (
 )
 
 ROOT = pathlib.Path(__file__).resolve().parent
-SYSTEM = (
-"你是 CRG-CGI-SLM 的 claim 抽取器。只依据用户问题与候选草稿；"
-"不要补全草稿没有的断言，不要引用外部知识，不要把锚定原文当成答案。"
-"输出严格 JSON：claims 为数组，每项含 claim_id,subject,predicate,object,polarity,kind,evidence；"
-"verdict 只能是 PASS 或 HOLD；hold_reason 为短句；rollback_required 为布尔。"
-)
+sys.path.insert(0, str(ROOT))
+import prompt_contract
+import param_stats
+
+build_prompt = prompt_contract.build_prompt
 
 
 def log(msg):
@@ -44,20 +43,6 @@ def get_tokenizer(model_id):
     except Exception as e:
         log(f"processor fallback: {e}")
     return AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
-
-
-def build_prompt(tokenizer, rec):
-    user = (
-        f"用户问题：{rec['prompt']}\n"
-        f"候选草稿：{rec['draft']}\n"
-        f"锚定摘录：{rec.get('anchor_excerpt','') or '（无，仅依据草稿判断）'}\n"
-        "请抽取草稿里实际出现的 claims，并给出 PASS/HOLD。"
-    )
-    messages = [{"role": "system", "content": SYSTEM}, {"role": "user", "content": user}]
-    try:
-        return tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-    except Exception:
-        return f"<system>\n{SYSTEM}\n</system>\n<user>\n{user}\n</user>\n<assistant>\n"
 
 
 def build_target(rec):
@@ -194,8 +179,15 @@ def main():
     )
     model = get_peft_model(model, lora)
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    total = sum(p.numel() for p in model.parameters())
-    log(f"trainable={trainable} total={total} ratio={trainable/total:.6f}")
+    loaded_total = sum(p.numel() for p in model.parameters())
+    param_audit = param_stats.audit_model_dir(args.model_id)
+    if param_audit and param_audit.get("params_est"):
+        total = param_audit["params_est"]
+        total_source = "safetensors_index"
+    else:
+        total = loaded_total
+        total_source = "loaded_numel"
+    log(f"trainable={trainable} total={total} source={total_source} loaded_total={loaded_total} ratio={trainable/total:.6f}")
 
     rows = load_records(args.train)
     ds = Dataset.from_list([tokenize_record(tokenizer, r, args.max_length) for r in rows])
@@ -250,6 +242,9 @@ def main():
         "seed": args.seed,
         "trainable_params": trainable,
         "total_params": total,
+        "total_params_loaded": loaded_total,
+        "total_params_source": total_source,
+        "param_audit": param_audit,
         "trainable_ratio": trainable / total,
         "train_seconds": elapsed,
         "train_loss": result.training_loss,
@@ -260,10 +255,27 @@ def main():
         "compute_dtype": str(compute_dtype),
         "adapter_first_file_sha256": adapter_hash,
         "target_module_count": len(targets),
+        "prompt_contract": "contract-semantics-v1 + claim_id allowlist",
         "notes": "smoke only; adapter not merged/exported; 0 and -1 remain external",
     }
     (run_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    log(f"manifest={run_dir/'manifest.json'}")
+    if param_audit:
+        pc = dict(param_audit)
+        pc["trainable_params"] = trainable
+        pc["trainable_ratio"] = trainable / total
+        (run_dir / "param_check.json").write_text(json.dumps(pc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    manifest_sha = hashlib.sha256((run_dir / "manifest.json").read_bytes()).hexdigest()
+    complete = {
+        "status": "completed",
+        "run_id": args.run_id,
+        "finished_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+        "train_sha256": manifest["train_sha256"],
+        "manifest_sha256": manifest_sha,
+        "train_seconds": round(elapsed, 1),
+        "train_loss": result.training_loss,
+    }
+    (run_dir / "RUN_COMPLETE.json").write_text(json.dumps(complete, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    log(f"manifest={run_dir/'manifest.json'} sentinel={run_dir/'RUN_COMPLETE.json'}")
 
 
 if __name__ == "__main__":

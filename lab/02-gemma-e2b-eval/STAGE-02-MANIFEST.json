@@ -22,9 +22,14 @@
     "qwen3_4b_qlora_50_run": true,
     "qwen3_4b_adapter_eval_recomputed": true,
     "qwen3_4b_gate_passed": false,
-    "ruler_semantic_contract_fixed": false,
+    "ruler_semantic_contract_fixed": true,
     "qwen_param_count_corrected": true,
-    "a4_stocktake_added": true
+    "a4_stocktake_added": true,
+    "a5_zero_gpu_patch": true,
+    "strict_contract_gate_added": true,
+    "param_accounting_scripted": true,
+    "run_sentinel_added": true,
+    "data_diff_a3": true
   },
   "claim_boundary": {
     "governance_layer_model_agnostic": "design-level only; not empirically proven across models",
@@ -65,7 +70,10 @@
         "verdict_accuracy": 0.2,
         "hold_recall": "2/4",
         "pass_recall": "0/6",
-        "raw_claim_set_exact": 0.1
+        "raw_claim_set_exact": 0.1,
+        "strict_contract_pass": "0/10",
+        "claim_id_allowed": "0/10",
+        "claims_policy_accuracy": 0.4
       },
       "adapter_50": {
         "structural": "10/10",
@@ -75,7 +83,10 @@
         "verdict_accuracy": 0.3,
         "hold_recall": "3/4",
         "pass_recall": "0/6",
-        "strict_claim_set_exact": 0.0
+        "strict_claim_set_exact": 0.0,
+        "strict_contract_pass": "0/10",
+        "claim_id_allowed": "0/10",
+        "claims_policy_accuracy": 0.4
       },
       "always_pass_baseline": 0.6,
       "always_hold_baseline": 0.4,
@@ -123,20 +134,30 @@
     "Is human merge the physical anchor of Ring 0, and what audit trail does it require?"
   ],
   "next_actions": [
-    "Freeze CRG-RUNTIME-CONTRACT-v1 (roles, precedence, evidence, rollback, signature, human review).",
-    "Add contract_eval/test_contract_eval to CI; fail closed on schema regressions.",
-    "Add negative controls: always-PASS, random, base, adapter.",
-    "Record temperature, seed, max_new_tokens, finish_reason, token counts, latency.",
-    "Freeze gold_claims with hash and human sign-off; no in-place overwrite.",
-    "Run one second-base contract portability test; report per-base, never average.",
-    "Keep human merge as final authority; do not automate Ring 0 away.",
-    "A5: fix PASS/HOLD semantics, claim_id matching rule, and strict cloud contract gate before expanding data."
+    "A5 zero-GPU patch done: freeze verdict semantics, closed claim_id allowlist, strict contract gate, index-based param count, data diff, run sentinels.",
+    "Next: one no-training Qwen base rerun on the same 10 holdout with the v2 prompt; compare verdict distribution before deciding to retrain.",
+    "Keep PR draft; human merge remains final authority."
   ],
   "files": [
     {
-      "path": "STAGE-02-REPORT.md",
-      "bytes": 16420,
-      "sha256": "d2a70824215f2f133dc82c4d58c8dc11d5f48bd03b8dc550d41a77f17caa0964"
+      "path": "A4-STOCKTAKE.md",
+      "bytes": 10578,
+      "sha256": "b73e324493615f8b29a7dd93273a7c954335b94b897ab51d2b465618e950c199"
+    },
+    {
+      "path": "A5-ZERO-GPU-PATCH.md",
+      "bytes": 5538,
+      "sha256": "2c631c7acc33934bba40544793e1bc494e5f7d706756d33abec47fe529b91f66"
+    },
+    {
+      "path": "NEXT-ACTIONS.md",
+      "bytes": 5808,
+      "sha256": "b1f377a64dedf5412377253c4d183ef973a90855fa856886383087dd1be49995"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6759,
+      "sha256": "818cffdd4e7d205e8630669024e76dd61367281e73c17fb0ef070407a5e667bb"
     },
     {
       "path": "STAGE-01-REPORT.md",
@@ -144,54 +165,39 @@
       "sha256": "8bf31534827ec1f95a172b896c54b0a52fbd05c07daa2d64dc463c5a32e5e3ab"
     },
     {
-      "path": "NEXT-ACTIONS.md",
-      "bytes": 5103,
-      "sha256": "ce0e911a63ab48278f9f717049786484d6aaf0c6b62ccb699851df8975440332"
+      "path": "STAGE-02-REPORT.md",
+      "bytes": 16420,
+      "sha256": "d2a70824215f2f133dc82c4d58c8dc11d5f48bd03b8dc550d41a77f17caa0964"
     },
     {
-      "path": "README.md",
-      "bytes": 6589,
-      "sha256": "41a32bd30aaf676b3b83b79075490a6a9964644b548e6e60f0fdba71d8add64a"
+      "path": "a2_recompute.py",
+      "bytes": 2532,
+      "sha256": "33d0d26b0c5684e6269476b7bf6ff0fda1fa2fe9c9bb8f85be26c40880c66cd4"
     },
     {
-      "path": "rubric_v1.json",
-      "bytes": 2077,
-      "sha256": "371c33b448e0f24657c8cc890ec1274b70a26282278cd63b1cf7746fc3c46b45"
+      "path": "a4_qwen_recompute.py",
+      "bytes": 5276,
+      "sha256": "71639f66b77086469ebafb446963e57612f70992f14136ac0091863966eb5b97"
+    },
+    {
+      "path": "a5_zero_gpu_audit.py",
+      "bytes": 5814,
+      "sha256": "c67b4983e03c4403b0f541a637cf6c691addcc83b05cafce3bbda7dbb1111f84"
+    },
+    {
+      "path": "build_data.py",
+      "bytes": 10284,
+      "sha256": "ec398d93092bdd95f5b3fab29f515841b8d18283b2a59d88142d8d2438a5f7d9"
+    },
+    {
+      "path": "claim_engine.py",
+      "bytes": 15637,
+      "sha256": "b2e7c9f9a0ff21b8b05aa3a9b4c244a338418d32ddfdbd967c808762a6877986"
     },
     {
       "path": "contract_eval.py",
-      "bytes": 11526,
-      "sha256": "120d629d044995dac5edcd3098d79fbc5fc0233d6b71206d464120b070a40f7b"
-    },
-    {
-      "path": "test_contract_eval.py",
-      "bytes": 1890,
-      "sha256": "01c832e8baf14a27d874a1633bd80b777a0ea78eb1a834b7c117a40c5ccc91ef"
-    },
-    {
-      "path": "evidence/contract-eval-v1.md",
-      "bytes": 2474,
-      "sha256": "916433c9e9aead3570d74394c3299504222f71fb2f842a3abe5b33ea8f270d5b"
-    },
-    {
-      "path": "evidence/contract-eval-v1.json",
-      "bytes": 13645,
-      "sha256": "c1f40dd53370cc3dcfb12f9edf8d6f9b2ed8ddbbe4a8da55f05fac06e3bb24eb"
-    },
-    {
-      "path": "evidence/e2b-contract-eval-report.md",
-      "bytes": 15562,
-      "sha256": "30ac18e0b996f60263de15a8b18b12aa1b34f340eee882255346bcdf182de9c4"
-    },
-    {
-      "path": "evidence/README.md",
-      "bytes": 1200,
-      "sha256": "002f2800f6eb34097170ece638fe0457af9ce75765ac8bab4bc650deea2c82a8"
-    },
-    {
-      "path": "data/train.jsonl",
-      "bytes": 32323,
-      "sha256": "54fd202c4df00c635ab0086acf01493ecbdaed10f95624eec1655e2165994492"
+      "bytes": 14855,
+      "sha256": "1d97ea1bcf45937c698a27ac56379f1b3b685b35a607fb0d1564c942961bb688"
     },
     {
       "path": "data/holdout.jsonl",
@@ -204,79 +210,24 @@
       "sha256": "82e23714310a07b3add247ddc8251d992542db01bb1c99c1eb6fbf53187f5836"
     },
     {
-      "path": "claim_engine.py",
-      "bytes": 12507,
-      "sha256": "b15b7fc8e7796e6d90ba87a082ece014250c327c954be9436d02bc81dc538ce3"
+      "path": "data/train.jsonl",
+      "bytes": 32323,
+      "sha256": "54fd202c4df00c635ab0086acf01493ecbdaed10f95624eec1655e2165994492"
     },
     {
-      "path": "build_data.py",
-      "bytes": 10284,
-      "sha256": "ec398d93092bdd95f5b3fab29f515841b8d18283b2a59d88142d8d2438a5f7d9"
-    },
-    {
-      "path": "test_candidates.py",
-      "bytes": 3995,
-      "sha256": "fd9281645c6c38881250e3865c16ca45cd57f544200342236ee7831be89437c8"
+      "path": "diff_data_versions.py",
+      "bytes": 4358,
+      "sha256": "cafae0c2a823b7a247ec03194ba396531db17bac9c84a3f84a2973f76c4e14e3"
     },
     {
       "path": "eval_e2b.py",
-      "bytes": 7095,
-      "sha256": "fa0fffb3079ed590e94e8b2210c5c16e18257cbed06fc60d0d3414dbac5bb1fc"
+      "bytes": 6567,
+      "sha256": "9d33db28f9abaa5e9f8b0d763cfe030079d55204416dfdd71e1f966e2ac0ec91"
     },
     {
-      "path": "train_qlora.py",
-      "bytes": 11073,
-      "sha256": "b29bdf49c7af1a0affaa0ecc1de82fed52f1c0ce21bc4cd694b6dc15ad14b745"
-    },
-    {
-      "path": "governed_runtime.py",
-      "bytes": 15221,
-      "sha256": "22ec3970409fa107ad8e90abb77fda3f15b31a3cff6825f32108740d57c1408a"
-    },
-    {
-      "path": "governance/anchor_v0.json",
-      "bytes": 747,
-      "sha256": "112da3a356b95cef817099a2d142b5ee8fa11fadb8ea5b00cba22afb08668a03"
-    },
-    {
-      "path": "governance/claim_policy_v0.json",
-      "bytes": 2276,
-      "sha256": "96591271f747fa111c4360f0843a352af34467d6653b2b525b373862a525c5a3"
-    },
-    {
-      "path": "test_data_contract.py",
-      "bytes": 1938,
-      "sha256": "d1abf0b2527f00f74298904d9ce6897752aacc173a85fbe841c4e386c1d5cc28"
-    },
-    {
-      "path": "evidence/a3-freeze-audit.json",
-      "bytes": 844,
-      "sha256": "b1667d19b29e3b08ccb052a96a63f0d30a40af4c76f25ff78b54a2bab5ff545e"
-    },
-    {
-      "path": "a2_recompute.py",
-      "bytes": 2532,
-      "sha256": "33d0d26b0c5684e6269476b7bf6ff0fda1fa2fe9c9bb8f85be26c40880c66cd4"
-    },
-    {
-      "path": "evidence/a2-recompute.json",
-      "bytes": 28017,
-      "sha256": "d15d84a9431e4726f50e43d9c3012d1f5303530e30e791616660140c89598f09"
-    },
-    {
-      "path": "evidence/a2-recompute.md",
-      "bytes": 2206,
-      "sha256": "5e91331ff431751f8d4ba5e9efeaa06e039e4ba3a14075bca569c6252ee4d24f"
-    },
-    {
-      "path": "evidence/a2-cloud/base_eval.json",
-      "bytes": 8301,
-      "sha256": "c1aed72b24e7e5449dec0eef8233bc62c220cba73265b07c623ee06808ce3cd3"
-    },
-    {
-      "path": "evidence/a2-cloud/base_eval_contract.json",
-      "bytes": 15573,
-      "sha256": "111c139746b2954800ac2fed0432d2eb407f045ee73855726dbba348a81f74dd"
+      "path": "evidence/README.md",
+      "bytes": 1562,
+      "sha256": "66a53ee079d8afd6ff2fa14a4f2ff64f695d0ee5e3241cb3c42c5fcce2a3a97d"
     },
     {
       "path": "evidence/a2-cloud/adapter_eval.json",
@@ -289,24 +240,29 @@
       "sha256": "bef3189b22a9fb177fc8ecf352e59d5b2a62eab8c282516259104df725707f92"
     },
     {
-      "path": "a4_qwen_recompute.py",
-      "bytes": 5276,
-      "sha256": "71639f66b77086469ebafb446963e57612f70992f14136ac0091863966eb5b97"
+      "path": "evidence/a2-cloud/base_eval.json",
+      "bytes": 8301,
+      "sha256": "c1aed72b24e7e5449dec0eef8233bc62c220cba73265b07c623ee06808ce3cd3"
     },
     {
-      "path": "evidence/qwen3-4b/base_eval.json",
-      "bytes": 16975,
-      "sha256": "0ab2ed92e21ff3ba34a4944d3f44cae46165a8b02249d51126f6e3d91edca37a"
+      "path": "evidence/a2-cloud/base_eval_contract.json",
+      "bytes": 15573,
+      "sha256": "111c139746b2954800ac2fed0432d2eb407f045ee73855726dbba348a81f74dd"
     },
     {
-      "path": "evidence/qwen3-4b/adapter_eval.json",
-      "bytes": 17738,
-      "sha256": "9e4759e71c780e4da3dc2c37a8e7812816d11187582321fa16cd6770c1c0e6cb"
+      "path": "evidence/a2-recompute.json",
+      "bytes": 28017,
+      "sha256": "d15d84a9431e4726f50e43d9c3012d1f5303530e30e791616660140c89598f09"
     },
     {
-      "path": "evidence/qwen3-4b/manifest.json",
-      "bytes": 953,
-      "sha256": "a8313c994064239cd7f38561fd0ef8ef3d6f06c819758b4bf4224dcb8a8965a8"
+      "path": "evidence/a2-recompute.md",
+      "bytes": 2206,
+      "sha256": "5e91331ff431751f8d4ba5e9efeaa06e039e4ba3a14075bca569c6252ee4d24f"
+    },
+    {
+      "path": "evidence/a3-freeze-audit.json",
+      "bytes": 844,
+      "sha256": "b1667d19b29e3b08ccb052a96a63f0d30a40af4c76f25ff78b54a2bab5ff545e"
     },
     {
       "path": "evidence/a4-recompute.json",
@@ -319,14 +275,144 @@
       "sha256": "0dc855a7b367fd69143c05176bf47a1cb1758b0975a1f96e614c926ba4896f9f"
     },
     {
+      "path": "evidence/a5-semantic-audit.json",
+      "bytes": 2665,
+      "sha256": "0cda857d06f125d5ab0de9526c29ddcd704af8461d44b599667b2db6b1c61015"
+    },
+    {
+      "path": "evidence/a5-semantic-audit.md",
+      "bytes": 1658,
+      "sha256": "4273a5799ed4d295968d1550c16f3febcfef8a3da40c8a7e01702ea2b7b83422"
+    },
+    {
+      "path": "evidence/contract-eval-v1.json",
+      "bytes": 13645,
+      "sha256": "c1f40dd53370cc3dcfb12f9edf8d6f9b2ed8ddbbe4a8da55f05fac06e3bb24eb"
+    },
+    {
+      "path": "evidence/contract-eval-v1.md",
+      "bytes": 2474,
+      "sha256": "916433c9e9aead3570d74394c3299504222f71fb2f842a3abe5b33ea8f270d5b"
+    },
+    {
+      "path": "evidence/data-diff-a3-holdout.json",
+      "bytes": 1608,
+      "sha256": "754ee14d2efa6e61044b7f5e49d079160e62515d82d5940e969aecdee37db7da"
+    },
+    {
+      "path": "evidence/data-diff-a3-holdout.md",
+      "bytes": 1262,
+      "sha256": "f245a260a8d3bcbef844f643043abdf09601391e106f16931e23516b606f69d7"
+    },
+    {
+      "path": "evidence/data-diff-a3-train.json",
+      "bytes": 1982,
+      "sha256": "e806669959d7cecf198262a45aad84a8c0cf5f9b7514e6d5142685118af3dbc2"
+    },
+    {
+      "path": "evidence/data-diff-a3-train.md",
+      "bytes": 1560,
+      "sha256": "cce08ed396d542c25b3c721f8dbd61f71985cc783de5b3f5dc71583852110e16"
+    },
+    {
+      "path": "evidence/e2b-contract-eval-report.md",
+      "bytes": 15562,
+      "sha256": "30ac18e0b996f60263de15a8b18b12aa1b34f340eee882255346bcdf182de9c4"
+    },
+    {
+      "path": "evidence/qwen3-4b/adapter_eval.json",
+      "bytes": 17738,
+      "sha256": "9e4759e71c780e4da3dc2c37a8e7812816d11187582321fa16cd6770c1c0e6cb"
+    },
+    {
+      "path": "evidence/qwen3-4b/base_eval.json",
+      "bytes": 16975,
+      "sha256": "0ab2ed92e21ff3ba34a4944d3f44cae46165a8b02249d51126f6e3d91edca37a"
+    },
+    {
+      "path": "evidence/qwen3-4b/manifest.json",
+      "bytes": 953,
+      "sha256": "a8313c994064239cd7f38561fd0ef8ef3d6f06c819758b4bf4224dcb8a8965a8"
+    },
+    {
       "path": "evidence/qwen3-4b/param_check.json",
       "bytes": 641,
       "sha256": "bf66183e5ede6f677a6b960b129e34b51eda512e37b780d5a1b062b50d5b26f1"
     },
     {
-      "path": "A4-STOCKTAKE.md",
-      "bytes": 10578,
-      "sha256": "b73e324493615f8b29a7dd93273a7c954335b94b897ab51d2b465618e950c199"
+      "path": "governance/anchor_v0.json",
+      "bytes": 747,
+      "sha256": "112da3a356b95cef817099a2d142b5ee8fa11fadb8ea5b00cba22afb08668a03"
+    },
+    {
+      "path": "governance/claim_policy_v0.json",
+      "bytes": 2276,
+      "sha256": "96591271f747fa111c4360f0843a352af34467d6653b2b525b373862a525c5a3"
+    },
+    {
+      "path": "governance/contract_semantics_v1.json",
+      "bytes": 1201,
+      "sha256": "f663c7fb37f3c4cc2c83f4a855599f688f1cf28db0ad8ecd08af3ab99a040bfd"
+    },
+    {
+      "path": "governed_runtime.py",
+      "bytes": 15221,
+      "sha256": "22ec3970409fa107ad8e90abb77fda3f15b31a3cff6825f32108740d57c1408a"
+    },
+    {
+      "path": "param_stats.py",
+      "bytes": 2371,
+      "sha256": "0b7e7da0997c7d2aa87b18bf3f4cded0dd863d17ce9833189868389707ed9edb"
+    },
+    {
+      "path": "prompt_contract.py",
+      "bytes": 2291,
+      "sha256": "c96ddcefe6b9f90809c6ed8cb8605a2551f3bb3a4c391aeac6316564e0da34e1"
+    },
+    {
+      "path": "rubric_v1.json",
+      "bytes": 2602,
+      "sha256": "d5d83de6678b6ada9911a31e1a8857fde25b850c7355181898c3c3fa230c151e"
+    },
+    {
+      "path": "run_watch.py",
+      "bytes": 2858,
+      "sha256": "f412ceda422f6c0980a1df72fb2c9de79a36ef18f4c6f31ed7f0ded084cb84d9"
+    },
+    {
+      "path": "test_candidates.py",
+      "bytes": 3995,
+      "sha256": "fd9281645c6c38881250e3865c16ca45cd57f544200342236ee7831be89437c8"
+    },
+    {
+      "path": "test_contract_eval.py",
+      "bytes": 3085,
+      "sha256": "1d3d6b96df23378264f450e69c94461952492928e12530650f39f9246f80c18a"
+    },
+    {
+      "path": "test_data_contract.py",
+      "bytes": 1938,
+      "sha256": "d1abf0b2527f00f74298904d9ce6897752aacc173a85fbe841c4e386c1d5cc28"
+    },
+    {
+      "path": "test_param_stats.py",
+      "bytes": 852,
+      "sha256": "a4dadff8854014c5dfa73d0aaf00f7d88b5340ca0ad1ac73d32db8b12e0e8783"
+    },
+    {
+      "path": "test_prompt_contract.py",
+      "bytes": 922,
+      "sha256": "2fca7f3d39238cf804fbe6411dfe953066dac1b7bbca05645585be7a54503b63"
+    },
+    {
+      "path": "test_run_watch.py",
+      "bytes": 1886,
+      "sha256": "f2c92266777892415a653aca0938f57f791e7d990553ab8796761490cd30091c"
+    },
+    {
+      "path": "train_qlora.py",
+      "bytes": 11540,
+      "sha256": "9e7d7e511e287056161f7ba03ede9ec5527b3c6e5ff0200ea862d37b96f08636"
     }
   ],
   "a3_offline_fix": {

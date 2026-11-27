@@ -17,6 +17,7 @@
 - [evidence/a2-recompute.md](evidence/a2-recompute.md) — A2：四个云端 eval 产物的统一 rubric 重算。
 - [evidence/a4-recompute.md](evidence/a4-recompute.md) — A4：Qwen3-4B base 与 50 条 QLoRA 的统一 rubric 复算；不含“更强”结论。
 - [A4-STOCKTAKE.md](A4-STOCKTAKE.md) — A4 全量盘点：只列事实、未决问题与候选动作，不做通过/失败判断。
+- [A5-ZERO-GPU-PATCH.md](A5-ZERO-GPU-PATCH.md) — A5 零 GPU 口径修复：判定语义、claim_id 允许表、strict gate、参数量、数据 diff 与完成哨兵。
 
 ---
 

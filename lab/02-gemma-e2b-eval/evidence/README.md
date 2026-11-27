@@ -7,6 +7,9 @@
 | `e2b-contract-eval-report.md` | 用户上传附件 `https://aka.doubaocdn.com/s/vP6h5Oz2Es`；本地接收 2026-11-27 | `30ac18e0b996f60263de15a8b18b12aa1b34f340eee882255346bcdf182de9c4` |
 | `contract-eval-v1.md` | 用 `rubric_v1.json` 对云端报告的重算摘要，非云端原始 | 见 `STAGE-01-MANIFEST.json` |
 | `contract-eval-v1.json` | 同一重算的逐行结果，非云端原始 | 见 `STAGE-01-MANIFEST.json` |
+| `a5-semantic-audit.json` / `.md` | A5 零 GPU 语义审计：gold/草稿/模型 verdict/模型 claims 分源对照 | 见 `STAGE-02-MANIFEST.json` |
+| `data-diff-a3-train.json` / `.md` | A3 前后训练集字段级差异 | 见 `STAGE-02-MANIFEST.json` |
+| `data-diff-a3-holdout.json` / `.md` | A3 前后 holdout 字段级差异 | 见 `STAGE-02-MANIFEST.json` |
 
 使用说明：
 

@@ -1,0 +1,28 @@
+{
+  "version": "contract-semantics-v1",
+  "frozen_at": "2026-11-27",
+  "verdict_scope": "draft_claims_under_frozen_policy",
+  "pass_rule": "required_any is satisfied and forbidden_any is absent",
+  "hold_rule": "otherwise",
+  "explicitly_not": [
+    "whether the draft agrees with the user question",
+    "whether the model believes the draft",
+    "answer correctness or model capability"
+  ],
+  "claim_id": {
+    "mode": "closed_allowlist",
+    "source": "claim_policy_v0.json required_any + forbidden_any",
+    "match": "claim_id + polarity",
+    "on_violation": "claim_id_not_allowed",
+    "semantic_triple_matching": "diagnostic only; not an acceptance gate"
+  },
+  "contract_gate": {
+    "strict_contract_pass": "structural + strict schema + full triple + claim_id_allowed",
+    "weak_parse": "structural only; parse health, not an acceptance gate"
+  },
+  "notes": [
+    "The allowlist is rendered into the prompt for future runs; it is not inferred from holdout gold.",
+    "Historical scores produced without the allowlist remain comparable only under the old strict schema label.",
+    "Alias polarities are accepted by the offline adjudicator for diagnosis, never by the strict gate."
+  ]
+}

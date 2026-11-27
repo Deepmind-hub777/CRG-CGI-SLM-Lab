@@ -36,11 +36,15 @@
   - 云端 `contract_ok=1.0` 只是弱门，不校验 claim 字段、polarity、kind；与严格 schema 0/10 不矛盾。
   - 产物：`evidence/qwen3-4b/*.json`、`evidence/a4-recompute.json`、`evidence/a4-recompute.md`。
 
-- [ ] **A5. 修 PASS/HOLD 语义与 claim_id 契约（零 GPU，先于扩数据）**
-  - 在 system prompt 或 runtime contract 里写死：PASS = 草稿 claims 可被冻结锚定接受；HOLD = 草稿出现不允许的断言/来源；不是“草稿是否同意用户问题”。
-  - 决定 claim set 口径：要么在 prompt 给出 claim_id 允许词表，要么改为按 `(subject,predicate,object,polarity)` 语义匹配，不再要求猜隐藏 ID。
-  - 把云端 `contract_ok` 升级为 `rubric_v1` strict schema；弱门结果不再写进主表。
-  - 修订后用同一 10 条重跑 Qwen base，确认语义修正本身是否改变 verdict；再决定是否重训 50 条。
+- [x] **A5. 修 PASS/HOLD 语义与 claim_id 契约（零 GPU，先于扩数据）**
+  - 已冻结 `governance/contract_semantics_v1.json`：PASS = 草稿 claims 满足 `required_any` 且不含 `forbidden_any`；HOLD 为其余情况；判的是“能否被冻结锚定接受”，不是“草稿是否同意用户问题”。
+  - 已选定 closed allowlist + `claim_id`/`polarity` 精确匹配；允许表由 `claim_policy_v0.json` 的 `required_any + forbidden_any` 推导，不读 holdout gold；三元组匹配只作诊断。
+  - 已加 `strict_contract_pass = structural + schema + full_triple + claim_id_allowed`；云端弱门只保留为解析健康度。
+  - 已加 `param_stats.py`，参数量改从 safetensors index 计算；已加 `RUN_COMPLETE.json` / `EVAL_COMPLETE.json` 与 `run_watch.py` 状态机。
+  - 已做 `f1072fa9` → `54fd202c` 的字段级 diff：训练集只补 60 处 `object`、24 处 `predicate`；holdout 只新增 10 条 `gold_claims`。
+  - 离线语义审计：gold claims 与草稿抽取都 10/10 复现 gold；Qwen base/adapter 自己的 verdict 0.2/0.3，模型 claims 经 policy 重判都是 0.4，允许 ID 命中都是 0/10。
+  - 产物：`A5-ZERO-GPU-PATCH.md`、`evidence/a5-semantic-audit.*`、`evidence/data-diff-a3-*.json`。
+  - 下一步：同一 Qwen base、同一 10 条 holdout、只换 v2 prompt，跑一次不训练的 GPU 对照。
 
 ---
 

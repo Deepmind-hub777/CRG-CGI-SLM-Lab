@@ -86,7 +86,7 @@ def check_structural(obj, errors, dups):
     return errors
 
 
-def check_schema(obj):
+def check_schema(obj, allowed_ids=None):
     errors = []
     if obj is None:
         return ["bad_json"]
@@ -107,7 +107,30 @@ def check_schema(obj):
             errors.append("bad_polarity")
         if not isinstance(c.get("kind"), str) or c.get("kind") not in KINDS:
             errors.append("bad_kind")
+        if allowed_ids is not None:
+            cid = c.get("claim_id")
+            if isinstance(cid, str) and cid.strip() and cid not in allowed_ids:
+                errors.append("claim_id_not_allowed")
     return errors
+
+
+def check_claim_ids(obj, allowed_ids=None):
+    """Return True when every structured claim uses the case allowlist.
+
+    A missing/empty claim_id is already a strict-schema failure; this helper
+    only reports the allowlist dimension, so it stays usable as a diagnostic.
+    """
+    if allowed_ids is None:
+        return True
+    if not isinstance(obj, dict) or not isinstance(obj.get("claims"), list):
+        return False
+    for c in obj["claims"]:
+        if not isinstance(c, dict):
+            return False
+        cid = c.get("claim_id")
+        if not isinstance(cid, str) or not cid.strip() or cid not in allowed_ids:
+            return False
+    return True
 
 
 def check_triple(obj):
@@ -182,6 +205,26 @@ def claim_set(obj):
     return out
 
 
+def semantic_claim_set(obj):
+    """Triple-level set, reported as a diagnostic only."""
+    out = set()
+    if not isinstance(obj, dict):
+        return out
+    for c in obj.get("claims") or []:
+        if not isinstance(c, dict):
+            continue
+        try:
+            out.add((
+                str(c.get("subject", "")).strip(),
+                str(c.get("predicate", "")).strip(),
+                str(c.get("object", "")).strip(),
+                int(c.get("polarity")),
+            ))
+        except Exception:
+            continue
+    return out
+
+
 def expected_claim_set(row):
     if isinstance(row.get("expected_claims"), list):
         return {(str(c.get("claim_id")), int(c.get("polarity"))) for c in row["expected_claims"] if c.get("polarity") in (1, -1)}
@@ -195,31 +238,60 @@ def expected_claim_set(row):
     return None
 
 
+def expected_semantic_claim_set(row):
+    if isinstance(row.get("expected_claims"), list):
+        return {
+            (str(c.get("subject", "")).strip(), str(c.get("predicate", "")).strip(),
+             str(c.get("object", "")).strip(), int(c.get("polarity")))
+            for c in row["expected_claims"] if c.get("polarity") in (1, -1)
+        }
+    data = row.get("_holdout")
+    if data and data.get("gold_claims") is not None:
+        return {
+            (str(c.get("subject", "")).strip(), str(c.get("predicate", "")).strip(),
+             str(c.get("object", "")).strip(), int(c.get("polarity")))
+            for c in data["gold_claims"] if c.get("polarity") in (1, -1)
+        }
+    return None
+
+
 def evaluate_row(row):
     raw = row.get("raw_output", "")
     obj, perr, dups = parse_strict(raw)
     structural = check_structural(obj, list(perr), dups)
     schema = check_schema(obj)
     triple = check_triple(obj)
+    case_id = row.get("case_id")
+    allowed_ids = claim_engine.allowed_claim_ids(case_id) if case_id else None
+    ids_allowed = check_claim_ids(obj, allowed_ids)
+    gate_errors = check_schema(obj, allowed_ids) if allowed_ids is not None else schema
     expected = row.get("expected_verdict")
     got = verdict_of(obj)
     exp_claims = expected_claim_set(row)
+    exp_semantic = expected_semantic_claim_set(row)
     cs = claim_set(obj)
+    sem = semantic_claim_set(obj)
     contract_valid = (not structural) and (not schema)
+    strict_contract = (not structural) and (not gate_errors) and (not triple) and ids_allowed
     return {
         "id": row.get("id"),
+        "case_id": case_id,
         "expected_verdict": expected,
         "model_verdict": got,
         "structural_pass": not structural,
         "schema_pass": not schema,
         "triple_pass": not triple,
+        "claim_id_allowed": ids_allowed,
+        "strict_contract_pass": strict_contract,
         "core_triple_pass": core_triple_ok(obj, not structural),
         "lenient_schema_pass": lenient_schema_ok(obj, not structural),
         "structural_fail": structural,
         "schema_fail": schema,
         "triple_fail": triple,
+        "gate_fail": gate_errors,
         "verdict_ok": bool(expected and got == expected),
         "claim_set_exact": (cs == exp_claims) if (exp_claims is not None and contract_valid) else None,
+        "claim_set_semantic": (sem == exp_semantic) if (exp_semantic is not None and strict_contract) else None,
     }
 
 
@@ -234,14 +306,20 @@ def summarize(rows):
             counts[k] += 1
         for k in e["schema_fail"]:
             counts[k] += 1
+        for k in e["gate_fail"]:
+            if k == "claim_id_not_allowed":
+                counts[k] += 1
     hold = [e for e in ev if e["expected_verdict"] == "HOLD"]
     pass_rows = [e for e in ev if e["expected_verdict"] == "PASS"]
     claim_rows = [e for e in ev if e["claim_set_exact"] is not None]
+    semantic_rows = [e for e in ev if e["claim_set_semantic"] is not None]
     return {
         "n": n,
         "structural_pass": sum(e["structural_pass"] for e in ev),
         "schema_pass": sum(e["schema_pass"] for e in ev),
         "triple_pass": sum(e["triple_pass"] for e in ev),
+        "claim_id_allowed": sum(e["claim_id_allowed"] for e in ev),
+        "strict_contract_pass": sum(e["strict_contract_pass"] for e in ev),
         "core_triple_pass": sum(e["core_triple_pass"] for e in ev),
         "lenient_schema_pass": sum(e["lenient_schema_pass"] for e in ev),
         "structural_and_schema_pass": sum(e["structural_pass"] and e["schema_pass"] for e in ev),
@@ -249,6 +327,7 @@ def summarize(rows):
         "hold_recall": round(sum(e["verdict_ok"] for e in hold) / len(hold), 4) if hold else None,
         "always_pass_baseline": round(len(pass_rows) / n, 4),
         "claim_set_exact": round(sum(e["claim_set_exact"] for e in claim_rows) / len(claim_rows), 4) if claim_rows else None,
+        "claim_set_semantic": round(sum(e["claim_set_semantic"] for e in semantic_rows) / len(semantic_rows), 4) if semantic_rows else None,
         "fail_counts": dict(counts),
         "rows": ev,
     }

@@ -1,0 +1,89 @@
+{
+  "label": "train-a3",
+  "old_sha256": "f1072fa95f2514ca9dba36f990bcdb276bb71266a8ccfac466efc68fb8238371",
+  "new_sha256": "54fd202c4df00c635ab0086acf01493ecbdaed10f95624eec1655e2165994492",
+  "records_old": 50,
+  "records_new": 50,
+  "same_ids_and_order": true,
+  "changed_fields": {
+    "claims.object": 60,
+    "claims.predicate": 24
+  },
+  "examples": [
+    {
+      "id": "E003-train-001",
+      "claim_index": 0,
+      "field": "claims.object",
+      "old": "",
+      "new": "锚定由生成模型自身提供"
+    },
+    {
+      "id": "E003-train-001",
+      "claim_index": 0,
+      "field": "claims.predicate",
+      "old": "",
+      "new": "self"
+    },
+    {
+      "id": "E003-train-001",
+      "claim_index": 1,
+      "field": "claims.object",
+      "old": "",
+      "new": "锚定来自冻结参照/外部"
+    },
+    {
+      "id": "E003-train-001",
+      "claim_index": 1,
+      "field": "claims.predicate",
+      "old": "",
+      "new": "external"
+    },
+    {
+      "id": "E003-train-002",
+      "claim_index": 0,
+      "field": "claims.object",
+      "old": "",
+      "new": "锚定由生成模型自身提供"
+    },
+    {
+      "id": "E003-train-002",
+      "claim_index": 0,
+      "field": "claims.predicate",
+      "old": "",
+      "new": "self"
+    },
+    {
+      "id": "E003-train-002",
+      "claim_index": 1,
+      "field": "claims.object",
+      "old": "",
+      "new": "锚定来自冻结参照/外部"
+    },
+    {
+      "id": "E003-train-002",
+      "claim_index": 1,
+      "field": "claims.predicate",
+      "old": "",
+      "new": "external"
+    },
+    {
+      "id": "E003-train-003",
+      "claim_index": 0,
+      "field": "claims.object",
+      "old": "",
+      "new": "锚定由生成模型自身提供"
+    },
+    {
+      "id": "E003-train-003",
+      "claim_index": 0,
+      "field": "claims.predicate",
+      "old": "",
+      "new": "self"
+    }
+  ],
+  "empty_claims_old": {
+    "predicate": 24,
+    "object": 60
+  },
+  "empty_claims_new": {}
+}

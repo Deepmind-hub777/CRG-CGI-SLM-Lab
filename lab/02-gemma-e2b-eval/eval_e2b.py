@@ -5,7 +5,7 @@ Base model and adapter see the same question + candidate draft. The external
 claim_engine.py still decides the ground-truth verdict for that draft; the model
 does not grade itself.
 """
-import argparse, json, pathlib, re, sys, time
+import argparse, hashlib, json, pathlib, re, sys, time
 import torch
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
@@ -13,13 +13,9 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 ROOT = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 import claim_engine
+import prompt_contract
 
-SYSTEM = (
-"你是 CRG-CGI-SLM 的 claim 抽取器。只依据用户问题与候选草稿；"
-"不要补全草稿没有的断言，不要引用外部知识，不要把锚定原文当成答案。"
-"输出严格 JSON：claims 为数组，每项含 claim_id,subject,predicate,object,polarity,kind,evidence；"
-"verdict 只能是 PASS 或 HOLD；hold_reason 为短句；rollback_required 为布尔。"
-)
+build_prompt = prompt_contract.build_prompt
 
 
 def get_tokenizer(model_id):
@@ -31,20 +27,6 @@ def get_tokenizer(model_id):
     except Exception:
         pass
     return AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
-
-
-def build_prompt(tokenizer, rec):
-    user = (
-        f"用户问题：{rec['prompt']}\n"
-        f"候选草稿：{rec['draft']}\n"
-        f"锚定摘录：{rec.get('anchor_excerpt','') or '（无，仅依据草稿判断）'}\n"
-        "请抽取草稿里实际出现的 claims，并给出 PASS/HOLD。"
-    )
-    messages = [{"role": "system", "content": SYSTEM}, {"role": "user", "content": user}]
-    try:
-        return tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-    except Exception:
-        return f"<system>\n{SYSTEM}\n</system>\n<user>\n{user}\n</user>\n<assistant>\n"
 
 
 def load_model(model_id, adapter=None):
@@ -159,6 +141,7 @@ def main():
         "model_id": args.model_id,
         "adapter": args.adapter,
         "data": str(pathlib.Path(args.data).resolve()),
+        "prompt_contract": "contract-semantics-v1 + claim_id allowlist",
         "n": n,
         "json_ok_rate": sum(1 for r in log if r.get("json_ok")) / n if n else 0,
         "verdict_accuracy": sum(1 for r in log if r.get("verdict_match")) / n if n else 0,
@@ -168,6 +151,10 @@ def main():
     out_path = pathlib.Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps({"summary": summary, "rows": log}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    complete = dict(summary)
+    complete.update({"status": "completed", "finished_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+                     "eval_sha256": hashlib.sha256(out_path.read_bytes()).hexdigest()})
+    (out_path.parent / "EVAL_COMPLETE.json").write_text(json.dumps(complete, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False))
 
 

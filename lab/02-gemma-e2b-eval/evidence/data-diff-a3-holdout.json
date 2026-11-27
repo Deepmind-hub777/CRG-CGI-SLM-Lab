@@ -1,0 +1,75 @@
+{
+  "label": "holdout-a3",
+  "old_sha256": "6d9de69ea03ed664fa3f7c480d34a5876282a6d1002ade7d7d4e6a1d5e3d8e41",
+  "new_sha256": "87d2fb1b0b85203fc34d55e37642acd063ba5ad356941e4067bb83b8f37846e3",
+  "records_old": 10,
+  "records_new": 10,
+  "same_ids_and_order": true,
+  "changed_fields": {
+    "gold_claims_presence": 10
+  },
+  "examples": [
+    {
+      "id": "E003-holdout-001",
+      "field": "gold_claims",
+      "old": "absent",
+      "new": "present"
+    },
+    {
+      "id": "E003-holdout-002",
+      "field": "gold_claims",
+      "old": "absent",
+      "new": "present"
+    },
+    {
+      "id": "E003-holdout-003",
+      "field": "gold_claims",
+      "old": "absent",
+      "new": "present"
+    },
+    {
+      "id": "E003-holdout-004",
+      "field": "gold_claims",
+      "old": "absent",
+      "new": "present"
+    },
+    {
+      "id": "E003-holdout-005",
+      "field": "gold_claims",
+      "old": "absent",
+      "new": "present"
+    },
+    {
+      "id": "E003-holdout-006",
+      "field": "gold_claims",
+      "old": "absent",
+      "new": "present"
+    },
+    {
+      "id": "E003-holdout-007",
+      "field": "gold_claims",
+      "old": "absent",
+      "new": "present"
+    },
+    {
+      "id": "E003-holdout-008",
+      "field": "gold_claims",
+      "old": "absent",
+      "new": "present"
+    },
+    {
+      "id": "E003-holdout-009",
+      "field": "gold_claims",
+      "old": "absent",
+      "new": "present"
+    },
+    {
+      "id": "E003-holdout-010",
+      "field": "gold_claims",
+      "old": "absent",
+      "new": "present"
+    }
+  ],
+  "empty_claims_old": {},
+  "empty_claims_new": {}
+}

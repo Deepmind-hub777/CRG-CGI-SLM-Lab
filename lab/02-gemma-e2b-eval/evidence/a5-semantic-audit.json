@@ -1,0 +1,138 @@
+{
+  "contract": "contract-semantics-v1",
+  "case": "E003",
+  "allowlist": [
+    "anchor_source_external",
+    "anchor_source_inside",
+    "anchor_source_self"
+  ],
+  "n": 10,
+  "sources": {
+    "gold_claims_policy": {
+      "verdict_accuracy": 1.0,
+      "pass_recall": 1.0,
+      "hold_recall": 1.0,
+      "output_hold": 4,
+      "distribution": {
+        "PASS": 6,
+        "HOLD": 4
+      }
+    },
+    "draft_engine": {
+      "verdict_accuracy": 1.0,
+      "pass_recall": 1.0,
+      "hold_recall": 1.0,
+      "output_hold": 4,
+      "distribution": {
+        "PASS": 6,
+        "HOLD": 4
+      }
+    },
+    "qwen_base_model_verdict": {
+      "verdict_accuracy": 0.2,
+      "pass_recall": 0.0,
+      "hold_recall": 0.5,
+      "output_hold": 8,
+      "distribution": {
+        "HOLD": 8,
+        "PASS": 2
+      }
+    },
+    "qwen_base_claims_policy": {
+      "verdict_accuracy": 0.4,
+      "pass_recall": 0.0,
+      "hold_recall": 1.0,
+      "output_hold": 10,
+      "distribution": {
+        "HOLD": 10
+      }
+    },
+    "qwen_base_claim_ids": {
+      "rows_with_all_ids_allowed": 0,
+      "distinct_ids": 3,
+      "top_ids": [
+        [
+          "c1",
+          9
+        ],
+        [
+          "c2",
+          5
+        ],
+        [
+          "c001",
+          1
+        ]
+      ]
+    },
+    "qwen_adapter_50_model_verdict": {
+      "verdict_accuracy": 0.3,
+      "pass_recall": 0.0,
+      "hold_recall": 0.75,
+      "output_hold": 9,
+      "distribution": {
+        "HOLD": 9,
+        "PASS": 1
+      }
+    },
+    "qwen_adapter_50_claims_policy": {
+      "verdict_accuracy": 0.4,
+      "pass_recall": 0.0,
+      "hold_recall": 1.0,
+      "output_hold": 10,
+      "distribution": {
+        "HOLD": 10
+      }
+    },
+    "qwen_adapter_50_claim_ids": {
+      "rows_with_all_ids_allowed": 0,
+      "distinct_ids": 12,
+      "top_ids": [
+        [
+          "anchor_by_model",
+          3
+        ],
+        [
+          "anchor_vector_source",
+          2
+        ],
+        [
+          "anchor_can_be_generated_by_model",
+          2
+        ],
+        [
+          "anchor_source_model",
+          1
+        ],
+        [
+          "anchor_source_weight",
+          1
+        ],
+        [
+          "anchor_is_external",
+          1
+        ],
+        [
+          "anchor_is_generated_by_model",
+          1
+        ],
+        [
+          "anchor_can_be_intrinsic",
+          1
+        ]
+      ]
+    },
+    "qwen_base_verdict_vs_claim_policy": {
+      "pairs": {
+        "HOLD->HOLD": 8,
+        "PASS->HOLD": 2
+      }
+    },
+    "qwen_adapter_50_verdict_vs_claim_policy": {
+      "pairs": {
+        "HOLD->HOLD": 9,
+        "PASS->HOLD": 1
+      }
+    }
+  }
+}

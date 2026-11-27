@@ -196,6 +196,105 @@ def extract_claims(text: str) -> List[Claim]:
     return out
 
 
+def allowed_claim_ids(case_id: str, policy=None):
+    """Closed vocabulary for a case: only IDs the policy can accept or reject.
+
+    The list is derived from required_any + forbidden_any, not from holdout
+    gold, so training and evaluation can share the same rule.
+    """
+    policy = policy or load_policy()
+    spec = policy.get("cases", {}).get(case_id, {})
+    ids = set()
+    for key in ("required_any", "forbidden_any"):
+        for ref in spec.get(key, []):
+            if ref.get("claim"):
+                ids.add(str(ref["claim"]))
+    return sorted(ids)
+
+
+def _polarity_int(value):
+    """Accept the canonical integers and the aliases models actually emit."""
+    if isinstance(value, bool):
+        return None
+    if isinstance(value, int):
+        return value if value in (1, -1) else None
+    if isinstance(value, str):
+        v = value.strip().lower()
+        if v in ("1", "+1", "positive", "pos"):
+            return 1
+        if v in ("-1", "negative", "neg"):
+            return -1
+    return None
+
+
+def adjudicate_claims(claims, case_id: str, policy=None):
+    """Apply the frozen claim policy to already-structured claims.
+
+    This is the offline counterpart of claim_engine.evaluate(): it does not
+    re-extract text, it only asks whether a given claim list satisfies
+    required_any and avoids forbidden_any. Alias polarities are accepted here
+    for diagnosis; the strict contract gate still rejects them.
+    """
+    policy = policy or load_policy()
+    spec = policy.get("cases", {}).get(case_id, {})
+    normalized = []
+    for c in claims or []:
+        if not isinstance(c, dict):
+            continue
+        normalized.append({
+            "claim_id": str(c.get("claim_id", "")),
+            "polarity": _polarity_int(c.get("polarity")),
+            "kind": c.get("kind", "assertion"),
+            "evidence": c.get("evidence", ""),
+        })
+
+    def supported(ref):
+        cid = ref["claim"]
+        want = ref["polarity"]
+        for c in normalized:
+            if c["claim_id"] != cid or c["polarity"] != want:
+                continue
+            if c["kind"] in ("antecedent", "hypothetical", "interrogative"):
+                continue
+            return c
+        return None
+
+    reasons = []
+    req = None
+    for ref in spec.get("required_any", []):
+        c = supported(ref)
+        if c:
+            req = c
+            break
+    if req is None:
+        reasons.append({
+            "type": "missing_required",
+            "need_any": spec.get("required_any", []),
+            "claims": normalized,
+        })
+
+    bad = []
+    for ref in spec.get("forbidden_any", []):
+        c = supported(ref)
+        if c:
+            bad.append(c)
+            reasons.append({
+                "type": "forbidden_claim",
+                "claim": ref,
+                "evidence": c.get("evidence", ""),
+                "polarity": c["polarity"],
+            })
+
+    return {
+        "case": case_id,
+        "verdict": "HOLD" if reasons else "PASS",
+        "claims": normalized,
+        "reasons": reasons,
+        "required_evidence": req,
+        "forbidden_evidence": bad,
+    }
+
+
 def load_policy(path=None):
     p = pathlib.Path(path) if path else ROOT / "governance" / "claim_policy_v0.json"
     return json.loads(p.read_text(encoding="utf-8"))

@@ -7,6 +7,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 import contract_eval
+import claim_engine
 
 GOOD = {
     "claims": [{
@@ -30,6 +31,8 @@ def main():
     good = contract_eval.evaluate_row(row(json.dumps(GOOD, ensure_ascii=False)))
     assert good["structural_pass"] and good["schema_pass"] and good["triple_pass"], good
     assert good["verdict_ok"] is True
+    assert good["claim_id_allowed"] is True
+    assert good["strict_contract_pass"] is True
 
     fenced = contract_eval.evaluate_row(row("```json\n" + json.dumps(GOOD, ensure_ascii=False) + "\n```"))
     assert not fenced["structural_pass"]
@@ -41,6 +44,7 @@ def main():
     bad = contract_eval.evaluate_row(row(json.dumps(alias, ensure_ascii=False)))
     assert not bad["schema_pass"]
     assert "bad_polarity" in bad["schema_fail"] and "bad_kind" in bad["schema_fail"]
+    assert not bad["strict_contract_pass"]
 
     empty = json.loads(json.dumps(GOOD, ensure_ascii=False))
     empty["claims"][0]["object"] = ""
@@ -48,8 +52,27 @@ def main():
     assert empty_triple["schema_pass"]  # empty string is type-correct; schema does not require non-empty
     assert not empty_triple["triple_pass"]
     assert "empty_object" in empty_triple["triple_fail"]
+    assert not empty_triple["strict_contract_pass"]
 
-    print("contract_eval tests: 4/4 OK")
+    invented = json.loads(json.dumps(GOOD, ensure_ascii=False))
+    invented["claims"][0]["claim_id"] = "c1"
+    row_invented = {"id": "t", "case_id": "E003", "expected_verdict": "PASS",
+                    "raw_output": json.dumps(invented, ensure_ascii=False)}
+    ev = contract_eval.evaluate_row(row_invented)
+    assert ev["schema_pass"] is True  # historical schema is unchanged
+    assert ev["claim_id_allowed"] is False
+    assert "claim_id_not_allowed" in ev["gate_fail"]
+    assert ev["strict_contract_pass"] is False
+
+    gold = [{"claim_id": "anchor_source_external", "polarity": 1, "kind": "assertion",
+             "subject": "冻结参照", "predicate": "external",
+             "object": "锚定来自冻结参照/外部", "evidence": "锚定由冻结参照给出。"}]
+    res = claim_engine.adjudicate_claims(gold, "E003")
+    assert res["verdict"] == "PASS", res
+    missing = claim_engine.adjudicate_claims([], "E003")
+    assert missing["verdict"] == "HOLD", missing
+
+    print("contract_eval tests: 8/8 OK")
 
 
 if __name__ == "__main__":
